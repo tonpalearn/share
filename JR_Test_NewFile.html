@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JR Aluminium — Mind Map ระบบออฟฟิศ</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0f172a; font-family:'Segoe UI',Tahoma,'Arial Unicode MS',sans-serif; min-height:100vh; padding:20px; }
+
+  h1 { text-align:center; color:white; font-size:22px; font-weight:800; margin-bottom:8px; }
+  .subtitle { text-align:center; color:#64748b; font-size:12px; margin-bottom:16px; }
+
+  .legend {
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    background:rgba(255,255,255,0.05); border-radius:8px;
+    padding:10px 20px; margin-bottom:24px;
+  }
+  .l { display:flex; align-items:center; gap:5px; font-size:12px; color:#e2e8f0; }
+  .dot { width:10px; height:10px; border-radius:3px; }
+
+  .status-bar {
+    display:flex; gap:20px; justify-content:center; margin-bottom:24px;
+    font-size:12px; color:#94a3b8;
+  }
+
+  /* ===== FLOW SECTION ===== */
+  .flow-section {
+    background:#1e293b; border:1.5px solid #334155; border-radius:12px;
+    padding:16px; margin-bottom:20px;
+  }
+  .flow-section h2 { color:#f1f5f9; font-size:14px; margin-bottom:12px; }
+  .flow-steps {
+    display:flex; gap:0; overflow-x:auto; align-items:center;
+  }
+  .step {
+    background:#0f172a; border:1.5px solid #475569; border-radius:8px;
+    padding:10px 12px; min-width:110px; text-align:center; flex-shrink:0;
+  }
+  .step .num { font-size:18px; font-weight:800; color:#6366f1; }
+  .step .label { font-size:9.5px; color:#cbd5e1; margin-top:3px; line-height:1.4; }
+  .step .who { font-size:8px; color:#64748b; margin-top:4px; }
+  .arrow { color:#475569; font-size:20px; padding:0 6px; flex-shrink:0; }
+
+  /* ===== ZONES GRID ===== */
+  .zones { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:20px; }
+
+  .zone {
+    border-radius:12px; padding:14px; border:2px solid;
+  }
+  .zone h3 { font-size:13px; font-weight:700; margin-bottom:4px; }
+  .zone .person { font-size:10px; opacity:0.7; margin-bottom:10px; }
+  .zone ul { list-style:none; }
+  .zone li { font-size:11px; line-height:1.7; padding:1px 0; }
+
+  .zone-a { background:#14532d; border-color:#16A34A; color:#d1fae5; }
+  .zone-a h3 { color:#86efac; }
+  .zone-b { background:#1e3a8a; border-color:#2563EB; color:#dbeafe; }
+  .zone-b h3 { color:#93c5fd; }
+  .zone-c { background:#2e1065; border-color:#7C3AED; color:#ede9fe; }
+  .zone-c h3 { color:#c4b5fd; }
+
+  /* ===== DOCS ROW ===== */
+  .docs-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+
+  .docs-box {
+    background:#451a03; border:2px solid #D97706; border-radius:12px; padding:14px;
+  }
+  .docs-box h3 { color:#fcd34d; font-size:13px; margin-bottom:10px; }
+
+  table { width:100%; border-collapse:collapse; font-size:11px; color:#fef3c7; }
+  th { text-align:left; color:#fcd34d; font-size:10px; padding:4px 0; border-bottom:1px solid #92400e; }
+  td { padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+  td:last-child { text-align:right; }
+
+  .payment-box {
+    background:#0c4a6e; border:2px solid #0284c7; border-radius:12px; padding:14px;
+  }
+  .payment-box h3 { color:#7dd3fc; font-size:13px; margin-bottom:10px; }
+  .payment-row { display:flex; justify-content:space-between; font-size:11px; color:#bae6fd; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .payment-row:last-child { border:none; }
+
+  /* ===== AI AGENTS ===== */
+  .ai-section {
+    background:#164e63; border:2px solid #0891B2; border-radius:12px;
+    padding:14px; margin-bottom:20px;
+  }
+  .ai-section h2 { color:#67e8f9; font-size:14px; margin-bottom:12px; }
+  .ai-agents { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .ai-card {
+    background:rgba(8,145,178,0.15); border:1px solid #0e7490;
+    border-radius:8px; padding:12px; text-align:center;
+  }
+  .ai-card .num { font-size:22px; font-weight:800; color:#22d3ee; }
+  .ai-card .title { font-size:12px; font-weight:700; color:#a5f3fc; margin:4px 0; }
+  .ai-card .when { font-size:10px; color:#67e8f9; opacity:0.7; }
+  .ai-card .desc { font-size:10px; color:#cffafe; margin-top:6px; line-height:1.5; }
+
+  /* ===== DECISIONS ===== */
+  .decisions {
+    background:#1e293b; border:1.5px solid #334155; border-radius:12px; padding:14px;
+  }
+  .decisions h2 { color:#f1f5f9; font-size:14px; margin-bottom:12px; }
+  .dec-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .dec { background:#0f172a; border-left:3px solid #6366f1; border-radius:4px; padding:8px 10px; }
+  .dec .q { font-size:10px; color:#94a3b8; margin-bottom:3px; }
+  .dec .a { font-size:11px; color:#e2e8f0; font-weight:600; }
+
+  /* ===== PRIORITY ===== */
+  .priority { margin-bottom:20px; }
+  .priority h2 { color:#f1f5f9; font-size:14px; margin-bottom:10px; }
+  .p-row {
+    display:flex; align-items:center; gap:10px;
+    background:#1e293b; border-radius:8px; padding:8px 12px; margin-bottom:6px;
+  }
+  .p-num { font-size:11px; font-weight:700; color:#94a3b8; min-width:20px; }
+  .p-status { font-size:14px; }
+  .p-text { font-size:11px; color:#e2e8f0; flex:1; }
+  .p-who { font-size:10px; color:#64748b; }
+
+  .footer { text-align:center; color:#334155; font-size:10px; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<h1>🏢 JR Aluminium — Mind Map ระบบออฟฟิศ</h1>
+<div class="subtitle">จัดทำจาก 3 ไฟล์ · Flow ทำงาน, เอกสาร, สรุปงาน IT · อัพเดต มิ.ย. 2569</div>
+
+<div class="legend">
+  <div class="l"><div class="dot" style="background:#16A34A"></div>Zone A — Google Sheet</div>
+  <div class="l"><div class="dot" style="background:#2563EB"></div>Zone B — HTML/Web (Supabase)</div>
+  <div class="l"><div class="dot" style="background:#7C3AED"></div>Zone C — Telegram/n8n</div>
+  <div class="l"><div class="dot" style="background:#0891B2"></div>AI Agents (อนาคต)</div>
+  <div class="l"><div class="dot" style="background:#D97706"></div>เอกสาร & การเงิน</div>
+</div>
+
+<div class="status-bar">
+  <span>✅ เสร็จแล้ว</span>
+  <span>⏳ กำลังทำ</span>
+  <span>⬜ ยังไม่เริ่ม</span>
+</div>
+
+<!-- WORKFLOW -->
+<div class="flow-section">
+  <h2>🔄 Workflow หลัก — ลำดับขั้นตอนตั้งแต่ต้นจนจบงาน</h2>
+  <div class="flow-steps">
+    <div class="step">
+      <div class="num">①</div>
+      <div class="label">ลูกค้าติดต่อ<br>ส่งแบบเบื้องต้น</div>
+      <div class="who">เซลล์ (สม้/เบน/จา)</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">②</div>
+      <div class="label">วัดหน้างาน<br>ทำใบเสนอราคา</div>
+      <div class="who">พี</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">③</div>
+      <div class="label">ส่งตรวจ<br>แก้ราคา</div>
+      <div class="who">แม / พี</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">④</div>
+      <div class="label">ลูกค้า OK<br>รับมัดจำ</div>
+      <div class="who">—</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">⑤</div>
+      <div class="label">ถอดวัสดุ<br>ลงคิวผลิต</div>
+      <div class="who">มะนาว / 🤖AI③</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">⑥</div>
+      <div class="label">ผลิต<br>QC ตรวจงาน</div>
+      <div class="who">ช่าง / หัวหน้าผลิต</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">⑦</div>
+      <div class="label">ติดตั้ง<br>ส่งมอบ</div>
+      <div class="who">ทีมช่าง</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="num">⑧</div>
+      <div class="label">จบงาน<br>ใบรับประกัน</div>
+      <div class="who">—</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 ZONES -->
+<div class="zones">
+
+  <!-- ZONE A -->
+  <div class="zone zone-a">
+    <h3>🟢 Zone A — Google Sheet</h3>
+    <div class="person">👤 มะนาว · ⏳ ~1 สัปดาห์ · ทุกคนใช้เป็นแล้ว</div>
+    <ul>
+      <li>⬜ หน้าที่พนักงานแต่ละคน</li>
+      <li>⬜ มอบหมายงาน / คิวรายวัน</li>
+      <li>⬜ Gantt / คิวเขียนแบบ</li>
+      <li>⬜ รายงานปัญหา + วิธีแก้</li>
+      <li>⬜ ช่องติ๊ก "อ่านแล้ว" (ผูกค่าคอม)</li>
+      <li>⬜ WFH เสาร์ → ติ๊กอ่านปัญหา</li>
+      <li>⬜ Flow ที่ยังปรับบ่อย</li>
+    </ul>
+    <div style="margin-top:10px;font-size:9px;opacity:0.6;border-top:1px solid rgba(255,255,255,0.2);padding-top:6px;">
+      ⚠ สต๊อกห้ามทำที่นี่ — หลายคนตัดพร้อมกัน เลขชน
+    </div>
+  </div>
+
+  <!-- ZONE B -->
+  <div class="zone zone-b">
+    <h3>🔵 Zone B — HTML / Web</h3>
+    <div class="person">👤 พี่นัท + Claude · Supabase (ย้าย self-host ได้ทีหลัง)</div>
+    <ul>
+      <li>✅ ใบเสนอราคา QT (~80%) — เปิดมือถือได้</li>
+      <li>⬜ ใบวางบิล BL</li>
+      <li>⬜ ใบเสร็จรับเงิน INV</li>
+      <li>⬜ ใบเบิกงวด</li>
+      <li>⬜ ใบตัดประกอบผลิต</li>
+      <li>⬜ ใบรับประกัน</li>
+      <li>⬜ Backend API + ฐานข้อมูล</li>
+      <li>⬜ Login (ป้องกันสูตรราคา)</li>
+      <li>⬜ Export PDF ทุกเอกสาร</li>
+      <li>⬜ ตัดสต๊อก (มือถือ)</li>
+      <li>⬜ งานผลิต / ตัด / ประกอบ</li>
+    </ul>
+    <div style="margin-top:10px;font-size:9px;opacity:0.6;border-top:1px solid rgba(255,255,255,0.2);padding-top:6px;">
+      📁 ไฟล์หลัก: JR_คิดราคา.html (~200KB) พร้อมต่อ backend
+    </div>
+  </div>
+
+  <!-- ZONE C -->
+  <div class="zone zone-c">
+    <h3>🟣 Zone C — Telegram / n8n</h3>
+    <div class="person">👤 น้องฟลุ๊ค · ✅ เชื่อมแล้ว · รันบน server ออฟฟิศ</div>
+    <ul>
+      <li>✅ บอทแจ้งคิวรายวัน</li>
+      <li>✅ Sheet กรอกครบ → Telegram auto</li>
+      <li>✅ แจ้งเซลล์ว่าวันนี้ไปไหน</li>
+      <li>✅ รันบน server ออฟฟิศ</li>
+    </ul>
+    <div style="margin-top:10px;font-size:9px;opacity:0.6;border-top:1px solid rgba(255,255,255,0.2);padding-top:6px;">
+      หมายเหตุ: ตัวแจ้งเตือนเท่านั้น ไม่เก็บข้อมูลหลัก ไม่ต้องเชื่อมเว็บ
+    </div>
+  </div>
+</div>
+
+<!-- DOCS + PAYMENT -->
+<div class="docs-row">
+  <div class="docs-box">
+    <h3>📄 เอกสารทั้งหมด 6 ชุด</h3>
+    <table>
+      <tr><th>#</th><th>เอกสาร</th><th>รหัส</th><th>สถานะ</th></tr>
+      <tr><td>1</td><td>ใบเสนอราคา</td><td>QT-YYYYMMXXX</td><td>✅ ~80%</td></tr>
+      <tr><td>2</td><td>ใบวางบิล / แจ้งหนี้</td><td>BL-YYYYMMXXX</td><td>⬜</td></tr>
+      <tr><td>3</td><td>ใบเสร็จรับเงิน</td><td>INV-YYYYMMXXX</td><td>⬜</td></tr>
+      <tr><td>4</td><td>ใบเบิกงวด</td><td>—</td><td>⬜</td></tr>
+      <tr><td>5</td><td>ใบตัดประกอบผลิต</td><td>—</td><td>⬜</td></tr>
+      <tr><td>6</td><td>ใบรับประกันผลงาน</td><td>—</td><td>⬜</td></tr>
+    </table>
+    <div style="font-size:9px;color:#d97706;margin-top:8px;">
+      เป้าหมาย: กรอกข้อมูลครั้งเดียว → ออกเอกสารได้ทุกชุด
+    </div>
+  </div>
+
+  <div class="payment-box">
+    <h3>💰 งวดชำระ (ตามมูลค่างาน)</h3>
+    <div class="payment-row">
+      <span>น้อยกว่า 100,000</span>
+      <span>2 งวด — 70% / 30%</span>
+    </div>
+    <div class="payment-row">
+      <span>100,000 – 300,000</span>
+      <span>3 งวด — 40% / 50% / 10%</span>
+    </div>
+    <div class="payment-row">
+      <span>300,000 – 700,000</span>
+      <span>4 งวด — 35% / 30% / เหลือ / 40k</span>
+    </div>
+    <div class="payment-row">
+      <span>700,000 ขึ้นไป</span>
+      <span>5 งวด — 25/25/25/เหลือ/40k</span>
+    </div>
+    <div style="margin-top:10px;font-size:10px;color:#bae6fd;">
+      ตัวเลือก: มี VAT / ไม่มี VAT / หัก ณ ที่จ่าย<br>
+      ส่วนลด % — เลือกตอนสุดท้าย
+    </div>
+  </div>
+</div>
+
+<!-- AI AGENTS -->
+<div class="ai-section">
+  <h2>🤖 AI Agents — แผนงานหลัง HTML เสร็จ (ทีละตัว)</h2>
+  <div class="ai-agents">
+    <div class="ai-card">
+      <div class="num">②</div>
+      <div class="title">ตรวจราคาทุน</div>
+      <div class="when">⏱ ก่อนส่งใบเสนอราคา</div>
+      <div class="desc">เทียบต้นทุนจริง vs สูตรปัจจุบัน แนะนำราคาที่เหมาะสม ไม่ขาดทุน</div>
+    </div>
+    <div class="ai-card">
+      <div class="num">③</div>
+      <div class="title">ถอดวัสดุอัตโนมัติ</div>
+      <div class="when">⏱ หลังรับมัดจำ</div>
+      <div class="desc">อ่านใบเสนอ → คำนวณปริมาณวัสดุ → เทียบสต๊อก แจ้งของที่ต้องสั่ง</div>
+    </div>
+    <div class="ai-card">
+      <div class="num">④</div>
+      <div class="title">คำนวณตัด/ประกอบ</div>
+      <div class="when">⏱ ก่อนเข้าโรงงาน</div>
+      <div class="desc">ระยะตัดอลูแต่ละชิ้น ลิสต์ขั้นตอนประกอบ ลดของเสียจากตัดผิด</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIORITY -->
+<div class="priority">
+  <h2 style="color:#f1f5f9;font-size:14px;margin-bottom:10px;">📋 ลำดับงาน + สถานะ</h2>
+  <div class="p-row"><div class="p-num">1</div><div class="p-status">✅</div><div class="p-text">ใบเสนอราคา HTML — เสร็จ ขึ้นออนไลน์แล้ว</div><div class="p-who">พี่นัท + Claude</div></div>
+  <div class="p-row"><div class="p-num">2</div><div class="p-status">✅</div><div class="p-text">Telegram เชื่อมต่อ — แจ้งคิวจาก Sheet</div><div class="p-who">น้องฟลุ๊ค</div></div>
+  <div class="p-row"><div class="p-num">3</div><div class="p-status">⏳</div><div class="p-text">Google Sheet ระบบทีม — อีก ~1 สัปดาห์</div><div class="p-who">มะนาว</div></div>
+  <div class="p-row"><div class="p-num">4</div><div class="p-status">⬜</div><div class="p-text">เอกสารอื่นๆ (BL, INV, ใบเบิก, ใบตัดประกอบ, ใบรับประกัน)</div><div class="p-who">พี่นัท + Claude</div></div>
+  <div class="p-row"><div class="p-num">5</div><div class="p-status">⬜</div><div class="p-text">Backend API + Login + Export PDF</div><div class="p-who">พี่นัท + คุณต้น</div></div>
+  <div class="p-row"><div class="p-num">6</div><div class="p-status">⬜</div><div class="p-text">AI Agents ② ③ ④ — ทีละตัว</div><div class="p-who">พี่นัท + Claude</div></div>
+  <div class="p-row"><div class="p-num">7</div><div class="p-status">⬜</div><div class="p-text">สต๊อก / งานผลิต บนเว็บ (Supabase)</div><div class="p-who">—</div></div>
+  <div class="p-row"><div class="p-num">8</div><div class="p-status">⬜</div><div class="p-text">Notion — พิจารณาเมื่อ Sheet ไม่ไหว</div><div class="p-who">อนาคต</div></div>
+</div>
+
+<!-- KEY DECISIONS -->
+<div class="decisions">
+  <h2>🔑 ข้อตัดสินใจสำคัญ (กันทำซ้ำ/ผิดทาง)</h2>
+  <div class="dec-grid">
+    <div class="dec">
+      <div class="q">ทำไมตัด Notion ออก?</div>
+      <div class="a">ทีมไม่เคยใช้ ต้องเรียนใหม่ — Sheet ทุกคนใช้เป็นอยู่แล้ว</div>
+    </div>
+    <div class="dec">
+      <div class="q">ทำไมสต๊อกต้องเป็นเว็บ?</div>
+      <div class="a">หลายคนตัดสต๊อกพร้อมกัน ใน Sheet เลขชนกัน</div>
+    </div>
+    <div class="dec">
+      <div class="q">Sheet vs เว็บ — ใช้คู่กันไหม?</div>
+      <div class="a">ใช้คู่กัน ไม่ใช่เว็บมาแทน Sheet</div>
+    </div>
+    <div class="dec">
+      <div class="q">Supabase self-host?</div>
+      <div class="a">ทำได้ทีหลัง — ระบบนิ่งก่อน ค่อยย้ายลง server ออฟฟิศ</div>
+    </div>
+    <div class="dec">
+      <div class="q">อะไรไป Sheet / อะไรไปเว็บ?</div>
+      <div class="a">คำนวณ/สต๊อก/มือถือ → เว็บ · มอบหมาย/คิว/รายงาน → Sheet</div>
+    </div>
+    <div class="dec">
+      <div class="q">Telegram ทำอะไร?</div>
+      <div class="a">แจ้งเตือนเท่านั้น ไม่เก็บข้อมูลหลัก ไม่ต้องเชื่อมเว็บ</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  จัดทำโดย Claude (AI Assistant) · JR Aluminium and Glass · มิ.ย. 2569<br>
+  ข้อมูลจาก: flow ทำงาน office.pdf · การทำใบเสนอราคา.pdf · สรุปงาน IT.pdf · สรุประบบออฟฟิศ JR handoff
+</div>
+
+</body>
+</html>

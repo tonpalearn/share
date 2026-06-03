@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JR ERP — Test Report: Quotation Feature</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --jr-red:#ED2A28; --jr-red-dark:#B71C1A; --jr-navy:#435061;
+    --bg:#F1F5F9; --glass:rgba(255,255,255,.6); --glass-strong:rgba(255,255,255,.85);
+    --border:rgba(255,255,255,.5); --border-soft:rgba(67,80,97,.12);
+    --text:#1F1F1F; --muted:#676767;
+    --success:#16A34A; --warn:#F59E0B; --info:#0EA5E9; --danger:#DC2626;
+  }
+  [data-theme="dark"]{--bg:#0F172A;--glass:rgba(30,41,59,.6);--glass-strong:rgba(30,41,59,.88);--border:rgba(255,255,255,.1);--border-soft:rgba(255,255,255,.08);--text:#F1F5F9;--muted:#94A3B8;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Kanit',sans-serif;color:var(--text);line-height:1.6;min-height:100vh;
+    background:radial-gradient(at 15% 0%,rgba(237,42,40,.12),transparent 45%),radial-gradient(at 85% 100%,rgba(67,80,97,.16),transparent 45%),var(--bg);background-attachment:fixed;transition:.3s;}
+  .glass{background:var(--glass);backdrop-filter:blur(22px) saturate(180%);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 32px rgba(31,38,135,.1);}
+  .glass-strong{background:var(--glass-strong);backdrop-filter:blur(26px) saturate(190%);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 32px rgba(31,38,135,.12);}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 16px 60px;}
+  /* header */
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:12px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .mark{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--jr-red),var(--jr-red-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;font-style:italic;box-shadow:0 6px 18px rgba(237,42,40,.35);}
+  h1{font-size:23px;font-weight:700;}
+  .sub{font-size:13px;color:var(--muted);}
+  .toggle{background:var(--glass-strong);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:500;}
+  /* hero */
+  .hero{padding:26px 30px;margin-bottom:16px;}
+  .hero h2{font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--jr-red),var(--jr-navy));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:4px;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:18px;}
+  .kpi{padding:16px;border-radius:12px;background:var(--glass-strong);border:1px solid var(--border-soft);}
+  .kpi .l{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600;}
+  .kpi .v{font-size:28px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums;}
+  .kpi.ok .v{color:var(--success);} .kpi.fail .v{color:var(--danger);} .kpi.cross .v{color:var(--jr-red);}
+  /* ground truth */
+  .gt{padding:20px 24px;margin-bottom:16px;border-left:4px solid var(--jr-red);}
+  .gt h3{font-size:15px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .gt table{width:100%;border-collapse:collapse;font-size:13px;}
+  .gt td{padding:5px 8px;border-bottom:1px solid var(--border-soft);}
+  .gt .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--jr-red);}
+  /* bug banner */
+  .bug{padding:16px 22px;margin-bottom:16px;border-left:4px solid var(--warn);background:rgba(245,158,11,.08);}
+  .bug h3{font-size:15px;font-weight:700;color:var(--warn);margin-bottom:6px;}
+  .bug .fixed{display:inline-block;background:var(--success);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:999px;margin-left:8px;}
+  /* tester section */
+  .tester{margin-bottom:14px;overflow:hidden;}
+  .tester-head{padding:16px 22px;display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none;}
+  .tester-head .av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0;}
+  .t1 .av{background:linear-gradient(135deg,#16A34A,#14532D);}
+  .t2 .av{background:linear-gradient(135deg,#0EA5E9,#0369A1);}
+  .t3 .av{background:linear-gradient(135deg,#F59E0B,#92400E);}
+  .t4 .av{background:linear-gradient(135deg,#A855F7,#6B21A8);}
+  .t5 .av{background:linear-gradient(135deg,var(--jr-red),var(--jr-red-dark));}
+  .tester-head .info{flex:1;min-width:0;}
+  .tester-head .name{font-weight:600;font-size:15px;}
+  .tester-head .meta{font-size:12px;color:var(--muted);}
+  .badge{font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;white-space:nowrap;}
+  .badge.pass{background:rgba(22,163,74,.15);color:var(--success);}
+  .badge.haswarn{background:rgba(245,158,11,.15);color:var(--warn);}
+  .chev{transition:transform .2s;color:var(--muted);}
+  .tester.open .chev{transform:rotate(90deg);}
+  .tester-body{display:none;padding:0 22px 18px;}
+  .tester.open .tester-body{display:block;}
+  .tester .summary-line{font-size:13px;color:var(--muted);padding:10px 0;border-top:1px dashed var(--border-soft);margin-bottom:8px;}
+  /* case table */
+  table.cases{width:100%;border-collapse:collapse;font-size:12.5px;}
+  table.cases th{text-align:left;padding:8px 6px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border-soft);}
+  table.cases td{padding:7px 6px;border-bottom:1px solid var(--border-soft);vertical-align:top;}
+  table.cases .id{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap;}
+  table.cases .exp,table.cases .act{font-variant-numeric:tabular-nums;}
+  .st{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+  .st.PASS{background:rgba(22,163,74,.15);color:var(--success);}
+  .st.FAIL{background:rgba(220,38,38,.15);color:var(--danger);}
+  .st.FIXED{background:rgba(14,165,233,.15);color:var(--info);}
+  .cross{font-size:11px;color:var(--jr-red);background:rgba(237,42,40,.06);padding:2px 6px;border-radius:4px;display:inline-block;margin-top:2px;}
+  .note{font-size:11px;color:var(--muted);}
+  /* suggestions */
+  .sug{padding:22px 26px;margin-top:16px;}
+  .sug h3{font-size:16px;font-weight:700;margin-bottom:12px;}
+  .sug .item{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-soft);font-size:13px;}
+  .sug .pri{font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;height:fit-content;white-space:nowrap;}
+  .pri.P1{background:rgba(220,38,38,.15);color:var(--danger);}
+  .pri.P2{background:rgba(245,158,11,.15);color:var(--warn);}
+  .pri.P3{background:rgba(148,163,184,.18);color:var(--muted);}
+  .pri.OK{background:rgba(22,163,74,.15);color:var(--success);}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px;}
+  .filterbar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+  .fbtn{background:var(--glass-strong);border:1px solid var(--border-soft);color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;}
+  .fbtn.on{background:var(--jr-red);color:#fff;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <div class="mark">JR.</div>
+      <div><h1>Test Report — Quotation Feature</h1><div class="sub">5 QA Testers · Cross-check เทียบใบเสนอราคา/วางบิลจริง · JR ERP-lite Phase 1</div></div>
+    </div>
+    <button class="toggle" onclick="tg()">🌓 สลับธีม</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="glass-strong hero">
+    <h2>สรุปผลการทดสอบ</h2>
+    <div class="sub">รัน Vitest จริง + trace logic + cross-check ตัวเลขกับเอกสารจริงของ JR · <span id="ts"></span></div>
+    <div class="kpis">
+      <div class="kpi"><div class="l">Test cases รวม</div><div class="v" id="kTotal">—</div></div>
+      <div class="kpi ok"><div class="l">ผ่าน (PASS)</div><div class="v" id="kPass">—</div></div>
+      <div class="kpi fail"><div class="l">ไม่ผ่าน → แก้แล้ว</div><div class="v" id="kFail">—</div></div>
+      <div class="kpi cross"><div class="l">Cross-check ใบจริง</div><div class="v" id="kCross">—</div></div>
+      <div class="kpi"><div class="l">Testers</div><div class="v">5</div></div>
+    </div>
+  </div>
+
+  <!-- GROUND TRUTH -->
+  <div class="glass gt">
+    <h3>📄 Ground Truth — เอกสารจริงที่ใช้ cross-check</h3>
+    <table>
+      <tr><td><b>ใบเสนอราคา QT2025050001</b> — ประตูบานกระจก (Ventilation Door) 1 ชุด</td><td class="num">41,000.00</td></tr>
+      <tr><td>+ ภาษีมูลค่าเพิ่ม 7%</td><td class="num">2,870.00</td></tr>
+      <tr><td><b>รวมทั้งสิ้น</b></td><td class="num">43,870.00</td></tr>
+      <tr><td><b>ใบวางบิล BL2025050033</b> — แบ่ง 2 งวด (70/30 ของ 43,870)</td><td class="num">งวด1: 30,709 · งวด2: 13,161</td></tr>
+      <tr><td>ข้อมูลบริษัท — เลขผู้เสียภาษี (checksum valid)</td><td class="num">0105560023352</td></tr>
+    </table>
+  </div>
+
+  <!-- BUG FOUND -->
+  <div class="glass bug">
+    <h3>🐛 Bug ที่ Cross-check เจอ — Billing Split <span class="fixed">✓ แก้แล้ว</span></h3>
+    <div style="font-size:13px;line-height:1.7;">
+      <b>Tester #3</b> พบว่า splitBilling(43,870) ให้งวด <b>30,700 / 13,170</b> แต่ใบวางบิลจริงคือ <b>30,709 / 13,161</b><br>
+      <b>Root cause:</b> โค้ดปัดเงินเป็น "หลักร้อย" (roundTo100) แต่ใบจริงปัดเป็น "บาท" · <b>แก้:</b> เปลี่ยนเป็น Math.round (per-baht) → ตรงใบจริงเป๊ะ + เพิ่ม regression test 43,870<br>
+      <span class="note">ทำไม test เดิม miss: เช็คแค่ผลรวม=ยอดเต็ม (ซึ่งผ่าน) แต่ไม่เช็คยอดต่องวด — cross-check ใบจริงจึงสำคัญ</span>
+    </div>
+  </div>
+
+  <div class="filterbar">
+    <button class="fbtn on" data-f="all" onclick="flt('all')">ทั้งหมด</button>
+    <button class="fbtn" data-f="cross" onclick="flt('cross')">เฉพาะ cross-check ใบจริง</button>
+    <button class="fbtn" data-f="fail" onclick="flt('fail')">เฉพาะที่เคย fail</button>
+  </div>
+
+  <div id="testers"></div>
+
+  <!-- SUGGESTIONS -->
+  <div class="glass-strong sug">
+    <h3>💡 ข้อเสนอแนะรวม (จัด priority)</h3>
+    <div id="sugs"></div>
+  </div>
+
+  <footer>📋 JR ERP-lite · Quotation Test Report · สร้างโดยทีม QA 5 ตัว (Manual · Zip Pricing · Billing · Tax · Edge) · <span id="ts2"></span></footer>
+</div>
+
+<script>
+const DATA = [
+  {id:'t1',cls:'t1',av:'#1',name:'Manual Quotation Calculation',pass:23,fail:0,
+   summary:'คำนวณ manual quote ถูก 100% เทียบใบจริง 41,000→2,870→43,870. 10/10 test เดิมผ่าน + 13 edge probe. 3 flag เป็น input hardening (ไม่กระทบใบจริง)',
+   cases:[
+     {id:'MQ-01',name:'1 รายการ 41,000 + VAT 7%',inp:'qty1 @41,000',exp:'43,870',act:'43,870',st:'PASS',cross:'ตรงใบจริง QT2025050001',note:'amountReceived 43,870 (บุคคลไม่หัก)'},
+     {id:'MQ-02',name:'หลายรายการ = ใบวางบิล',inp:'30,709 + 13,161',exp:'43,870',act:'43,870',st:'PASS',cross:'ตรง BL2025050033',note:''},
+     {id:'MQ-05',name:'ส่วนลด %',inp:'@100k ลด 10%',exp:'grand 96,300',act:'96,300',st:'PASS',cross:'',note:'VAT บนยอดหลังลด'},
+     {id:'MQ-07',name:'WHT 3% บริการ (นิติ)',inp:'@100k vat service_3',exp:'total 107,000 / รับ 104,000',act:'104,000',st:'PASS',cross:'',note:'WHT บนยอดก่อน VAT · ลูกค้าหัก'},
+     {id:'MQ-09',name:'WHT base = net หลังลด',inp:'@100k ลด10% service_3',exp:'wht 2,700',act:'2,700',st:'PASS',cross:'',note:'WHT คิดบน 90,000 ไม่ใช่ 100,000'},
+     {id:'MQ-11',name:'ปัดเศษ VAT',inp:'@333.33',exp:'vat 23.33',act:'23.33',st:'PASS',cross:'',note:'round2 ถูก'},
+     {id:'MQ-13',name:'ส่วนลด > ยอดรวม',inp:'@1,000 ลด 5,000',exp:'net 0',act:'net 0',st:'PASS',cross:'',note:'clamp net แล้ว (แก้ discount cap แล้ว)'},
+     {id:'MQ-20',name:'vatRate undefined → 0.07',inp:'@41,000',exp:'vat 2,870',act:'2,870',st:'PASS',cross:'ตรง QT2025050001',note:''},
+     {id:'MQ-23',name:'default WHT นิติ',inp:'corporate',exp:'service_3',act:'service_3',st:'PASS',cross:'',note:'รอเจ้าของ confirm service vs construction'}
+   ],
+   sugs:[]},
+  {id:'t2',cls:'t2',av:'#2',name:'Zip Curtain Pricing Engine',pass:14,fail:0,
+   summary:'35/35 test เดิมผ่าน. ตาราง constant (FAB/CTRL/MARK 48 cell) ตรง JR_คิดราคา.html 100% (byte-level). Formula logic ตรงทุกเคส. 1 divergence: scaffold (HTML dead input, TS บวกเข้า)',
+   cases:[
+     {id:'ZP-01',name:'Z100 3×3 fab5 aok220 retail',inp:'w3 h3',exp:'goods 24,300',act:'24,300',st:'PASS',cross:'FAB.Z100[5]=1090 ตรง HTML',note:'9×1090+2340=12150 ×2'},
+     {id:'ZP-02',name:'Z145D 2ชั้น + project markup',inp:'Z145D aok50n project',exp:'goods 47,197.5',act:'47,197.5',st:'PASS',cross:'control×2 + project 1.75× ตรง HTML',note:'เคสที่ test เดิมไม่แตะ'},
+     {id:'ZP-03',name:'Z120W PET fallback → 5%',inp:'Z120W PET',exp:'fabric=5 landed 46,930',act:'46,930',st:'PASS',cross:'FAB.Z120W.PET=null → fallback ตรง HTML',note:'PET ไม่มีใน Z120W'},
+     {id:'ZP-04',name:'auto-pick Z120 (h>3)',inp:'4×3.5 auto',exp:'model=Z120',act:'Z120',st:'PASS',cross:'pickModel(4,3.5)=Z120 ตรง HTML',note:''},
+     {id:'ZP-05',name:'min sqm clamp',inp:'Z100 2×1',exp:'area=3',act:'3',st:'PASS',cross:'rawArea 2<MIN 3 ตรง HTML',note:''},
+     {id:'ZP-Q01',name:'Quote VAT chain เต็ม',inp:'Z100 3×3 install',exp:'grand 37,129',act:'37,129',st:'PASS',cross:'install 10,400 + VAT 2,429 ตรง HTML',note:''},
+     {id:'ZP-T1',name:'Constant table byte-diff',inp:'48 cell vs HTML',exp:'0 ความต่าง',act:'IDENTICAL',st:'PASS',cross:'FAB×28+CTRL×4+min/max×12+MARK×2+INST×2 ตรง 100%',note:'รวม Z120W.PET=null'},
+     {id:'ZP-T3',name:'Suite เดิม',inp:'vitest',exp:'35 passed',act:'35 passed',st:'PASS',cross:'',note:''}
+   ],
+   sugs:[]},
+  {id:'t3',cls:'t3',av:'#3',name:'Billing Schedule Split',pass:23,fail:0,
+   summary:'รัน 23 เคส (4 tier + boundary + odd): sum=total เป๊ะ 23/23 · tier + retention 40k ถูกหมด. พบ 1 FAIL ที่ cross-check ใบจริง (BS-01) → แก้ roundTo100→Math.round (per-baht) แล้ว ผ่าน',
+   cases:[
+     {id:'BS-01',name:'43,870 → 70/30 (ใบจริง)',inp:'43870',exp:'30,709 / 13,161',act:'30,709 / 13,161',st:'FIXED',cross:'ตรง BL2025050033 (หลังแก้ per-baht)',note:'🔥 เดิมได้ 30,700/13,170 — แก้ปัดบาทแล้ว'},
+     {id:'BS-04',name:'100,000 tier1 boundary',inp:'100000',exp:'70,000 / 30,000',act:'70,000 / 30,000',st:'PASS',cross:'pickTier=tier1',note:''},
+     {id:'BS-05',name:'100,001 → tier2',inp:'100001',exp:'tier2 sum',act:'40k/50k/10,001',st:'PASS',cross:'pickTier=tier2',note:''},
+     {id:'BS-10',name:'500,000 tier3 + retention',inp:'500000',exp:'175k/150k/135k/40k(R)',act:'ตรง',st:'PASS',cross:'เหลือ=135k · retention 40k',note:''},
+     {id:'BS-13',name:'1,000,000 tier4',inp:'1000000',exp:'250k×3/210k/40k(R)',act:'ตรง',st:'PASS',cross:'เหลือ=210k',note:''},
+     {id:'BS-22',name:'300,050 ขอบล่าง tier3',inp:'300050',exp:'เหลือ>0',act:'65,050',st:'PASS',cross:'ไม่ติดลบ',note:''},
+     {id:'BS-Sum',name:'sum=total ทุก amount',inp:'50k,99999,150500,...',exp:'sum เป๊ะ',act:'23/23 ตรง',st:'PASS',cross:'',note:'reconcile งวดสุดท้าย'}
+   ],
+   sugs:[]},
+  {id:'t4',cls:'t4',av:'#4',name:'VAT & WHT Tax Calculation',pass:14,fail:0,
+   summary:'WHT concept ถูกตาม CPA review — ยืนยันด้วยการรัน test จริง. total=net+VAT คงที่ทุก WHT type, amountReceived=total−WHT. เขียน invoice.test.ts ใหม่ 14 เคส (เดิมไม่มี). ภพ.30=Output−Input ถูก',
+   cases:[
+     {id:'TX-01',name:'นิติ 100k บริการ WHT 3%',inp:'100k service_3',exp:'total 107,000 / รับ 104,000',act:'104,000',st:'PASS',cross:'WHT direction ถูก — ลูกค้าหัก ไม่ใช่ JR',note:''},
+     {id:'TX-01b',name:'total ไม่ขึ้นกับ WHT type',inp:'100k none/3%/5%',exp:'total 107,000 คงที่',act:'107,000 ทั้ง 3',st:'PASS',cross:'พิสูจน์ JR ไม่หักตัวเอง',note:'กัน regression'},
+     {id:'TX-02',name:'QT2025050001 บุคคล',inp:'41,000 none',exp:'total=รับ=43,870',act:'43,870',st:'PASS',cross:'ตรงใบจริง + บุคคลรับเต็ม',note:'cross-engine consistent'},
+     {id:'TX-03',name:'VAT/WHT บนยอดหลังลด',inp:'100k ลด10k service_3',exp:'vat 6,300 / total 96,300',act:'ตรง',st:'PASS',cross:'ฐานภาษีถูกตาม ป.รัษฎากร',note:''},
+     {id:'TX-07',name:'ภพ.30 Output>Input',inp:'out10k in3k',exp:'net 7,000 ชำระเพิ่ม',act:'7,000',st:'PASS',cross:'Output−Input',note:''},
+     {id:'TX-10',name:'aggregateVat + ภพ.30',inp:'2 INV',exp:'vat 9,870 → net 5,870',act:'ตรง',st:'PASS',cross:'รวม Output VAT ป้อน ภพ.30',note:''}
+   ],
+   sugs:[]},
+  {id:'t5',cls:'t5',av:'#5',name:'Edge Cases & Validation',pass:27,fail:0,
+   summary:'format.test 11/11 ผ่าน. Zod กัน empty/qty≤0/price<0/uuid ผิด/enum ผิด ครบ. Doc number + money + tax-id checksum ถูก (JR id valid). พบ 5 gap → แก้ไปแล้ว 3 (Infinity, discount clamp, docNumber regex)',
+   cases:[
+     {id:'EV-02',name:'qty=0 ปฏิเสธ',inp:'qty=0',exp:'reject',act:'REJECT',st:'PASS',cross:'',note:'zod positive()'},
+     {id:'EV-04',name:'ราคาติดลบ ปฏิเสธ',inp:'price=-1',exp:'reject',act:'REJECT',st:'PASS',cross:'DB check price>=0',note:''},
+     {id:'EV-07',name:'customer ไม่ใช่ uuid',inp:'abc-123',exp:'reject',act:'REJECT',st:'PASS',cross:'',note:''},
+     {id:'EV-11',name:'qty ทศนิยม 1.5',inp:'qty=1.5',exp:'accept',act:'line=1,500',st:'PASS',cross:'DB numeric(14,4)',note:'1.5 ชุด ถูกตาม spec'},
+     {id:'EV-16',name:'ส่วนลด > ยอด net ไม่ติดลบ',inp:'sub 1k disc 5k',exp:'net 0',act:'net 0',st:'FIXED',cross:'',note:'แก้ discount cap = min(subtotal) แล้ว'},
+     {id:'EV-23',name:'formatDocNumber',inp:'QT2025050001',exp:'QT-2025-05-0001',act:'ตรง',st:'PASS',cross:'ตรง SQL format',note:'แก้ regex \\d{4} แล้ว'},
+     {id:'EV-24',name:'Doc number no-gap atomic',inp:'get_next_doc_number',exp:'FOR UPDATE + unique',act:'ตรง',st:'PASS',cross:'ม.86/4(7) race-safe',note:''},
+     {id:'EV-25',name:'tax-id checksum JR จริง',inp:'0105560023352',exp:'true',act:'true',st:'PASS',cross:'เลขบริษัท JR valid (TS≡SQL)',note:''},
+     {id:'EV-Inf',name:'formatMoney Infinity',inp:'Infinity',exp:'0.00 บาท',act:'0.00 บาท',st:'FIXED',cross:'',note:'แก้ guard isFinite แล้ว'}
+   ],
+   sugs:[]}
+];
+
+const SUGGESTIONS = [
+  {pri:'OK',txt:'🐛 Billing split ปัดบาท (per-baht) ให้ตรงใบวางบิลจริง — แก้แล้ว + เพิ่ม regression test 43,870'},
+  {pri:'OK',txt:'formatMoney guard Infinity/NaN → "0.00 บาท" — แก้แล้ว'},
+  {pri:'OK',txt:'manual quote: discount clamp ≤ subtotal + กันติดลบ — แก้แล้ว'},
+  {pri:'OK',txt:'formatDocNumber regex \\d{4} ให้ตรง SQL — แก้แล้ว'},
+  {pri:'P2',txt:'เพิ่ม sale_only ใน manualQuotationFormSchema ให้ตรง invoice form + DB enum (ตอนนี้ขายสินค้าล้วนเลือกไม่ได้ในใบเสนอราคาทั่วไป — แต่ none ใช้แทนได้)'},
+  {pri:'P2',txt:'requires_approval (>500k) บังคับใน app เท่านั้น ยังไม่มี DB trigger — ฝาก Tester RLS ตรวจ insert ตรง bypass'},
+  {pri:'P2',txt:'เพิ่ม snapshot test ของตาราง constant FAB/CTRL (ราคา business-critical) กัน Dev แก้ราคาผิดโดยไม่ตั้งใจ'},
+  {pri:'P3',txt:'ยืนยันกับเจ้าของ: scaffold (ค่านั่งร้าน) ควรบวกเข้า total ไหม (HTML ต้นฉบับเป็น dead input · TS บวกเข้าแล้ว) + แก้ comment "1:1"'},
+  {pri:'P3',txt:'ยืนยัน default WHT นิติ: service_3 (บริการ) vs construction_3 (รับเหมา) — rate เท่ากัน 3% แต่ลงช่อง ภ.ง.ด.53 ต่างกัน'},
+  {pri:'P3',txt:'pp30Calculation: net=0 ควรแยกเป็น "ไม่ต้องชำระ" (ตอนนี้ map เป็น "ชำระเพิ่ม")'}
+];
+
+function render(){
+  let total=0,pass=0,fail=0,cross=0;
+  DATA.forEach(t=>{ total+=t.cases.length; t.cases.forEach(c=>{ if(c.st==='PASS'||c.st==='FIXED')pass++; if(c.st==='FAIL')fail++; if(c.st==='FIXED')fail++; if(c.cross)cross++; }); });
+  // count fixed as "was fail"
+  let wasFail=0; DATA.forEach(t=>t.cases.forEach(c=>{if(c.st==='FIXED')wasFail++;}));
+  document.getElementById('kTotal').textContent=total;
+  document.getElementById('kPass').textContent=pass;
+  document.getElementById('kFail').textContent=wasFail+' → 0';
+  document.getElementById('kCross').textContent=cross;
+
+  document.getElementById('testers').innerHTML=DATA.map((t,idx)=>`
+    <div class="glass tester ${t.cls} ${idx===0?'open':''}" id="${t.id}">
+      <div class="tester-head" onclick="document.getElementById('${t.id}').classList.toggle('open')">
+        <div class="av">${t.av}</div>
+        <div class="info"><div class="name">${t.name}</div><div class="meta">${t.cases.length} เคสตัวอย่าง (จากที่ทดสอบจริง)</div></div>
+        <span class="badge ${t.fail>0?'haswarn':'pass'}">${t.pass} PASS${t.fail>0?' · '+t.fail+' FAIL':''}</span>
+        <span class="chev">▶</span>
+      </div>
+      <div class="tester-body">
+        <div class="summary-line">${t.summary}</div>
+        <table class="cases">
+          <thead><tr><th>ID</th><th>Test case</th><th>Input</th><th>คาดหวัง</th><th>ได้จริง</th><th>ผล</th></tr></thead>
+          <tbody>
+          ${t.cases.map(c=>`<tr class="row" data-cross="${c.cross?'1':'0'}" data-fail="${c.st==='FIXED'||c.st==='FAIL'?'1':'0'}">
+            <td class="id">${c.id}</td>
+            <td>${c.name}${c.cross?`<br><span class="cross">↔ ${c.cross}</span>`:''}${c.note?`<br><span class="note">${c.note}</span>`:''}</td>
+            <td class="note">${c.inp}</td>
+            <td class="exp">${c.exp}</td>
+            <td class="act">${c.act}</td>
+            <td><span class="st ${c.st}">${c.st}</span></td>
+          </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('sugs').innerHTML=SUGGESTIONS.map(s=>`<div class="item"><span class="pri ${s.pri}">${s.pri==='OK'?'✓ แก้แล้ว':s.pri}</span><span>${s.txt}</span></div>`).join('');
+
+  const now=new Date().toLocaleString('th-TH');
+  document.getElementById('ts').textContent=now;
+  document.getElementById('ts2').textContent=now;
+}
+
+function flt(f){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.toggle('on',b.dataset.f===f));
+  document.querySelectorAll('.row').forEach(r=>{
+    let show=true;
+    if(f==='cross') show=r.dataset.cross==='1';
+    if(f==='fail') show=r.dataset.fail==='1';
+    r.style.display=show?'':'none';
+  });
+  if(f!=='all') document.querySelectorAll('.tester').forEach(t=>t.classList.add('open'));
+}
+function tg(){const r=document.documentElement;r.setAttribute('data-theme',r.getAttribute('data-theme')==='dark'?'light':'dark');}
+if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');
+render();
+</script>
+</body>
+</html>
