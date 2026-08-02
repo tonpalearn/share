@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ล่าตลาด SaaS ไทย 2569 — สรุปผลจากข้อมูลจริง</title>
+<meta name="description" content="หาว่าคนไทยจ่ายเงินแก้ปัญหาอะไรอยู่แล้วทุกเดือน — ราคาจริงจาก Fastwork 3 หมวด + สภาพ SME 2569 + สิทธิภาษีซอฟต์แวร์ 2 เท่า + Scorecard และแผน 21 วัน">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090C; --panel:#101318; --panel2:#0C0F14; --line:#232833;
+  --fg:#F4F6FA; --muted:#B4BDCB; --dim:#8791A1;
+  --gold:#D4A73C; --blue:#4C8DF6; --green:#2FA46E; --red:#E4574C; --purple:#9B7BF0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17.5px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font-family:'Anuphan','Noto Sans Thai',system-ui,sans-serif;
+  line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:56px 22px 96px}
+.eyebrow{font-family:Inter,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+h1{font-size:2.4rem;font-weight:700;line-height:1.3;letter-spacing:-.01em;margin-bottom:16px}
+h2{font-size:1.6rem;font-weight:700;line-height:1.4;margin:56px 0 6px;padding-top:26px;border-top:1px solid var(--line)}
+h3{font-size:1.14rem;font-weight:600;margin:28px 0 10px}
+p{color:var(--muted);margin-bottom:14px}
+strong{color:var(--fg);font-weight:600}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(76,141,246,.35)}
+a:hover{border-bottom-color:var(--blue)}
+.sub{font-size:1.06rem;color:var(--muted);margin-bottom:8px}
+.meta{font-size:.82rem;color:var(--dim);font-family:Inter,sans-serif;letter-spacing:.04em}
+.rule{width:76px;height:4px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--blue));margin:22px 0 34px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:18px 0}
+.card.warn{border-left:4px solid var(--red)}
+.card.ok{border-left:4px solid var(--green)}
+.card.note{border-left:4px solid var(--gold)}
+.card h3{margin-top:0}
+.tag{display:inline-block;font-family:Inter,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;padding:4px 10px;border-radius:99px;margin-bottom:10px}
+.tag.red{background:rgba(228,87,76,.15);color:#F0837A}
+.tag.green{background:rgba(47,164,110,.15);color:#5CC996}
+.tag.gold{background:rgba(212,167,60,.15);color:#E0BC63}
+.tag.blue{background:rgba(76,141,246,.15);color:#7DAEF9}
+.scroll{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.94rem;line-height:1.7}
+th{background:var(--panel2);font-weight:600;color:var(--fg);font-size:.86rem;white-space:nowrap}
+td{color:var(--muted)}
+tr:last-child td{border-bottom:none}
+td b,th b{color:var(--fg)}
+.num{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
+ul,ol{color:var(--muted);padding-left:22px;margin-bottom:14px}
+li{margin-bottom:8px}
+.big-stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:22px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.stat .v{font-family:Inter,sans-serif;font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:6px}
+.stat .l{font-size:.9rem;color:var(--dim);line-height:1.6}
+.foot{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);font-size:.86rem;color:var(--dim)}
+.foot a{font-size:.86rem}
+@media(max-width:640px){html{font-size:17px}h1{font-size:1.85rem}h2{font-size:1.35rem}.wrap{padding:38px 16px 72px}}
+@media (prefers-color-scheme:light){
+  :root{--bg:#FBFBFD;--panel:#fff;--panel2:#F4F6F9;--line:#E2E6EC;--fg:#14181F;--muted:#41495A;--dim:#6B7484}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="eyebrow">One-Person Business · Market Research</div>
+<h1>ล่าตลาด SaaS ไทย 2569<br>สรุปผลจากข้อมูลจริง</h1>
+<p class="sub">หาว่า “ปัญหาไหนที่คนไทยจ่ายเงินแก้อยู่แล้วทุกเดือน” — ก่อนเขียนโค้ดแม้แต่บรรทัดเดียว</p>
+<p class="meta">เก็บข้อมูล 2 สิงหาคม 2569 · แหล่ง: Fastwork (3 หมวด) · ข่าวเศรษฐกิจ SME · มาตรการภาษีกรมสรรพากร/depa</p>
+<div class="rule"></div>
+
+<div class="card note">
+<h3>วิธีอ่านเอกสารนี้</h3>
+<p>นี่ไม่ใช่การระดมสมองหาไอเดีย แต่คือการ <strong>ไปดูที่ที่คนจ่ายเงินอยู่แล้ว</strong> แล้วอ่านป้ายราคา
+เพราะคำชมกับยอดไลก์เป็นแค่สัญญาณ — <strong>เงินที่โอนแล้วคือหลักฐาน</strong></p>
+</div>
+
+<h2>ข้อค้นพบ 4 ข้อ</h2>
+
+<div class="big-stat">
+  <div class="stat"><div class="v" style="color:var(--red)">21%</div><div class="l">SME ไทยมีเงินสดประคองได้<br>ไม่เกิน 3 เดือน (พ.ค. 2569)</div></div>
+  <div class="stat"><div class="v" style="color:var(--gold)">5,529</div><div class="l">ประกาศรับทำบัญชีบน Fastwork<br>ราคา 999–3,900 บาท/เดือน</div></div>
+  <div class="stat"><div class="v" style="color:var(--blue)">10,000</div><div class="l">ประกาศรับคีย์ข้อมูล<br>ราคาเริ่ม 250 บาท</div></div>
+  <div class="stat"><div class="v" style="color:var(--green)">2 เท่า</div><div class="l">สิทธิหักรายจ่ายค่าซอฟต์แวร์<br>เพดาน 300,000 บาท/ปี</div></div>
+</div>
+
+<div class="card warn">
+<span class="tag red">ข้อค้นพบ 1 · ข่าวร้าย</span>
+<h3>SME ไทยปี 2569 ไม่ได้อยู่ในภาวะ “ซื้อของใหม่”</h3>
+<ul>
+<li>สำรวจ พ.ค. 2569 — SME ไทย <strong>21% มีเงินสดประคองธุรกิจได้ไม่เกิน 3 เดือน</strong></li>
+<li>ประเมินว่า <strong>1 ใน 3 เข้าสู่ภาวะเสี่ยง</strong> — สื่อใช้คำว่า “บริษัทซอมบี้” ไม่ล้ม ไม่ฟื้น ไม่โต</li>
+<li>SME ไทยสร้างมูลค่าเพิ่มให้เศรษฐกิจราว 35% ต่ำกว่าประเทศพัฒนาแล้ว = ติดอยู่ในธุรกิจแข่งราคา</li>
+</ul>
+<p><strong>แปลว่า:</strong> ตอนนี้ SME ไม่ซื้อ “ตัวช่วยเพิ่ม productivity” เพราะกำลังตัดค่าใช้จ่าย
+ข้อเสนอต้องวางเป็น <strong>“ลดต้นทุน / แทนคนที่ต้องจ้าง / เอาเงินคืน”</strong> เท่านั้น
+และราคาต้อง<strong>ต่ำกว่าของที่มันไปแทน</strong>อย่างเห็นได้ชัด</p>
+</div>
+
+<div class="card ok">
+<span class="tag green">ข้อค้นพบ 2 · คันโยกที่คนส่วนใหญ่ไม่รู้</span>
+<h3>สิทธิหักรายจ่ายค่าซอฟต์แวร์ 2 เท่า — แต่ต้องขึ้นทะเบียน depa</h3>
+<div class="scroll"><table>
+<tr><th>หัวข้อ</th><th>เนื้อหา</th></tr>
+<tr><td><b>สิทธิ</b></td><td>หักรายจ่ายได้ <b>2 เท่า</b> ของค่าซื้อ/ค่าจ้าง/ค่าบริการดิจิทัล</td></tr>
+<tr><td><b>เพดาน</b></td><td class="num">300,000 บาท/รอบบัญชี</td></tr>
+<tr><td><b>ช่วงเวลา</b></td><td class="num">24 มิ.ย. 2568 – 31 ธ.ค. 2570</td></tr>
+<tr><td><b>ใครใช้สิทธิได้</b></td><td>นิติบุคคล ทุนจดทะเบียนชำระแล้ว ≤ 5 ล้าน และรายได้ ≤ 30 ล้าน/ปี</td></tr>
+<tr><td><b>เงื่อนไขสำคัญ</b></td><td>ต้องซื้อจาก <b>บริการที่ขึ้นทะเบียนในบัญชีบริการดิจิทัลของ depa</b></td></tr>
+</table></div>
+<p><strong>ทำไมมันสำคัญกับคนทำ SaaS:</strong> การขึ้นทะเบียน depa เปลี่ยนซอฟต์แวร์เราจาก “ค่าใช้จ่าย”
+เป็น “ค่าใช้จ่ายที่ลดภาษีได้ 2 เท่า” ในสายตาลูกค้า — กลายเป็นเหตุผลปิดการขายและเป็นกำแพงกันคู่แข่งที่ไม่ได้ขึ้นทะเบียน</p>
+<p><strong>เงื่อนไขฝั่งผู้ขาย (ต้องยืนยันซ้ำ):</strong> นิติบุคคลไทย ถือหุ้นไทย ≥51% · พัฒนาซอฟต์แวร์เป็นธุรกิจหลัก ·
+จด VAT · มีมาตรฐานกระบวนการ เช่น ISO/IEC 29110 หรือ CMMI · ค่าธรรมเนียมขึ้นทะเบียนหลักร้อยบาท</p>
+</div>
+
+<div class="card">
+<span class="tag gold">⚠️ ข้อมูลขัดกัน — ต้องยืนยันก่อนใช้ขาย</span>
+<p>มาตรการชุดเก่า (พ.ร.ฎ. 725) ให้สิทธิ 2 เท่า <strong>เพดาน 100,000 บาท เฉพาะรอบบัญชี 2564–2565</strong> ซึ่ง<strong>หมดอายุไปแล้ว</strong>
+ส่วนตัวเลข “300,000 บาท ถึง 31 ธ.ค. 2570” มาจากรายงานข่าวมติ ครม. — ขณะที่หน้าเว็บ depa ที่ดึงมาได้ยังแสดงข้อมูลชุดเก่ากว่านั้น</p>
+<p><strong>ห้ามเอาตัวเลขนี้ไปพูดกับลูกค้าจนกว่าจะยืนยันกับกรมสรรพากรหรือ depa โดยตรง</strong>
+บทความบนเว็บจำนวนมากคัดลอกเงื่อนไขเก่ามาใช้ต่อโดยไม่อัปเดต</p>
+</div>
+
+<h2>ข้อค้นพบ 3 · ราคาจริงบน Fastwork</h2>
+<p>Fastwork คือขุมทองของงานล่าตลาด เพราะเป็นที่เดียวที่ <strong>มีคนควักเงินแล้ว และมีป้ายราคาติดมาด้วย</strong>
+ไม่ต้องเดาว่าใครยอมจ่ายเท่าไหร่</p>
+
+<div class="scroll"><table>
+<tr><th>หมวด</th><th class="num">จำนวนประกาศ</th><th class="num">ช่วงราคาเริ่มต้น</th><th>ลักษณะงาน</th></tr>
+<tr><td><b>คีย์ข้อมูล</b></td><td class="num">10,000</td><td class="num">฿250 – 1,000</td><td>งานมือล้วน แข่งราคากันดุมาก</td></tr>
+<tr><td><b>ทำบัญชี</b></td><td class="num">5,529</td><td class="num">฿999 – 3,900 <b>/เดือน</b></td><td>สัญญารายเดือนต่อเนื่อง</td></tr>
+<tr><td><b>ทำเงินเดือน (Payroll)</b></td><td class="num">3,055</td><td class="num">฿999 – 4,500 <b>/เดือน</b></td><td>สัญญารายเดือนต่อเนื่อง</td></tr>
+</table></div>
+
+<h3>สิ่งที่ซ่อนอยู่ในโฆษณาที่คนยอมจ่ายเงินโปรโมต</h3>
+<p>ประกาศธรรมดาราคา 250 บาท แต่ประกาศที่<strong>ยอมจ่ายค่าโฆษณา</strong>บนแพลตฟอร์ม ล้วนเป็นงานอัตโนมัติราคาสูง — นี่คือทิศทางที่เงินไหลไป</p>
+<div class="scroll"><table>
+<tr><th>บริการที่ลงโฆษณา</th><th class="num">ราคาเริ่มต้น</th></tr>
+<tr><td>วางระบบกระทบยอดบัญชีด้วย AI — เชื่อม POS / เดลิเวอรี่ / สลิป คีย์อัตโนมัติ</td><td class="num">฿9,500</td></tr>
+<tr><td>วาง Workflow Automation เชื่อมระบบหลังบ้าน ลดงานซ้ำซ้อน</td><td class="num">฿9,500</td></tr>
+<tr><td>สร้าง AI ดึงข้อมูลจากเอกสาร — ใบเสร็จ ใบกำกับภาษี Invoice เข้าระบบบัญชี</td><td class="num">฿3,500</td></tr>
+<tr><td>AI Automation บันทึกรายรับรายจ่ายอัตโนมัติ</td><td class="num">฿2,990</td></tr>
+<tr><td>ผู้ช่วยงานบัญชีและงานเอกสาร</td><td class="num">฿1,500</td></tr>
+</table></div>
+<p><strong>อ่านออกว่า:</strong> ตลาดกำลังจ่ายเงินหลักพันถึงหลักหมื่นเพื่อ <strong>“เอาเอกสารเข้าระบบบัญชีโดยไม่ต้องคีย์มือ”</strong>
+และจ่ายเป็นงานตั้งระบบครั้ง ๆ ไป — ซึ่งแปลว่ายังไม่มีใครทำเป็นบริการรายเดือนที่ใช้ซ้ำได้</p>
+
+<div class="card ok">
+<span class="tag green">ข้อค้นพบ 4 · จุดที่แหลมที่สุด</span>
+<h3>คนที่เจ็บที่สุดไม่ใช่ SME — แต่คือ “คนทำบัญชีให้ SME”</h3>
+<p>ในประกาศรับทำบัญชี มีรายหนึ่งเขียนไว้ตรง ๆ ว่ารับ
+<em>“ทำบัญชีรายเดือน กรอกรายการ–ออกใบกำกับภาษี ผ่าน FlowAccount / PEAK / SMEMove”</em></p>
+<p>นั่นคือภาพของอาชีพนี้ทั้งอาชีพ — <strong>นักบัญชีนั่งคีย์เอกสารเข้าโปรแกรมบัญชีด้วยมือ ทุกเดือน ให้ลูกค้าหลายสิบราย</strong></p>
+<ul>
+<li><strong>เจ็บซ้ำทุกเดือน</strong> ไม่ใช่ครั้งเดียวจบ</li>
+<li><strong>มีเงินจ่าย</strong> — เก็บลูกค้ารายละ 1,500–3,900 บาท/เดือน คูณจำนวนลูกค้า</li>
+<li><strong>ตัดสินใจเองได้</strong> ส่วนใหญ่เป็นฟรีแลนซ์หรือสำนักงานเล็ก ไม่ต้องผ่านคณะกรรมการ</li>
+<li><strong>หาตัวได้ทันที</strong> — มีรายชื่อ 5,529 รายเรียงอยู่บนแพลตฟอร์ม พร้อมเวลาตอบกลับ</li>
+<li><strong>ประหยัดให้เขาได้เป็นชั่วโมง</strong> ซึ่งเขาแปลงกลับเป็นลูกค้ารายใหม่ได้ทันที</li>
+</ul>
+<p>ขายให้ SME = ขายให้คนที่กำลังตัดค่าใช้จ่าย · ขายให้คนทำบัญชี = <strong>ขายให้คนที่ซื้อเวลาแล้วเอาไปทำเงินต่อได้</strong></p>
+</div>
+
+<h2>Scorecard — ให้คะแนนก่อนเลือก</h2>
+<p>ให้ 1–5 ทุกช่อง เต็ม 25 · <strong>ข้อ 4 คือข้อ veto</strong> — ได้ต่ำกว่า 3 ตัดทิ้งทันที ไม่ว่าคะแนนรวมจะสวยแค่ไหน
+เพราะไอเดียที่ดีกว่าแต่เข้าไม่ถึงคน แพ้ไอเดียธรรมดาที่ทักหาได้พรุ่งนี้</p>
+<div class="scroll"><table>
+<tr><th>#</th><th>เกณฑ์</th><th>1 คะแนน</th><th>5 คะแนน</th></tr>
+<tr><td>1</td><td><b>ซ้ำทุกเดือน</b></td><td>ทำครั้งเดียวจบ</td><td>ต้องทำทุกสัปดาห์</td></tr>
+<tr><td>2</td><td><b>มีเงิน + ตัดสินใจเอง</b></td><td>ต้องขออนุมัติ 3 ชั้น</td><td>เจ้าของเคาะเองในบทสนทนาเดียว</td></tr>
+<tr><td>3</td><td><b>วันนี้แก้ด้วยมือ/Excel/จ้างคน</b></td><td>มีซอฟต์แวร์ดีอยู่แล้ว</td><td>ทำมือล้วน ชี้ต้นทุนเป็นตัวเลขได้</td></tr>
+<tr><td>4</td><td><b>ทักหาคนกลุ่มนี้ได้ในสัปดาห์นี้</b> ⚠️</td><td>ต้องสร้างผู้ติดตามก่อน</td><td>มีชื่อคนจริง ≥10 คนในมือ</td></tr>
+<tr><td>5</td><td><b>คนเดียวดูแลไหว</b></td><td>แตะเงิน/ข้อมูลสุขภาพ/ต้อง 24 ชม.</td><td>ล่มได้ 2 ชม. ไม่มีใครเดือดร้อน</td></tr>
+</table></div>
+
+<h3>ผลให้คะแนนตัวที่เข้ารอบ</h3>
+<div class="scroll"><table>
+<tr><th>ตัวเลือก</th><th class="num">1</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th><th class="num">รวม</th></tr>
+<tr><td><b>เอกสาร → ระบบบัญชี สำหรับคนทำบัญชี</b></td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">4</td><td class="num"><b>24</b></td></tr>
+<tr><td>กระทบยอด POS/เดลิเวอรี่/สลิป ให้ร้านอาหาร</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="num">3</td><td class="num">3</td><td class="num">20</td></tr>
+<tr><td>Payroll เล็ก + ประกันสังคม อัตโนมัติ</td><td class="num">5</td><td class="num">4</td><td class="num">4</td><td class="num">3</td><td class="num">2</td><td class="num">18</td></tr>
+<tr><td>บัญชีร้านค้าออนไลน์ (กระทบยอดมาร์เก็ตเพลส)</td><td class="num">5</td><td class="num">3</td><td class="num">4</td><td class="num">3</td><td class="num">3</td><td class="num">18</td></tr>
+<tr><td>ปิดงบล่าช้า / ย้อนหลัง</td><td class="num">1</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">17</td></tr>
+<tr><td>Excel dashboard ตามสั่ง</td><td class="num">2</td><td class="num">3</td><td class="num">4</td><td class="num">4</td><td class="num">5</td><td class="num">18</td></tr>
+<tr><td>จดทะเบียนบริษัท / VAT</td><td class="num">1</td><td class="num">4</td><td class="num">3</td><td class="num">4</td><td class="num">4</td><td class="num">16</td></tr>
+<tr><td>สอบบัญชี (ต้องมีใบอนุญาต CPA)</td><td class="num">1</td><td class="num">4</td><td class="num">2</td><td class="num">2</td><td class="num">2</td><td class="num">11</td></tr>
+</table></div>
+<p class="meta">คะแนนนี้เป็นการประเมินจากข้อมูลที่เก็บได้ ยังไม่ผ่านการคุยกับคนจริง — ต้องยืนยันด้วยบทสนทนา 10 ครั้งก่อนลงมือ</p>
+
+<h2>ตั้งราคายังไง — ตารางที่ใช้ตัดสินใจ</h2>
+<p>เริ่มจากคำถามว่า <strong>“ชีวิตที่อยากมีจริง ๆ ใช้เงินเดือนละเท่าไหร่”</strong> แล้วอ่านย้อนกลับว่าต้องมีลูกค้ากี่ราย
+ไม่ใช่ตั้งเป้ารายได้ก่อนแล้วค่อยหาว่าจะขายใคร</p>
+<div class="scroll"><table>
+<tr><th>เป้าต่อเดือน</th><th class="num">฿990/เดือน</th><th class="num">฿1,990/เดือน</th><th class="num">฿2,990/เดือน</th><th class="num">฿4,990/เดือน</th></tr>
+<tr><td><b>50,000 บาท</b></td><td class="num">51 ราย</td><td class="num">26 ราย</td><td class="num">17 ราย</td><td class="num">11 ราย</td></tr>
+<tr><td><b>100,000 บาท</b></td><td class="num">101 ราย</td><td class="num">51 ราย</td><td class="num">34 ราย</td><td class="num">21 ราย</td></tr>
+<tr><td><b>200,000 บาท</b></td><td class="num">203 ราย</td><td class="num">101 ราย</td><td class="num">67 ราย</td><td class="num">41 ราย</td></tr>
+<tr><td><b>300,000 บาท</b></td><td class="num">304 ราย</td><td class="num">151 ราย</td><td class="num">101 ราย</td><td class="num">61 ราย</td></tr>
+</table></div>
+<p><strong>สิ่งที่ตารางนี้บอก:</strong> ราคาต่ำกว่า 1,000 บาท/เดือน แทบไม่มีทางไปถึงเป้าด้วยกำลังคนเดียว
+เพราะต้องหาลูกค้าหลักร้อยราย และต้องซัพพอร์ตหลักร้อยรายด้วย
+<strong>ราคาที่คนเดียวทำไหวคือ 2,000–5,000 บาท/เดือน กับลูกค้าหลักสิบราย</strong>
+ซึ่งบังเอิญตรงกับช่วงราคาที่คนทำบัญชีเก็บจากลูกค้าอยู่แล้วพอดี</p>
+<p class="meta">ยังไม่รวมภาษี ค่าเซิร์ฟเวอร์ ค่าธรรมเนียมชำระเงิน และอัตราลูกค้าที่เลิกใช้ — ตัวเลขจริงต้องเผื่อไว้อย่างน้อย 20–30%</p>
+
+<h2>แผน 21 วัน — ห้ามเขียนโค้ดก่อนวันที่ 20</h2>
+<div class="scroll"><table>
+<tr><th class="num">ช่วง</th><th>ทำอะไร</th><th>เสร็จเมื่อ</th></tr>
+<tr><td class="num"><b>วัน 1–5</b></td><td>ล่า — กวาดตลาดจ้างงาน ประกาศรับสมัครงาน กลุ่มอาชีพ</td><td>ได้ปัญหา ≥15 ข้อ <b>พร้อมราคาที่คนจ่ายจริง</b></td></tr>
+<tr><td class="num"><b>วัน 6–7</b></td><td>คัดด้วย Scorecard เหลือ <b>1 กลุ่มคน 1 ปัญหา</b></td><td>มีชื่อคนจริง 15 คนในมือ</td></tr>
+<tr><td class="num"><b>วัน 8–13</b></td><td>คุยจริง 10 คน — <b>ห้ามเล่าไอเดียตัวเอง</b> ถามแค่ “เดือนที่แล้วทำงานนี้ยังไง” “เสียเวลากี่ชั่วโมง” “จ่ายใครไปเท่าไหร่”</td><td>ได้ยินปัญหาเดียวกันจาก ≥5 ปาก พร้อมตัวเลขความเสียหาย</td></tr>
+<tr><td class="num"><b>วัน 14–15</b></td><td>ข้อเสนอ 1 หน้า · ผลลัพธ์ 1 อย่าง · ราคาเดียว</td><td>อ่านแล้วรู้ทันทีว่าได้อะไร ไม่ได้อะไร</td></tr>
+<tr><td class="num"><b>วัน 16–19</b></td><td>เสนอ 10 ราย ขอมัดจำหรือจ่ายล่วงหน้า</td><td><b>มีคนโอนเงินจริง 3 ราย</b></td></tr>
+<tr><td class="num"><b>วัน 20–21</b></td><td>ได้เงิน → เริ่มสร้าง · ไม่ได้ → <b>เปลี่ยนกลุ่มคน ไม่ใช่เปลี่ยนฟีเจอร์</b></td><td>—</td></tr>
+</table></div>
+
+<div class="card warn">
+<h3>เส้นแบ่งที่ห้ามเบลอ</h3>
+<p><strong>คำชม · “น่าสนใจมาก” · “ทำเสร็จแล้วบอกด้วย” = สัญญาณ</strong><br>
+<strong>เงินโอน · มัดจำ · นัดวันเริ่มใช้ = หลักฐาน</strong></p>
+<p>ถ้าเก็บเงินไม่ได้ในวันที่ 19 นั่นคือข่าวดี — เพิ่งประหยัดเวลาเขียนโค้ดไป 2 เดือน ด้วยต้นทุนแค่ 19 วัน</p>
+</div>
+
+<h2>ข้อควรระวังที่ใหญ่ที่สุด</h2>
+<p>สำหรับคนที่<strong>เขียนโปรแกรมเป็น</strong> ความเสี่ยงอันดับหนึ่งไม่ใช่ “หาไอเดียไม่เจอ” แต่คือ <strong>“เขียนโค้ดเร็วเกินไป”</strong></p>
+<p>เพราะการเปิดโปรแกรมเขียนโค้ดมันง่ายและสนุกกว่าการโทรหาคนแปลกหน้า 10 คนมาก
+และนั่นคือเหตุผลที่หลายคนมีของที่สร้างเสร็จเต็มเครื่อง แต่ไม่มีตัวไหนมีรายได้ประจำ</p>
+
+<div class="foot">
+<p><b>ที่มาข้อมูล</b></p>
+<p>
+<a href="https://fastwork.co/">Fastwork</a> — ราคาและจำนวนประกาศ 3 หมวด (เก็บ 2 ส.ค. 2569) ·
+<a href="https://positioningmag.com/insight/112721">Positioningmag — SME ซอมบี้ 2569</a> ·
+<a href="https://www.thansettakij.com/economy/650027">ฐานเศรษฐกิจ — ปัญหา SME 2569</a> ·
+<a href="https://www.depa.or.th/th/digitalservice/digital-fund/tax-benefits">depa — มาตรการภาษีบัญชีบริการดิจิทัล</a> ·
+<a href="https://www.prachachat.net/finance/news-1834382">ประชาชาติ — ครม. อนุมัติหักรายจ่าย 2 เท่า</a> ·
+<a href="https://www.rd.go.th/">กรมสรรพากร</a>
+</p>
+<p style="margin-top:16px">แนวคิดที่ใช้เป็นกรอบ: Traffic × Offers และ 3 คานงัด (Dan Koe) · The Mom Test (Rob Fitzpatrick) ·
+สมการคุณค่า (Alex Hormozi) · Magic Number / Freedom Number (Noah Kagan) · 1,000 True Fans (Kevin Kelly)</p>
+<p style="margin-top:16px">เอกสารนี้เป็นบันทึกการค้นข้อมูลเพื่อการตัดสินใจ ไม่ใช่คำแนะนำการลงทุนหรือคำแนะนำทางภาษี
+ตัวเลขสิทธิประโยชน์ทางภาษีต้องยืนยันกับกรมสรรพากรหรือ depa ก่อนนำไปใช้จริง</p>
+</div>
+
+</div>
+</body>
+</html>
