@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autocorp AI Academy — Training Map</title>
+  <style>
+    :root{--ink:#142034;--muted:#5d6b7c;--line:#dbe4ef;--navy:#082f49;--blue:#0369a1;--sky:#e0f2fe;--mint:#ecfdf5;--amber:#fffbeb;--white:#fff}
+    *{box-sizing:border-box} body{margin:0;background:#f4f7fb;color:var(--ink);font-family:Inter,"Noto Sans Thai",system-ui,sans-serif;line-height:1.62}
+    main{width:min(1280px,calc(100% - 32px));margin:28px auto 68px}.hero{background:linear-gradient(118deg,#062c45,#075985);color:#fff;padding:42px 44px;border-radius:22px;box-shadow:0 16px 38px #0f27401c}.eyebrow{font-size:.8rem;letter-spacing:.1em;font-weight:800;opacity:.78;text-transform:uppercase}.hero h1{font-size:clamp(2rem,4vw,3.5rem);line-height:1.08;margin:10px 0}.hero p{max-width:850px;margin:0;font-size:1.1rem;opacity:.92}.chips{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}.chip{padding:5px 11px;border:1px solid #ffffff55;border-radius:99px;font-size:.86rem}
+    .note{margin:22px 0;padding:18px 22px;border-left:5px solid #0ea5e9;background:#eaf7ff;border-radius:10px}.note strong{color:#075985}
+    h2{font-size:1.36rem;margin:34px 0 13px}.legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}.legend span{padding:5px 10px;border-radius:99px;font-size:.82rem;font-weight:700}.cowork{background:var(--sky);color:#075985}.code{background:#ede9fe;color:#5b21b6}.secure{background:var(--mint);color:#047857}.guard{background:var(--amber);color:#92400e}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 4px 14px #1936550d}table{width:100%;border-collapse:collapse;min-width:920px}th{background:#edf4f9;text-align:left;padding:17px 18px;font-size:.88rem;color:#26394e}td{padding:20px 18px;vertical-align:top;border-top:1px solid var(--line)}tr:first-child td{border-top:0}.audience{width:18%;font-weight:800;color:#082f49}.module{width:49%}.outcome{width:33%}.mod-title{display:flex;align-items:baseline;gap:9px;margin-bottom:9px;font-weight:850;font-size:1.05rem}.num{background:#075985;color:#fff;width:26px;height:26px;display:inline-grid;place-items:center;border-radius:7px;font-size:.8rem}.course-map{font-size:.84rem;color:var(--muted);margin:0 0 10px}.topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 18px;margin:0;padding:0;list-style:none}.topics li{position:relative;padding-left:15px;font-size:.92rem}.topics li:before{content:"";width:6px;height:6px;border-radius:100%;background:#38bdf8;position:absolute;left:0;top:.62em}.use{background:#f8fafc;border-left:3px solid #38bdf8;padding:12px 13px;border-radius:7px;font-size:.92rem}.use strong{display:block;color:#075985;margin-bottom:3px}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.flow div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;position:relative}.flow b{display:block;color:#075985}.flow p{margin:4px 0 0;color:var(--muted);font-size:.9rem}.footer{margin-top:28px;border-radius:16px;padding:24px;background:#082f49;color:#fff}.footer h2{margin:0 0 8px;font-size:1.15rem}.footer ul{margin:8px 0 0;padding-left:20px}.footer li{margin:4px 0}@media(max-width:760px){main{width:min(100% - 20px,1280px);margin-top:10px}.hero{padding:30px 24px;border-radius:16px}.topics{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="eyebrow">Proposal draft · Autocorp Group</div>
+    <h1>Autocorp AI Academy</h1>
+    <p>โครงสร้างการพัฒนา AI Capability สำหรับผู้บริหาร หัวหน้างาน พนักงานสาย Corporate / Data และทีม Softnic โดยต่อยอดจากหลักสูตร TONPALEARN เดิม และยึด Claude Cowork + Claude Code เป็นแกนการทำงาน</p>
+    <div class="chips"><span class="chip">11 หลักสูตรเดิม</span><span class="chip">7 โมดูลองค์กร</span><span class="chip">Claude Cowork → Claude Code → Softnic</span><span class="chip">90-Day Pilot</span></div>
+  </section>
+
+  <section class="note"><strong>หลักการออกแบบ:</strong> ไม่ให้ทุกคนเรียนเหมือนกัน และไม่สร้างคอร์สใหม่ทับของเดิม — แต่ package เนื้อหาตามบทบาท, ระดับข้อมูล และผลลัพธ์งานที่แต่ละฝ่ายต้องทำให้ดีขึ้น</section>
+
+  <h2>ขอบเขตเครื่องมือและข้อมูล</h2>
+  <div class="legend"><span class="cowork">Claude Cowork — ทดลอง / งานข้อมูลอนุญาต</span><span class="code">Claude Code — build / prototype / automation</span><span class="secure">Softnic — ข้อมูลภายใน / production</span><span class="guard">AI Guardrail — ใช้ก่อนทุก workflow</span></div>
+
+  <h2>Training Map — ฝ่ายไหน เรียนอะไร และได้ use case อะไร</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>ฝ่าย / กลุ่มผู้เรียน</th><th>โมดูลและเนื้อหาข้างใน</th><th>Use case ที่นำไปใช้จริง</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="audience">CEO / C-Suite<br><small>ผู้ตัดสินใจและเจ้าของ transformation</small></td>
+        <td class="module"><div class="mod-title"><span class="num">0</span>AI Direction &amp; Governance</div><p class="course-map">Mapping: 01 AI Basic · 02 AI Agentic · 10 AI Agentic Orchestra</p><ul class="topics"><li>AI 7 levels: จากใช้ตอบคำถาม → orchestrate ทีม AI</li><li>AI Guardrail และ data classification</li><li>แยก Claude Cowork, Claude Code และ Softnic ตามระดับข้อมูล</li><li>เปลี่ยน pain point ธุรกิจเป็น use case ที่วัดผลได้</li><li>เลือก KPI, owner, budget และ approval gate</li><li>Critical thinking: แยก insight, assumption และ evidence</li></ul></td>
+        <td class="outcome"><div class="use"><strong>AI Portfolio ของกลุ่มบริษัท</strong>เลือก 5 use case จากฝ่ายขาย, procurement, stock, finance, HR หรือ service แล้วจัดลำดับ impact × data risk</div></td>
+      </tr>
+      <tr>
+        <td class="audience">ทุกคน<br><small>Foundation ที่ต้องผ่านร่วมกัน</small></td>
+        <td class="module"><div class="mod-title"><span class="num">1</span>AI Basic &amp; Safe Use</div><p class="course-map">Mapping: 01 AI Basic</p><ul class="topics"><li>AI คืออะไร / ไม่ใช่อะไร / ข้อจำกัดของคำตอบ</li><li>Prompt ที่มีบริบท เป้าหมาย ข้อจำกัด และรูปแบบ output</li><li>AI Guardrail: อะไรห้ามส่งออกนอกองค์กร</li><li>ตรวจ fact, source, calculation และ hallucination</li><li>การตั้ง user preference และแนะนำบทบาทงานของตน</li><li>ใช้ Claude Cowork กับข้อมูลจำลองอย่างรับผิดชอบ</li></ul></td>
+        <td class="outcome"><div class="use"><strong>Safe-use checklist</strong>พนักงานรู้ว่าเรื่องใดทำได้ใน Cowork และเรื่องใดต้องใช้ Softnic หรือขออนุมัติ</div></td>
+      </tr>
+      <tr>
+        <td class="audience">หัวหน้างาน / Corporate Lead<br><small>Operations, ฝ่ายขาย, procurement, finance, HR</small></td>
+        <td class="module"><div class="mod-title"><span class="num">2</span>Manager as Workflow Designer</div><p class="course-map">Mapping: 02 AI Agentic · 06 AI for Personal Assistant · 10 AI Agentic Orchestra</p><ul class="topics"><li>ทำความเข้าใจ project: scope, owner, input, output, control point</li><li>ออกแบบ workflow คน + AI + approval</li><li>เขียน project instruction ให้ทีมใช้มาตรฐานเดียวกัน</li><li>ตั้ง Claude Cowork project และ reusable prompt asset</li><li>หลักการ Agent File: หน้าที่, ขอบเขต, สิทธิ์, handoff</li><li>วัด time saved, error rate และ adoption ของทีม</li></ul></td>
+        <td class="outcome"><div class="use"><strong>1 AI-enabled SOP ต่อฝ่าย</strong>เช่น สรุปยอดประชุมฝ่ายขาย, เปรียบเทียบใบเสนอซื้อ, หรือเตรียม brief ผู้บริหาร</div></td>
+      </tr>
+      <tr>
+        <td class="audience">พนักงาน Corporate / Admin / Sales Support<br><small>คนทำงานเอกสาร ประสานงาน และรายงาน</small></td>
+        <td class="module"><div class="mod-title"><span class="num">3</span>Cowork Productivity Workbench</div><p class="course-map">Mapping: 01 AI Basic · 02 AI Agentic · 06 AI for Personal Assistant · 11 AI Content Creator System</p><ul class="topics"><li>สร้าง personal project และตั้งค่า preference ของตัวเอง</li><li>สรุปประชุม: transcript → decision → action → owner</li><li>ร่างอีเมล, เอกสาร, รายงาน และ presentation brief</li><li>คิด instruction ให้ชัดก่อนสั่ง AI ทำงาน</li><li>สร้าง prompt / skill ส่วนตัวสำหรับงานซ้ำ</li><li>สร้าง content ภายในหรือสื่อสารองค์กรอย่างมี brand control</li></ul></td>
+        <td class="outcome"><div class="use"><strong>Personal AI Workbench</strong>แต่ละคนส่ง 1 งานจริงที่ลดเวลาทำงานได้ พร้อมวิธีตรวจคุณภาพก่อนใช้งาน</div></td>
+      </tr>
+      <tr>
+        <td class="audience">Data / Analyst / Finance / Operations<br><small>คนแปลงข้อมูลเป็นการตัดสินใจ</small></td>
+        <td class="module"><div class="mod-title"><span class="num">4</span>Data &amp; Decision Support</div><p class="course-map">Mapping: 02 AI Agentic · 03 MCP Connector · 09 AI Agentic App Builder</p><ul class="topics"><li>เปลี่ยนคำถามผู้บริหารเป็น analytical question ที่ตรวจได้</li><li>Critical thinking: correlation, causation, bias, assumption</li><li>ตั้ง data requirement และ data boundary ก่อนวิเคราะห์</li><li>ใช้ AI ช่วย explore data, หา anomaly และสรุป insight</li><li>Connector / MCP: เชื่อมแหล่งข้อมูลที่อนุมัติแทน copy-paste</li><li>สร้าง dashboard / form / mini tool สำหรับ decision support</li></ul></td>
+        <td class="outcome"><div class="use"><strong>Decision-support pilot</strong>เช่น stock anomaly, sales trend, procurement signal หรือ management report ที่ trace กลับไปยังข้อมูลได้</div></td>
+      </tr>
+      <tr>
+        <td class="audience">Marketing / Corporate Communication<br><small>ทีมสร้างสื่อและการสื่อสารภายใน</small></td>
+        <td class="module"><div class="mod-title"><span class="num">4B</span>Content &amp; Presentation Studio</div><p class="course-map">Mapping: 08 AI Agentic Web Builder · 11 AI Content Creator System</p><ul class="topics"><li>เปลี่ยน brief เป็น content system และ content calendar</li><li>ทำ presentation storyline: insight → decision → action</li><li>ใช้ HTML / web artifact ทำ prototype, report หรือ campaign page</li><li>สร้าง reusable content skill และ brand instruction</li><li>ใช้ multi-agent review ตรวจ brand, fact และ audience fit</li><li>ระวังข้อมูลผลิตภัณฑ์ ราคา และภาพลักษณ์ลูกค้า</li></ul></td>
+        <td class="outcome"><div class="use"><strong>Reusable communication asset</strong>เช่น landing-page prototype, report HTML, management presentation หรือ content kit ที่ทีมใช้ซ้ำได้</div></td>
+      </tr>
+      <tr>
+        <td class="audience">Softnic / IT / Software Team<br><small>ทีมสร้างระบบให้บริษัทในเครือ</small></td>
+        <td class="module"><div class="mod-title"><span class="num">5</span>IT &amp; Agentic Builder</div><p class="course-map">Mapping: 02 AI Agentic · 03 MCP Connector · 08 Web Builder · 09 App Builder · 10 AI Agentic Orchestra</p><ul class="topics"><li>Agent File, Skill และ project instruction ที่ maintain ได้</li><li>สร้าง skill เฉพาะองค์กรและ version control</li><li>Connector / MCP governance, access control และ audit</li><li>Claude Code: prototype → test → review → deploy</li><li>สร้าง HTML/web tool, database, login และ internal app</li><li>multi-agent orchestration, guardrail, testing และ human approval</li></ul></td>
+        <td class="outcome"><div class="use"><strong>Internal Agent Pilot</strong>สร้าง agent 1 ตัวที่เชื่อม process จริง มี owner, access control, test case และ handoff เข้าสู่ Softnic production</div></td>
+      </tr>
+      <tr>
+        <td class="audience">Executive Sponsor + Champion ทุกฝ่าย<br><small>กลุ่มที่ขับเคลื่อนต่อหลังอบรม</small></td>
+        <td class="module"><div class="mod-title"><span class="num">6</span>Transformation Lab</div><p class="course-map">Mapping: 09 AI Agentic App Builder · 10 AI Agentic Orchestra · 11 AI Content Creator System</p><ul class="topics"><li>นำ use case จริงจากทุกฝ่ายมา pitch</li><li>ให้คะแนน impact, effort, risk, data readiness และ owner</li><li>ทำ prototype แบบ Claude Cowork / Claude Code</li><li>review โดย business + IT + Softnic + ผู้บริหาร</li><li>กำหนด production handoff และ security review</li><li>สร้าง roadmap 90 วัน พร้อม milestone และ KPI</li></ul></td>
+        <td class="outcome"><div class="use"><strong>90-Day Transformation Roadmap</strong>เลือก 3 pilot ที่เริ่มได้จริง พร้อม owner, KPI, เครื่องมือที่อนุญาต และจุดตัดสินใจของผู้บริหาร</div></td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h2>เส้นทางเรียน ไม่ยัดทุกคนไปทางเดียวกัน</h2>
+  <section class="flow"><div><b>Executive</b><p>0 → 6</p></div><div><b>Manager</b><p>1 → 2 → 6</p></div><div><b>Staff / Data</b><p>1 → 3 → 4 หรือ 4B</p></div><div><b>Softnic / IT</b><p>1 → 2 → 5 → 6</p></div></section>
+
+  <section class="footer"><h2>ผลลัพธ์ที่ต้องวัดหลังจบ ไม่ใช่แค่จำนวนคนเข้าอบรม</h2><ul><li>ทุกฝ่ายมี use case ที่ผ่านการจัดระดับข้อมูลและมี owner</li><li>พนักงานทุกคนมี 1 workflow ที่ลดเวลาหรือเพิ่มคุณภาพได้จริง</li><li>หัวหน้างานมี 1 AI-enabled SOP ต่อฝ่าย</li><li>Data มี 1 decision-support pilot ที่ตรวจย้อนกลับได้</li><li>Softnic มี 1 agent ที่ผ่าน security review และมี production handoff</li><li>ผู้บริหารได้ roadmap 90 วันเพื่อเลือกลงทุนต่อ</li></ul></section>
+</main>
+</body>
+</html>
