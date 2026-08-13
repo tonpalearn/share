@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agentic Stack — TONPALEARN</title>
+<meta name="description" content="แผนภาพ 6 เลเยอร์ระบบที่ Claude เชื่อมต่อและทำงานแทนได้ — AI Agent, Business Systems, Work Management, App+Cloud, Storage+Collaboration, Source Code">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07060f;
+  --teal:#2DD4BF; --violet:#7C5CFC; --gold:#C8A84B;
+  --txt:#EFEFF7; --ts:#B9B8C9; --tf:#7C7B92;
+  --surf:rgba(255,255,255,.045); --bd:rgba(255,255,255,.10); --bd2:rgba(255,255,255,.16);
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html,body{background:var(--bg); overflow:hidden}
+body{font-family:'IBM Plex Sans Thai',sans-serif; color:var(--txt); width:100vw; height:100vh; display:flex; align-items:center; justify-content:center}
+.disp{font-family:'Space Grotesk','IBM Plex Sans Thai',sans-serif}
+#stage{
+  width:1920px; height:1080px; position:relative; flex:none;
+  background:
+    radial-gradient(60rem 40rem at 15% -10%, rgba(124,92,252,.16), transparent 60%),
+    radial-gradient(55rem 40rem at 88% 8%, rgba(45,212,191,.14), transparent 60%),
+    radial-gradient(50rem 35rem at 50% 108%, rgba(200,168,75,.10), transparent 60%),
+    var(--bg);
+  overflow:hidden;
+}
+.dots{position:absolute; inset:0; opacity:.5;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.wrap{position:relative; z-index:2; width:100%; height:100%; padding:56px 90px 46px; display:flex; flex-direction:column}
+
+/* header */
+.head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:30px}
+.eyebrow{font-size:15px; font-weight:700; letter-spacing:.14em; color:var(--teal); text-transform:uppercase; margin-bottom:10px}
+.title{font-family:'Space Grotesk'; font-size:52px; font-weight:800; letter-spacing:-.01em; line-height:1.05}
+.title b{background:linear-gradient(90deg,var(--teal),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.sub{font-size:19px; color:var(--ts); margin-top:10px; max-width:900px}
+.brandmark{text-align:right; font-family:'Space Grotesk'; font-weight:700; font-size:20px; letter-spacing:.02em; color:var(--txt)}
+.brandmark span{color:var(--teal)}
+.brandmark small{display:block; font-family:'IBM Plex Sans Thai'; font-weight:400; font-size:13px; color:var(--tf); margin-top:4px}
+
+/* layer stack */
+.stack{position:relative; flex:1; display:flex; flex-direction:column; gap:14px}
+
+.spine{position:absolute; left:242px; top:6px; bottom:6px; width:2px;
+  background:linear-gradient(180deg, var(--teal), var(--violet) 55%, transparent);
+  opacity:.55; z-index:1}
+
+.layer{position:relative; z-index:2; display:grid; grid-template-columns:220px 1fr; align-items:stretch; gap:26px}
+.tag{display:flex; flex-direction:column; justify-content:center; align-items:flex-end; text-align:right; padding-right:4px}
+.tag .n{font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:var(--tf); letter-spacing:.08em}
+.tag .t{font-family:'Space Grotesk'; font-size:19px; font-weight:700; color:var(--txt); margin-top:2px; line-height:1.2}
+.tag .d{font-size:13.5px; color:var(--ts); margin-top:3px}
+
+.band{border:1px solid var(--bd); border-radius:16px; background:var(--surf); backdrop-filter:blur(6px);
+  display:flex; align-items:center; gap:12px; padding:16px 20px; flex-wrap:wrap; position:relative}
+.band::before{content:''; position:absolute; left:-13px; top:50%; transform:translateY(-50%);
+  width:11px; height:11px; border-radius:50%; background:var(--c,var(--teal)); box-shadow:0 0 0 4px rgba(45,212,191,.16)}
+
+.chip{display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:11px; font-weight:600; font-size:15.5px;
+  background:color-mix(in srgb, var(--c,var(--teal)) 13%, rgba(255,255,255,.03)); border:1px solid color-mix(in srgb, var(--c,var(--teal)) 34%, transparent);
+  color:var(--txt); white-space:nowrap}
+.chip i{width:7px; height:7px; border-radius:2px; background:var(--c,var(--teal)); flex:none}
+
+/* hero layer (AI agent) styling */
+.layer.hero .band{border-color:color-mix(in srgb, var(--teal) 45%, var(--bd2)); background:linear-gradient(90deg, color-mix(in srgb,var(--teal) 14%,var(--surf)), color-mix(in srgb,var(--violet) 12%,var(--surf)));
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--teal) 20%,transparent), 0 18px 50px -18px rgba(45,212,191,.35)}
+.layer.hero .tag .t{font-size:22px; color:var(--teal)}
+.layer.hero .chip{font-size:17px; padding:11px 18px; font-weight:700}
+
+/* footer legend */
+.foot{display:flex; align-items:center; justify-content:space-between; margin-top:28px; padding-top:18px; border-top:1px solid var(--bd)}
+.legend{display:flex; gap:26px; font-size:13.5px; color:var(--ts)}
+.legend .li{display:flex; align-items:center; gap:8px}
+.legend i{width:9px; height:9px; border-radius:3px}
+.tagline{font-size:14px; color:var(--tf); font-style:italic}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="dots"></div>
+  <div class="wrap">
+
+    <div class="head">
+      <div>
+        <div class="eyebrow">AI Agentic Ecosystem Map</div>
+        <div class="title">เลเยอร์ระบบที่ <b>Claude</b> เชื่อมต่อและทำงานแทนได้</div>
+        <div class="sub">AI Agent ไม่ได้ทำงานอยู่ตัวเดียว — มันเชื่อมลงไปถึงทุกระบบที่ธุรกิจใช้งานจริงในแต่ละวัน ตั้งแต่ระบบหลัก ไปจนถึงพื้นที่เก็บไฟล์และซอร์สโค้ด</div>
+      </div>
+      <div class="brandmark"><span>TON</span>PALEARN<small>AI Agentic Training</small></div>
+    </div>
+
+    <div class="stack">
+      <div class="spine"></div>
+
+      <div class="layer hero" style="--c:#2DD4BF">
+        <div class="tag"><div class="n">LAYER 01</div><div class="t">AI Agent</div><div class="d">ชั้นสั่งงานและตัดสินใจ</div></div>
+        <div class="band">
+          <span class="chip" style="--c:#2DD4BF"><i></i>Claude Cowork</span>
+          <span class="chip" style="--c:#2DD4BF"><i></i>Claude Code</span>
+          <span class="chip" style="--c:#2DD4BF"><i></i>Local LLM</span>
+          <span class="chip" style="--c:#2DD4BF"><i></i>Openclaw</span>
+        </div>
+      </div>
+
+      <div class="layer" style="--c:#7C5CFC">
+        <div class="tag"><div class="n">LAYER 02</div><div class="t">Business Systems</div><div class="d">ระบบธุรกิจหลัก</div></div>
+        <div class="band">
+          <span class="chip" style="--c:#7C5CFC"><i></i>NetSuite</span>
+          <span class="chip" style="--c:#7C5CFC"><i></i>HumanSoft</span>
+        </div>
+      </div>
+
+      <div class="layer" style="--c:#C8A84B">
+        <div class="tag"><div class="n">LAYER 03</div><div class="t">Work Management</div><div class="d">บริหารงานและโปรเจกต์</div></div>
+        <div class="band">
+          <span class="chip" style="--c:#C8A84B"><i></i>ClickUp</span>
+          <span class="chip" style="--c:#C8A84B"><i></i>JIRA</span>
+        </div>
+      </div>
+
+      <div class="layer" style="--c:#7dd3fc">
+        <div class="tag"><div class="n">LAYER 04</div><div class="t">Application &amp; Cloud</div><div class="d">แอปพลิเคชันและคลาวด์</div></div>
+        <div class="band">
+          <span class="chip" style="--c:#7dd3fc"><i></i>Application</span>
+          <span class="chip" style="--c:#7dd3fc"><i></i>Vercel + Supabase</span>
+          <span class="chip" style="--c:#7dd3fc"><i></i>Google Cloud Platform</span>
+        </div>
+      </div>
+
+      <div class="layer" style="--c:#fda4af">
+        <div class="tag"><div class="n">LAYER 05</div><div class="t">Storage &amp; Collaboration</div><div class="d">จัดเก็บและทำงานร่วมกัน</div></div>
+        <div class="band">
+          <span class="chip" style="--c:#fda4af"><i></i>Google Workspace</span>
+          <span class="chip" style="--c:#fda4af"><i></i>Google Drive</span>
+          <span class="chip" style="--c:#fda4af"><i></i>BOX.com</span>
+        </div>
+      </div>
+
+      <div class="layer" style="--c:#a5b4fc">
+        <div class="tag"><div class="n">LAYER 06</div><div class="t">Source Code</div><div class="d">ซอร์สโค้ดและเวอร์ชัน</div></div>
+        <div class="band">
+          <span class="chip" style="--c:#a5b4fc"><i></i>GitHub</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="legend">
+        <span class="li"><i style="background:#2DD4BF"></i>AI Agent</span>
+        <span class="li"><i style="background:#7C5CFC"></i>Business Systems</span>
+        <span class="li"><i style="background:#C8A84B"></i>Work Management</span>
+        <span class="li"><i style="background:#7dd3fc"></i>App &amp; Cloud</span>
+        <span class="li"><i style="background:#fda4af"></i>Storage &amp; Collaboration</span>
+        <span class="li"><i style="background:#a5b4fc"></i>Source Code</span>
+      </div>
+      <div class="tagline">tonpalearn.com — สอนสร้างทีม AI Agentic ที่เชื่อมกับระบบจริง</div>
+    </div>
+
+  </div>
+</div>
+<script>
+function fit(){
+  var s=document.getElementById('stage');
+  var k=Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  s.style.transform='scale('+k+')';
+}
+window.addEventListener('resize',fit); fit();
+</script>
+</body>
+</html>
