@@ -3,82 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Agentic Stack — TONPALEARN</title>
-<meta name="description" content="แผนภาพ 6 เลเยอร์ระบบที่ Claude เชื่อมต่อและทำงานแทนได้ — AI Agent, Business Systems, Work Management, App+Cloud, Storage+Collaboration, Source Code">
+<title>AI Agent Architecture — TONPALEARN</title>
+<meta name="description" content="สถาปัตยกรรม 5 เลเยอร์มาตรฐาน (Layered Architecture) ที่ AI Agent เชื่อมต่อ — Agent, Integration, Application, Data, Infrastructure">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#06050c;
-  --violet:#7C5CFC; --gold:#C8A84B; --blue:#38BDF8; --teal:#2DD4BF; --rose:#FB7185; --silver:#E5E7EB;
+  --violet:#7C5CFC; --mcp:#F5D26B; --gold:#C8A84B; --teal:#2DD4BF; --blue:#38BDF8;
   --txt:#F2F1FA; --ts:#B6B4C8; --tf:#77768C;
   --surf:rgba(255,255,255,.045); --surf2:rgba(255,255,255,.075); --bd:rgba(255,255,255,.10); --bd2:rgba(255,255,255,.18);
 }
 *{box-sizing:border-box; margin:0; padding:0}
 html,body{background:var(--bg); overflow:hidden}
 body{font-family:'IBM Plex Sans Thai',sans-serif; color:var(--txt); width:100vw; height:100vh; display:flex; align-items:center; justify-content:center}
-.disp{font-family:'Space Grotesk','IBM Plex Sans Thai',sans-serif}
 #stage{
   width:1920px; height:1080px; position:relative; flex:none;
   background:
     radial-gradient(55rem 34rem at 10% -8%, rgba(124,92,252,.16), transparent 60%),
-    radial-gradient(50rem 32rem at 92% 4%, rgba(45,212,191,.12), transparent 60%),
+    radial-gradient(50rem 32rem at 92% 4%, rgba(56,189,248,.12), transparent 60%),
     radial-gradient(46rem 30rem at 50% 108%, rgba(200,168,75,.10), transparent 60%),
     var(--bg);
   overflow:hidden;
 }
-.dots{position:absolute; inset:0; opacity:.45; background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px); background-size:24px 24px}
-.wrap{position:relative; z-index:2; width:100%; height:100%; padding:34px 56px 26px; display:flex; flex-direction:column}
+.dots{position:absolute; inset:0; opacity:.4; background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px); background-size:24px 24px}
+.wrap{position:relative; z-index:2; width:100%; height:100%; padding:34px 60px 28px; display:flex; flex-direction:column}
 
-/* ---- header ---- */
-.head{display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px solid var(--bd); margin-bottom:16px}
-.title{font-family:'Space Grotesk'; font-size:33px; font-weight:800; letter-spacing:-.01em; white-space:nowrap}
-.title .g1{background:linear-gradient(90deg,var(--violet),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent}
-.title .g2{color:var(--teal)}
-.badges{display:flex; gap:8px; align-items:center; margin:0 18px; flex:1; justify-content:flex-end; flex-wrap:wrap}
-.badge{display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:9px; background:var(--surf2); border:1px solid var(--bd2); font-size:13px; font-weight:700; font-family:'Space Grotesk'; white-space:nowrap}
-.badge svg{width:14px; height:14px; flex:none}
+/* header */
+.head{display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1px solid var(--bd); margin-bottom:18px}
+.title{font-family:'Space Grotesk'; font-size:31px; font-weight:800; letter-spacing:-.01em}
+.title .g{background:linear-gradient(90deg,var(--violet),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.subtitle{font-size:13.5px; color:var(--tf); margin-top:3px}
 .brandmark{display:flex; align-items:center; gap:9px; flex:none}
 .brandmark .lg{width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--teal),var(--violet)); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:800; font-size:15px; color:#06050c}
 .brandmark .tx{font-family:'Space Grotesk'; font-weight:800; font-size:15px; line-height:1.15}
 .brandmark .tx span{color:var(--teal)}
 .brandmark .tx small{display:block; font-family:'IBM Plex Sans Thai'; font-weight:500; font-size:10.5px; color:var(--tf)}
 
-/* ---- stack ---- */
-.stack{flex:1; display:flex; flex-direction:column; gap:0; min-height:0; justify-content:space-between}
-.layer{display:flex; align-items:stretch; gap:16px}
-.bar{width:6px; border-radius:4px; flex:none; background:var(--c)}
-.numcirc{width:34px; height:34px; border-radius:50%; border:2px solid var(--c); color:var(--c); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk'; font-weight:800; font-size:15px; flex:none; background:rgba(0,0,0,.3)}
-.ltag{width:190px; flex:none; display:flex; flex-direction:column; justify-content:center; gap:6px}
-.ltag .row{display:flex; align-items:center; gap:10px}
-.ltag .lname{font-family:'Space Grotesk'; font-size:12px; font-weight:700; color:var(--tf); text-transform:uppercase; letter-spacing:.06em}
-.ltag .ltitle{font-family:'Space Grotesk'; font-size:19px; font-weight:800; color:var(--c); line-height:1.15}
-.lbody{flex:1; display:flex; gap:10px; align-items:stretch}
-.card{flex:1; border:1px solid var(--bd); border-radius:12px; background:var(--surf); padding:10px 14px; display:flex; flex-direction:column; justify-content:center; gap:3px; min-width:0}
-.card .h{display:flex; align-items:center; gap:8px; font-family:'Space Grotesk'; font-weight:700; font-size:15px; color:var(--txt)}
-.card .h svg{width:17px; height:17px; color:var(--c); flex:none}
-.card .d{font-size:12.5px; color:var(--ts); line-height:1.35}
-.card .tagrow{display:flex; gap:5px; margin-top:4px; flex-wrap:wrap}
-.tagpill{font-size:10px; font-weight:700; padding:2px 7px; border-radius:20px; background:color-mix(in srgb, var(--c) 18%, transparent); color:var(--c); border:1px solid color-mix(in srgb, var(--c) 34%, transparent)}
-.card.wide{flex:1.3}
-.card.cta{background:color-mix(in srgb, var(--c) 10%, var(--surf)); border-color:color-mix(in srgb, var(--c) 30%, var(--bd))}
+/* body: stack (left) + legend rail (right) */
+.body{flex:1; display:flex; gap:26px; min-height:0}
+.stack{flex:1; display:flex; flex-direction:column; gap:12px; min-height:0}
 
-/* arrow connector */
-.arrow{display:flex; align-items:center; gap:10px; padding:5px 0 5px 216px; font-size:12.5px; color:var(--ts)}
-.arrow .ic{color:var(--tf); font-size:14px; flex:none}
-.arrow b{color:var(--txt); font-weight:700}
+.layer{position:relative; border:1px solid var(--bd); border-radius:16px; background:var(--surf); padding:16px 22px; display:flex; align-items:center; gap:22px; flex:1}
+.layer::before{content:''; position:absolute; left:0; top:10px; bottom:10px; width:5px; border-radius:4px; background:var(--c)}
+.lhead{width:230px; flex:none; padding-left:14px}
+.lhead .n{font-family:'Space Grotesk'; font-size:11.5px; font-weight:700; color:var(--c); text-transform:uppercase; letter-spacing:.08em}
+.lhead .t{font-family:'Space Grotesk'; font-size:22px; font-weight:800; color:var(--txt); line-height:1.15; margin-top:2px}
+.lhead .d{font-size:12px; color:var(--tf); margin-top:3px}
+.litems{flex:1; display:flex; gap:10px; flex-wrap:wrap}
+.chip{display:flex; align-items:center; gap:8px; padding:10px 16px; border-radius:11px; background:var(--surf2); border:1px solid var(--bd2); font-family:'Space Grotesk'; font-weight:700; font-size:14.5px; white-space:nowrap}
+.chip svg{width:16px; height:16px; color:var(--c); flex:none}
 
-/* footer workflow strip */
-.foot{margin-top:14px; padding-top:14px; border-top:1px solid var(--bd); display:flex; align-items:center; gap:10px}
-.wf{display:flex; align-items:center; gap:9px; flex:1; flex-wrap:nowrap}
-.wstep{display:flex; align-items:center; gap:8px; padding:8px 13px; border-radius:20px; background:var(--surf2); border:1px solid var(--bd2); white-space:nowrap}
-.wstep .no{width:19px; height:19px; border-radius:50%; background:var(--teal); color:#06050c; font-family:'Space Grotesk'; font-weight:800; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none}
-.wstep .tx{font-size:12.5px; font-weight:600; color:var(--txt)}
-.wsep{color:var(--tf); font-size:14px; flex:none}
-.callout{flex:none; display:flex; flex-direction:column; align-items:flex-end; padding-left:16px; border-left:1px solid var(--bd)}
-.callout .n{font-family:'Space Grotesk'; font-weight:800; font-size:26px; background:linear-gradient(90deg,var(--teal),var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1}
-.callout .l{font-size:11.5px; color:var(--tf); font-weight:600; margin-top:2px}
+/* integration layer — visually distinct (the "glue") */
+.layer.integ{background:linear-gradient(90deg, color-mix(in srgb,var(--mcp) 10%,var(--surf)), color-mix(in srgb,var(--mcp) 6%,var(--surf))); border-style:dashed; border-color:color-mix(in srgb,var(--mcp) 45%,var(--bd2)); flex:.62}
+.layer.integ .chip{background:color-mix(in srgb,var(--mcp) 14%,var(--surf2)); border-color:color-mix(in srgb,var(--mcp) 40%,var(--bd2)); color:var(--mcp)}
+.layer.integ .chip svg{color:var(--mcp)}
+
+/* connecting spine */
+.spine{position:absolute; left:35px; top:78px; bottom:60px; width:2px; background:linear-gradient(180deg, var(--violet), var(--mcp) 22%, var(--gold) 42%, var(--teal) 62%, var(--blue) 88%); opacity:.5; z-index:0}
+.arrowdown{position:absolute; left:29px; width:14px; height:14px; color:var(--tf); font-size:13px; z-index:1}
+
+/* right legend rail */
+.rail{width:270px; flex:none; display:flex; flex-direction:column; gap:12px}
+.rail .card{border:1px solid var(--bd); border-radius:14px; background:var(--surf); padding:16px 18px; flex:1; display:flex; flex-direction:column; justify-content:center}
+.rail .card h4{font-family:'Space Grotesk'; font-size:13.5px; font-weight:800; color:var(--txt); margin-bottom:8px; display:flex; align-items:center; gap:8px}
+.rail .card h4 svg{width:15px; height:15px; color:var(--teal)}
+.rail .card p{font-size:12px; color:var(--ts); line-height:1.55}
+.flow{display:flex; flex-direction:column; gap:5px; margin-top:8px}
+.flow .fr{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--ts)}
+.flow .fr i{width:7px; height:7px; border-radius:2px; flex:none}
+.flow .fr b{color:var(--txt); font-weight:700}
+
+/* footer */
+.foot{margin-top:14px; padding-top:12px; border-top:1px solid var(--bd); display:flex; align-items:center; justify-content:space-between}
+.foot .note{font-size:12px; color:var(--tf)}
+.foot .note b{color:var(--ts)}
+.foot .tag{font-family:'Space Grotesk'; font-weight:700; font-size:12.5px; color:var(--teal)}
 </style>
 </head>
 <body>
@@ -87,123 +88,94 @@ body{font-family:'IBM Plex Sans Thai',sans-serif; color:var(--txt); width:100vw;
   <div class="wrap">
 
     <div class="head">
-      <div class="title"><span class="g1">AI Agentic Stack</span> — <span class="g2">ระบบทั้งหมดที่ Claude เชื่อมต่อได้</span></div>
-      <div class="badges">
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"></path></svg>Claude Cowork</span>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4l-6 8 6 8M16 4l6 8-6 8"></path></svg>Claude Code</span>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"></path></svg>NetSuite</span>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1-.3-3.4 1.2a11.7 11.7 0 00-6.2 0C7.5 3.3 6.5 3.6 6.5 3.6a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 005 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>GitHub</span>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3M16 3h3a2 2 0 012 2v3M8 21H5a2 2 0 01-2-2v-3M16 21h3a2 2 0 002-2v-3"></path></svg>Google Drive</span>
+      <div>
+        <div class="title"><span class="g">AI Agent Architecture</span> — โครงสร้าง 5 เลเยอร์มาตรฐาน</div>
+        <div class="subtitle">Layered Architecture: Agent → Integration → Application → Data → Infrastructure</div>
       </div>
       <div class="brandmark"><div class="lg">T</div><div class="tx"><span>TON</span>PALEARN<small>AI Agentic Training</small></div></div>
     </div>
 
-    <div class="stack">
+    <div class="body">
+      <div class="stack">
+        <div class="spine"></div>
 
-      <!-- LAYER 6 — top — Source Code -->
-      <div class="layer">
-        <div class="bar" style="--c:var(--silver)"></div>
-        <div class="numcirc" style="--c:var(--silver)">6</div>
-        <div class="ltag"><div class="row"></div><div class="lname">Layer 6</div><div class="ltitle" style="color:var(--silver)">Source Code</div></div>
-        <div class="lbody">
-          <div class="card wide" style="--c:var(--silver)">
-            <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1-.3-3.4 1.2a11.7 11.7 0 00-6.2 0C7.5 3.3 6.5 3.6 6.5 3.6a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 005 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>GitHub</div>
-            <div class="d">ซอร์สโค้ดทุกโปรเจกต์ที่ Claude Code เขียน — เก็บเวอร์ชัน ย้อนดูประวัติ และ deploy ต่อได้</div>
-            <div class="tagrow"><span class="tagpill">Version Control</span><span class="tagpill">Auto Commit</span><span class="tagpill">Rollback</span></div>
+        <!-- L5 — Agent Layer -->
+        <div class="layer" style="--c:var(--violet)">
+          <div class="lhead"><div class="n">Layer 5 · Orchestration</div><div class="t">Agent Layer</div><div class="d">สั่งงานและตัดสินใจ</div></div>
+          <div class="litems">
+            <span class="chip" style="--c:var(--violet)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"></path></svg>Claude Cowork</span>
+            <span class="chip" style="--c:var(--violet)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4l-6 8 6 8M16 4l6 8-6 8"></path></svg>Claude Code</span>
+            <span class="chip" style="--c:var(--violet)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 4v5"></path></svg>Local LLM</span>
+            <span class="chip" style="--c:var(--violet)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M9 9l6 6M9 15l6-6"></path></svg>Openclaw</span>
+          </div>
+        </div>
+
+        <!-- L4 — Integration Layer (the glue) -->
+        <div class="layer integ" style="--c:var(--mcp)">
+          <div class="lhead"><div class="n">Layer 4 · The Glue</div><div class="t" style="color:var(--mcp)">Integration Layer</div><div class="d">โปรโตคอลที่เชื่อมทุกระบบเข้าด้วยกัน</div></div>
+          <div class="litems">
+            <span class="chip" style="--c:var(--mcp)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h8M8 12a4 4 0 108 0 4 4 0 00-8 0z"></path></svg>MCP</span>
+            <span class="chip" style="--c:var(--mcp)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17V7l8-4 8 4v10l-8 4-8-4z"></path></svg>REST API</span>
+            <span class="chip" style="--c:var(--mcp)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>OAuth 2.0</span>
+            <span class="chip" style="--c:var(--mcp)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path></svg>Webhook</span>
+          </div>
+        </div>
+
+        <!-- L3 — Application Layer -->
+        <div class="layer" style="--c:var(--gold)">
+          <div class="lhead"><div class="n">Layer 3</div><div class="t">Application Layer</div><div class="d">ระบบธุรกิจและเครื่องมือทำงาน</div></div>
+          <div class="litems">
+            <span class="chip" style="--c:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"></path></svg>NetSuite</span>
+            <span class="chip" style="--c:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"></circle><path d="M2.5 20a6.5 6.5 0 0113 0M17 8.5a2.7 2.7 0 100-5.4M15 20a5 5 0 016 0"></path></svg>HumanSoft</span>
+            <span class="chip" style="--c:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M9 4v16M4 9h5M4 14h5"></path></svg>ClickUp</span>
+            <span class="chip" style="--c:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v6H4zM4 14h10v6H4z"></path></svg>JIRA</span>
+            <span class="chip" style="--c:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>Application</span>
+          </div>
+        </div>
+
+        <!-- L2 — Data Layer -->
+        <div class="layer" style="--c:var(--teal)">
+          <div class="lhead"><div class="n">Layer 2</div><div class="t">Data Layer</div><div class="d">จัดเก็บข้อมูลและไฟล์</div></div>
+          <div class="litems">
+            <span class="chip" style="--c:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg>Supabase</span>
+            <span class="chip" style="--c:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 4v6"></path></svg>Google Workspace</span>
+            <span class="chip" style="--c:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4l-6 8 6 8M16 4l6 8-6 8"></path></svg>Google Drive</span>
+            <span class="chip" style="--c:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8V7l-3-4H6L3 7v1M3 8h18M3 8v11a1 1 0 001 1h16a1 1 0 001-1V8M10 12h4"></path></svg>BOX.com</span>
+          </div>
+        </div>
+
+        <!-- L1 — Infrastructure Layer -->
+        <div class="layer" style="--c:var(--blue)">
+          <div class="lhead"><div class="n">Layer 1 · Foundation</div><div class="t">Infrastructure Layer</div><div class="d">คลาวด์ โฮสติ้ง และซอร์สโค้ด</div></div>
+          <div class="litems">
+            <span class="chip" style="--c:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19a4.5 4.5 0 000-9 6 6 0 00-11.5 1.5A4 4 0 006 19h11.5z"></path></svg>Google Cloud Platform</span>
+            <span class="chip" style="--c:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 20h20L12 2z"></path></svg>Vercel</span>
+            <span class="chip" style="--c:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1-.3-3.4 1.2a11.7 11.7 0 00-6.2 0C7.5 3.3 6.5 3.6 6.5 3.6a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 005 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>GitHub</span>
           </div>
         </div>
       </div>
 
-      <div class="arrow"><span class="ic">↑</span>Commit โค้ดที่ Agent เขียน/แก้ไข <b>กลับเข้า Repository อัตโนมัติ</b></div>
-
-      <!-- LAYER 5 — Storage & Collaboration -->
-      <div class="layer">
-        <div class="bar" style="--c:var(--rose)"></div>
-        <div class="numcirc" style="--c:var(--rose)">5</div>
-        <div class="ltag"><div class="lname">Layer 5</div><div class="ltitle" style="color:var(--rose)">Storage &amp; Collaboration</div></div>
-        <div class="lbody">
-          <div class="card" style="--c:var(--rose)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 4v6"></path></svg>Google Workspace</div><div class="d">อีเมล ปฏิทิน เอกสารทำงานร่วมกัน</div></div>
-          <div class="card" style="--c:var(--rose)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4l-6 8 6 8M16 4l6 8-6 8"></path></svg>Google Drive</div><div class="d">จัดเก็บไฟล์ทีม เข้าถึงได้ทุกที่</div></div>
-          <div class="card" style="--c:var(--rose)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8V7l-3-4H6L3 7v1M3 8h18M3 8v11a1 1 0 001 1h16a1 1 0 001-1V8M10 12h4"></path></svg>BOX.com</div><div class="d">จัดเก็บไฟล์ระดับองค์กร ปลอดภัยสูง</div></div>
+      <div class="rail">
+        <div class="card">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2z"></path><path d="M12 22V11M3 6.5l9 4.5 9-4.5"></path></svg>ทำไมต้องมี Integration Layer</h4>
+          <p>Agent ไม่ได้เชื่อมเข้าระบบธุรกิจโดยตรง — ต้องผ่านโปรโตคอลกลาง (MCP/API/OAuth) เสมอ นี่คือชั้นที่ทำให้ Agent ตัวเดียวคุยกับระบบไหนก็ได้ โดยไม่ต้องเขียนโค้ดเชื่อมทีละระบบ</p>
         </div>
-      </div>
-
-      <div class="arrow"><span class="ic">↑</span>Deploy แอปขึ้น <b>Vercel</b> · เก็บข้อมูลใน <b>Supabase</b></div>
-
-      <!-- LAYER 4 — App & Cloud -->
-      <div class="layer">
-        <div class="bar" style="--c:var(--teal)"></div>
-        <div class="numcirc" style="--c:var(--teal)">4</div>
-        <div class="ltag"><div class="lname">Layer 4</div><div class="ltitle" style="color:var(--teal)">Application &amp; Cloud</div></div>
-        <div class="lbody">
-          <div class="card" style="--c:var(--teal)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>Application</div><div class="d">แอปที่สร้างและใช้งานเองในองค์กร</div></div>
-          <div class="card" style="--c:var(--teal)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 20h20L12 2z"></path></svg>Vercel + Supabase</div><div class="d">Host หน้าเว็บ + ฐานข้อมูล deploy อัตโนมัติ</div></div>
-          <div class="card" style="--c:var(--teal)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19a4.5 4.5 0 000-9 6 6 0 00-11.5 1.5A4 4 0 006 19h11.5z"></path></svg>Google Cloud Platform</div><div class="d">โครงสร้างพื้นฐานและ compute เพิ่มเติม</div></div>
-        </div>
-      </div>
-
-      <div class="arrow"><span class="ic">↑</span>ดึงข้อมูลงานจริง <b>อัปเดตสถานะ Task ให้อัตโนมัติ</b></div>
-
-      <!-- LAYER 3 — Work Management -->
-      <div class="layer">
-        <div class="bar" style="--c:var(--blue)"></div>
-        <div class="numcirc" style="--c:var(--blue)">3</div>
-        <div class="ltag"><div class="lname">Layer 3</div><div class="ltitle" style="color:var(--blue)">Work Management</div></div>
-        <div class="lbody">
-          <div class="card wide" style="--c:var(--blue)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M9 4v16M4 9h5M4 14h5"></path></svg>ClickUp</div><div class="d">บริหารงานและโปรเจกต์ทั้งทีม — Task, Timeline, Docs</div></div>
-          <div class="card wide" style="--c:var(--blue)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v6H4zM4 14h10v6H4z"></path></svg>JIRA</div><div class="d">ติดตาม Ticket และ Sprint ของทีมพัฒนา</div></div>
-        </div>
-      </div>
-
-      <div class="arrow"><span class="ic">↑</span>เชื่อมผ่าน <b>MCP / API</b> — อ่านและเขียนข้อมูลระบบธุรกิจได้โดยตรง</div>
-
-      <!-- LAYER 2 — Business Systems -->
-      <div class="layer">
-        <div class="bar" style="--c:var(--gold)"></div>
-        <div class="numcirc" style="--c:var(--gold)">2</div>
-        <div class="ltag"><div class="lname">Layer 2</div><div class="ltitle" style="color:var(--gold)">Business Systems</div></div>
-        <div class="lbody">
-          <div class="card wide" style="--c:var(--gold)">
-            <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"></path></svg>NetSuite</div>
-            <div class="d">ERP หลัก — บัญชี การเงิน สต๊อกสินค้า</div>
-            <div class="tagrow"><span class="tagpill">MCP Connector</span><span class="tagpill">ไม่กิน AI Unit</span></div>
+        <div class="card">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>อ่านลำดับชั้นยังไง</h4>
+          <div class="flow">
+            <div class="fr"><i style="background:var(--violet)"></i>Agent Layer — สมองที่สั่งงาน</div>
+            <div class="fr"><i style="background:var(--mcp)"></i>Integration — ท่อเชื่อมมาตรฐาน</div>
+            <div class="fr"><i style="background:var(--gold)"></i>Application — เครื่องมือธุรกิจ</div>
+            <div class="fr"><i style="background:var(--teal)"></i>Data — ที่เก็บข้อมูล/ไฟล์</div>
+            <div class="fr"><i style="background:var(--blue)"></i>Infrastructure — ฐานรากคลาวด์</div>
           </div>
-          <div class="card" style="--c:var(--gold)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"></circle><path d="M2.5 20a6.5 6.5 0 0113 0M17 8.5a2.7 2.7 0 100-5.4M15 20a5 5 0 016 0"></path></svg>HumanSoft</div><div class="d">ระบบ HR และเงินเดือน</div></div>
         </div>
       </div>
-
-      <div class="arrow"><span class="ic">↑</span>ต่อยอดจากฐาน AI Agent ผ่าน <b>MCP · API · Connector · OAuth</b></div>
-
-      <!-- LAYER 1 — bottom — AI Agent (foundation) -->
-      <div class="layer">
-        <div class="bar" style="--c:var(--violet)"></div>
-        <div class="numcirc" style="--c:var(--violet)">1</div>
-        <div class="ltag"><div class="lname">Layer 1 · Foundation</div><div class="ltitle" style="color:var(--violet)">AI Agent</div></div>
-        <div class="lbody">
-          <div class="card cta" style="--c:var(--violet)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"></path></svg>Claude Cowork</div><div class="d">ตั้งค่า Agent File จำบริบทงานทั้งหมด</div></div>
-          <div class="card cta" style="--c:var(--violet)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4l-6 8 6 8M16 4l6 8-6 8"></path></svg>Claude Code</div><div class="d">เขียน แก้ไข และรันโค้ดเองในเทอร์มินัล</div></div>
-          <div class="card cta" style="--c:var(--violet)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 4v5"></path></svg>Local LLM</div><div class="d">รันในเครื่อง ข้อมูลไม่ออกนอกองค์กร</div></div>
-          <div class="card cta" style="--c:var(--violet)"><div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 9l6 6M9 15l6-6"></path><circle cx="12" cy="12" r="9"></circle></svg>Openclaw</div><div class="d">ควบคุมหน้าจอ ทำงานแทนอัตโนมัติ</div></div>
-        </div>
-      </div>
-
     </div>
 
     <div class="foot">
-      <div class="wf">
-        <div class="wstep"><span class="no">1</span><span class="tx">สั่งงาน Claude</span></div>
-        <span class="wsep">→</span>
-        <div class="wstep"><span class="no">2</span><span class="tx">เชื่อมระบบธุรกิจ</span></div>
-        <span class="wsep">→</span>
-        <div class="wstep"><span class="no">3</span><span class="tx">อัปเดตงาน</span></div>
-        <span class="wsep">→</span>
-        <div class="wstep"><span class="no">4</span><span class="tx">Deploy แอป</span></div>
-        <span class="wsep">→</span>
-        <div class="wstep"><span class="no">5</span><span class="tx">จัดเก็บไฟล์</span></div>
-        <span class="wsep">→</span>
-        <div class="wstep"><span class="no">6</span><span class="tx">Push โค้ด</span></div>
-      </div>
-      <div class="callout"><div class="n">14 ระบบ</div><div class="l">เชื่อมได้ด้วย 1 Agent</div></div>
+      <div class="note">อิงโครงสร้าง <b>Layered / N-Tier Architecture</b> ที่ใช้ทั่วไปในระบบองค์กร — แยกความรับผิดชอบแต่ละชั้นชัดเจน เปลี่ยนชั้นหนึ่งไม่กระทบชั้นอื่น</div>
+      <div class="tag">tonpalearn.com — AI Agentic Training</div>
     </div>
 
   </div>
