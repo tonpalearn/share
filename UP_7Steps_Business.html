@@ -108,6 +108,26 @@
   .ban{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
   .ban span{background:var(--no-soft);color:var(--no);border-radius:999px;padding:2px 12px;font-size:14.5px}
   .nw{white-space:nowrap}
+  .warm{margin:6px 0 26px;padding:4px 0 0}
+  .warm h2{margin-top:6px;color:var(--rose)}
+  .beats{display:grid;gap:8px}
+  .beat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+  .bh{font-weight:600;display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .bn{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--rose);color:var(--rose);display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+  .bc{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:15.5px;line-height:1.6}
+  @media (max-width:520px){.bc{grid-template-columns:1fr}}
+  .bc>div{border-radius:8px;padding:6px 10px;background:var(--bg)}
+  .bc>div.biz{background:var(--green-soft)}
+  .bc small{display:block;font-size:12.5px;color:var(--muted)}
+  .bc .biz small{color:var(--green);font-weight:500}
+  .sig{margin:6px 0 0;font-size:14.5px;color:var(--amber)}
+  .route{display:grid;gap:6px;margin-top:14px}
+  .rt{margin:0;font-weight:600}
+  .rr{border-radius:10px;padding:8px 14px;font-size:15.5px;line-height:1.6}
+  .rr b{display:block}
+  .rr.go{background:var(--rose);color:#fff}
+  .rr.alt{background:var(--green-soft)}
+  .rr.stop{border:1px dashed var(--line)}
   .note{margin-top:34px;background:var(--amber-soft);border-radius:14px;padding:14px 18px;font-size:15.5px}
   .note b{color:var(--amber)}
 </style>
@@ -115,7 +135,7 @@
 <body>
 <div class="wrap">
   <div class="top">
-    <span class="badge">ร่าง v3 · สำหรับทีม</span>
+    <span class="badge">ร่าง v4 · สำหรับทีม</span>
     <div class="theme" role="group" aria-label="โหมดสี">
       <button data-t="system">ตามเครื่อง</button><button data-t="light">สว่าง</button><button data-t="dark">มืด</button>
     </div>
@@ -135,7 +155,7 @@
 
   <h2>7 ขั้น — ทำตามลำดับ อย่าข้ามขั้น</h2>
   <nav class="strip">
-    <a href="#s1"><span>1</span>ผลชัด</a><a href="#s2"><span>2</span>ทักคน / คนทัก</a><a href="#s3"><span>3</span>นัด / นวด</a>
+    <a href="#s1"><span>1</span>ผลชัด</a><a href="#s2"><span>2</span>ทักคน / คนทัก</a><a href="#warm"><span>·</span>คุยก่อน 7 ประโยค</a><a href="#s3"><span>3</span>นัด / นวด</a>
     <a href="#s4"><span>4</span>ชั่งค่าชีวิต</a><a href="#s5"><span>5</span>ตอบข้อโต้แย้ง</a><a href="#s6"><span>6</span>ชวนก้าว</a><a href="#s7"><span>7</span>ดูแลคนใหม่</a>
   </nav>
 
@@ -170,6 +190,49 @@
       </ul>
     </div></section>
 
+  </div>
+  <section class="warm" id="warm">
+    <h2>ก่อนขั้น 3 · คุยก่อน 7 ประโยค</h2>
+    <p class="sub" style="margin-bottom:12px">ไม่ต้องท่อง จำแค่ว่าแต่ละประโยคฟังหาอะไร แล้วถามด้วยคำของตัวเอง · 7 จังหวะเดียวกับตอนคุยคอร์ส ต่างกันที่สิ่งที่ฟัง</p>
+    <div class="beats">
+      <div class="beat"><div class="bh"><span class="bn">1</span>ทักทาย</div>
+        <div class="bc"><div><small>คอร์ส · "เป็นไง สวัสดี"</small>เขาพร้อมคุยไหมวันนี้</div><div class="biz"><small>ธุรกิจ ฟังหา</small>อารมณ์ช่วงนี้ ว่าง ยุ่ง หรือมีเรื่องในใจ</div></div>
+        <p class="sig">สัญญาณ: ตอบยาว ถามกลับ = ไปต่อได้</p></div>
+      <div class="beat"><div class="bh"><span class="bn">2</span>เรื่องใกล้ตัว</div>
+        <div class="bc"><div><small>คอร์ส · "ที่บ้านน้ำท่วมเปล่า"</small>คนในบ้าน ใครอยู่ด้วย ใครห่วงเขา</div><div class="biz"><small>ธุรกิจ ฟังหา</small>ภาระครอบครัว ใครพึ่งเขาอยู่บ้าง ลูก พ่อแม่</div></div>
+        <p class="sig">สัญญาณ: พูดถึงคนที่ต้องดูแล = เขามีเหตุผลที่ต้องมั่นคง</p></div>
+      <div class="beat"><div class="bh"><span class="bn">3</span>งานตอนนี้</div>
+        <div class="bc"><div><small>คอร์ส · "ช่วงนี้ทำอะไรอยู่"</small>ตารางชีวิต กินข้าวนอกบ้าน นั่งทั้งวันไหม</div><div class="biz"><small>ธุรกิจ ฟังหา</small>เป็นลูกจ้างหรือทำของตัวเอง รายได้มาทางเดียวไหม</div></div>
+        <p class="sig">สัญญาณ: รายได้ทางเดียว · งานขึ้นกับคนอื่น</p></div>
+      <div class="beat"><div class="bh"><span class="bn">4</span>ชมให้เขาเล่า</div>
+        <div class="bc"><div><small>คอร์ส · "งานดูดีน่าสนใจนี่"</small>ให้เขารู้สึกดี เปิดใจ</div><div class="biz"><small>ธุรกิจ ฟังหา</small>สิ่งที่เขาภูมิใจ เขาให้ค่ากับอะไร เงิน อิสระ หรือการได้ช่วยคน</div></div>
+        <p class="sig">สัญญาณ: ภูมิใจเรื่องได้ช่วยคน = เข้ากับแบบเรา</p></div>
+      <div class="beat"><div class="bh"><span class="bn">5</span>ความรู้สึกต่องาน</div>
+        <div class="bc"><div><small>คอร์ส · "น่าจะสนุก"</small>เครียดไหม เหนื่อยแค่ไหน</div><div class="biz"><small>ธุรกิจ ฟังหา</small>ยังสนุกอยู่ หรือทำเพราะต้องทำ</div></div>
+        <p class="sig">สัญญาณ: "ก็ทน ๆ ไป" · "ไม่ได้สนุกแล้ว"</p></div>
+      <div class="beat"><div class="bh"><span class="bn">6</span>เงิน</div>
+        <div class="bc"><div><small>คอร์ส · "เงินเยอะเลยสิ"</small>กำลังจ่ายค่าคอร์ส</div><div class="biz"><small>ธุรกิจ ฟังหา</small>พอใจรายได้ไหม หรือบ่นว่าไม่พอ ไม่เหลือเก็บ</div></div>
+        <p class="sig">สัญญาณ: "พอใช้" · "เดือนชนเดือน" · "ไม่เหลือเก็บ"</p></div>
+      <div class="beat"><div class="bh"><span class="bn">7</span>เวลา</div>
+        <div class="bc"><div><small>คอร์ส · "ยุ่งไหม"</small>มีเวลาดูแลตัวเองไหม</div><div class="biz"><small>ธุรกิจ ฟังหา</small>เวลาว่างจริงต่อสัปดาห์ ได้อยู่กับครอบครัวไหม</div></div>
+        <p class="sig">สัญญาณ: กลับดึกทุกวัน · ไม่มีเวลาให้ลูก</p></div>
+    </div>
+
+    <div class="route">
+      <p class="rt">ฟังครบแล้ว ไปทางไหน</p>
+      <div class="rr go"><b>ได้ยินเรื่องเหนื่อย เงินไม่พอ หรืออยากมีอะไรสำรอง</b>ถามต่อ "แล้วคิดไว้ไหม ว่าจะทำแบบนี้ไปอีกนานแค่ไหน" → เข้าขั้น 3 นวด</div>
+      <div class="rr alt"><b>พอใจงานกับเงิน แต่บ่นเรื่องร่างกาย</b>คุยเรื่องสุขภาพแทน → ไปทางคอร์ส ("แล้วได้ดูแลตัวเองบ้างไหม")</div>
+      <div class="rr stop"><b>ตอบสั้น ไม่ถามกลับ ดูรีบ</b>คุยเรื่องทั่วไปต่ออีกนิดแล้วจบ ไม่เข้าเรื่อง ไว้ทักใหม่วันหลัง</div>
+    </div>
+    <ul class="rules" style="margin-top:10px">
+      <li class="y">ทุกประโยคเป็นคำถาม · เราฟัง ตอบรับสั้น ๆ "โห" "จริงดิ" "แล้วไงต่อ"</li>
+      <li class="y">ไม่ต้องครบ 7 ไม่ต้องเรียง · เขาพูดเรื่องเงินหรือเหนื่อยขึ้นมาเอง ข้ามไปทางแรกได้เลย</li>
+      <li class="y">ทางแชต ถามทีละข้อ รอเขาตอบ ใช้เวลาเป็นวันก็ได้</li>
+      <li class="n">เดาเรื่องในบ้านเขา ถ้าไม่รู้ใช้ "ช่วงนี้เป็นไงบ้าง"</li>
+    </ul>
+  </section>
+
+  <div class="steps">
     <section class="step" id="s3"><div class="num">3</div><div class="card">
       <h3>นัด / นวด</h3>
       <p class="goal">ถามให้เขาเห็นภาพตัวเอง · เป้าหมายเดียว = นัดมาทำ Life Check</p>
