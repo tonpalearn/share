@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>7 Steps ชวนทำธุรกิจ</title>
+<meta name="description" content="UP Wellness · โครงเดียวกับ 7 Steps คอร์สสุขภาพ · ชั่งค่าชีวิตแทนค่าร่างกาย (ร่าง v1 สำหรับทีม)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF8F7; --card:#FFFFFF; --ink:#201A1A; --muted:#6E5E5E; --line:#EADBD9;
+    --rose:#8C4C4C; --rose-soft:#F6E7E5; --green:#396755; --green-soft:#E3F2EA;
+    --amber:#9A6A12; --amber-soft:#FBF1DC; --no:#B23A3A; --no-soft:#FBE9E9;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#171313; --card:#221C1C; --ink:#F3ECEB; --muted:#B9A9A8; --line:#3A3030;
+      --rose:#E3A3A3; --rose-soft:#3A2626; --green:#8FD1B3; --green-soft:#1D332A;
+      --amber:#E8C27A; --amber-soft:#3A3020; --no:#F08C8C; --no-soft:#3B2222;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#171313; --card:#221C1C; --ink:#F3ECEB; --muted:#B9A9A8; --line:#3A3030;
+    --rose:#E3A3A3; --rose-soft:#3A2626; --green:#8FD1B3; --green-soft:#1D332A;
+    --amber:#E8C27A; --amber-soft:#3A3020; --no:#F08C8C; --no-soft:#3B2222;
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Prompt',system-ui,sans-serif;
+    font-size:17.5px;line-height:1.75}
+  .wrap{max-width:760px;margin:0 auto;padding:28px 16px 64px}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
+  .badge{font-size:13px;font-weight:500;color:var(--green);background:var(--green-soft);padding:3px 12px;border-radius:999px}
+  .theme{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .theme button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:4px 10px;cursor:pointer}
+  .theme button[aria-pressed="true"]{background:var(--rose);color:#fff}
+  h1{font-size:34px;line-height:1.3;margin:10px 0 4px;color:var(--rose);font-weight:600;text-wrap:balance}
+  .sub{color:var(--muted);margin:0 0 26px}
+  h2{font-size:21px;margin:34px 0 12px;font-weight:600}
+
+  /* วงต่อกัน */
+  .loop{display:grid;gap:8px}
+  .lnode{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  .lnode b{color:var(--rose)}
+  .lnode.g b{color:var(--green)}
+  .larrow{text-align:center;color:var(--muted);font-size:14px;line-height:1.4}
+  .larrow::before{content:"↓";display:block;font-size:20px;color:var(--rose)}
+  .back{border:1.5px dashed var(--green);border-radius:12px;padding:10px 16px;color:var(--green);font-size:15.5px;text-align:center}
+
+  /* แถบ 7 ขั้น */
+  .strip{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+  .strip a{text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:14.5px}
+  .strip a span{color:var(--rose);font-weight:600;margin-right:4px}
+
+  /* เส้นเวลา */
+  .steps{position:relative;margin-top:10px}
+  .step{position:relative;padding-left:52px;margin-bottom:18px}
+  .step::before{content:"";position:absolute;left:19px;top:44px;bottom:-22px;width:2px;background:var(--line)}
+  .step:last-child::before{display:none}
+  .num{position:absolute;left:0;top:4px;width:40px;height:40px;border-radius:50%;background:var(--rose);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:600;font-size:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .card h3{margin:0;font-size:20px;font-weight:600}
+  .goal{color:var(--green);font-weight:500;margin:2px 0 8px}
+  ul.rules{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px}
+  ul.rules li{padding-left:26px;position:relative}
+  ul.rules li::before{position:absolute;left:0;font-weight:600}
+  li.y::before{content:"✓";color:var(--green)}
+  li.n::before{content:"✕";color:var(--no)}
+  li.w::before{content:"!";color:var(--amber);left:6px}
+
+  .tablewrap{overflow-x:auto;margin:10px 0}
+  table{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.6;min-width:480px}
+  th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-weight:500;color:var(--muted);font-size:14px}
+  td:first-child{color:var(--muted);width:36%}
+  .script{background:var(--rose-soft);border-radius:12px;padding:12px 16px;margin:10px 0;font-size:16.5px}
+  .script .lab{display:block;font-size:13px;color:var(--rose);font-weight:600;margin-bottom:2px}
+  .nums{display:grid;gap:6px;margin:10px 0;padding:0;list-style:none}
+  .nums li{background:var(--green-soft);border-radius:10px;padding:8px 14px}
+  .nums b{color:var(--green)}
+  details{border-top:1px solid var(--line);padding:8px 0}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:500}
+  details p{margin:6px 0 2px;color:var(--muted)}
+
+  /* ลำดับเสนอ */
+  .offer{display:grid;gap:6px;margin-top:10px}
+  .o{border-radius:10px;padding:8px 14px;border:1px solid var(--line);background:var(--card)}
+  .o.main{background:var(--rose);color:#fff;border-color:var(--rose)}
+  .o.alt{background:var(--amber-soft);border-color:transparent}
+  .o.end{border-style:dashed}
+  .o small{display:block;opacity:.85;font-size:14px;line-height:1.5}
+  .oa{text-align:center;font-size:13.5px;color:var(--muted);line-height:1.3}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  @media (max-width:480px){.split{grid-template-columns:1fr}}
+
+  .note{margin-top:34px;background:var(--amber-soft);border-radius:14px;padding:14px 18px;font-size:15.5px}
+  .note b{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="badge">ร่าง v1 · สำหรับทีม</span>
+    <div class="theme" role="group" aria-label="โหมดสี">
+      <button data-t="system">ตามเครื่อง</button><button data-t="light">สว่าง</button><button data-t="dark">มืด</button>
+    </div>
+  </div>
+  <h1>7 Steps ชวนทำธุรกิจ</h1>
+  <p class="sub">โครงเดียวกับ 7 Steps คอร์สสุขภาพ — เปลี่ยนจาก "ชั่งค่าร่างกาย" เป็น "ชั่งค่าชีวิต" แล้วแปลผลให้ฟังก่อนเสนอ เหมือนเดิมทุกขั้น</p>
+
+  <h2>2 โปรเซสต่อกันเป็นวงเดียว</h2>
+  <div class="loop">
+    <div class="lnode"><b>คอร์สสุขภาพ</b> · ลูกค้าลดชัด</div>
+    <div class="larrow">เพื่อนเห็น มาถามเขาว่า "ทำยังไง"</div>
+    <div class="lnode"><b>7 Steps ธุรกิจ</b> · คนที่ควรชวนก่อนใคร = ลูกค้าที่มีคนมาทักแล้ว</div>
+    <div class="larrow">ตกลงเริ่มธุรกิจ</div>
+    <div class="lnode g"><b>คนใหม่</b> · เริ่มที่ลดชัดของตัวเองก่อน</div>
+    <div class="back">↺ วนกลับไปขั้น 1 ของคอร์สสุขภาพ — ลดชัด · บอกต่อ · ชี้เป้า</div>
+  </div>
+
+  <h2>7 ขั้น — ทำตามลำดับ อย่าข้ามขั้น</h2>
+  <nav class="strip">
+    <a href="#s1"><span>1</span>ผลชัด</a><a href="#s2"><span>2</span>ทักคน / คนทัก</a><a href="#s3"><span>3</span>นัด / นวด</a>
+    <a href="#s4"><span>4</span>ชั่งค่าชีวิต</a><a href="#s5"><span>5</span>ตอบข้อโต้แย้ง</a><a href="#s6"><span>6</span>ชวนก้าว</a><a href="#s7"><span>7</span>ดูแลคนใหม่</a>
+  </nav>
+
+  <div class="steps">
+    <section class="step" id="s1"><div class="num">1</div><div class="card">
+      <h3>ผลชัด</h3>
+      <p class="goal">เป็นตัวอย่างก่อนชวน</p>
+      <ul class="rules">
+        <li class="y">ใช้เอง ลดชัด ดูแลลูกค้าจนเห็นผลจริง — มีเรื่องจริงให้เล่า</li>
+        <li class="y">คิดแค่ "ทำให้ชัด" เพื่อให้คนทัก</li>
+        <li class="n">โชว์สลิป รายได้ รถ ทริป เพื่อชักชวน</li>
+        <li class="n">ชวนคนอื่นทั้งที่ตัวเองยังไม่มีผลกับตัวเอง</li>
+      </ul>
+    </div></section>
+
+    <section class="step" id="s2"><div class="num">2</div><div class="card">
+      <h3>ทักคน / คนทัก</h3>
+      <p class="goal">ฟังหา "สัญญาณ" แล้วต่อด้วยนวด</p>
+      <ul class="rules">
+        <li class="y">ลูกค้าคอร์สที่ลดชัด แล้วมีเพื่อนมาถามเขา</li>
+        <li class="y">คนที่ถามเราว่า "ทำอะไรอยู่" "ทำยังไงถึงมีเวลาแบบนี้"</li>
+        <li class="y">คนที่บ่นเรื่องงาน เวลา เงิน อนาคต เกษียณ</li>
+        <li class="y">คนที่ชอบแนะนำของดีให้คนอื่นอยู่แล้ว</li>
+        <li class="n">ทักคนที่มีรหัสแอมเวย์อยู่แล้ว (ข้ามสาย — ส่งกลับผู้แนะนำเดิม)</li>
+        <li class="n">ชวนไปกินข้าวแล้วเปิดแผนโดยไม่บอกก่อน</li>
+      </ul>
+    </div></section>
+
+    <section class="step" id="s3"><div class="num">3</div><div class="card">
+      <h3>นัด / นวด</h3>
+      <p class="goal">ถามให้เขาเห็นภาพตัวเอง · เป้าหมายเดียว = นัดมาทำ Life Check</p>
+      <div class="tablewrap"><table>
+        <tr><th>คอร์สสุขภาพถาม</th><th>ธุรกิจถาม</th></tr>
+        <tr><td>อยากลดกี่โล</td><td>"ถ้าอีก 5 ปีชีวิตเป็นแบบที่อยากได้ หน้าตาเป็นยังไง"</td></tr>
+        <tr><td>ทำไมถึงอยากลด</td><td>"ทำไมเรื่องนี้สำคัญกับเรา ทำเพื่อใคร"</td></tr>
+        <tr><td>มีแผนลดน้ำหนักไหม</td><td>"ตอนนี้มีแผนสำหรับเรื่องนี้ไหม หรือยังไม่ได้เริ่ม"</td></tr>
+        <tr><td>เคยลดวิธีไหนมาบ้าง</td><td>"เคยลองหารายได้เสริม ลงทุน หรือทำธุรกิจอะไรมาบ้าง ติดตรงไหน"</td></tr>
+        <tr><td>มีโรคประจำตัวไหม</td><td>"ตอนนี้มีข้อจำกัดอะไรบ้าง เวลา ภาระ งานประจำ ครอบครัว"</td></tr>
+        <tr><td>มีความกังวลอะไรไหม</td><td>"ถ้าจะเริ่มอะไรใหม่ กังวลเรื่องไหนที่สุด"</td></tr>
+      </table></div>
+      <div class="script"><span class="lab">ประโยคนัด</span>"เอางี้ไหม เรานั่งคุยกันสัก 45 นาที ผมมีแบบประเมินที่ใช้กับตัวเองอยู่ ช่วยดูตัวเลขชีวิตเราว่าตอนนี้อยู่ตรงไหน ห่างจากที่อยากได้แค่ไหน บอกไว้ก่อนเลยนะ ที่ผมทำอยู่คือธุรกิจสุขภาพที่ทำผ่านแอมเวย์ วันนั้นจะเล่าให้ฟังด้วยว่าทำยังไง ฟังแล้วไม่เอาก็ไม่เป็นไร ยังเป็นเพื่อนกันเหมือนเดิม — สะดวกวันไหน"</div>
+      <ul class="rules">
+        <li class="y">บอกตรง ๆ ว่าเป็นธุรกิจแอมเวย์ก่อนนัด — ปรับคำได้ แต่ต้องบอก</li>
+        <li class="w">นวดเพื่อนัดเจอให้ได้เท่านั้น</li>
+        <li class="n">อธิบายแผนในแชต · ส่งแผนทางไลน์ · พูดตัวเลขรายได้</li>
+      </ul>
+    </div></section>
+
+    <section class="step" id="s4"><div class="num">4</div><div class="card">
+      <h3>ชั่งค่าชีวิต แปลผล</h3>
+      <p class="goal">Life Check — ใช้ตัวเลขของเขาเอง 5 ตัว</p>
+      <ul class="nums">
+        <li><b>ก.</b> เป้า — ชีวิต รายได้ เวลา ที่อยากได้ (จากขั้น 3)</li>
+        <li><b>ข.</b> ค่าเวลาตอนนี้ — รายได้ต่อเดือน ÷ ชั่วโมงทำงานจริง</li>
+        <li><b>ค.</b> ถ้าหยุดทำงานวันนี้ อยู่ได้กี่เดือน</li>
+        <li><b>ง.</b> เกษียณถึงอายุ 85 — กี่ปีที่ต้องเลี้ยงตัวเองโดยไม่มีเงินเดือน</li>
+        <li><b>จ.</b> เวลาว่างจริงต่อสัปดาห์</li>
+      </ul>
+      <p style="margin:6px 0 0">แปลผล = ชี้ "ช่องว่าง" ระหว่าง ก. กับทางที่เดินอยู่ → เล่าว่าโมเดลเราทำงานยังไง + เรื่องจริงของเรา</p>
+      <ul class="rules">
+        <li class="y">อธิบายแผนจากเอกสารบริษัท · บอกว่าผลแต่ละคนต่างกันตามการลงมือ</li>
+        <li class="n">ถามว่าได้เท่าไหร่ ต้องซื้อเท่าไหร่ → ยังไม่ตอบ จนกว่าจะแปลผลเสร็จ</li>
+        <li class="n">ถามว่า "ใช่แอมเวย์ไหม" → ห้ามเลี่ยง ตอบตรงทันที</li>
+      </ul>
+    </div></section>
+
+    <section class="step" id="s5"><div class="num">5</div><div class="card">
+      <h3>ตอบข้อโต้แย้ง</h3>
+      <p class="goal">ตอบหลังแปลผลแล้วเท่านั้น · แตะเพื่อดูคำตอบ</p>
+      <details><summary>"ขายตรงหรือเปล่า / แชร์ลูกโซ่ไหม"</summary><p>"ใช่ เป็นธุรกิจขายตรงที่จดทะเบียนถูกต้อง รายได้มาจากสินค้าที่คนใช้จริง ไม่ได้มาจากการชวนคน — ดูเอกสารบริษัทด้วยกันได้เลย"</p></details>
+      <details><summary>"ไม่มีเวลา"</summary><p>"เข้าใจเลย ตัวเลขข้อ จ. บอกว่าเรามีอยู่กี่ชั่วโมง เริ่มจากดูแลตัวเองให้ลดชัดก่อน ไม่ต้องเพิ่มเวลาอะไร"</p></details>
+      <details><summary>"ไม่อยากขายของเพื่อน / กลัวเสียเพื่อน"</summary><p>"เราไม่ได้ไล่ขาย เราทำให้ตัวเองชัด แล้วคนมาถามเอง — แบบที่ผมทำกับคุณวันนี้"</p></details>
+      <details><summary>"ได้เท่าไหร่"</summary><p>"บอกตัวเลขให้ไม่ได้ และไม่มีใครควรสัญญา มันขึ้นกับสิ่งที่ลงมือ ผมอธิบายได้ว่ารายได้คิดจากอะไร ตามเอกสารบริษัท"</p></details>
+      <details><summary>"เคยทำแล้วไม่เวิร์ก"</summary><p>"ตอนนั้นติดตรงไหน" — ฟังก่อน เหมือนถาม "เคยลดวิธีไหนมาบ้าง"</p></details>
+      <details><summary>"ขอคิดดูก่อน"</summary><p>"ได้เลย กำลังคิดเรื่องไหนอยู่ ผมช่วยหาข้อมูลให้ได้" — ห้ามเร่ง "วันนี้เท่านั้น"</p></details>
+    </div></section>
+
+    <section class="step" id="s6"><div class="num">6</div><div class="card">
+      <h3>ชวนก้าว</h3>
+      <p class="goal">เสนอตามลำดับ แบบภาพ "ลำดับการเสนอ" ของคอร์ส</p>
+      <div class="offer">
+        <div class="o">ก · Life Check + แปลผล</div>
+        <div class="oa">↓</div>
+        <div class="o main">ข · เสนอเริ่มธุรกิจ<small>เส้นทางคนใหม่ 90 วัน · ตกลง → ขั้น 7</small></div>
+        <div class="oa">↓ ไม่เอา — เลือก 1 ใน 2 ทาง</div>
+        <div class="split">
+          <div class="o alt">ทาง 1 · ผู้แนะนำ<small>บอกต่อ ชี้เป้า</small></div>
+          <div class="o alt">ทาง 2 · ลดชัดก่อน<small>เข้าคอร์สเป็นลูกค้า → มีคนทักเขา → วนกลับข้อ ข</small></div>
+        </div>
+        <div class="oa">↓ ยังไม่เอา</div>
+        <div class="o">เป็นลูกค้า / ผู้ใช้</div>
+        <div class="oa">↓ ไม่ไหวจริง ๆ</div>
+        <div class="o end">เป็นเพื่อนกันต่อ ส่งความรู้ฟรีให้<small>ไม่ตัดความสัมพันธ์</small></div>
+      </div>
+    </div></section>
+
+    <section class="step" id="s7"><div class="num">7</div><div class="card">
+      <h3>ดูแลคนใหม่</h3>
+      <p class="goal">ทำให้เขาเดิน 7 Steps ได้เอง</p>
+      <ul class="rules">
+        <li class="y">48 ชม.แรก: ทำ Life Check ของตัวเขาเองกับเรา + เขียนรายชื่อ</li>
+        <li class="y">เริ่มที่ลดชัดของเขาก่อน (ขั้น 1 ของคอร์ส)</li>
+        <li class="y">เคสแรกทำด้วยกัน: เขานวดและนัด → เราชั่งค่าและแปลผลให้ดู</li>
+        <li class="y">เจอกันสัปดาห์ละครั้ง · สอน 7 Steps ทั้ง 2 ชุดต่อ</li>
+        <li class="n">ปล่อยไปชวนเพื่อนก่อนตัวเองลดชัด</li>
+        <li class="n">ให้ซื้อสต๊อกเกินใช้ · ให้กู้เงินหรือรูดบัตรมาเริ่ม</li>
+      </ul>
+    </div></section>
+  </div>
+
+  <div class="note"><b>ร่างสำหรับทีม</b> · ยังไม่ได้ตรวจกับระเบียบและจรรยาบรรณนักธุรกิจแอมเวย์ฉบับจริง · ไม่รับรองรายได้ ผลแต่ละคนต่างกันตามการลงมือ · ไม่อ้างว่าสินค้ารักษาหรือป้องกันโรค</div>
+</div>
+<script>
+  (function(){
+    var root=document.documentElement, btns=document.querySelectorAll('.theme button');
+    function apply(t){
+      if(t==='system') root.removeAttribute('data-theme'); else root.setAttribute('data-theme',t);
+      btns.forEach(function(b){b.setAttribute('aria-pressed', b.dataset.t===t ? 'true':'false');});
+      try{localStorage.setItem('up7b-theme',t);}catch(e){}
+    }
+    var saved='system'; try{saved=localStorage.getItem('up7b-theme')||'system';}catch(e){}
+    apply(saved);
+    btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.t);});});
+  })();
+</script>
+</body>
+</html>
