@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Jin 3-Month Review v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF8F7; --card:#FFFFFF; --ink:#201A1A; --muted:#6B5D5D; --line:#EBDCDA;
+    --rose:#8C4C4C; --rose-soft:#F5E6E4; --green:#396755; --green-soft:#E2F1E9;
+    --amber:#8A5A08; --amber-soft:#FBF0D9;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#171313; --card:#211B1B; --ink:#F2EBEA; --muted:#BBA9A8; --line:#3A3030;
+      --rose:#E6A6A6; --rose-soft:#3A2626; --green:#8FD3B4; --green-soft:#1C3229;
+      --amber:#E9C27A; --amber-soft:#382E1E; color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#171313; --card:#211B1B; --ink:#F2EBEA; --muted:#BBA9A8; --line:#3A3030;
+    --rose:#E6A6A6; --rose-soft:#3A2626; --green:#8FD3B4; --green-soft:#1C3229;
+    --amber:#E9C27A; --amber-soft:#382E1E; color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Sarabun',system-ui,sans-serif;font-size:17.5px;line-height:1.8}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 16px 72px}
+  h1,h2,h3,summary{font-family:'Prompt','Sarabun',sans-serif;font-weight:600;line-height:1.4;text-wrap:balance}
+  h1{font-size:28px;margin:8px 0 4px;color:var(--rose)}
+  h2{font-size:21px;margin:34px 0 10px}
+  h3{font-size:17.5px;margin:18px 0 4px}
+  p{margin:8px 0}
+  .sub{color:var(--muted);margin:0;font-size:15.5px}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .badge{font-size:13px;color:var(--green);background:var(--green-soft);padding:2px 12px;border-radius:999px;font-family:'Prompt',sans-serif}
+  .theme{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .theme button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:3px 10px;cursor:pointer}
+  .theme button[aria-pressed="true"]{background:var(--rose);color:#fff}
+  .qa{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+  .qa li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+  .qa .q{display:block;font-family:'Prompt',sans-serif;font-weight:500;font-size:15.5px;color:var(--rose);margin-bottom:2px}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:8px 0}
+  .ok{background:var(--green-soft);border-color:transparent}
+  .warn{background:var(--amber-soft);border-color:transparent}
+  ul.t{margin:6px 0;padding-left:22px} ul.t li{margin:4px 0}
+  .opt{list-style:none;padding:0;margin:6px 0;display:grid;gap:6px}
+  .opt li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+  .opt b{color:var(--rose)}
+  .tw{overflow-x:auto;margin:8px 0}
+  table{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.6;min-width:440px}
+  th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:'Prompt',sans-serif;font-weight:500;font-size:13.5px;color:var(--muted)}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.sum td{font-weight:600;border-top:2px solid var(--line)}
+  .note{font-size:14.5px;color:var(--muted)}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:8px 0;padding:0 14px}
+  details[open]{padding-bottom:10px}
+  summary{cursor:pointer;padding:10px 0;font-size:16.5px;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"＋ ";color:var(--rose)}
+  details[open] summary::before{content:"－ "}
+  .label{display:inline-block;font-size:12.5px;font-family:'Prompt',sans-serif;background:var(--amber-soft);color:var(--amber);border-radius:999px;padding:0 10px;margin-left:4px}
+  .foot{margin-top:34px;font-size:14.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="badge">v2 · 10 ต.ค. 2569</span>
+    <div class="theme" role="group" aria-label="โหมดสี"><button data-t="system">ตามเครื่อง</button><button data-t="light">สว่าง</button><button data-t="dark">มืด</button></div>
+  </div>
+  <h1>3 เดือนที่จิ้น track · ฉบับปรับปรุง</h1>
+  <p class="sub">ข้อมูล 13 ก.ค. – 8 ต.ค. 2569 · อาหาร 82 วัน · ออกกำลังกาย 25 ครั้ง (เวท 12) · น้ำหนัก 41 ครั้ง · BCA InBody H20N · CGM 15 วัน (23 ส.ค. – 7 ก.ย.)</p>
+
+  <h2>ตอบคำถามของจิ้น</h2>
+  <ol class="qa">
+    <li><span class="q">ควรได้แคลอรี่ โปรตีน คาร์บ ไขมันเท่าไร · ที่ทำอยู่โอเคไหม</span>โปรตีนดีอยู่แล้ว (เฉลี่ย 81 ก./วัน) จุดที่ควรขยับคือคาร์บ โดยเฉพาะวันเวท · เป้าใหม่: <b>โปรตีนอย่างน้อย 85 ก. ทุกวัน · คาร์บวันพัก 120 ก. · วันเวท 160 ก.</b> (วันเวทเริ่มสัปดาห์ที่ 3) · พลังงานเฉลี่ยตามที่จดจะอยู่ราว 1,310–1,330 kcal ขยับจากช่วง ก.ย.–ต.ค. (~1,240) เล็กน้อย</li>
+    <li><span class="q">ออกกำลังกายเหมาะไหม · เพลีย อยากแป้ง เพราะแป้งน้อยไปไหม</span>ชนิดการออกกำลังกายเหมาะแล้ว · วันเวทได้พลังงานน้อยกว่าวันที่ไม่ได้ออกกำลังกาย (1,068 เทียบ 1,231 kcal ไม่นับวันอด) ความเพลียกับอยากแป้งเข้าได้กับข้อนี้ · สาเหตุอื่นอย่างธาตุเหล็ก ไทรอยด์ วิตามินดี ต้องดูจากผลเลือด</li>
+    <li><span class="q">ขับถ่ายสัมพันธ์กับอะไร · Begin · วันแป้งเยอะ · วันออกกำลังกาย</span>ตัวที่สัมพันธ์ชัดที่สุดคือ <b>คาร์บรวม 2 วันติดกัน</b>: ≥220 ก. วันถัดไปไม่ถ่าย 22% · ต่ำกว่า 180 ก. ไม่ถ่าย 64% · ช่วงที่ทาน Begin วันไม่ถ่ายน้อยลง แต่ช่วงเดียวกันคาร์บก็เพิ่ม จึงยังแยกผลกันไม่ได้ · วันที่ออกกำลังกายไม่ได้ไม่ถ่ายมากกว่าวันอื่น</li>
+    <li><span class="q">โปรแกรมออกกำลังกายเมื่อดูคู่กับ BCA</span>เวททั้งตัว <b>ขั้นต่ำ 2 วัน/สัปดาห์</b> วันที่ 3 เป็นของแถม เน้นสะโพก หลัง ไหล่ · 2 สัปดาห์แรกเบา · ดูผลจากน้ำหนักที่ยกได้กับรอบเอว เพราะ % ไขมันจากเครื่องแกว่งรายวันราว 1 จุด (ภาคผนวก ฉ) · ท่าและเซตอยู่ในภาคผนวก ง</li>
+    <li><span class="q">น้ำหนักที่เหมาะ · อยากตัวเล็กบาง แต่ไม่ป่วย ดูดี แข็งแรง</span>ตอนนี้อยู่ในช่วงสุขภาพดีแล้ว: BMI 19.2 จากน้ำหนักเฉลี่ย 48.0 กก. (เกณฑ์เอเชีย 18.5–22.9 = 46–57 กก. ที่สูง 158) · มวลกล้ามเนื้อลาย 19.7 → 19.8 กก. คงที่ · ไม่ตั้งเป้าให้ % ไขมันต่ำลงจากที่เป็นอยู่บนเครื่องนี้ หุ่นที่กระชับขึ้นมาจากกล้ามเนื้อสะโพก หลัง ไหล่</li>
+    <li><span class="q">Reverse diet ต้อง load carb เยอะไหม · จะล่ำไหม · นานเท่าไร</span>ไม่ต้อง load ทีเดียว · 2 สัปดาห์แรกย้ายคาร์บไปไว้ก่อนและหลังซ้อม สัปดาห์ที่ 3 วันเวทคาร์บ 160 ก. · น้ำหนักขยับขึ้นได้จากน้ำที่กล้ามเก็บพร้อมแป้ง (ข้อมูลของจิ้นเอง: คาร์บเมื่อวานมากขึ้น 100 ก. น้ำหนักวันรุ่งขึ้นสูงขึ้นราว 0.43 กก.) · กติกาที่ตั้งไว้ยอมให้ขึ้นได้ถึง 0.8 กก. ใน 2 สัปดาห์แรก · การสร้างกล้ามในผู้หญิงเป็นไปช้า ไม่ล่ำ · ทบทวนผลที่สัปดาห์ 6 ด้วยกติกาคง/หยุด (ภาคผนวก ค)</li>
+    <li><span class="q">Recovery · หิวผิดปกติ ทำ IF ไม่ได้ · ร่างกายแย่ หรือ metabolism มากขึ้น</span>เข้าได้กับร่างกายขอพลังงานคืนมากกว่าเผาผลาญเร็วขึ้น · ข้อมูลที่เห็น: วันถัดจากอด 24 ชม. ทั้ง 4 ครั้ง คาร์บขึ้นเป็น 132–143 ก. (ปกติ 100) · ช่วงมีประจำเดือนวันที่ 1–5 หิวมากขึ้นเป็นเรื่องปกติ กินตามหิวโดยเริ่มจากโปรตีน</li>
+    <li><span class="q">IF แบบไหนเหมาะ</span>ช่วงนี้อดข้ามคืน 12–14 ชม. · พักการอด 24 ชม. และมื้อเดียวต่อวัน · วันเวทกินภายใน 1–2 ชม. ก่อนหรือหลังซ้อม (ที่ผ่านมายกเวทระหว่างอด 4 ใน 12 ครั้ง)</li>
+    <li><span class="q">ความเครียด กับ cortisol</span>ข้อมูลชุดนี้วัด cortisol ไม่ได้ · ที่เห็นคือวันที่กินมากกว่าปกติ 4 ใน 11 วัน ตรงกับวันที่จดว่าเหนื่อย งานหนัก ป่วย หรือมีงาน OPP · ถ้านาฬิกาเก็บชั่วโมงนอนให้อัตโนมัติ ใช้ดูคู่กันได้</li>
+    <li><span class="q">ผิดทางไหม · ทำไมไม่เห็น progression · ควรพักกี่วัน</span>ทิศทางไม่ผิด 3 เดือนนี้ร่างกายไม่แย่ลงและมวลกล้ามคงที่ · ที่ยังไม่เห็นความก้าวหน้า เข้าได้กับ 3 อย่าง: เวทจริง 12 ครั้งใน 12.6 สัปดาห์ · วันเวทได้พลังงานน้อย · อด 24 ชม. 4 ครั้ง · <b>พัก:</b> เวท 2–3 วัน ไม่ติดกัน · คาร์ดิโอเบา 1–2 วัน · พักเต็ม 1–2 วัน/สัปดาห์</li>
+  </ol>
+
+  <h2>สิ่งที่ทำได้ดีอยู่แล้ว</h2>
+  <div class="box ok">
+    <ul class="t">
+      <li>จดอาหาร 82 จาก 88 วัน — ทำให้ทุกข้อในรายงานนี้คำนวณได้จริง</li>
+      <li>โปรตีนถึง 1.6 ก./กก. 61% ของวัน</li>
+      <li>มวลกล้ามเนื้อลาย 19.7 → 19.8 กก. (ก.ค. → ก.ย.) คงที่</li>
+      <li>15 วันที่ติด CGM ค่าส่วนใหญ่ใกล้ค่าอ้างอิงของคนไม่เป็นเบาหวาน (Shah 2019) รวมถึงวันที่กินแป้ง 212 ก. แบ่ง 3 มื้อ</li>
+    </ul>
+  </div>
+
+  <h2>สัปดาห์นี้ · เลือกเองได้</h2>
+  <ul class="opt">
+    <li><b>ก.</b> เริ่มกินตามชุดวันพักทุกวันตั้งแต่ 12 ต.ค. — วันที่ยกเวท ย้ายคาร์บไปไว้มื้อก่อนและหลังซ้อม</li>
+    <li><b>ข.</b> เลือก 2 วันประจำสำหรับเวท — ถ้า 13–15 ต.ค. เดินทาง เริ่มเวทครั้งแรก 19 ต.ค.</li>
+    <li><b>ค.</b> เริ่มจด "ถ่าย / ไม่ถ่าย" ทุกวัน · ชั่งน้ำหนัก จ. พ. ศ. ตอนเช้า · วัดรอบเอวครั้งแรก</li>
+  </ul>
+
+  <h2>จานตัวอย่าง</h2>
+  <p class="note">ค่าจากตารางคุณค่าอาหารไทย (Thai FCD สถาบันโภชนาการ ม.มหิดล) · น้ำหนักเป็นกรัมของอาหารพร้อมกิน ยกเว้นอกไก่ที่เป็นน้ำหนักดิบ · ผักใบเขียวกินเพิ่มได้ ไม่ได้นับรวม · สลับเมนูได้ ขอให้โปรตีนกับคาร์บรวมใกล้เคียง</p>
+  <div class="tw"><table>
+    <tr><th>วันพัก</th><th class="n">โปรตีน</th><th class="n">คาร์บ</th><th class="n">ไขมัน</th></tr>
+    <tr><td>เช้า: ไข่ต้ม 100 ก. (เนื้อไข่) · นมพร่องมันเนย 200 มล. · กล้วยหอม 100 ก.</td><td class="n">22</td><td class="n">38</td><td class="n">11</td></tr>
+    <tr><td>กลางวัน: ข้าวสวย 150 ก. · อกไก่ไม่มีหนัง 110 ก. · ผัดผัก (น้ำมัน 10 ก.)</td><td class="n">31</td><td class="n">47</td><td class="n">12</td></tr>
+    <tr><td>ว่าง: ฝรั่ง 150 ก. · โยเกิร์ตรสธรรมชาติ 100 ก.</td><td class="n">5</td><td class="n">23</td><td class="n">3</td></tr>
+    <tr><td>เย็น: ข้าวสวย 50 ก. · ปลานิลต้ม 120 ก. · ผัดผัก (น้ำมัน 18 ก.)</td><td class="n">27</td><td class="n">16</td><td class="n">23</td></tr>
+    <tr class="sum"><td>รวม ≈ 1,270 kcal</td><td class="n">85</td><td class="n">123</td><td class="n">49</td></tr>
+  </table></div>
+  <div class="tw"><table>
+    <tr><th>วันเวท (ชุดเต็ม เริ่มสัปดาห์ 3)</th><th class="n">โปรตีน</th><th class="n">คาร์บ</th><th class="n">ไขมัน</th></tr>
+    <tr><td>เช้า: ไข่ต้ม 100 ก. · นมพร่องมันเนย 200 มล. · กล้วยหอม 100 ก.</td><td class="n">22</td><td class="n">38</td><td class="n">11</td></tr>
+    <tr><td>ก่อนซ้อม 1–2 ชม.: กล้วยหอม 100 ก. · โยเกิร์ตรสธรรมชาติ 100 ก.</td><td class="n">6</td><td class="n">34</td><td class="n">3</td></tr>
+    <tr><td>หลังซ้อม/กลางวัน: ข้าวสวย 190 ก. · อกไก่ไม่มีหนัง 120 ก. · ผัดผัก (น้ำมัน 12 ก.)</td><td class="n">34</td><td class="n">59</td><td class="n">14</td></tr>
+    <tr><td>เย็น: ข้าวสวย 90 ก. · ปลานิลต้ม 120 ก. · ผัดผัก (น้ำมัน 12 ก.)</td><td class="n">28</td><td class="n">28</td><td class="n">17</td></tr>
+    <tr class="sum"><td>รวม ≈ 1,405 kcal</td><td class="n">89</td><td class="n">159</td><td class="n">46</td></tr>
+  </table></div>
+
+  <h2>คุยกับหมอเมื่อมีข้อใดข้อหนึ่ง</h2>
+  <div class="box warn">
+    <ul class="t">
+      <li>อารมณ์ดิ่งต่อเนื่องเกิน 2 สัปดาห์ หรือกระทบการนอนและงาน</li>
+      <li>ประจำเดือนขาด มาห่างออก หรือรอบสั้นลงต่อเนื่อง</li>
+      <li>หน้ามืดหรือเป็นลม</li>
+      <li>รู้สึกผิดหลังกินเป็นประจำ ต้องออกกำลังกายเพื่อชดเชย หรือคิดเรื่องอาหารและน้ำหนักทั้งวัน</li>
+      <li>นอนไม่หลับหรือนอนมากผิดปกติต่อเนื่อง · หมดความสนใจสิ่งที่เคยชอบ</li>
+      <li>ถ้ามีความคิดทำร้ายตัวเอง พบแพทย์ทันที หรือโทรสายด่วนสุขภาพจิต <b>1323</b></li>
+    </ul>
+  </div>
+
+  <h2>คำถามถึงจิ้น</h2>
+  <ul class="t">
+    <li>13–15 ต.ค. เดินทางไหม</li>
+    <li>ปกติกินมื้อแรกกี่โมง</li>
+    <li>หลัง 27 ก.ย. ยังทาน Begin อยู่ไหม · Begin ถูกนับเป็นคาร์บในแอปด้วยไหม</li>
+    <li>ตอนนี้ทานยาหรืออาหารเสริมอะไรบ้าง รวมยาที่ใช้ช่วงไข้หวัด 3 ต.ค.</li>
+    <li>ใช้ Lactulose บ่อยแค่ไหน · "Fiber Powder" วันที่ 17 ก.ย. คือตัวไหน</li>
+    <li>อารมณ์ดิ่งเป็นมานานเกิน 2 สัปดาห์หรือยัง กระทบการนอนหรืองานไหม</li>
+  </ul>
+
+  <h2>ภาคผนวก</h2>
+
+  <details><summary>ก. ที่มาข้อมูลและข้อจำกัด</summary>
+    <ul class="t">
+      <li>อาหารเป็นค่าที่จดเอง งานวิจัยพบว่าคนส่วนใหญ่จดต่ำกว่าที่กินจริง ของจิ้นไม่รู้ว่าต่ำไปเท่าไร อาจ 0–30% · ตัวเลขทั้งหมดจึงเป็น "ตามที่จด"</li>
+      <li>ใยอาหารและน้ำไม่ได้จด · วันที่ไม่ได้จดเรื่องขับถ่ายแยกไม่ออกว่าถ่ายหรือไม่ จึงวิเคราะห์ขับถ่ายเฉพาะ 28 ก.ค. – 30 ก.ย. (ต.ค. ไม่มีโน้ตเลย) และตัดวันที่ใช้ Lactulose (22 ส.ค.) ออก</li>
+      <li>กลุ่มวันที่ใช้เทียบมีขนาดเล็ก (n ระบุทุกข้อ) ใช้ดูทิศทาง</li>
+      <li>รีวิวโดย AI (Uriel ตรวจหลักฐาน · Lucifer สอบทาน · Michael เคาะ) และวงบุคลิกสมมติ 2 วงจาก Agent Persona DB ซึ่งเป็นเสียงจำลอง ยังไม่มีนักกำหนดอาหาร โค้ช หรือแพทย์ตัวจริงตรวจ</li>
+    </ul>
+  </details>
+
+  <details><summary>ข. การกินจริง 3 เดือน</summary>
+    <div class="tw"><table>
+      <tr><th>เดือน</th><th class="n">kcal</th><th class="n">โปรตีน</th><th class="n">คาร์บ</th><th class="n">ไขมัน</th></tr>
+      <tr><td>ก.ค. (14 วัน)</td><td class="n">1,008</td><td class="n">76</td><td class="n">75</td><td class="n">42</td></tr>
+      <tr><td>ส.ค.</td><td class="n">1,178</td><td class="n">80</td><td class="n">102</td><td class="n">47</td></tr>
+      <tr><td>ก.ย.</td><td class="n">1,246</td><td class="n">85</td><td class="n">106</td><td class="n">51</td></tr>
+      <tr><td>ต.ค. (8 วัน)</td><td class="n">1,233</td><td class="n">83</td><td class="n">109</td><td class="n">48</td></tr>
+    </table></div>
+    <ul class="t">
+      <li>เฉลี่ย 1,179 kcal · โปรตีน 81 ก. (1.69 ก./กก.) · คาร์บ 100 ก. · ไขมัน 48 ก.</li>
+      <li>วันเวท 1,068 kcal เทียบวันที่ไม่ได้ออกกำลังกาย 1,231 kcal (ไม่นับวันอด · n 9 กับ 57)</li>
+      <li>น้ำหนัก 47.3–48.8 กก. ทั้ง 3 เดือน · พลังงานที่จดใกล้ค่า BMR ที่เครื่องคำนวณ (1,178) แต่น้ำหนักแทบไม่ขยับ เข้าได้กับ: จดต่ำกว่าจริง และ/หรือ ร่างกายปรับตัวกับการกินน้อยต่อเนื่อง</li>
+    </ul>
+    <h3>อด 24 ชม. 4 ครั้ง</h3>
+    <div class="tw"><table>
+      <tr><th>ช่วงอด</th><th class="n">วันถัดไป kcal</th><th class="n">วันถัดไป คาร์บ</th><th class="n">ช่วงอด+วันถัดไป เทียบค่าเฉลี่ย</th></tr>
+      <tr><td>24 ก.ค.</td><td class="n">1,223</td><td class="n">132</td><td class="n">−412</td></tr>
+      <tr><td>31 ก.ค.</td><td class="n">1,317</td><td class="n">143</td><td class="n">−41</td></tr>
+      <tr><td>6–7 ส.ค.</td><td class="n">1,592</td><td class="n">135</td><td class="n">−370</td></tr>
+      <tr><td>27–28 ส.ค.</td><td class="n">1,226</td><td class="n">132</td><td class="n">−277</td></tr>
+    </table></div>
+    <p class="note">ครั้ง 6–7 ส.ค. และ 27–28 ส.ค. นับช่วงอด 2 วัน + วันถัดไป เทียบค่าเฉลี่ย 3 วัน · รวมแล้วยังต่ำกว่าค่าเฉลี่ยทุกครั้ง · ที่เกิดซ้ำคือคาร์บวันถัดไปขึ้นทุกครั้ง · ยกเวทระหว่างอด 4 ใน 12 ครั้ง</p>
+  </details>
+
+  <details><summary>ค. ชุดกรัม และกติกาคง/หยุด</summary>
+    <div class="tw"><table>
+      <tr><th>ชุด</th><th class="n">โปรตีน</th><th class="n">คาร์บ</th><th class="n">ไขมัน</th><th class="n">kcal</th></tr>
+      <tr><td>วันพัก</td><td class="n">85</td><td class="n">120</td><td class="n">50</td><td class="n">1,270</td></tr>
+      <tr><td>วันเวท (ชุดเต็ม)</td><td class="n">90</td><td class="n">160</td><td class="n">45</td><td class="n">1,405</td></tr>
+    </table></div>
+    <ul class="t">
+      <li>คิด 4/4/9 kcal ต่อกรัม · เวท 2 วัน/สัปดาห์ เฉลี่ย ~1,310 · 3 วัน ~1,330 kcal</li>
+      <li>โปรตีน 85 ก. = 1.77 ก./กก. อยู่ในช่วง 1.4–2.0 ก./กก. ของ ISSN (Jäger 2017) · คาร์บวันเวท 160 ก. ≈ 3.3 ก./กก. ขอบล่างของช่วงสำหรับการออกกำลังเบา (ACSM/AND/DC 2016)</li>
+      <li><b>สัปดาห์ 1–2 (12–25 ต.ค.):</b> ทุกวันใช้ชุดวันพัก วันเวทย้ายคาร์บไปรอบซ้อม · <b>สัปดาห์ 3 เป็นต้นไป:</b> วันเวทใช้ชุดเต็ม — ทยอยเพราะใยอาหารที่เพิ่มพร้อมกันทำให้ท้องอืดได้</li>
+    </ul>
+    <p><b>กติกาคง/หยุด</b> <span class="label">ทีมตั้งเอง ไม่ใช่เกณฑ์การแพทย์หรืองานวิจัย</span></p>
+    <ul class="t">
+      <li>ชั่งเช้า จ. พ. ศ. ดูค่าเฉลี่ยรายสัปดาห์ · ฐาน 48.0 กก. · วัดรอบเอวครั้งแรกสัปดาห์นี้</li>
+      <li>สัปดาห์ 1–2 ขึ้นได้ถึง +0.8 กก. ไม่ต้องปรับ</li>
+      <li>ตั้งแต่สัปดาห์ 3 ถ้าค่าเฉลี่ยขึ้นเกิน 0.25 กก./สัปดาห์ 2 สัปดาห์ติด <b>และ</b> รอบเอวเพิ่ม 1 ซม. ขึ้นไปใน 2 สัปดาห์ (วัดซ้ำ 2 ครั้ง) → ลดไขมันวันพัก 10 ก. (เหลือ 40 ก. ≈1,180 kcal) แล้วคงไว้ 2 สัปดาห์ · คงคาร์บไว้ เพราะคาร์บรวม 2 วันที่ต่ำลงสัมพันธ์กับวันไม่ถ่าย (ภาคผนวก จ)</li>
+      <li>อยู่ที่เป้าครบ 3 สัปดาห์ น้ำหนักนิ่งหรือลง แต่ยังเพลีย → เพิ่มคาร์บวันเวท 20 ก.</li>
+      <li>รวมขึ้นเกิน 1.5 กก. จากฐาน (เกิน 49.5 กก.) ภายใน 12 สัปดาห์ → หยุดเพิ่มแล้วทบทวน</li>
+      <li>ถ้ามีข้อใดในกล่อง "คุยกับหมอ" ไปหาหมอก่อน ไม่ว่าตัวเลขเป็นอย่างไร</li>
+    </ul>
+  </details>
+
+  <details><summary>ง. โปรแกรมเวท</summary>
+    <ul class="t">
+      <li><b>สัปดาห์ 1–2:</b> ท่าละ 2 เซต เหลือแรงอีก 3 ครั้ง เพื่อเรียนท่า · <b>ตั้งแต่สัปดาห์ 3:</b> 3 เซต เหลือแรง 1–3 ครั้ง · ทำครบบนสุดของช่วง 2 ครั้งติด → เพิ่มน้ำหนัก</li>
+      <li>วอร์มอัป 5–8 นาทีก่อนเริ่ม · คาร์ดิโอหลังเวทเดินเบา 10–20 นาทีพอ</li>
+      <li>สลับ A กับ B · เวทไม่ติดกัน 2 วัน</li>
+    </ul>
+    <div class="tw"><table>
+      <tr><th>เวท A</th><th>ครั้ง</th><th>เวท B</th><th>ครั้ง</th></tr>
+      <tr><td>สควอทถือดัมเบลหน้าอก (goblet squat)</td><td>8–12</td><td>ก้าวถอยหลังย่อ (reverse lunge) หรือก้าวขึ้นกล่อง (step-up)</td><td>8–10 /ข้าง</td></tr>
+      <tr><td>โน้มตัวถือดัมเบล ขาเกือบตรง (Romanian deadlift)</td><td>8–10</td><td>ยกสะโพกพิงม้านั่ง (hip thrust)</td><td>10–12</td></tr>
+      <tr><td>ดันพื้น หรือดันดัมเบลนอน</td><td>8–12</td><td>ดันดัมเบลเหนือศีรษะ</td><td>8–10</td></tr>
+      <tr><td>ดึงดัมเบลแขนเดียว (row)</td><td>10–12</td><td>ดึงสายเคเบิลลงหน้าอก (lat pulldown)</td><td>8–12</td></tr>
+      <tr><td>แพลงก์</td><td>30–45 วิ</td><td>นอนหงายยกแขนขาสลับ (dead bug)</td><td>8 /ข้าง</td></tr>
+    </table></div>
+    <p class="note">ท่าโน้มตัวกับยกสะโพก ถ้ามีคนดูท่าให้ 1–2 ครั้งแรกจะดี</p>
+    <h3>บันทึกการยก (แทนการจดคะแนนความเครียดรายวัน)</h3>
+    <div class="tw"><table><tr><th>วันที่</th><th>ท่า</th><th>น้ำหนัก</th><th>ครั้ง × เซต</th><th>เหลือแรง</th></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr></table></div>
+    <ul class="t">
+      <li><b>สัปดาห์งาน OPP / เดินทาง:</b> เวท 2 ครั้ง ครั้งละ 30 นาที ใช้น้ำหนักตัวหรือฟิตเนสโรงแรม · มีโปรตีนทุกมื้อ · พกของว่าง · วันมีงานไม่ต้องจดอาหาร</li>
+      <li><b>หลังป่วย:</b> มีไข้หรือมีอาการต่ำกว่าคอ (ไอลงอก ปวดเมื่อยทั้งตัว) ให้พัก · กลับมาที่ราว 60% ของน้ำหนักเดิม</li>
+      <li><b>สัปดาห์เบา:</b> สัปดาห์ที่ 9 ลดเหลือครึ่งหนึ่ง หรือเร็วกว่านั้นถ้าป่วยหรือแรงตก 2 ครั้งติด</li>
+      <li>สิ่งที่จด: อาหาร (ทำอยู่แล้ว) · บันทึกการยก · ถ่าย/ไม่ถ่ายทุกวัน · ทาน Begin หรือไม่ · รอบเอวทุก 2 สัปดาห์ · BCA เดือนละ 2 ครั้งสภาพเดียวกัน · ชั่วโมงนอนเป็นตัวเลือก · ทบทวนสัปดาห์ 6 ว่าจะเลิกจดละเอียดไหม</li>
+    </ul>
+  </details>
+
+  <details><summary>จ. ขับถ่าย</summary>
+    <div class="tw"><table>
+      <tr><th>คาร์บของเมื่อวาน</th><th class="n">วันไม่ถ่าย</th></tr>
+      <tr><td>22–87 ก.</td><td class="n">67% (14/21)</td></tr>
+      <tr><td>88–111 ก.</td><td class="n">38% (8/21)</td></tr>
+      <tr><td>111–212 ก.</td><td class="n">33% (7/21)</td></tr>
+    </table></div>
+    <div class="tw"><table>
+      <tr><th>คาร์บรวม 2 วันก่อนหน้า</th><th class="n">วันไม่ถ่าย</th></tr>
+      <tr><td>ต่ำกว่า 180 ก.</td><td class="n">64% (14/22)</td></tr>
+      <tr><td>180–219 ก.</td><td class="n">59% (10/17)</td></tr>
+      <tr><td>220 ก. ขึ้นไป</td><td class="n">22% (5/23)</td></tr>
+    </table></div>
+    <ul class="t">
+      <li>ช่วงที่ทาน Begin (5–30 ก.ย.) วันไม่ถ่าย 35% (9/26) เทียบก่อนหน้า 53% (20/38) · ช่วงเดียวกันคาร์บก็เพิ่ม จึงแยกไม่ได้ว่าเป็นผลของอะไร · Begin ถูกจดในโน้ต 12 วัน · ข้อมูลส่วนนี้เป็นของจิ้นคนเดียว ไม่ใช้เป็นรีวิวสินค้า</li>
+      <li>เป็นไปได้ว่าใยอาหารที่มากับข้าว ผลไม้ ถั่ว มีส่วน แต่ใยอาหารไม่ได้จด จึงยังเป็นสมมติฐาน</li>
+      <li>หน้าเว็บระบุใยอาหารราว 4 ก./ซอง และคำเตือนสำหรับผู้เป็นนิ่ว · ยังไม่ได้เทียบกับฉลากบนกล่อง · เป้าใยอาหาร 25 ก./วัน ส่วนที่เหลือมาจากอาหาร · ดื่มน้ำตาม</li>
+            <li>วันที่ออกกำลังกาย ไม่ถ่าย 35% (7/20) เทียบวันอื่น 50% (22/44) · วันรุ่งขึ้น 42% (8/19) เทียบ 47% (21/45) → ไม่เห็นว่าการออกกำลังกายทำให้ไม่ถ่ายมากขึ้น</li>
+    </ul>
+  </details>
+
+  <details><summary>ฉ. BCA</summary>
+    <div class="tw"><table>
+      <tr><th>เดือน (ค่าเฉลี่ย)</th><th class="n">น้ำหนัก</th><th class="n">ไขมัน %</th><th class="n">ไขมัน กก.</th><th class="n">ไม่ใช่ไขมัน กก.</th></tr>
+      <tr><td>ก.ค. (9 ครั้ง)</td><td class="n">48.4</td><td class="n">24.1</td><td class="n">11.7</td><td class="n">36.7</td></tr>
+      <tr><td>ส.ค.</td><td class="n">48.0</td><td class="n">23.3</td><td class="n">11.2</td><td class="n">36.8</td></tr>
+      <tr><td>ก.ย.</td><td class="n">47.9</td><td class="n">23.1</td><td class="n">11.1</td><td class="n">36.8</td></tr>
+    </table></div>
+    <ul class="t">
+      <li>% ไขมันแกว่งระหว่างวันเฉลี่ยราว 1.1 จุด · แนวโน้มไขมัน −0.6 ± 0.4 กก. ใน 83 วัน ยังแยกจากความแกว่งไม่ได้ → อ่านว่า "ไม่แย่ลง"</li>
+      <li>ไขมันช่องท้อง 4 กับ 5 สลับกันตามการปัดเศษ</li>
+      <li>มวลกล้ามเนื้อลาย 19.7 → 19.8 กก.</li>
+      <li>วัดในสภาพเดียวกันทุกครั้ง: เช้า หลังเข้าห้องน้ำ ก่อนกินและดื่ม</li>
+    </ul>
+  </details>
+
+  <details><summary>ช. CGM 15 วัน</summary>
+    <ul class="t">
+      <li>เฉลี่ย 106 mg/dL · ความแกว่ง (CV) 16% · อยู่ในช่วง 70–140 นาน 95% · ไม่มีค่าต่ำกว่า 70 · ค่าอ้างอิงคนไม่เป็นเบาหวาน (Shah 2019): เฉลี่ย 98–99 · CV 17 ± 3% · 70–140 ราว 96% · เซนเซอร์ต่างยี่ห้อ เทียบได้คร่าว ๆ</li>
+      <li>ค่าสูงสุด 207 (28 ส.ค. หลังมื้อแรกที่จบการอด 24 ชม.) · 178 (25 ส.ค.) · 176 (1 ก.ย.) · งานของ Hengist/Hall (preprint) พบว่ากินมื้อเดิมซ้ำ น้ำตาลยังขึ้นไม่เท่ากัน ค่าสูงครั้งเดียวจึงยังสรุปเป็นกฎไม่ได้</li>
+      <li>31 ส.ค. กิน 2,107 kcal คาร์บ 212 ก. แบ่ง 3 มื้อ ค่าสูงสุดแต่ละมื้อ 149 / 131 / 151</li>
+      <li>น้ำตาลเริ่มขึ้นครั้งแรกของวัน ค่ากลาง 10:09</li>
+      <li>ค่ากลางคืน (ตี 3–6) ขยับจาก 78–98 (24–28 ส.ค.) เป็น 97–106 (29 ส.ค. – 7 ก.ย.) · ข้อมูลชุดนี้แยกสาเหตุไม่ได้ (รอบเดือน ความเครียด หรือเซนเซอร์)</li>
+    </ul>
+  </details>
+
+  <details><summary>ซ. เรื่องที่ควรคุยกับหมอ</summary>
+    <ul class="t">
+      <li>รอบเดือนสั้นลง 27 → 26 → 25 วัน (3 รอบ) · อายุ 41 กับอาการเพลีย อารมณ์ดิ่ง การนอนเปลี่ยน ควรเล่าเรื่องช่วงก่อนหมดประจำเดือนให้หมอฟัง · รอบเดือนสม่ำเสมอยังไม่ได้บอกว่าไข่ตกทุกรอบ (De Souza 2010)</li>
+      <li>ตรวจเลือด: ให้หมอเลือกชุดตรวจ · ทีมเสนอให้หมอพิจารณา CBC · ferritin · TSH/FT4 · วิตามินดี · B12 · น้ำตาล/HbA1c · ไขมันในเลือด</li>
+      <li>เพิ่งเป็นไข้ 3 ต.ค. ferritin สูงขึ้นได้ตอนร่างกายอักเสบ → ตรวจหลังหายป่วยสักระยะ หรือตรวจ CRP คู่กัน</li>
+      <li>ถ้ากินวิตามินที่มีไบโอติน แจ้งหมอก่อนตรวจไทรอยด์ · งดอาหารก่อนตรวจน้ำตาลและไขมันตามที่แล็บกำหนด</li>
+      <li>การใช้ Lactulose ถ้าต้องใช้บ่อย</li>
+    </ul>
+  </details>
+
+  <details><summary>ฌ. เรื่องอาหารกับใจ</summary>
+    <p>3 เดือนที่ผ่านมามีช่วงกินน้อยมาก (560–723 kcal) สลับกับวันที่ร่างกายขอพลังงานคืน · ถ้าเรื่องกินเริ่มกินพื้นที่ในหัวมาก หรือกินแล้วรู้สึกผิดบ่อย ลองคุยกับนักกำหนดอาหารหรือหมอ · จิ้นเป็นเจ้าของข้อมูลและการตัดสินใจทั้งหมดในรายงานนี้ ต้นเป็นฝ่ายช่วย เช่น เตรียมของว่างวันที่มีงาน</p>
+  </details>
+
+  <details><summary>อ้างอิง</summary>
+    <ul class="t note">
+      <li>Jäger R, et al. ISSN Position Stand: Protein and exercise. JISSN 2017</li>
+      <li>Thomas DT, et al. ACSM/AND/DC Joint Position: Nutrition and Athletic Performance. 2016</li>
+      <li>Shah VN, et al. CGM profiles in healthy non-diabetic participants. JCEM 2019</li>
+      <li>Hengist A … Hall KD 2023 — ความแปรปรวนของน้ำตาลหลังมื้อเดิม (preprint, medRxiv · PMC10371100)</li>
+      <li>De Souza MJ, et al. Hum Reprod 2010 — ความผิดปกติของรอบเดือนแบบไม่เห็นชัดในผู้หญิงที่ออกกำลังกาย</li>
+      <li>Mountjoy M, et al. IOC Consensus on REDs 2023</li>
+      <li>WHO Expert Consultation. BMI for Asian populations. Lancet 2004</li>
+      <li>Thai FCD — ตารางคุณค่าอาหารไทย สถาบันโภชนาการ ม.มหิดล (รหัส A11 · F173 · H18 · J54 · E8 · E39 · G97 · J61)</li>
+      <li>กติกาคง/หยุดในภาคผนวก ค เป็นตัวเลขที่ทีมตั้งเอง</li>
+    </ul>
+  </details>
+
+  <p class="foot">เป็นคำแนะนำด้านสุขภาพทั่วไปจากข้อมูลที่จดเอง ไม่ใช่การวินิจฉัย · อาหารเสริมและยาให้เภสัชกรกับแพทย์ตรวจคู่กัน</p>
+</div>
+<script>
+(function(){var r=document.documentElement,b=document.querySelectorAll('.theme button');
+function a(t){if(t==='system')r.removeAttribute('data-theme');else r.setAttribute('data-theme',t);b.forEach(function(x){x.setAttribute('aria-pressed',x.dataset.t===t?'true':'false')});try{localStorage.setItem('jin3m',t)}catch(e){}}
+var s='system';try{s=localStorage.getItem('jin3m')||'system'}catch(e){}a(s);b.forEach(function(x){x.addEventListener('click',function(){a(x.dataset.t)})});})();
+</script>
+</body>
+</html>
