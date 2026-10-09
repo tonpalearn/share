@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="th" class="nojs"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>UP · Growth Machine → Action Plan</title>
+<meta name="description" content="5 ผัง: ยอดขายตก/ดี · Growth Machine · เทียบ UP Wellness · Action Plan 30 วัน — ใช้ภายในทีม">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Growth Machine boards — shared style (canvas 2400×1800 CSS px · render ×3.2 = 7680×5760) */
+:root{
+  --red:#C2372C; --red-tint:#FCECEA; --red-line:#F2C4BF;
+  --blue:#1D5BA8; --blue-tint:#EAF2FC; --blue-line:#BFD5F0;
+  --green:#1F7F55; --green-tint:#E6F4EC; --green-line:#B9DFCB;
+  --amber:#A8650F; --amber-tint:#FDF3E1; --amber-line:#F1D3A0;
+  --plum:#7A3E8C; --plum-tint:#F4EAF7;
+  --ink:#1D232B; --muted:#56606C; --line:#DDE2E8;
+  --bg:#F7F6F2; --card:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg)}
+body{width:2400px;height:1800px;overflow:hidden;font-family:'IBM Plex Sans Thai',sans-serif;color:var(--ink);
+  font-size:23px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.board{position:relative;width:2400px;height:1800px;padding:44px 56px 40px}
+.it{white-space:nowrap}
+.sep{color:#A5ADB7;margin:0 .08em}
+b,strong{font-weight:700}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:center;gap:28px;margin-bottom:22px}
+.title{font-family:'Prompt',sans-serif;font-weight:700;font-size:68px;line-height:1.1;letter-spacing:-.01em}
+.title.red{color:var(--red)} .title.blue{color:var(--blue)} .title.ink{color:var(--ink)}
+.vbar{width:6px;height:78px;border-radius:3px;background:var(--blue)}
+.tag{position:absolute;top:46px;right:56px;font-family:'Prompt';font-weight:600;font-size:22px;padding:8px 20px;border-radius:999px;
+  background:var(--green-tint);color:var(--green);border:2px solid var(--green-line)}
+.tag.src{left:56px;right:auto;background:#EEF0F3;color:var(--muted);border-color:var(--line)}
+
+/* layout */
+.cols{display:grid;gap:28px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:20px 24px}
+.card.red{border-color:var(--red-line)} .card.blue{border-color:var(--blue-line)}
+.card.green{border-color:var(--green-line);background:#FBFEFC} .card.amber{border-color:var(--amber-line);background:#FFFDF8}
+h2{font-family:'Prompt';font-weight:700;font-size:38px;line-height:1.2;margin-bottom:10px}
+h3{font-family:'Prompt';font-weight:600;font-size:28px;line-height:1.3;margin-bottom:8px}
+h2.red,h3.red{color:var(--red)} h2.blue,h3.blue{color:var(--blue)} h2.green,h3.green{color:var(--green)} h3.amber{color:var(--amber)}
+.note{font-size:21px;color:var(--muted)}
+.redtxt{color:var(--red)} .bluetxt{color:var(--blue)} .greentxt{color:var(--green)} .ambertxt{color:var(--amber)}
+
+/* numbered rows */
+.row{display:flex;gap:14px;align-items:flex-start;padding:7px 0;border-top:1.5px dashed var(--line)}
+.row:first-of-type{border-top:0}
+.num{flex:0 0 auto;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Prompt';font-weight:700;font-size:22px;color:#fff;background:var(--ink);margin-top:2px}
+.num.red{background:var(--red)} .num.blue{background:var(--blue)} .num.green{background:var(--green)} .num.amber{background:var(--amber)}
+.body{flex:1 1 auto;min-width:0}
+.q{font-weight:700;font-size:24px}
+.fix{margin-top:4px}
+.fix::before{content:'→ ';color:var(--green);font-weight:700}
+.chip{display:inline-block;font-family:'Prompt';font-weight:600;font-size:20px;line-height:1.3;padding:3px 14px;border-radius:999px;
+  background:#EEF0F3;color:var(--ink);white-space:nowrap;vertical-align:1px}
+.chip.red{background:var(--red-tint);color:var(--red)} .chip.blue{background:var(--blue-tint);color:var(--blue)}
+.chip.green{background:var(--green-tint);color:var(--green)} .chip.amber{background:var(--amber-tint);color:var(--amber)}
+.chip.plum{background:var(--plum-tint);color:var(--plum)}
+
+/* formula / flow */
+.formula{font-family:'Prompt';font-weight:700;font-size:34px;line-height:1.3;text-align:center}
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:12px}
+.flow .step{font-family:'Prompt';font-weight:600;font-size:24px;padding:8px 18px;border-radius:14px;background:var(--card);
+  border:2px solid var(--line);white-space:nowrap}
+.flow .arr{font-family:'Prompt';font-weight:700;color:var(--green);font-size:28px}
+.flow.v{flex-direction:column;align-items:stretch;gap:6px}
+.flow.v .arr{text-align:center;line-height:1}
+
+/* flags */
+.flag{font-size:19px;font-weight:600;white-space:nowrap}
+.ok{color:var(--green)} .cond{color:var(--amber)} .no{color:var(--red)}
+
+/* banner */
+.banner{border-radius:22px;padding:18px 28px;text-align:center;font-family:'Prompt';font-weight:600;font-size:32px}
+.banner.green{background:var(--green);color:#fff}
+.banner.ink{background:var(--ink);color:#fff}
+
+/* debug overflow outline (add ?debug to url) */
+.overflow{outline:4px solid magenta !important}
+
+/* ป้ายกฎ: ทำได้ / มีเงื่อนไข / ห้าม */
+.f{display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Sans Thai';font-size:19px;font-weight:600;line-height:1.35;padding:2px 12px;border-radius:999px;white-space:nowrap;vertical-align:1px}
+.f::before{content:'';width:10px;height:10px;border-radius:50%;background:currentColor;flex:0 0 auto}
+.f.ok{background:var(--green-tint);color:var(--green)} .f.cond{background:var(--amber-tint);color:var(--amber)} .f.no{background:var(--red-tint);color:var(--red)}
+.legend{position:absolute;top:50px;right:56px;display:flex;gap:10px;align-items:center}
+.legend .lt{font-size:19px;color:var(--muted);margin-right:2px}
+.stamp{display:inline-block;font-family:'Prompt';font-weight:700;font-size:20px;color:var(--red);border:2.5px solid var(--red);border-radius:10px;padding:2px 12px;transform:rotate(-2deg)}
+.subtitle{text-align:center;font-size:24px;color:var(--muted);margin:-12px 0 18px}
+.subtitle b{color:var(--ink)}
+
+#s1 .main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px}
+#s1 .stack{display:flex;flex-direction:column;gap:20px}
+#s1 .cause .body{display:grid;grid-template-columns:330px minmax(0,1fr);gap:14px;align-items:baseline}
+#s1 .cause .q{font-size:24px}
+#s1 .formula-card{display:flex;align-items:center;gap:26px;justify-content:center}
+#s1 .formula-card .map{font-size:22px;line-height:1.55}
+#s1 .chk .body{display:grid;grid-template-columns:300px minmax(0,1fr);gap:14px;align-items:baseline}
+#s1 .chk .fix{grid-column:1 / -1;margin-top:0}
+#s1 .sub2{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:18px}
+#s1 .scale .card{padding:14px 20px}
+#s1 .scale h3{font-size:26px;margin-bottom:2px}
+#s1 .scale .note{margin-top:2px}
+#s1 .bottom{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:20px}
+#s1 .summary{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:18px;background:var(--ink);border-radius:22px;padding:14px 24px}
+#s1 .summary .lab{font-family:'Prompt';font-weight:600;font-size:28px;color:#fff;margin-right:6px}
+#s1 .summary .step{background:#fff;border:0}
+#s1 .summary .arr{color:#7FD3A8}
+#s1 .engine .step{text-align:left;font-size:23px;display:flex;justify-content:space-between;gap:12px}
+#s1 .engine .step span{font-family:'IBM Plex Sans Thai';font-weight:500;color:var(--muted)}
+#s1 .outcome{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:baseline;margin-top:6px}
+#s1 .warn2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:18px;align-content:start}
+#s1 .warn2 h3{grid-column:1 / -1}
+#s1 .warn2 .row:nth-of-type(2){border-top:0}
+#s2{--c1:var(--plum);--c1t:var(--plum-tint);--c2:var(--blue);--c2t:var(--blue-tint);--c3:var(--green);--c3t:var(--green-tint)}
+#s2 .head{text-align:center;margin-bottom:18px}
+#s2 .dept{display:inline-block;font-family:'Prompt';font-weight:700;font-size:62px;line-height:1.15;padding:6px 56px;border:4px solid var(--ink);border-radius:999px}
+#s2 .gm{font-family:'Prompt';font-weight:700;font-size:34px;margin-top:8px;color:var(--muted);letter-spacing:.02em}
+#s2 .engine{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px}
+#s2 .eng{font-family:'Prompt';font-weight:700;font-size:36px;padding:12px 30px;border-radius:20px;color:#fff;white-space:nowrap}
+#s2 .eng.c1{background:var(--c1)}
+#s2 .eng.c2{background:var(--c2)}
+#s2 .eng.c3{background:var(--c3)}
+#s2 .eng.rev{background:var(--ink)}
+#s2 .earr{font-family:'Prompt';font-weight:700;font-size:40px;color:var(--muted)}
+#s2 .circ{width:132px;height:132px;border-radius:50%;border:4px solid var(--blue);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Prompt';font-weight:700;color:var(--blue);text-align:center;line-height:1.1;background:#fff}
+#s2 .circ .big{font-size:52px}
+#s2 .circ .sm{font-size:18px;font-weight:600}
+#s2 .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:18px}
+#s2 .metric{display:flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--red-line);border-radius:18px;padding:12px 20px}
+#s2 .metric .k{font-family:'Prompt';font-weight:700;font-size:34px;color:var(--red);min-width:92px}
+#s2 .metric .d{font-size:24px;line-height:1.4}
+#s2 .metric .own{font-weight:600}
+#s2 .cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+#s2 .col{background:#fff;border:2px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+#s2 .col .hd{padding:14px 24px;color:#fff}
+#s2 .col .hd .n{font-family:'Prompt';font-weight:700;font-size:36px;line-height:1.2}
+#s2 .col .hd .nick{font-family:'Prompt';font-weight:500;font-size:22px;opacity:.95}
+#s2 .col.c1{border-color:#DCC3E4}
+#s2 .col.c1 .hd{background:var(--c1)}
+#s2 .col.c2{border-color:var(--blue-line)}
+#s2 .col.c2 .hd{background:var(--c2)}
+#s2 .col.c3{border-color:var(--green-line)}
+#s2 .col.c3 .hd{background:var(--c3)}
+#s2 .col .bd{padding:14px 24px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+#s2 .lab{font-family:'Prompt';font-weight:600;font-size:25px;color:var(--muted);margin-bottom:2px}
+#s2 .lab .no{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;align-items:center;justify-content:center;font-size:17px;margin-right:8px;vertical-align:2px}
+#s2 .duty{display:flex;flex-wrap:wrap;gap:8px}
+#s2 .duty .chip{font-size:24px;background:#F1F3F5}
+#s2 .c1 .duty .chip{background:var(--c1t);color:var(--c1)}
+#s2 .c2 .duty .chip{background:var(--c2t);color:var(--c2)}
+#s2 .c3 .duty .chip{background:var(--c3t);color:var(--c3)}
+#s2 .out{font-family:'Prompt';font-weight:600;font-size:30px}
+#s2 .mission{font-family:'Prompt';font-weight:600;font-size:27px;padding:6px 16px;border-radius:12px;background:#F4F5F7;display:inline-block}
+#s2 .role{padding:7px 0;border-top:1.5px dashed var(--line)}
+#s2 .role:first-child{border-top:0;padding-top:2px}
+#s2 .role .rn{font-weight:700;font-size:27px}
+#s2 .role.lead .rn{font-family:'Prompt';font-weight:700}
+#s2 .role .rd{font-size:24px;color:#46505B}
+#s2 .ai{margin-top:auto;border-radius:16px;padding:10px 16px;background:var(--red-tint);border:2px dashed var(--red-line)}
+#s2 .ai .t{font-family:'Prompt';font-weight:600;font-size:25px;color:var(--red)}
+#s2 .ai .x{font-size:25px}
+#s2 .foot{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:18px}
+#s2 .strike{text-decoration:line-through;opacity:.7}
+#s2 .role{padding:11px 0}
+#s2 .col .bd{gap:20px;padding:18px 26px 22px}
+#s2 .engine{margin:10px 0 26px}
+#s2 .metrics{margin-bottom:26px}
+#s2 .head{margin-bottom:24px}
+#s3{font-size:22px}
+#s3 .main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px}
+#s3 .stack{display:flex;flex-direction:column;gap:16px}
+#s3 .cause .body{display:grid;grid-template-columns:330px minmax(0,1fr);gap:12px;align-items:baseline}
+#s3 .cause .q{font-size:23px}
+#s3 .formula-card{display:flex;align-items:center;gap:24px;justify-content:center;padding:14px 22px}
+#s3 .formula-card .map{font-size:21px;line-height:1.5}
+#s3 .chk .body{display:grid;grid-template-columns:290px minmax(0,1fr);gap:12px;align-items:baseline}
+#s3 .chk .fix{grid-column:1 / -1;margin-top:0}
+#s3 .sub2{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:16px}
+#s3 .scale .card{padding:12px 18px}
+#s3 .scale h3{font-size:25px;margin-bottom:2px}
+#s3 .scale .note{margin-top:2px}
+#s3 .bottom{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:16px}
+#s3 .summary{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:16px;background:var(--ink);border-radius:22px;padding:12px 24px}
+#s3 .summary .lab{font-family:'Prompt';font-weight:600;font-size:26px;color:#fff;margin-right:6px}
+#s3 .summary .step{background:#fff;border:0}
+#s3 .summary .arr{color:#7FD3A8}
+#s3 .engine .step{text-align:left;font-size:22px;display:flex;justify-content:space-between;gap:12px;padding:6px 14px}
+#s3 .engine .step span{font-family:'IBM Plex Sans Thai';font-weight:500;color:var(--muted)}
+#s3 .outcome{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;align-items:baseline;margin-top:6px}
+#s3 .card{padding:16px 22px}
+#s3 h2{font-size:34px;margin-bottom:6px}
+#s3 .warn2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:18px;align-content:start}
+#s3 .warn2 h3{grid-column:1 / -1}
+#s3 .warn2 .row:nth-of-type(2){border-top:0}
+#s4{--c1:var(--plum);--c1t:var(--plum-tint);--c2:var(--blue);--c2t:var(--blue-tint);--c3:var(--green);--c3t:var(--green-tint)}
+#s4 .head{text-align:center;margin-bottom:18px}
+#s4 .dept{display:inline-block;font-family:'Prompt';font-weight:700;font-size:62px;line-height:1.15;padding:6px 56px;border:4px solid var(--ink);border-radius:999px}
+#s4 .gm{font-family:'Prompt';font-weight:700;font-size:34px;margin-top:8px;color:var(--muted);letter-spacing:.02em}
+#s4 .engine{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px}
+#s4 .eng{font-family:'Prompt';font-weight:700;font-size:36px;padding:12px 30px;border-radius:20px;color:#fff;white-space:nowrap}
+#s4 .eng.c1{background:var(--c1)}
+#s4 .eng.c2{background:var(--c2)}
+#s4 .eng.c3{background:var(--c3)}
+#s4 .eng.rev{background:var(--ink)}
+#s4 .earr{font-family:'Prompt';font-weight:700;font-size:40px;color:var(--muted)}
+#s4 .circ{width:132px;height:132px;border-radius:50%;border:4px solid var(--blue);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Prompt';font-weight:700;color:var(--blue);text-align:center;line-height:1.1;background:#fff}
+#s4 .circ .big{font-size:52px}
+#s4 .circ .sm{font-size:18px;font-weight:600}
+#s4 .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:18px}
+#s4 .metric{display:flex;align-items:center;gap:16px;background:#fff;border:2px solid var(--red-line);border-radius:18px;padding:12px 20px}
+#s4 .metric .k{font-family:'Prompt';font-weight:700;font-size:34px;color:var(--red);min-width:92px}
+#s4 .metric .d{font-size:24px;line-height:1.4}
+#s4 .metric .own{font-weight:600}
+#s4 .cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+#s4 .col{background:#fff;border:2px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+#s4 .col .hd{padding:14px 24px;color:#fff}
+#s4 .col .hd .n{font-family:'Prompt';font-weight:700;font-size:36px;line-height:1.2}
+#s4 .col .hd .nick{font-family:'Prompt';font-weight:500;font-size:22px;opacity:.95}
+#s4 .col.c1{border-color:#DCC3E4}
+#s4 .col.c1 .hd{background:var(--c1)}
+#s4 .col.c2{border-color:var(--blue-line)}
+#s4 .col.c2 .hd{background:var(--c2)}
+#s4 .col.c3{border-color:var(--green-line)}
+#s4 .col.c3 .hd{background:var(--c3)}
+#s4 .col .bd{padding:14px 24px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+#s4 .lab{font-family:'Prompt';font-weight:600;font-size:25px;color:var(--muted);margin-bottom:2px}
+#s4 .lab .no{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;align-items:center;justify-content:center;font-size:17px;margin-right:8px;vertical-align:2px}
+#s4 .duty{display:flex;flex-wrap:wrap;gap:8px}
+#s4 .duty .chip{font-size:24px;background:#F1F3F5}
+#s4 .c1 .duty .chip{background:var(--c1t);color:var(--c1)}
+#s4 .c2 .duty .chip{background:var(--c2t);color:var(--c2)}
+#s4 .c3 .duty .chip{background:var(--c3t);color:var(--c3)}
+#s4 .out{font-family:'Prompt';font-weight:600;font-size:30px}
+#s4 .mission{font-family:'Prompt';font-weight:600;font-size:27px;padding:6px 16px;border-radius:12px;background:#F4F5F7;display:inline-block}
+#s4 .role{padding:7px 0;border-top:1.5px dashed var(--line)}
+#s4 .role:first-child{border-top:0;padding-top:2px}
+#s4 .role .rn{font-weight:700;font-size:27px}
+#s4 .role.lead .rn{font-family:'Prompt';font-weight:700}
+#s4 .role .rd{font-size:24px;color:#46505B}
+#s4 .ai{margin-top:auto;border-radius:16px;padding:10px 16px;background:var(--red-tint);border:2px dashed var(--red-line)}
+#s4 .ai .t{font-family:'Prompt';font-weight:600;font-size:25px;color:var(--red)}
+#s4 .ai .x{font-size:25px}
+#s4 .foot{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:18px}
+#s4 .who{display:inline-block;font-family:'Prompt';font-weight:600;font-size:20px;padding:1px 12px;border-radius:999px;margin-left:8px;vertical-align:2px;background:#EEF0F3;color:var(--ink)}
+#s4 .who.gap{background:var(--red-tint);color:var(--red)}
+#s4 .who.ovl{background:var(--amber-tint);color:var(--amber)}
+#s4 .who.ai{background:var(--blue-tint);color:var(--blue)}
+#s4 .revsub{font-size:18px;font-weight:500;display:block;opacity:.85;margin-top:2px}
+#s4 .metric .num0{font-size:19px;color:var(--amber);font-weight:600}
+#s4 .f{font-size:18px}
+#s4 .strike{text-decoration:line-through;color:var(--muted)}
+#s5 .hd5{text-align:center;margin-bottom:16px}
+#s5 .hd5 .title{font-size:64px}
+#s5 .hd5 .sub{font-size:26px;color:var(--muted);margin-top:4px}
+#s5 .sec{font-family:'Prompt';font-weight:700;font-size:30px;margin:0 0 10px;display:flex;align-items:center;gap:12px}
+#s5 .sec .bar{width:10px;height:30px;border-radius:5px;background:currentColor}
+#s5 .ins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
+#s5 .ins .card{padding:18px 22px;display:flex;gap:14px;align-items:flex-start}
+#s5 .ins .t{font-family:'Prompt';font-weight:600;font-size:28px;line-height:1.3}
+#s5 .ins .d{font-size:23px;color:#46505B;line-height:1.5;margin-top:4px}
+#s5 .mid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:24px}
+#s5 .act{display:flex;flex-direction:column;gap:14px}
+#s5 .act .card{display:grid;grid-template-columns:64px minmax(0,1fr) 250px;gap:18px;align-items:start;padding:16px 22px;border-color:var(--green-line)}
+#s5 .bign{width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Prompt';font-weight:700;font-size:32px}
+#s5 .act .t{font-family:'Prompt';font-weight:700;font-size:30px;line-height:1.3}
+#s5 .act .d{font-size:24px;line-height:1.5;margin-top:2px}
+#s5 .act .gain{font-size:23px;color:var(--green);font-weight:600;margin-top:4px}
+#s5 .meta{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+#s5 .meta .m{border-radius:14px;padding:6px 14px;font-size:20px;line-height:1.35}
+#s5 .meta .m b{font-family:'Prompt';font-weight:600;font-size:22px;display:block}
+#s5 .meta .own{background:#F1F3F5}
+#s5 .meta .due{background:var(--amber-tint);color:#7A4A0B}
+#s5 .side{display:flex;flex-direction:column;gap:14px}
+#s5 .lst{list-style:none}
+#s5 .lst li{padding:7px 0 7px 36px;position:relative;font-size:24px;line-height:1.45;border-top:1.5px dashed var(--line)}
+#s5 .lst li:first-child{border-top:0}
+#s5 .lst.no li::before{content:'✕';position:absolute;left:4px;top:7px;color:var(--red);font-weight:700}
+#s5 .lst.gate li::before{content:'';position:absolute;left:4px;top:15px;width:18px;height:18px;border:2.5px solid var(--blue);border-radius:5px}
+#s5 .tl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:26px;position:relative}
+#s5 .tl .st{position:relative;padding:0 14px}
+#s5 .tl .dot{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+#s5 .tl .dot i{width:28px;height:28px;border:4px solid var(--bg);border-radius:50%;background:var(--ink);flex:0 0 auto}
+#s5 .tl .line{position:absolute;left:30px;right:60px;top:13px;height:5px;border-radius:3px;background:#C9D0D8;z-index:0}
+#s5 .tl .st{z-index:1}
+#s5 .tl .dot span{background:var(--bg);padding:0 8px 0 2px}
+#s5 .tl .date{font-family:'Prompt';font-weight:700;font-size:27px}
+#s5 .tl .w{font-size:23px;line-height:1.45;color:#3B444F}
+#s5 .bot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:18px}
+#s5 .bot .card{padding:14px 22px}
+#s5 .bot ol{padding-left:30px;font-size:23px;line-height:1.55}
+#s5 .small{font-size:19px;color:var(--muted)}
+
+/* ===== หน้าเว็บ (ทับค่าภาพ 8K) ===== */
+html,body{background:var(--bg)}
+body{width:auto!important;height:auto!important;overflow-x:hidden!important;overflow-y:auto!important;font-size:16px;-webkit-text-size-adjust:100%}
+.page-hd{max-width:1440px;margin:0 auto;padding:18px 16px 6px;text-align:center}
+.page-hd h1{font-family:'Prompt';font-weight:700;font-size:26px;line-height:1.25;color:var(--ink)}
+.page-hd p{font-size:14.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+.page-hd .warn{display:inline-block;margin-top:8px;font-size:13.5px;font-weight:600;color:var(--red);background:var(--red-tint);border-radius:999px;padding:3px 12px}
+.tabs{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs .in{max-width:1440px;margin:0 auto;display:flex;gap:8px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+.tabs .in::-webkit-scrollbar{display:none}
+.tabs a{flex:0 0 auto;display:flex;align-items:center;gap:7px;text-decoration:none;font-family:'Prompt';font-weight:600;font-size:14.5px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px 7px 8px;white-space:nowrap}
+.tabs a b{display:inline-flex;width:24px;height:24px;border-radius:50%;align-items:center;justify-content:center;background:#EEF0F3;font-size:13px}
+.tabs a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tabs a.on b{background:#fff;color:var(--ink)}
+.tabs a.up b{background:var(--green-tint);color:var(--green)}
+.tabs a.on.up b{background:#fff}
+section.sec5{display:none}
+section.sec5.on{display:block}
+.nojs section.sec5{display:block}
+.board{font-size:23px;line-height:1.5;width:auto!important;height:auto!important;max-width:2400px;margin:0 auto;padding:36px 40px 44px!important;zoom:var(--z,.6)}
+.board .tag{position:static!important;display:inline-block;margin:0 0 14px;line-height:1.4}
+.board .legend{position:static!important;display:inline-flex;margin:0 0 14px}
+.board .legend{margin-left:12px}
+.board .flow{flex-wrap:wrap}
+.swap{max-width:1440px;margin:0 auto;padding:4px 16px 28px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.swap a{font-family:'Prompt';font-weight:600;font-size:14.5px;text-decoration:none;color:var(--blue);background:var(--blue-tint);border-radius:12px;padding:9px 16px}
+.foot-note{max-width:1440px;margin:0 auto;padding:0 16px 36px;text-align:center;font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* แท็บเล็ต + มือถือ: เรียงคอลัมน์เดียว */
+@media (max-width:1299px){
+  .board{--z:.8;padding:28px 24px 36px!important}
+  .board .main,.board .sub2,.board .bottom,.board .metrics,.board .cols3,.board .ins,.board .mid,.board .bot,.board .tl,.board .formula-card{grid-template-columns:minmax(0,1fr)!important}
+  .board .formula-card{display:grid!important;justify-items:center;text-align:center}
+  .board .tl .line{display:none}
+  .board .tl{gap:14px!important}
+  .board .engine{flex-wrap:wrap;row-gap:14px}
+  .board .top{flex-wrap:wrap}
+}
+@media (max-width:699px){
+  .board{--z:.66;padding:22px 14px 30px!important}
+  .board .cause .body,.board .chk .body{grid-template-columns:minmax(0,1fr)!important;gap:2px!important}
+  .board .act .card{grid-template-columns:64px minmax(0,1fr)!important}
+  .board .act .meta{grid-column:1 / -1;flex-direction:row!important}
+  .board .act .meta .m{flex:1}
+  .board .warn2{grid-template-columns:minmax(0,1fr)!important}
+  .board .duty .chip,.board .f{white-space:normal!important}
+  .board .title{font-size:42px!important}
+  .board .top{gap:14px!important}
+  .board .dept{font-size:40px!important;padding:6px 30px!important}
+  .board .engine{flex-direction:column;gap:8px!important}
+  .board .engine .earr{transform:rotate(90deg);line-height:1}
+  .board .engine .earr[style*="opacity:0"]{display:none}
+  .board .hd5 .title{font-size:44px!important}
+  .board .vbar{height:44px;width:5px}
+  .board .earr{font-size:30px}
+  .board .eng{font-size:32px;padding:10px 22px}
+}
+
+</style></head>
+<body>
+<header class="page-hd">
+  <h1>Growth Machine → UP Wellness</h1>
+  <p>ผัง 1–2 ถอดจากกระดานเขียนมือ · ผัง 3–4 เทียบเป็นคอร์สดูแลน้ำหนักและสุขภาพของ UP · ผัง 5 Action Plan 30 วัน</p>
+  <span class="warn">ผัง 3–5 ใช้ภายในทีม ไม่ส่งต่อ ไม่โพสต์</span>
+</header>
+<nav class="tabs"><div class="in">
+<a href="#s1" data-s="s1" class=""><b>1</b>ยอดขายตก / ดี</a>
+<a href="#s2" data-s="s2" class=""><b>2</b>Growth Machine</a>
+<a href="#s3" data-s="s3" class="up"><b>3</b>UP: ยอดตก / ดี</a>
+<a href="#s4" data-s="s4" class="up"><b>4</b>UP: Growth Machine</a>
+<a href="#s5" data-s="s5" class="up"><b>5</b>Action Plan</a>
+</div></nav>
+<section id="s1" class="sec5">
+<div class="board">
+  <div class="tag src">ภาพ 1/5 · ถอดจากกระดานเขียนมือ</div>
+  <div class="top"><span class="title red">ยอดขายตก</span><span class="vbar"></span><span class="title blue">ยอดขายดี</span></div>
+
+  <div class="main">
+    <!-- ===== LEFT : ยอดขายตก ===== -->
+    <div class="stack">
+      <div class="card red cause">
+        <h2 class="red">หาสาเหตุ</h2>
+        <div class="row"><div class="num red">1</div><div class="body">
+          <div class="q">Traffic (คนเข้า) น้อยลงมั้ย?</div>
+          <div><span class="chip red">ผิดที่ Performance</span> <span class="it">ยิง Ads ไม่ดี</span> <span class="sep">·</span> <span class="it">Content คุณภาพลดลง</span> <span class="sep">·</span> <span class="it">Reach ลดลง</span> <span class="sep">·</span> <span class="it">Branding มีปัญหา</span></div>
+        </div></div>
+        <div class="row"><div class="num red">2</div><div class="body">
+          <div class="q">คนเข้า แต่ไม่ซื้อ</div>
+          <div><span class="chip red">ผิดที่ Campaign</span> <span class="it">Content ไม่โดน</span> <span class="sep">·</span> <span class="it">Message ไม่ใช่</span></div>
+        </div></div>
+        <div class="row"><div class="num red">3</div><div class="body">
+          <div class="q">คนทัก แต่ปิดไม่ได้</div>
+          <div><span class="chip red">ผิดที่ Sales &amp; CRM</span> <span class="it">Admin ตอบไม่ดี</span> <span class="sep">·</span> <span class="it">Script ไม่เวิร์ก</span></div>
+        </div></div>
+        <div class="row"><div class="num red">4</div><div class="body">
+          <div class="q">ของมีปัญหา</div>
+          <div><span class="chip red">ผิดที่ Product &amp; Operating</span> <span class="it">ของหมด</span> <span class="sep">·</span> <span class="it">ราคาไม่เหมาะ</span></div>
+        </div></div>
+      </div>
+
+      <div class="card formula-card">
+        <div class="formula">ยอดขาย = <span class="bluetxt">Traffic</span> × <span class="greentxt">Conversion</span></div>
+        <div class="map">
+          <div><b class="bluetxt">Traffic</b> → Team Performance</div>
+          <div><b class="greentxt">Conversion</b> → Team Campaign + Sales &amp; CRM</div>
+        </div>
+      </div>
+
+      <div class="card red chk">
+        <h2 class="blue">ยอดไม่มาดั่งหวัง <span class="redtxt" style="font-size:26px">(อย่าเพิ่งคิดว่าสินค้าไม่ดี)</span></h2>
+        <div class="formula" style="font-size:28px;margin:2px 0 8px">ยอด = คนเห็น × คนสนใจ × คนซื้อ × คนซื้อซ้ำ</div>
+        <div class="row"><div class="num">1</div><div class="body">
+          <div class="q">เช็ค Traffic — คนเข้าพอไหม</div>
+          <div><span class="it">Ads reach ได้ไหม</span> <span class="sep">·</span> <span class="it">CPC แพงไหม</span> <span class="sep">·</span> <span class="it">คน Click เยอะไหม</span></div>
+          <div class="fix">ถ้าคนเข้าน้อย ปัญหามาจาก <b>Performance</b> แก้: <span class="it">เพิ่มงบ</span> <span class="sep">·</span> <span class="it">เปลี่ยน Creative</span> <span class="sep">·</span> <span class="it">หา Channel ใหม่</span></div>
+        </div></div>
+        <div class="row"><div class="num">2</div><div class="body">
+          <div class="q">คนเข้าแล้ว สนใจไหม</div>
+          <div><span class="it">CTR / Engagement เป็นไง?</span></div>
+          <div class="fix">ถ้าคนไม่สนใจ แก้: <span class="it">เปลี่ยน Angle</span> <span class="sep">·</span> <span class="it">เปลี่ยน Message</span> <span class="sep">·</span> <span class="it">เปลี่ยน Hook</span></div>
+        </div></div>
+        <div class="row"><div class="num">3</div><div class="body">
+          <div class="q">คนสนใจแล้ว ซื้อมั้ย</div>
+          <div><span class="it">Conversion Rate</span></div>
+          <div class="fix">ถ้าไม่ซื้อ ปัญหาคือ <b>CRM / Offer</b> แก้: <span class="it">Script แอดมิน</span> <span class="sep">·</span> <span class="it">Promotion</span> <span class="sep">·</span> <span class="it">Bundle</span> <span class="sep">·</span> <span class="it">ลด friction</span></div>
+        </div></div>
+        <div class="row"><div class="num">4</div><div class="body">
+          <div class="q">Product จริง ๆ มีปัญหามั้ย</div>
+          <div>ลูกค้าบ่นอะไร: <span class="it">รสชาติไม่แมส</span> <span class="sep">·</span> <span class="it">รสชาติไม่ดี</span> <span class="sep">·</span> <span class="it">Trust ไม่พอ</span></div>
+          <div class="fix">ถ้ามีปัญหา ทางแก้: <span class="it">อย่าเพิ่งหยุดยิง</span> <span class="sep">·</span> <span class="it">เปลี่ยน Message</span> <span class="sep">·</span> <span class="it">Test โปรใหม่</span> <span class="sep">·</span> <span class="it">ฟังเสียงลูกค้า</span></div>
+        </div></div>
+        <div class="flow" style="margin-top:10px">
+                    <span class="step">Traffic</span><span class="arr">→</span><span class="step">Interest</span><span class="arr">→</span><span class="step">Conversion</span><span class="arr">→</span><span class="step">Product</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== RIGHT : ยอดขายดี ===== -->
+    <div class="stack">
+      <div class="card blue">
+        <h2 class="blue">เช็คก่อน Scale</h2>
+        <div class="row"><div class="num blue">1</div><div class="body q">กำไรต่อออเดอร์โอเคมั้ย?</div></div>
+        <div class="row"><div class="num blue">2</div><div class="body q">CAC คงที่มั้ย? <span class="note" style="font-weight:500">(ยิงคุ้มอยู่มั้ย)</span></div></div>
+        <div class="row"><div class="num blue">3</div><div class="body q">ระบบรับไหวมั้ย? <span class="note" style="font-weight:500">(Sales &amp; CRM / Ops)</span></div></div>
+        <div style="margin-top:8px;font-weight:700" class="redtxt">ถ้า 3 ข้อนี้ไม่ผ่าน → อย่าเพิ่ง Scale</div>
+      </div>
+
+      <div class="sub2">
+        <div class="stack scale" style="gap:14px">
+          <div class="card blue">
+            <h3 class="blue">① Scale “Performance” — เพิ่มงบ</h3>
+            <div><span class="it">เพิ่ม budget ทีละ 20–30%</span> <span class="sep">·</span> <span class="it">แตก Ads หลายชุด</span> <span class="sep">·</span> <span class="it">Test Creative ใหม่ตลอด</span></div>
+            <div class="note redtxt">ไม่ใช่อัดเงินมั่ว</div>
+          </div>
+          <div class="card blue">
+            <h3 class="blue">② Scale “Campaign” — ทำให้ Demand ใหญ่ขึ้น</h3>
+            <div><span class="it">แตก Angle ใหม่</span> <span class="sep">·</span> <span class="it">ทำ Content เพิ่ม</span> <span class="sep">·</span> <span class="it">ใช้ CEO / หมอ / Story</span></div>
+            <div class="note redtxt">ของเดิมขายดี ต้องเล่าให้กว้างขึ้น</div>
+          </div>
+          <div class="card blue">
+            <h3 class="blue">③ Scale “Sales &amp; CRM”</h3>
+            <div><span class="it">เพิ่มทีม Admin</span> <span class="sep">·</span> <span class="it">ปรับ Script</span> <span class="sep">·</span> <span class="it">ทำ Upsell / Cross-sell</span> <span class="sep">·</span> <span class="it">ทำ Repeat</span></div>
+            <div class="note redtxt">Lead เยอะ → ต้องปิดให้ทัน</div>
+          </div>
+          <div class="card blue">
+            <h3 class="blue">④ Scale “Channel” — อย่าอยู่แค่ Ads</h3>
+            <div><span class="it">Live</span> <span class="sep">·</span> <span class="it">Clinic</span> <span class="sep">·</span> <span class="it">Watsons / ร้านยา</span> <span class="sep">·</span> <span class="it">Affiliate KOC</span></div>
+            <div class="note redtxt">ไม่พึ่งยอดช่องทางเดียว</div>
+          </div>
+        </div>
+
+        <div class="stack" style="gap:14px">
+          <div class="card green engine">
+            <h3 class="green">ลำดับเครื่องยนต์ตอน Scale</h3>
+            <div class="flow v">
+              <div class="step">Campaign <span>ทำให้ Demand โต</span></div><div class="arr">↓</div>
+              <div class="step">Performance <span>ดึงคนเพิ่ม</span></div><div class="arr">↓</div>
+              <div class="step">CRM / Sales <span>ปิดให้ทัน</span></div><div class="arr">↓</div>
+              <div class="step">Ops <span>ส่งให้ทัน</span></div>
+            </div>
+          </div>
+          <div class="card green">
+            <h3 class="green">ระหว่างทาง ยอดไม่มา — เช็ค</h3>
+            <div><span class="it">คนเข้าไหม (Traffic)</span> <span class="sep">·</span> <span class="it">คนสนใจ (CTR)</span> <span class="sep">·</span> <span class="it">คนซื้อมั้ย (Conversion)</span></div>
+            <div style="margin-top:8px;font-weight:700">ผ่านไป 1 เดือน</div>
+            <div class="outcome">
+              <span class="chip green">ทำได้</span><span>CAC คุ้ม → Scale <span class="it">(เพิ่มงบ + เพิ่มทีม)</span></span>
+              <span class="chip amber">กลาง ๆ</span><span>สนใจเยอะ แต่ไม่ซื้อ → ปรับ Message / Offer</span>
+              <span class="chip red">ไม่มาเลย</span><span>→ เปลี่ยน Positioning ใหม่</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BOTTOM ===== -->
+  <div class="bottom">
+    <div class="card green">
+      <h3 class="green">Checklist สินค้าใหม่ (New Product)</h3>
+      <div class="row"><div class="num green">1</div><div class="body"><b>Product ต้องตอบ:</b> <span class="it">สินค้าแก้ปัญหาอะไร</span> <span class="sep">·</span> <span class="it">ใครซื้อ</span> <span class="sep">·</span> <span class="it">ต่างยังไง</span> <span class="sep">·</span> <span class="it">น่าซื้อมั้ย</span>
+        <div class="fix"><span class="it">ราคา</span> <span class="sep">·</span> <span class="it">Pro</span> <span class="sep">·</span> <span class="it">Bundle</span> <span class="sep">·</span> <span class="it">เหตุผลที่ลูกค้าต้องรีบ</span></div></div></div>
+      <div class="row"><div class="num green">2</div><div class="body"><b>Message ต้องโดน:</b> <span class="it">มีมุมขาย</span> <span class="sep">·</span> <span class="it">Hook แรง</span> <span class="sep">·</span> <span class="it">Pain Point จริง</span></div></div>
+      <div class="row"><div class="num green">3</div><div class="body"><b>Funnel พร้อม:</b> <span class="it">Ads →</span> <span class="it">Landing →</span> <span class="it">LINE →</span> <span class="it">ปิดการขายสั้น</span> <span class="sep">·</span> <span class="it">Step ไม่งง</span> <span class="sep">·</span> <span class="it">ซื้อง่าย</span></div></div>
+    </div>
+    <div class="card green">
+      <h3 class="green">ตอนยิง 7–14 วัน: ยิงทดลอง</h3>
+      <div class="row"><div class="num green">•</div><div class="body">มีครีเอทีฟ 5–10 แบบ</div></div>
+      <div class="row"><div class="num green">•</div><div class="body">มีหลาย Angle → ตัวเลข</div></div>
+      <div class="row"><div class="num green">•</div><div class="body">งบ Test แยกชัด</div></div>
+      <div style="margin-top:8px"><b>Track:</b> <span class="chip">CPC</span> <span class="chip">CTR</span> <span class="chip">Lead</span> <span class="chip">Conversion</span> <span class="chip">CAC</span></div>
+    </div>
+    <div class="card amber warn2">
+      <h3 class="amber">ระวัง! สินค้าใหม่</h3>
+      <div class="row"><div class="num amber">1</div><div class="body">Message ไม่โดน</div></div>
+      <div class="row"><div class="num amber">2</div><div class="body">โปรไม่แรงพอ</div></div>
+      <div class="row"><div class="num amber">3</div><div class="body">ไม่มี Trust</div></div>
+      <div class="row"><div class="num amber">4</div><div class="body">Funnel ยุ่งยาก</div></div>
+      <div class="row"><div class="num amber">5</div><div class="body"><span class="it">ยิงน้อยเกิน —</span> <span class="it">Test ยังไม่พอ</span></div></div>
+    </div>
+  </div>
+  <div class="summary flow">
+    <span class="lab">สรุป</span>
+    <span class="step">Product</span><span class="arr">→</span><span class="step">Message</span><span class="arr">→</span><span class="step">Funnel</span><span class="arr">→</span><span class="step">Test</span><span class="arr">→</span><span class="step">Optimize</span><span class="arr">→</span><span class="step">Scale</span>
+  </div>
+</div>
+</section>
+<section id="s2" class="sec5">
+<div class="board">
+  <div class="tag src">ภาพ 2/5 · ถอดจากกระดานเขียนมือ</div>
+  <div class="head">
+    <div class="dept">Marketing Department</div>
+    <div class="gm">GROWTH MACHINE</div>
+  </div>
+
+  <div class="engine">
+    <div class="circ"><span class="big">B</span></div>
+    <span class="earr">←</span>
+    <span class="eng c1">Campaign</span><span class="earr">→</span>
+    <span class="eng c2">Performance</span><span class="earr">→</span>
+    <span class="eng c3">Sales &amp; CRM</span><span class="earr">→</span>
+    <span class="eng rev">Revenue</span>
+    <span class="earr" style="opacity:0">→</span>
+    <div class="circ" style="width:150px;height:150px"><span class="sm" style="font-size:22px">Product</span><span class="sm" style="font-size:22px">Innovation</span></div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><span class="k">CAC</span><div class="d">หาลูกค้าเท่าไร <span class="note">= ต้นทุนหาลูกค้าใหม่ 1 คน</span><br><span class="own">เจ้าของ → Performance</span></div></div>
+    <div class="metric"><span class="k">AOV</span><div class="d">ลูกค้าซื้อเท่าไหร่ <span class="note">= ยอดเฉลี่ยต่อออเดอร์</span><br><span class="own">เจ้าของ → Performance + Sales &amp; CRM</span></div></div>
+    <div class="metric"><span class="k">LTV</span><div class="d">ลูกค้าซื้อซ้ำเท่าไหร่ <span class="note">= ยอดรวมตลอดอายุลูกค้า</span><br><span class="own">เจ้าของ → Sales &amp; CRM</span></div></div>
+  </div>
+
+  <div class="cols3">
+    <!-- Campaign -->
+    <div class="col c1">
+      <div class="hd"><div class="n">Campaign</div><div class="nick">= Creative System</div></div>
+      <div class="bd">
+        <div><div class="lab"><span class="no">1</span>หน้าที่</div>
+          <div class="duty"><span class="chip">คิดแคมเปญ</span><span class="chip">ทำ Content</span><span class="chip">สร้างความอยากซื้อ</span><span class="chip"><span class="strike">ทำ Branding</span> (Product / Corporate / CEO)</span></div></div>
+        <div><div class="lab"><span class="no">2</span>Output</div><div class="out">Content / Creative / Idea</div></div>
+        <div><div class="lab"><span class="no">3</span>ทีม</div>
+          <div class="mission">หน้าที่ “ทำให้คนอยากซื้อ”</div>
+          <div style="margin-top:6px">
+            <div class="role lead"><div class="rn">Campaign Lead</div><div class="rd"><span class="it">Big Idea / Campaign</span> <span class="sep">·</span> <span class="it">คุมภาพรวม</span></div></div>
+            <div class="role"><div class="rn">Content Strategist</div><div class="rd"><span class="it">แตกเป็น campaign รายวัน</span> <span class="sep">·</span> <span class="it">วาง Content plan</span> <span class="sep">·</span> <span class="it">เขียนคำให้ขายได้</span></div></div>
+            <div class="role"><div class="rn">Content Creator (Knowledge / Branding)</div><div class="rd"><span class="it">ทำ Content ความรู้</span> <span class="sep">·</span> <span class="it">CEO Content</span> <span class="sep">·</span> <span class="it">เขียน / พูด / เล่า</span></div></div>
+            <div class="role"><div class="rn">Production (VDO / Graphic)</div><div class="rd"><span class="it">ถ่าย / ตัด / ทำภาพ</span></div></div>
+          </div></div>
+        <div class="ai"><div class="t">สิ่งที่ AI ช่วยได้</div><div class="x"><span class="it">Idea</span> <span class="sep">·</span> <span class="it">Script</span> <span class="sep">·</span> <span class="it">Production</span> <span class="sep">·</span> <span class="it">Repurpose</span></div></div>
+      </div>
+    </div>
+    <!-- Performance -->
+    <div class="col c2">
+      <div class="hd"><div class="n">Performance</div><div class="nick">= Money Machine</div></div>
+      <div class="bd">
+        <div><div class="lab"><span class="no">1</span>หน้าที่</div>
+          <div class="duty"><span class="chip">ยิง Ads</span><span class="chip">Scale Ads</span><span class="chip">คุม CPC / ROAS</span><span class="chip">หา Channel (Online / Offline)</span></div></div>
+        <div><div class="lab"><span class="no">2</span>Output</div><div class="out">Lead / Traffic / Revenue</div></div>
+        <div><div class="lab"><span class="no">3</span>ทีม</div>
+          <div class="mission">หน้าที่ “ทำให้เงินเข้า”</div>
+          <div style="margin-top:6px">
+            <div class="role lead"><div class="rn">Performance Lead</div><div class="rd"><span class="it">คุมยอดทั้งหมด</span> <span class="sep">·</span> <span class="it">วาง Funnel</span> <span class="sep">·</span> <span class="it">ตัดสินใจงบ</span></div></div>
+            <div class="role"><div class="rn">Ad Specialist</div><div class="rd"><span class="it">ยิง Ads</span> <span class="sep">·</span> <span class="it">Optimize</span></div></div>
+            <div class="role"><div class="rn">Marketing Operations</div><div class="rd"><span class="it">จัด Flow งาน</span> <span class="sep">·</span> <span class="it">Track campaign</span> <span class="sep">·</span> <span class="it">ทำระบบ</span></div></div>
+            <div class="role"><div class="rn">Data Analyst</div><div class="rd"><span class="it">วิเคราะห์ตัวเลข</span></div></div>
+          </div></div>
+        <div class="ai"><div class="t">สิ่งที่ AI ช่วยได้</div><div class="x"><span class="it">วิเคราะห์ Ads</span> <span class="sep">·</span> <span class="it">Generate Ads Variation</span> <span class="sep">·</span> <span class="it">Optimization</span></div></div>
+      </div>
+    </div>
+    <!-- Sales & CRM -->
+    <div class="col c3">
+      <div class="hd"><div class="n">Sales &amp; CRM</div><div class="nick">= Cash Machine</div></div>
+      <div class="bd">
+        <div><div class="lab"><span class="no">1</span>หน้าที่</div>
+          <div class="duty"><span class="chip">ตอบแชท</span><span class="chip">ปิดการขาย</span><span class="chip">Follow up</span><span class="chip">ทำให้เกิด Repeat</span></div></div>
+        <div><div class="lab"><span class="no">2</span>Output</div><div class="out">Conversion / Repeat</div></div>
+        <div><div class="lab"><span class="no">3</span>ทีม</div>
+          <div class="mission">หน้าที่ “ปิดเงิน + ซื้อซ้ำ”</div>
+          <div style="margin-top:6px">
+            <div class="role lead"><div class="rn">Sales &amp; CRM Lead</div><div class="rd"><span class="it">คุม Conversion</span> <span class="sep">·</span> <span class="it">วาง Script</span> <span class="sep">·</span> <span class="it">Train team</span></div></div>
+            <div class="role"><div class="rn">Sale / Admin</div><div class="rd"><span class="it">ตอบแชท</span> <span class="sep">·</span> <span class="it">ปิดการขาย</span></div></div>
+            <div class="role"><div class="rn">CRM Automation</div><div class="rd"><span class="it">ทำ LINE flow</span> <span class="sep">·</span> <span class="it">ยิง Broadcast</span> <span class="sep">·</span> <span class="it">Follow up Auto</span></div></div>
+            <div class="role"><div class="rn">Customer Success</div><div class="rd"><span class="it">ดูแลลูกค้าเก่า</span> <span class="sep">·</span> <span class="it">เพิ่ม Repeat</span></div></div>
+            <div class="role"><div class="rn">Live Sellers</div><div class="rd"><span class="it">Live ขาย</span> <span class="sep">·</span> <span class="it">ปิดดีลใน Live</span> <span class="sep">·</span> <span class="it">กระตุ้นการซื้อทันที</span> <span class="sep">·</span> <span class="it">ดึงคนเข้า LINE chat</span></div></div>
+          </div></div>
+        <div class="ai"><div class="t">สิ่งที่ AI ช่วยได้</div><div class="x"><span class="it">ตอบแชท</span> <span class="sep">·</span> <span class="it">Script ขาย</span> <span class="sep">·</span> <span class="it">Follow up Auto</span> <span class="sep">·</span> <span class="it">วิเคราะห์ลูกค้า</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><div class="banner green">ให้ AI ทำงานซ้ำแทนคน — ให้คนไปโฟกัสเรื่องการตัดสินใจ</div></div>
+</div>
+</section>
+<section id="s3" class="sec5">
+<div class="board">
+  <div class="tag src">ภาพ 3/5 · เทียบกระดาน 1 เป็น UP Wellness · <span class="redtxt">ใช้ภายใน ห้ามโพสต์</span></div>
+  <div class="legend"><span class="lt">ป้ายกฎ</span><span class="f ok">ทำได้</span><span class="f cond">มีเงื่อนไข</span><span class="f no">ห้าม</span></div>
+  <div class="top"><span class="title red">ยอดตก</span><span class="vbar"></span><span class="title blue">ยอดดี</span></div>
+  <div class="subtitle">UP Wellness = <b>คอร์สดูแลน้ำหนักและสุขภาพที่มีคนดูแล</b> ใช้สินค้าแอมเวย์ในคอร์ส · ยอด = สินค้าที่ลูกค้าคอร์สใช้จริง</div>
+
+  <div class="main">
+    <!-- ===== LEFT ===== -->
+    <div class="stack">
+      <div class="card red cause">
+        <h2 class="red">หาสาเหตุ</h2>
+        <div class="row"><div class="num red">1</div><div class="body">
+          <div class="q">คนเห็น / คนเข้าฟัง น้อยลงมั้ย?</div>
+          <div><span class="chip red">ผิดที่ Performance</span> <span class="it">คอนเทนต์ทำแล้วไม่ได้โพสต์</span> <span class="sep">·</span> <span class="it">คนเข้าซูม/Center น้อยลง</span> <span class="sep">·</span> <span class="it">ไม่มีคนบอกต่อ</span></div>
+        </div></div>
+        <div class="row"><div class="num red">2</div><div class="body">
+          <div class="q">คนเข้าฟัง แต่ไม่ทักต่อ</div>
+          <div><span class="chip red">ผิดที่ Campaign</span> <span class="it">เรื่องเล่าไม่โดน</span> <span class="sep">·</span> <span class="it">Message ไม่ใช่</span></div>
+        </div></div>
+        <div class="row"><div class="num red">3</div><div class="body">
+          <div class="q">คนทัก แต่ไม่เข้าคอร์ส</div>
+          <div><span class="chip red">ผิดที่ Sales &amp; CRM</span> <span class="it">ตอบช้า</span> <span class="sep">·</span> <span class="it">ถามไม่ครบ</span> <span class="sep">·</span> <span class="it">บอกราคาไม่ชัด</span></div>
+        </div></div>
+        <div class="row"><div class="num red">4</div><div class="body">
+          <div class="q">คอร์สมีปัญหา</div>
+          <div><span class="chip red">ผิดที่ Product &amp; Operation</span> <span class="it">ดูแลไม่ทัน</span> <span class="sep">·</span> <span class="it">ทำตามยาก</span> <span class="sep">·</span> <span class="it">ของบางตัวขาด</span></div>
+        </div></div>
+      </div>
+
+      <div class="card formula-card">
+        <div class="formula" style="font-size:31px">ยอด = <span class="bluetxt">คนเห็น</span> × <span class="greentxt">อัตราเข้าคอร์ส</span></div>
+        <div class="map">
+          <div><b class="bluetxt">คนเห็น</b> → ทีมดึงคน (ซูม · โพสต์ · บอกต่อ)</div>
+          <div><b class="greentxt">เข้าคอร์ส</b> → ทีมเรื่องเล่า + ทีมดูแล</div>
+        </div>
+      </div>
+
+      <div class="card red chk">
+        <h2 class="blue">ยอดไม่มาดั่งหวัง <span class="redtxt" style="font-size:24px">(อย่าเพิ่งคิดว่าคอร์สไม่ดี)</span></h2>
+        <div class="formula" style="font-size:26px;margin:0 0 6px">ยอด = คนเห็น × คนสนใจ × คนเข้าคอร์ส × คนใช้ต่อ</div>
+        <div class="row"><div class="num">1</div><div class="body">
+          <div class="q">เช็คคนเห็น — พอไหม</div>
+          <div><span class="it">คนเห็นโพสต์</span> <span class="sep">·</span> <span class="it">คนเข้าซูม</span> <span class="sep">·</span> <span class="it">คนทัก LINE</span></div>
+          <div class="fix">น้อย = ปัญหาที่ <b>Performance</b> แก้: <span class="it">ปล่อยโพสต์ที่ทำไว้ (ตรวจคำก่อน)</span> <span class="sep">·</span> <span class="it">เพิ่มรอบซูม</span> <span class="sep">·</span> <span class="it">ลูกค้าพาเพื่อนมาคุย</span> <span class="f cond">ยิงแอด: รอคำตอบบริษัท</span></div>
+        </div></div>
+        <div class="row"><div class="num">2</div><div class="body">
+          <div class="q">ฟังแล้ว สนใจไหม</div>
+          <div><span class="it">อยู่จนจบซูม</span> <span class="sep">·</span> <span class="it">ถามต่อ</span> <span class="sep">·</span> <span class="it">ขอนัด</span></div>
+          <div class="fix">ไม่สนใจ แก้: <span class="it">เปลี่ยนมุม (การกิน · การนอน · พลังงาน · แก่ช้า)</span> <span class="sep">·</span> <span class="it">เปลี่ยน Hook</span> <span class="f no">มุม “ลดน้ำหนัก” · ก่อน-หลัง</span></div>
+        </div></div>
+        <div class="row"><div class="num">3</div><div class="body">
+          <div class="q">คุยแล้ว เข้าคอร์สไหม</div>
+          <div><span class="it">อัตราเข้าคอร์ส</span></div>
+          <div class="fix">ไม่เข้า = ปัญหาที่ <b>CRM / ข้อเสนอ</b> แก้: <span class="it">ถามครบ</span> <span class="sep">·</span> <span class="it">บอกราคาแต่แรก</span> <span class="sep">·</span> <span class="it">เริ่ม 14 วัน</span> <span class="f no">ลด/แถมสินค้าเอง</span></div>
+        </div></div>
+        <div class="row"><div class="num">4</div><div class="body">
+          <div class="q">คอร์สมีปัญหาจริงไหม</div>
+          <div>ลูกค้าบ่นอะไร: <span class="it">แพงไป</span> <span class="sep">·</span> <span class="it">ทำตามยาก</span> <span class="sep">·</span> <span class="it">รสชาติไม่ถูกปาก</span> <span class="sep">·</span> <span class="it">ไม่ไว้ใจ</span></div>
+          <div class="fix">ทางแก้: <span class="it">อย่าเพิ่งหยุดชวนคน</span> <span class="sep">·</span> <span class="it">เปลี่ยน Message</span> <span class="sep">·</span> <span class="it">ลองจัดชุดคอร์สใหม่</span> <span class="sep">·</span> <span class="it">ฟังเสียงลูกค้า</span></div>
+        </div></div>
+        <div class="flow" style="margin-top:8px">
+          <span class="step">คนเห็น</span><span class="arr">→</span><span class="step">สนใจ</span><span class="arr">→</span><span class="step">เข้าคอร์ส</span><span class="arr">→</span><span class="step">ผลคอร์ส</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== RIGHT ===== -->
+    <div class="stack">
+      <div class="card blue">
+        <h2 class="blue">เช็คก่อน Scale</h2>
+        <div class="row"><div class="num blue">1</div><div class="body q">รายได้จริงต่อคอร์ส ÷ ชั่วโมงดูแล คุ้มไหม?</div></div>
+        <div class="row"><div class="num blue">2</div><div class="body q">ได้ลูกค้า 1 คน ใช้ชั่วโมงเท่าเดิมไหม? <span class="note" style="font-weight:500">(CAC ของ UP = ชั่วโมงคน)</span></div></div>
+        <div class="row"><div class="num blue">3</div><div class="body q">ดูแลไหวไหม? <span class="note" style="font-weight:500">(ชั่วโมงต้น + จิ้น / สัปดาห์ · จิ้นตรวจยา-แล็บทัน)</span></div></div>
+        <div style="margin-top:6px;font-weight:700" class="redtxt">ถ้า 3 ข้อนี้ไม่ผ่าน → อย่าเพิ่ง Scale</div>
+      </div>
+
+      <div class="sub2">
+        <div class="stack scale" style="gap:12px">
+          <div class="card blue">
+            <h3 class="blue">① Scale “Performance” — เพิ่มคนเห็น</h3>
+            <div><span class="it">เพิ่มรอบซูม/Center ทีละขั้น</span> <span class="sep">·</span> <span class="it">หัวข้อซูม/โพสต์หลายแบบ</span></div>
+            <div><span class="f cond">แอดความรู้: ถามบริษัททั้งเส้นทาง แอด → LINE → คอร์ส</span></div>
+            <div class="note redtxt">ไม่ใช่ทักทุกคนที่รู้จัก</div>
+          </div>
+          <div class="card blue">
+            <h3 class="blue">② Scale “Campaign” — ทำให้ Demand ใหญ่ขึ้น</h3>
+            <div class="note" style="margin-top:-2px">= คนอยากดูแลตัวเองมากขึ้น</div>
+            <div><span class="it">แตกมุม: การกิน · การนอน · พลังงาน · แก่ช้า</span> <span class="sep">·</span> <span class="it">เรื่องจริงของต้น</span> <span class="sep">·</span> <span class="it">ความรู้จากจิ้น (เภสัชกร)</span></div>
+            <div><span class="f cond">คลิปซูม: เฉพาะช่วงวิทยากร</span> <span class="f cond">คำจิ้น = คำแนะนำวิชาชีพ</span></div>
+            <div class="note redtxt">เล่าให้คนสุขภาพดีวัย 30–50 ด้วย</div>
+          </div>
+          <div class="card blue">
+            <h3 class="blue">③ Scale “Sales &amp; CRM”</h3>
+            <div><span class="it">คู่มือคุยมาตรฐานเดียว</span> <span class="sep">·</span> <span class="it">UP Labs → Full Course ตามความเหมาะ</span> <span class="sep">·</span> <span class="it">ใช้ต่อหลังจบคอร์ส</span></div>
+            <div><span class="f cond">ทักลูกค้าเก่าทีละคน ห้ามส่งกระจาย</span> <span class="f cond">เพิ่มโค้ช (มีรหัสของตัวเอง) — ทีหลัง</span></div>
+            <div class="note redtxt">คนเยอะ → ต้องดูแลให้ทัน</div>
+          </div>
+          <div class="card blue">
+            <h3 class="blue">④ Scale “Channel” — อย่าอยู่แค่คนรู้จัก</h3>
+            <div><span class="f cond">ซูม/ไลฟ์ความรู้ล้วน · เรื่องคอร์สคุยใน LINE</span> <span class="f ok">ลูกค้าพาเพื่อนมาคุย</span> <span class="f ok">เราส่งคนไปหาแพทย์</span></div>
+            <div style="margin-top:4px"><span class="f cond">แพทย์ส่งคนมาหาเรา (เสี่ยงสูง)</span> <span class="f no">วางขายร้านยา/คลินิก</span> <span class="f no">จ้างรีวิว / KOC</span></div>
+            <div class="note redtxt">ไม่พึ่งคนรู้จักกลุ่มเดียว</div>
+          </div>
+        </div>
+
+        <div class="stack" style="gap:12px">
+          <div class="card green engine">
+            <h3 class="green">ลำดับเครื่องยนต์ตอน Scale</h3>
+            <div class="flow v">
+              <div class="step">Campaign <span>คนอยากดูแลตัวเอง</span></div><div class="arr">↓</div>
+              <div class="step">Performance <span>คนเข้าฟังเพิ่ม</span></div><div class="arr">↓</div>
+              <div class="step">CRM / Sales <span>เข้าคอร์สให้ทัน</span></div><div class="arr">↓</div>
+              <div class="step">Ops <span>ดูแลให้ทัน</span></div>
+            </div>
+            <div class="note" style="margin-top:6px">ของ: บริษัทส่งให้ · คอขวดจริง = ชั่วโมงคนดูแล</div>
+          </div>
+          <div class="card green">
+            <h3 class="green">ระหว่างทาง ยอดไม่มา — เช็ค</h3>
+            <div><span class="it">คนเห็นไหม</span> <span class="sep">·</span> <span class="it">สนใจไหม (อยู่จนจบซูม)</span> <span class="sep">·</span> <span class="it">เข้าคอร์สไหม</span></div>
+            <div style="margin-top:6px;font-weight:700">ผ่านไป 1 เดือน</div>
+            <div class="outcome">
+              <span class="chip green">ทำได้</span><span>ชั่วโมงต่อลูกค้าคุ้ม → Scale <span class="it">(เพิ่มรอบ · ค่อยเพิ่มคน)</span></span>
+              <span class="chip amber">กลาง ๆ</span><span>สนใจเยอะ แต่ไม่เข้าคอร์ส → ปรับเรื่องเล่า / ชุดคอร์ส</span>
+              <span class="chip red">ไม่มาเลย</span><span>→ เปลี่ยนกลุ่มคน / มุมใหม่</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BOTTOM ===== -->
+  <div class="bottom">
+    <div class="card green">
+      <h3 class="green">Checklist คอร์สใหม่</h3>
+      <div class="row"><div class="num green">1</div><div class="body"><b>คอร์สต้องตอบ:</b> <span class="it">แก้อะไร</span> <span class="sep">·</span> <span class="it">ใครเหมาะ / ใครห้าม</span> <span class="sep">·</span> <span class="it">ต่างยังไง</span> <span class="sep">·</span> <span class="it">น่าเข้าไหม</span>
+        <div class="fix"><span class="it">ราคาชัด</span> <span class="sep">·</span> <span class="it">ชุดสินค้าราคาบริษัท</span> <span class="sep">·</span> <span class="it">เหตุผลที่ควรเริ่ม</span> <span class="f no">เร่ง “วันนี้เท่านั้น”</span></div></div></div>
+      <div class="row"><div class="num green">2</div><div class="body"><b>เรื่องเล่าต้องจริง:</b> <span class="it">มุมเล่า</span> <span class="sep">·</span> <span class="it">Hook</span> <span class="sep">·</span> <span class="it">ปัญหาจริงของคน</span> <span class="f no">คำลดน้ำหนัก · เครื่องชั่ง · สายวัด ในโพสต์</span></div></div>
+      <div class="row"><div class="num green">3</div><div class="body"><b>ทางเข้าพร้อม:</b> <span class="it">โพสต์/ซูม →</span> <span class="it">ประเมินฟรี →</span> <span class="it">LINE →</span> <span class="it">นัดคุย →</span> <span class="it">เข้าคอร์ส</span> <span class="sep">·</span> <span class="it">สั่งของง่าย</span></div></div>
+    </div>
+    <div class="card green">
+      <h3 class="green">ตอนเริ่ม 14 วัน: ทดลอง</h3>
+      <div class="row"><div class="num green">•</div><div class="body">หัวข้อซูม/โพสต์ 5–10 แบบ</div></div>
+      <div class="row"><div class="num green">•</div><div class="body">หลายมุม → ดูตัวเลข</div></div>
+      <div class="row"><div class="num green">•</div><div class="body">แยกเวลาทดลองให้ชัด</div></div>
+      <div style="margin-top:6px"><b>Track:</b> <span class="chip">คนเห็น</span> <span class="chip">คนทัก</span> <span class="chip">เข้าคอร์ส</span> <span class="chip">ชั่วโมง/คน</span></div>
+    </div>
+    <div class="card amber warn2">
+      <h3 class="amber">ระวัง! คอร์สใหม่</h3>
+      <div class="row"><div class="num amber">1</div><div class="body">เรื่องเล่าไม่โดน</div></div>
+      <div class="row"><div class="num amber">2</div><div class="body">ข้อเสนอไม่ชัด (ราคาซ่อน)</div></div>
+      <div class="row"><div class="num amber">3</div><div class="body">ไม่มี Trust</div></div>
+      <div class="row"><div class="num amber">4</div><div class="body">ขั้นตอนสั่งของงง</div></div>
+      <div class="row"><div class="num amber">5</div><div class="body"><span class="it">จัดน้อยเกิน —</span> <span class="it">ทดลองยังไม่พอ</span></div></div>
+    </div>
+  </div>
+  <div class="summary flow">
+    <span class="lab">สรุป</span>
+    <span class="step">คอร์ส</span><span class="arr">→</span><span class="step">เรื่องเล่า</span><span class="arr">→</span><span class="step">ทางเข้า</span><span class="arr">→</span><span class="step">ทดลอง</span><span class="arr">→</span><span class="step">ปรับ</span><span class="arr">→</span><span class="step">ขยาย</span>
+  </div>
+</div>
+</section>
+<section id="s4" class="sec5">
+<div class="board">
+  <div class="tag src">ภาพ 4/5 · เทียบกระดาน 2 เป็น UP Wellness · <span class="redtxt">ใช้ภายใน ห้ามโพสต์</span></div>
+  <div class="legend"><span class="f ok">ทำได้</span><span class="f cond">มีเงื่อนไข</span><span class="f no">ห้าม</span></div>
+  <div class="head">
+    <div class="dept">UP Wellness · Marketing</div>
+    <div class="gm">GROWTH MACHINE — คอร์สดูแลน้ำหนักและสุขภาพ</div>
+  </div>
+
+  <div class="engine">
+    <div class="circ"><span class="big">B</span></div>
+    <span class="earr">←</span>
+    <span class="eng c1">Campaign</span><span class="earr">→</span>
+    <span class="eng c2">Performance</span><span class="earr">→</span>
+    <span class="eng c3">Sales &amp; CRM</span><span class="earr">→</span>
+    <span class="eng rev">Revenue<span class="revsub">ยอดสินค้าที่ลูกค้าคอร์สใช้จริง</span></span>
+    <span class="earr" style="opacity:0">→</span>
+    <div class="circ" style="width:170px;height:170px"><span class="sm" style="font-size:21px">Product</span><span class="sm" style="font-size:21px">Innovation</span><span class="sm" style="font-size:17px;color:var(--muted);margin-top:4px">ออกแบบคอร์ส +<br>เครื่องมือวัดผล</span></div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><span class="k">CAC</span><div class="d">ชั่วโมงที่ใช้ ได้ลูกค้า 1 คน<br><span class="own">เจ้าของ → Performance</span><br><span class="num0">ยังไม่มีตัวเลข — เริ่มนับ</span></div></div>
+    <div class="metric"><span class="k">AOV</span><div class="d">ยอดสินค้าต่อ 1 คอร์ส<br><span class="own">เจ้าของ → Performance + Sales &amp; CRM</span><br><span class="num0">ยังไม่มีตัวเลข — เริ่มนับ</span></div></div>
+    <div class="metric"><span class="k">LTV</span><div class="d">คอร์ส → ใช้ต่อ → บอกต่อ<br><span class="own">เจ้าของ → Sales &amp; CRM</span><br><span class="num0">ยังไม่มีตัวเลข — เริ่มนับ</span></div></div>
+  </div>
+
+  <div class="cols3">
+    <!-- Campaign -->
+    <div class="col c1">
+      <div class="hd"><div class="n">Campaign</div><div class="nick">= เครื่องสร้างความไว้ใจ (Creative System)</div></div>
+      <div class="bd">
+        <div><div class="lab"><span class="no">1</span>หน้าที่</div>
+          <div class="duty"><span class="chip">คิดหัวข้อซูม / Center</span><span class="chip">ทำคอนเทนต์ความรู้</span><span class="chip">ทำให้คนอยากดูแลตัวเอง</span><span class="chip">แบรนด์: คอร์ส · UP Wellness · ต้น+จิ้น</span></div>
+          <div style="margin-top:6px"><span class="f no">ใช้โลโก้ Amway / Nutrilite ในสื่อที่ทำเอง</span></div></div>
+        <div><div class="lab"><span class="no">2</span>Output</div><div class="out">โพสต์ความรู้ / หัวข้อซูม / เคสจริง</div>
+          <div style="margin-top:4px"><span class="f cond">เคสจริง: เล่าพฤติกรรม ไม่มีตัวเลขสุขภาพ · ยินยอมเป็นหนังสือ</span></div></div>
+        <div><div class="lab"><span class="no">3</span>ทีม</div>
+          <div class="mission">หน้าที่ “ทำให้คนอยากดูแลตัวเอง”</div>
+          <div style="margin-top:6px">
+            <div class="role lead"><div class="rn">Campaign Lead <span class="who">ต้น</span></div><div class="rd"><span class="it">หัวข้อใหญ่</span> <span class="sep">·</span> <span class="it">คุมภาพรวม</span></div></div>
+            <div class="role"><div class="rn">Content Strategist <span class="who gap">คนคุม: ว่าง</span></div><div class="rd"><span class="it">AI ร่างปฏิทินโพสต์ให้แล้ว</span></div></div>
+            <div class="role"><div class="rn">Content Creator <span class="who">จิ้น + ต้น</span></div><div class="rd"><span class="it">จิ้น: ความรู้ (เภสัชกร)</span> <span class="sep">·</span> <span class="it">ต้น: เรื่องจริงของตัวเอง</span></div></div>
+            <div class="role"><div class="rn">Production <span class="who ovl">คอขวด</span></div><div class="rd"><span class="it">AI ร่างภาพ</span> <span class="sep">·</span> <span class="it">ต้นประกอบเอง</span> <span class="sep">·</span> <span class="it">ทำแล้วยังไม่ได้โพสต์</span></div></div>
+          </div></div>
+        <div class="ai"><div class="t">สิ่งที่ AI ช่วยได้</div><div class="x"><span class="it">หาข่าว + ร่างแคปชัน</span> <span class="sep">·</span> <span class="it">ร่างภาพ</span> <span class="sep">·</span> <span class="it">ตัดคลิปจากซูม</span> <span class="sep">·</span> <span class="it">ตรวจคำต้องห้าม (คนเคาะ)</span></div></div>
+      </div>
+    </div>
+    <!-- Performance -->
+    <div class="col c2">
+      <div class="hd"><div class="n">Performance</div><div class="nick">= เครื่องดึงคน (Money Machine)</div></div>
+      <div class="bd">
+        <div><div class="lab"><span class="no">1</span>หน้าที่</div>
+          <div class="duty"><span class="chip">ดึงคนเข้าซูม / Center</span><span class="chip">ลูกค้าพาเพื่อนมาคุย</span><span class="chip">หาช่องทางตามกฎ (Online / Offline)</span><span class="chip">คุม: คนเห็น · คนทัก / สัปดาห์</span></div>
+          <div style="margin-top:6px"><span class="f cond">ยิงแอด: รอคำตอบบริษัทเป็นลายลักษณ์อักษร</span></div></div>
+        <div><div class="lab"><span class="no">2</span>Output</div><div class="out">คนเข้าฟัง / คนทัก / นัดคุย</div></div>
+        <div><div class="lab"><span class="no">3</span>ทีม</div>
+          <div class="mission">หน้าที่ “ทำให้คนเข้ามาคุย”</div>
+          <div style="margin-top:6px">
+            <div class="role lead"><div class="rn">Performance Lead <span class="who ovl">ต้น (ชั่วคราว)</span></div><div class="rd"><span class="it">คุมยอดคนเข้า</span> <span class="sep">·</span> <span class="it">วางทางเข้า</span> <span class="sep">·</span> <span class="it">ตัดสินใจเวลา/งบ</span></div></div>
+            <div class="role"><div class="rn">ผู้จัดซูม / Center <span class="who">ต้น + จิ้น</span></div><div class="rd"><span class="it">แทน Ad Specialist</span> <span class="sep">·</span> <span class="it">จัดรอบ</span> <span class="sep">·</span> <span class="it">ชวนคนเข้าฟัง</span></div></div>
+            <div class="role"><div class="rn">Marketing Operations <span class="who gap">คนตามตัวเลข: ว่าง</span></div><div class="rd"><span class="it">ระบบ UP Labs มีแล้ว</span></div></div>
+            <div class="role"><div class="rn">Data Analyst <span class="who ai">AI</span></div><div class="rd"><span class="it">ดึงตัวเลขจาก UP Labs / รายงานสายงาน (คนสรุป)</span></div></div>
+          </div></div>
+        <div class="ai"><div class="t">สิ่งที่ AI ช่วยได้</div><div class="x"><span class="it">นับตัวเลขทุกสัปดาห์</span> <span class="sep">·</span> <span class="it">ร่างข้อความชวนซูมหลายแบบ (คนส่งเอง ทีละคน)</span></div></div>
+      </div>
+    </div>
+    <!-- Sales & CRM -->
+    <div class="col c3">
+      <div class="hd"><div class="n">Sales &amp; CRM</div><div class="nick">= เครื่องดูแล + ใช้ต่อ (Cash Machine)</div></div>
+      <div class="bd">
+        <div><div class="lab"><span class="no">1</span>หน้าที่</div>
+          <div class="duty"><span class="chip">ตอบ LINE</span><span class="chip">นัดคุย</span><span class="chip">พาเข้าคอร์ส</span><span class="chip">ตามผลทุกสัปดาห์</span><span class="chip">ใช้ต่อ + บอกต่อ</span></div></div>
+        <div><div class="lab"><span class="no">2</span>Output</div><div class="out">เข้าคอร์ส / ใช้ต่อ</div></div>
+        <div><div class="lab"><span class="no">3</span>ทีม</div>
+          <div class="mission">หน้าที่ “เข้าคอร์ส + ใช้ต่อ”</div>
+          <div style="margin-top:6px">
+            <div class="role lead"><div class="rn">Sales &amp; CRM Lead <span class="who ovl">ต้น + จิ้น (ซ้อนกัน)</span></div><div class="rd"><span class="it">คุมอัตราเข้าคอร์ส</span> <span class="sep">·</span> <span class="it">วางคู่มือคุย</span> <span class="sep">·</span> <span class="it">สอนทีม</span></div></div>
+            <div class="role"><div class="rn">Sale / Admin <span class="who ovl">ต้น + จิ้นตอบเอง</span></div><div class="rd"><span class="it">ตอบ LINE</span> <span class="sep">·</span> <span class="it">พาเข้าคอร์ส</span></div></div>
+            <div class="role"><div class="rn">CRM Automation <span class="who ai">บอทน้องจาน</span></div><div class="rd"><span class="it">ส่งเมนู + วิตามิน 18:00</span> <span class="sep">·</span> <span class="it">ใช้จริงกี่คน: ต้องเช็ค</span></div></div>
+            <div class="role"><div class="rn">Customer Success <span class="who gap">ลูกค้าเก่า: ยังไม่มีเจ้าของ</span></div><div class="rd"><span class="it">โค้ชในทีมดูแลบางส่วน</span> <span class="sep">·</span> <span class="it">ทักทีละคน ห้ามส่งกระจาย</span></div></div>
+            <div class="role"><div class="rn">วิทยากรซูม <span class="who">จิ้น · ต้น</span></div><div class="rd"><span class="it">แทน Live Sellers</span> <span class="sep">·</span> <span class="it">สอนความรู้</span> <span class="sep">·</span> <span class="it">ชวนเข้า LINE คุยต่อ</span></div></div>
+          </div></div>
+        <div class="ai"><div class="t">สิ่งที่ AI ช่วยได้</div><div class="x"><span class="it">ร่างคำตอบ (คนกดส่ง)</span> <span class="sep">·</span> <span class="it">เตือนนัดตามผล</span> <span class="sep">·</span> สรุปแล็บ / BCA / CGM ให้โค้ช <span class="f cond">ต้องมีใบยินยอม PDPA</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><div class="banner green">AI ทำงานซ้ำหลังบ้าน — คนคุยกับลูกค้าและตัดสินใจ <span style="font-size:22px;font-weight:500;opacity:.9">· เรื่องสินค้าและแผน คุยโดยคนที่มีรหัสสมาชิกเท่านั้น</span></div></div>
+</div>
+</section>
+<section id="s5" class="sec5">
+<div class="board">
+  <div class="tag src">ภาพ 5/5 · บทวิเคราะห์ + Action Plan · <span class="redtxt">ใช้ภายใน</span></div>
+  <div class="hd5">
+    <div class="title ink">Action Plan · <span class="it">30 วันข้างหน้า</span></div>
+    <div class="sub">8 ต.ค. – 8 พ.ย. 2569 · UP Wellness · <b style="color:var(--ink)">ทำ Growth Machine ให้ “มีตัวเลข” ก่อนคิดขยาย</b></div>
+  </div>
+
+  <div class="sec" style="color:var(--plum)"><span class="bar"></span>เทียบแล้วเห็นอะไร</div>
+  <div class="ins">
+    <div class="card"><div class="num" style="background:var(--plum)">1</div><div><div class="t">UP ขาย “ผลลัพธ์ที่มีคนดูแล” ไม่ใช่ขายของ</div><div class="d">สินค้าแอมเวย์คือของในคอร์ส ราคาตามบริษัท → คันโยกราคา/โปรของกระดานเดิม<span class="it">แทบใช้ไม่ได้</span></div></div></div>
+    <div class="card"><div class="num" style="background:var(--plum)">2</div><div><div class="t">เครื่องดึงคนขับด้วย “ชั่วโมงคน”</div><div class="d">ยังไม่ยิงแอด (รอคำตอบบริษัท) → CAC ของ UP ต้องนับเป็นชั่วโมง <span class="it">ไม่ใช่ค่าแอด</span></div></div></div>
+    <div class="card"><div class="num" style="background:var(--plum)">3</div><div><div class="t">คอขวดจริง = ชั่วโมงของต้น + จิ้น</div><div class="d">บริษัทส่งของให้ แต่การดูแลและตรวจยา-แล็บใช้คน → ด่าน “ดูแลไหว” <span class="it">มาก่อนทุกอย่าง</span></div></div></div>
+    <div class="card"><div class="num" style="background:var(--plum)">4</div><div><div class="t">ตัวชี้วัดยังว่างทุกช่อง</div><div class="d">ชีตตัวเลขฐานว่างตั้งแต่ 24 ก.ค. → กระดาน “ยอดตก” ยังใช้<span class="it">ไล่หาสาเหตุไม่ได้</span></div></div></div>
+    <div class="card"><div class="num" style="background:var(--plum)">5</div><div><div class="t">ทำแล้ว แต่ไม่ได้ปล่อย</div><div class="d">ปฏิทินโพสต์: แคปชันพร้อม 196 · ขึ้นสถานะโพสต์แล้ว 5 → ปัญหา<span class="it">ไม่ใช่ขาดไอเดีย</span></div></div></div>
+    <div class="card"><div class="num" style="background:var(--plum)">6</div><div><div class="t">กฎต้องอัปเดตก่อนเร่ง</div><div class="d">คำ/ภาพลดน้ำหนักห้ามใช้โฆษณาเสริมอาหาร · ไฟล์กฎเรายังอ้างประกาศ อย. ฉบับ 2564 (มีฉบับ 2569 แล้ว)</div></div></div>
+  </div>
+
+  <div class="mid">
+    <div>
+      <div class="sec" style="color:var(--green)"><span class="bar"></span>ทำแค่ 3 อย่าง</div>
+      <div class="act">
+        <div class="card">
+          <div class="bign">1</div>
+          <div><div class="t">เริ่มนับตัวเลข 4 ช่อง ทุกสัปดาห์</div>
+            <div class="d"><span class="it">คนเห็น/คนเข้าฟัง</span> <span class="sep">·</span> <span class="it">คนทัก</span> <span class="sep">·</span> <span class="it">คนเข้าคอร์ส</span> <span class="sep">·</span> <span class="it">ชั่วโมงต้น + จิ้น</span> — ทุกวันอาทิตย์ 30 นาที ในชีตเดิม <span class="it">(A70-Tracker)</span> <span class="it">ไม่สร้างไฟล์ใหม่</span></div>
+            <div class="gain">→ ภาพ 3 ใช้ไล่หาสาเหตุได้จริง</div></div>
+          <div class="meta"><div class="m own"><b>ต้น</b>เจ้าของ</div><div class="m due"><b>อา. 11 ต.ค.</b>ครั้งแรก แล้วทุกอาทิตย์</div></div>
+        </div>
+        <div class="card">
+          <div class="bign">2</div>
+          <div><div class="t">คุยกับจิ้น + คิดรายได้ต่อชั่วโมง</div>
+            <div class="d">จิ้นรับได้กี่ชั่วโมง/สัปดาห์ · อยากโตแค่ไหน · แล้วคิด <b>รายได้จริงต่อคอร์ส ÷ ชั่วโมงดูแล</b> <span class="it">จาก 3 คอร์สล่าสุด</span></div>
+            <div class="gain">→ รู้ว่า Scale ได้แค่ไหน (ด่าน 1 และ 3)</div></div>
+          <div class="meta"><div class="m own"><b>ต้น + จิ้น</b>เจ้าของ</div><div class="m due"><b>ศ. 16 ต.ค.</b>กำหนดเสร็จ</div></div>
+        </div>
+        <div class="card">
+          <div class="bign">3</div>
+          <div><div class="t">ส่งหนังสือถามบริษัท 1 ฉบับ</div>
+            <div class="d">แอดความรู้ (เล่าทั้งเส้นทาง แอด → LINE → คอร์ส) · ไลฟ์ · แพทย์ส่งต่อ · คลิปซูม · รีวิวลูกค้า + เทียบประกาศ อย. 2569 · จดคำตอบลง RULINGS.md</div>
+            <div class="gain">→ รู้ว่าเครื่องดึงคนเปิดได้แค่ไหน</div></div>
+          <div class="meta"><div class="m own"><b>ต้น</b>เจ้าของ</div><div class="m due"><b>ศ. 16 ต.ค.</b>ส่งถาม</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="side">
+      <div class="card red">
+        <h3 class="red">อย่าเพิ่งทำ (จนกว่าจะมีตัวเลข)</h3>
+        <ul class="lst no">
+          <li>ยิงแอด</li>
+          <li>เพิ่มโค้ช / เปิดคอร์สเป็นรุ่น</li>
+          <li>ชวนเภสัชกร · พยาบาล · แพทย์มาเป็นช่องทาง</li>
+          <li>ผลิตคอนเทนต์ใหม่ → ปล่อยของที่ทำไว้แล้ว (ตรวจคำก่อน) แทน</li>
+          <li>สร้างเครื่องมือใหม่ · เผยแพร่ภาพ 3–4</li>
+        </ul>
+      </div>
+      <div class="card blue">
+        <h3 class="blue">ก่อนตัดสินใจ Scale ต้องมี</h3>
+        <ul class="lst gate">
+          <li>ตัวเลขรายสัปดาห์ติดกัน ≥ 6 สัปดาห์</li>
+          <li>รายได้ต่อชั่วโมงที่ต้นรับได้</li>
+          <li>จิ้นยืนยันชั่วโมงที่รับได้ด้วยตัวเอง</li>
+          <li>คำตอบบริษัทเป็นลายลักษณ์อักษร</li>
+          <li>อัตราใช้ต่อหลังจบคอร์ส (จากคนเข้าคอร์สจริง)</li>
+          <li>ใบยินยอม PDPA ครอบคลุมโค้ช + AI</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl">
+    <div class="line"></div>
+    <div class="st"><div class="dot"><i></i><span class="date">อา. 11 ต.ค.</span></div><div class="w">นับตัวเลขครั้งแรก</div></div>
+    <div class="st"><div class="dot"><i style="background:var(--amber)"></i><span class="date">ศ. 16 ต.ค.</span></div><div class="w">คุยกับจิ้นเสร็จ · ส่งหนังสือถามบริษัท</div></div>
+    <div class="st"><div class="dot"><i></i><span class="date">อา. 18 · 25 ต.ค. · 1 พ.ย.</span></div><div class="w">นับทุกอาทิตย์ · ปล่อยโพสต์ที่ทำไว้ (ตรวจคำก่อน)</div></div>
+    <div class="st"><div class="dot"><i style="background:var(--green)"></i><span class="date">อา. 8 พ.ย.</span></div><div class="w">ทบทวนด้วยภาพ 3: ตัวเลขชี้ว่าเครื่องยนต์ไหนติด → <span class="it">เคาะทางต่อ</span></div></div>
+  </div>
+
+  <div class="bot">
+    <div class="card amber">
+      <h3 class="amber">ถ้าแผนนี้ล้มใน ม.ค. 70 น่าจะเพราะ…</h3>
+      <ol>
+        <li>ภาพเสร็จสวย แต่ตัวเลขยังว่าง (ซ้ำรอบ ก.ค.)</li>
+        <li>จิ้นล้า หรือไม่เห็นด้วยกับบทที่ถูกวางให้</li>
+        <li>โพสต์มุมน้ำหนัก · คลิปซูม · รีวิวลูกค้า โดนร้องเรียน</li>
+        <li>รอคำตอบเรื่องแอด ที่ไม่มีใครส่งไปถาม</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>เก็บกวาด (ไม่นับใน 3 งานหลัก)</h3>
+      <ol>
+        <li>ยืนยันราคาคอร์สปัจจุบัน — ไฟล์ยังไม่ตรงกัน <span class="small">(ต้น + จิ้น)</span></li>
+        <li>แก้คัมภีร์ UP บรรทัด 488 และ 496–504 (before/after · miracle · hook ลดน้ำหนัก) <span class="small">(Claude แก้เมื่อต้นเคาะ)</span></li>
+        <li>GUARDRAILS บรรทัด 33/80 ยังมีประโยคแนะนำตัวที่ต้นห้าม <span class="small">(ต้นตัดสิน)</span></li>
+      </ol>
+    </div>
+  </div>
+</div>
+</section>
+<div class="swap" id="swap"></div>
+<p class="foot-note">ทำ 8 ต.ค. 2569 · ข้อความผัง 1–2 ยึดถ้อยคำที่เจ้าของกระดานยืนยันแล้ว · ป้ายกฎในผัง 3–5 ตรวจโดย AI ยังไม่มีผู้เชี่ยวชาญกฎหมาย/บริษัทรับรอง</p>
+<script>
+(function(){
+  document.documentElement.classList.remove('nojs');
+  var ids=['s1','s2','s3','s4','s5'];
+  var pair={s1:['s3','ดูฉบับ UP (ผัง 3) →'],s3:['s1','← ดูต้นฉบับ (ผัง 1)'],s2:['s4','ดูฉบับ UP (ผัง 4) →'],s4:['s2','← ดูต้นฉบับ (ผัง 2)'],s5:['s3','← กลับไปผัง 3']};
+  function show(id,scroll){
+    if(ids.indexOf(id)<0) id='s1';
+    ids.forEach(function(x){document.getElementById(x).classList.toggle('on',x===id);});
+    document.querySelectorAll('.tabs a').forEach(function(a){
+      var on=a.dataset.s===id; a.classList.toggle('on',on);
+      if(on && a.scrollIntoView) a.scrollIntoView({block:'nearest',inline:'center'});
+    });
+    var i=ids.indexOf(id), sw=document.getElementById('swap'), h='';
+    if(pair[id]) h+='<a href="#'+pair[id][0]+'">'+pair[id][1]+'</a>';
+    if(i<ids.length-1 && (!pair[id]||pair[id][0]!==ids[i+1])) h+='<a href="#'+ids[i+1]+'">ผังถัดไป ('+(i+2)+') →</a>';
+    sw.innerHTML=h;
+    if(scroll) window.scrollTo(0,0);
+    fit(id);
+  }
+  // ก้อนข้อความที่กว้างกว่ากรอบบนจอแคบ → ปล่อยให้ตัดบรรทัดได้ (กันล้นแนวนอน)
+  function fit(id){
+    var sec=document.getElementById(id); if(!sec) return;
+    sec.querySelectorAll('.it').forEach(function(el){
+      el.style.whiteSpace='';
+      var p=el.parentElement, box=p.getBoundingClientRect(), r=el.getBoundingClientRect();
+      if(r.right>box.right+1 || r.width>box.width) el.style.whiteSpace='normal';
+    });
+  }
+  window.addEventListener('resize',function(){fit((location.hash||'#s1').slice(1));});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){fit((location.hash||'#s1').slice(1));});
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1),true);});
+  show(location.hash.slice(1)||'s1',false);
+})();
+</script>
+</body></html>
