@@ -73,8 +73,12 @@ code{background:var(--surface-2);padding:.05em .35em;border-radius:6px;font-size
   .brand{display:none}
   .nav .wrap{gap:6px;min-height:0}
   .prog{flex-basis:100%;order:2}
-  .tools{width:100%;justify-content:space-between;order:1}
+  .tools{width:100%;justify-content:space-between;order:1;flex-wrap:wrap;row-gap:6px}
   .seg button{min-width:38px;padding:.3em .45em}
+}
+@media (max-width:370px){
+  .tools{justify-content:flex-start}
+  #exportBtn{flex:1 1 100%}
 }
 .toc a{white-space:nowrap;text-decoration:none;color:var(--ink-2);font-size:.8rem;border:1px solid var(--line);border-radius:99px;padding:.15em .7em;background:var(--surface)}
 .toc a.done{border-color:var(--accent);color:var(--ink)}
@@ -192,7 +196,7 @@ footer{color:var(--ink-2);font-size:.85rem;padding:24px 0 60px}
   <h1>ผู้ช่วยเช็กเอกสารและกฎหมายก่อนขายข้าว</h1>
   <p class="lead">PRD (เอกสารข้อกำหนดผลิตภัณฑ์) ของ <b>Rice Compliance Check</b> — ใส่ข้าวที่มี (หรือบอกว่าไม่รู้) แล้วได้เช็กลิสต์ + รายงานว่าต้องมีเอกสารอะไร ใบอนุญาตอะไร คำโฆษณาไหนใช้ได้ ก่อนลงขาย Shopee · TikTok Shop</p>
   <div class="meta">
-    <span class="pill draft">ร่างเพื่อรีวิว v0.1</span>
+    <span class="pill draft">v0.2 · ต้นรีวิว v0.1 ผ่านทุกหัวข้อ</span>
     <span class="pill">23 ต.ค. 2569</span>
     <span class="pill">เจ้าของ: ต้น (Product Owner)</span>
     <span class="pill">ข้อกฎหมาย: ยังไม่ผ่านทนาย</span>
@@ -227,7 +231,7 @@ footer{color:var(--ink-2);font-size:.85rem;padding:24px 0 60px}
       <tr><td>ผู้ส่งออก · ร้านค้าส่ง · หน้าร้าน</td><td>เงื่อนไขต่างจากออนไลน์มาก</td><td><span class="st na">➖ รุ่นถัดไป</span></td></tr>
     </tbody>
   </table>
-  <p class="note">ผู้ใช้กลุ่มแรก = ต้นเอง (ไพลอต) · จะเปิดให้ผู้ขายรายอื่นด้วยหรือไม่ = คำถามเปิด Q1</p>
+  <p class="note"><b>ผู้ใช้รุ่นแรก = ต้นเอง (ไพลอตภายใน · ตอบ Q1 แล้ว)</b> · เปิดให้ผู้ขายรายอื่นตัดสินตอนเฟส 3 · เคสทดสอบแรก = ข้าวหอมมะลิถุง บรรจุเอง ขาย Shopee + TikTok Shop</p>
   <div class="review" data-id="s2"></div>
 </section>
 
@@ -486,12 +490,12 @@ footer{color:var(--ink-2);font-size:.85rem;padding:24px 0 60px}
 <!-- 11 -->
 <section class="card qa" id="s11" data-title="11. คำถามเปิด">
   <div class="sec-head"><span class="sec-no">11</span><h2>คำถามเปิด — รอต้นตอบ</h2></div>
-  <p class="lead">ข้อที่ติด <span class="st bad">ขวางงาน</span> ต้องได้คำตอบก่อนเริ่มเฟสถัดไป · พิมพ์ตอบในช่องใต้แต่ละข้อได้เลย</p>
-  <div class="req"><h3>Q1 <span class="st bad">ขวางงาน</span></h3><p>ใช้เองภายใน (ไพลอต) ก่อน หรือเปิดให้ผู้ขายข้าวรายอื่นใช้ตั้งแต่รุ่นแรก · ถ้าเปิด ฟรีหรือเก็บเงิน</p><p class="s lead">กระทบ: บัญชีผู้ใช้ · PDPA · ความรับผิด</p><div class="review" data-id="Q1" data-kind="answer"></div></div>
-  <div class="req"><h3>Q2 <span class="st bad">ขวางงาน</span></h3><p>สินค้าตัวแรกที่จะใช้ทดสอบจริงคืออะไร (พันธุ์ · บรรจุเอง/ซื้อมา · ช่องทาง)</p><div class="review" data-id="Q2" data-kind="answer"></div></div>
+  <p class="lead">v0.2: ตอบแล้ว Q1 Q2 Q4 Q5 · <b>เหลือ Q3</b> (ภาพหน้าจอที่แพลตฟอร์มตีกลับ) และข้อไม่ขวาง Q6–Q9 · พิมพ์ตอบในช่องใต้แต่ละข้อได้</p>
+  <div class="req"><h3>Q1</h3><p class="st ok" style="white-space:normal;display:block;margin:.3em 0 .6em;padding:.4em .7em">✅ ตอบแล้ว 23 ต.ค.: <b>ใช้เองภายในก่อน</b> — เปิดคนนอก/เก็บเงิน ตัดสินตอนเฟส 3</p><p>ใช้เองภายใน (ไพลอต) ก่อน หรือเปิดให้ผู้ขายข้าวรายอื่นใช้ตั้งแต่รุ่นแรก · ถ้าเปิด ฟรีหรือเก็บเงิน</p><p class="s lead">กระทบ: บัญชีผู้ใช้ · PDPA · ความรับผิด</p><div class="review" data-id="Q1" data-kind="answer"></div></div>
+  <div class="req"><h3>Q2</h3><p class="st ok" style="white-space:normal;display:block;margin:.3em 0 .6em;padding:.4em .7em">✅ ตอบแล้ว 23 ต.ค.: <b>ข้าวหอมมะลิถุง บรรจุเอง ขาย Shopee + TikTok Shop</b> — ขนาดถุง ชื่อพันธุ์ จังหวัด ใบรับรอง เก็บตอนทำเคสทดสอบ</p><p>สินค้าตัวแรกที่จะใช้ทดสอบจริงคืออะไร (พันธุ์ · บรรจุเอง/ซื้อมา · ช่องทาง)</p><div class="review" data-id="Q2" data-kind="answer"></div></div>
   <div class="req"><h3>Q3 <span class="st bad">ขวางงาน</span></h3><p>ข้อความที่ Shopee/TikTok ตีกลับจริงมีอะไรบ้าง — ขอภาพหน้าจอหรือข้อความ (ใช้ยืนยันว่าเช็กลิสต์ตรงปัญหาจริง และเก็บลิงก์หน้านโยบายของแพลตฟอร์ม)</p><div class="review" data-id="Q3" data-kind="answer"></div></div>
-  <div class="req"><h3>Q4 <span class="st bad">ขวางการเปิดให้คนนอก</span></h3><p>มีทนาย/ผู้รู้ด้านกฎหมายอาหารที่จะตรวจฐานความรู้ก่อนเปิดใช้ไหม</p><div class="review" data-id="Q4" data-kind="answer"></div></div>
-  <div class="req"><h3>Q5 <span class="st bad">ขวางงาน</span></h3><p>ต้องถาม อย. (สายด่วน 1556) / สสจ.: <b>ข้าวสารถุงขายผู้บริโภคต้องแสดงเลข อย. หรือไม่</b> (งานวิจัย 2 ชุดขัดกัน) · ข้าวสาร ข้าวกล้อง ข้าวกล้องงอก ข้าวสี เป็น "อาหารทั่วไป" ทั้งหมดไหม · ข้อยกเว้นฉลากกรณีผู้ผลิตขายออนไลน์เองครอบคลุมแค่ไหน · โรงสีที่บรรจุถุงขายต้องมีใบอนุญาตสถานที่ผลิตแบบไหน (อ.2 หรือ สบ.1/1) — ต้นจะถามเอง หรือให้ทีมร่างคำถามให้</p><div class="review" data-id="Q5" data-kind="answer"></div></div>
+  <div class="req"><h3>Q4 <span class="st warn">ขวางเฟส 3</span></h3><p class="st ok" style="white-space:normal;display:block;margin:.3em 0 .6em;padding:.4em .7em">✅ ตอบแล้ว 23 ต.ค.: <b>ยังไม่มี หาตอนจะเปิดคนนอก</b></p><p>มีทนาย/ผู้รู้ด้านกฎหมายอาหารที่จะตรวจฐานความรู้ก่อนเปิดใช้ไหม</p><div class="review" data-id="Q4" data-kind="answer"></div></div>
+  <div class="req"><h3>Q5</h3><p class="st ok" style="white-space:normal;display:block;margin:.3em 0 .6em;padding:.4em .7em">✅ ตอบแล้ว 23 ต.ค.: <b>ยังไม่ถาม อย.</b> → ระบบติด ⏳ "ไม่แน่ใจ — ควรสอบถาม อย." และยังแนะนำเตรียมเอกสารสถานที่ผลิตเพราะ Shopee ขอ</p><p>ต้องถาม อย. (สายด่วน 1556) / สสจ.: <b>ข้าวสารถุงขายผู้บริโภคต้องแสดงเลข อย. หรือไม่</b> (งานวิจัย 2 ชุดขัดกัน) · ข้าวสาร ข้าวกล้อง ข้าวกล้องงอก ข้าวสี เป็น "อาหารทั่วไป" ทั้งหมดไหม · ข้อยกเว้นฉลากกรณีผู้ผลิตขายออนไลน์เองครอบคลุมแค่ไหน · โรงสีที่บรรจุถุงขายต้องมีใบอนุญาตสถานที่ผลิตแบบไหน (อ.2 หรือ สบ.1/1) — ต้นจะถามเอง หรือให้ทีมร่างคำถามให้</p><div class="review" data-id="Q5" data-kind="answer"></div></div>
   <div class="req"><h3>Q6</h3><p>รายงานต้องเป็น PDF ที่ส่งให้แพลตฟอร์มได้ หรือแค่ใช้ทำงานเอง</p><div class="review" data-id="Q6" data-kind="answer"></div></div>
   <div class="req"><h3>Q7</h3><p>ชื่อผลิตภัณฑ์ · หน้าตา/สี (ใช้ CI ของใคร — ดอกบัวรวงข้าว / TONPALEARN / ใหม่)</p><div class="review" data-id="Q7" data-kind="answer"></div></div>
   <div class="req"><h3>Q8</h3><p>ต้องการผู้ช่วย AI ถาม-ตอบ (P1-3) ในรุ่นแรกเลยไหม</p><div class="review" data-id="Q8" data-kind="answer"></div></div>
@@ -504,10 +508,10 @@ footer{color:var(--ink-2);font-size:.85rem;padding:24px 0 60px}
   <table class="tbl">
     <thead><tr><th>เฟส</th><th>ได้อะไร</th><th>ต้องมีก่อน</th></tr></thead>
     <tbody>
-      <tr><td>0 สเปก + ฐานความรู้</td><td>PRD ผ่านรีวิว · ทะเบียนข้อบังคับเฉพาะ "ขายข้าวออนไลน์" · คลังคำเคลม</td><td>ต้นตอบ Q1–Q3</td></tr>
+      <tr><td>0 สเปก + ฐานความรู้</td><td>✅ PRD ผ่านรีวิว · ทะเบียนข้อบังคับเฉพาะ "ขายข้าวออนไลน์" · คลังคำเคลม</td><td>✅ Q1 Q2 · เหลือ Q3 (ไม่ขวางการเริ่มทะเบียน)</td></tr>
       <tr><td>1 ต้นแบบคลิกได้</td><td>หน้าจอแบบสอบถาม + รายงานตัวอย่าง จากสินค้าตัวแรกของจริง</td><td>เฟส 0</td></tr>
       <tr><td>2 MVP</td><td>P0 ครบ ใช้ภายใน</td><td>เฟส 1 + ADR-0001</td></tr>
-      <tr><td>3 เปิดใช้วงกว้าง</td><td>P1 บางข้อ · ทนายตรวจแล้ว</td><td>Q4</td></tr>
+      <tr><td>3 เปิดใช้วงกว้าง</td><td>P1 บางข้อ · ทนายตรวจแล้ว · ตัดสินเปิดคนนอก/เก็บเงิน</td><td>Q4 (หาทนายก่อนเข้าเฟสนี้)</td></tr>
     </tbody>
   </table>
   <ul>
@@ -531,7 +535,7 @@ footer{color:var(--ink-2);font-size:.85rem;padding:24px 0 60px}
 
 <script>
 (function(){
-  var KEY='rcc-prd-review', VER='0.1';
+  var KEY='rcc-prd-review', VER='0.2';
   var state={};
   try{var s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.v===VER) state=s.d||{};}catch(e){}
   function save(){try{localStorage.setItem(KEY,JSON.stringify({v:VER,d:state}));}catch(e){} progress();}
