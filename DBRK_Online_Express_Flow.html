@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DBRK Online ↔ Express</title>
+<meta name="description" content="ลำดับงานระบบ Online กับ Express ของโรงสี: ระหว่างเดือนทำในระบบ Online ทั้งหมด สิ้นเดือนคีย์ยอดสรุปลง Express ไม่กี่รายการ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f5; --fg: #1f1e1c; --muted: #6b6a64; --line: #888780; --hair: #d3d1c7;
+    --teal-fill: #E1F5EE; --teal-stroke: #0F6E56; --teal-title: #085041; --teal-sub: #0F6E56;
+    --purple-fill: #EEEDFE; --purple-stroke: #534AB7; --purple-title: #3C3489; --purple-sub: #534AB7;
+    --gray-fill: #F1EFE8; --gray-stroke: #5F5E5A; --gray-title: #444441; --gray-sub: #5F5E5A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a; --fg: #ecebe6; --muted: #b4b2a9; --line: #b4b2a9; --hair: #5F5E5A;
+      --teal-fill: #085041; --teal-stroke: #5DCAA5; --teal-title: #E1F5EE; --teal-sub: #9FE1CB;
+      --purple-fill: #3C3489; --purple-stroke: #AFA9EC; --purple-title: #EEEDFE; --purple-sub: #CECBF6;
+      --gray-fill: #444441; --gray-stroke: #B4B2A9; --gray-title: #F1EFE8; --gray-sub: #D3D1C7;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Sarabun", system-ui, sans-serif; line-height: 1.7; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; }
+  h1 { font-size: 24px; font-weight: 500; margin: 0 0 4px; }
+  h2 { font-size: 18px; font-weight: 500; margin: 36px 0 6px; }
+  p, li { font-size: 16px; }
+  .lede { color: var(--muted); margin: 0 0 8px; }
+  .card { border: 0.5px solid var(--hair); border-radius: 12px; padding: 12px; margin-top: 12px; }
+  svg { display: block; width: 100%; height: auto; }
+  svg text { font-family: "Sarabun", system-ui, sans-serif; }
+  .t, .th { font-size: 14px; fill: var(--fg); }
+  .th { font-weight: 500; }
+  .ts { font-size: 12px; fill: var(--muted); }
+  .arr { stroke: var(--line); stroke-width: 1.5; fill: none; }
+  .leader { stroke: var(--line); stroke-width: 0.5; stroke-dasharray: 4 4; fill: none; }
+  .c-teal > rect { fill: var(--teal-fill); stroke: var(--teal-stroke); }
+  .c-teal > .th { fill: var(--teal-title); } .c-teal > .ts { fill: var(--teal-sub); }
+  .c-purple > rect { fill: var(--purple-fill); stroke: var(--purple-stroke); }
+  .c-purple > .th { fill: var(--purple-title); } .c-purple > .ts { fill: var(--purple-sub); }
+  .c-gray > rect { fill: var(--gray-fill); stroke: var(--gray-stroke); }
+  .c-gray > .th { fill: var(--gray-title); } .c-gray > .ts { fill: var(--gray-sub); }
+  .status li { margin-bottom: 4px; }
+  footer { margin-top: 32px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>ระบบ Online กับ Express ของโรงสี</h1>
+  <p class="lede">ระบบ Online เก็บรายละเอียดรายออเดอร์ ส่วน Express รับเฉพาะยอดสรุป บันทึกแต่ละเรื่องครั้งเดียว ไม่ต้องคีย์ซ้ำ</p>
+
+  <h2>ระหว่างเดือน</h2>
+  <p>ระบบ Online ทำงานเองทั้งหมด บัญชีโรงสีไม่ต้องแตะ Express</p>
+  <div class="card">
+<svg viewBox="0 0 680 392" role="img"><title>ระหว่างเดือน: แพลตฟอร์ม ระบบ Online และ Express</title><desc>ออเดอร์จากแพลตฟอร์มเข้าระบบ Online ตั้งค้างรับ ออกเอกสาร แพ็กและสต๊อกติดลบ เงินก้อนเข้าแล้วจับคู่ตัดค้างรับ ส่วน Express ไม่ต้องคีย์อะไรจนสิ้นเดือน</desc>
+<defs><marker id="arrow1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g class="c-gray"><rect x="30" y="16" width="180" height="40" rx="8" stroke-width="0.5"/><text class="th" x="120" y="36" text-anchor="middle" dominant-baseline="central">แพลตฟอร์ม</text></g>
+<g class="c-teal"><rect x="250" y="16" width="180" height="40" rx="8" stroke-width="0.5"/><text class="th" x="340" y="36" text-anchor="middle" dominant-baseline="central">ระบบ Online</text></g>
+<g class="c-purple"><rect x="470" y="16" width="180" height="40" rx="8" stroke-width="0.5"/><text class="th" x="560" y="36" text-anchor="middle" dominant-baseline="central">Express (บัญชีโรงสี)</text></g>
+<line x1="120" y1="56" x2="120" y2="80" class="leader"/><line x1="120" y1="136" x2="120" y2="308" class="leader"/>
+<line x1="560" y1="56" x2="560" y2="80" class="leader"/>
+<g class="c-gray"><rect x="30" y="80" width="180" height="56" rx="8" stroke-width="0.5"/><text class="th" x="120" y="98" text-anchor="middle" dominant-baseline="central">ลูกค้าสั่ง + จ่ายเงิน</text><text class="ts" x="120" y="118" text-anchor="middle" dominant-baseline="central">TikTok · Shopee</text></g>
+<g class="c-teal"><rect x="250" y="80" width="180" height="56" rx="8" stroke-width="0.5"/><text class="th" x="340" y="98" text-anchor="middle" dominant-baseline="central">ซิงก์ทุก 30 นาที</text><text class="ts" x="340" y="118" text-anchor="middle" dominant-baseline="central">ตั้งค้างรับรายออเดอร์</text></g>
+<line x1="210" y1="108" x2="246" y2="108" class="arr" marker-end="url(#arrow1)"/>
+<line x1="340" y1="136" x2="340" y2="152" class="arr" marker-end="url(#arrow1)"/>
+<g class="c-teal"><rect x="250" y="156" width="180" height="56" rx="8" stroke-width="0.5"/><text class="th" x="340" y="174" text-anchor="middle" dominant-baseline="central">ออกเอกสารอัตโนมัติ</text><text class="ts" x="340" y="194" text-anchor="middle" dominant-baseline="central">ใบกำกับเมื่อลูกค้าขอ</text></g>
+<line x1="340" y1="212" x2="340" y2="228" class="arr" marker-end="url(#arrow1)"/>
+<g class="c-teal"><rect x="250" y="232" width="180" height="56" rx="8" stroke-width="0.5"/><text class="th" x="340" y="250" text-anchor="middle" dominant-baseline="central">แพ็ก + พิมพ์รวม</text><text class="ts" x="340" y="270" text-anchor="middle" dominant-baseline="central">สต๊อกติดลบตามที่ขาย</text></g>
+<g class="c-gray"><rect x="30" y="308" width="180" height="56" rx="8" stroke-width="0.5"/><text class="th" x="120" y="326" text-anchor="middle" dominant-baseline="central">โอนเงินเป็นก้อน</text><text class="ts" x="120" y="346" text-anchor="middle" dominant-baseline="central">หักค่าธรรมเนียมแล้ว</text></g>
+<g class="c-teal"><rect x="250" y="308" width="180" height="56" rx="8" stroke-width="0.5"/><text class="th" x="340" y="326" text-anchor="middle" dominant-baseline="central">นำเข้า statement</text><text class="ts" x="340" y="346" text-anchor="middle" dominant-baseline="central">จับคู่ ตัดค้างรับรายใบ</text></g>
+<line x1="210" y1="336" x2="246" y2="336" class="arr" marker-end="url(#arrow1)"/>
+<rect x="470" y="80" width="180" height="284" rx="8" fill="none" stroke="var(--line)" stroke-width="0.5" stroke-dasharray="4 4"/>
+<text class="th" x="560" y="210" text-anchor="middle" dominant-baseline="central">ไม่ต้องคีย์อะไร</text>
+<text class="ts" x="560" y="232" text-anchor="middle" dominant-baseline="central">รอสรุปสิ้นเดือน</text>
+</svg>
+  </div>
+
+  <h2>สิ้นเดือน (วันที่ 1–3)</h2>
+  <p>ระบบ Online ออกแผ่นสรุปให้ บัญชีคีย์ลง Express เดือนละไม่กี่รายการ แล้วเทียบยอดลูกหนี้กันที่ตัวเลขเดียว</p>
+  <div class="card">
+<svg viewBox="0 0 680 548" role="img"><title>สิ้นเดือน: ระบบ Online ส่งยอดสรุปให้ Express</title><desc>ระบบ Online ปิดงวดและออกแผ่นคีย์ บัญชีคีย์ตั้งลูกหนี้ รับชำระ และตัดสต๊อกโรงสีใน Express ระบบ Online ปิดยอดสต๊อกกลับเป็นศูนย์ เทียบยอดลูกหนี้ และ ภ.พ.30 รวมสองรายงานซึ่งรอบัญชีโรงสียืนยัน</desc>
+<defs><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<g class="c-teal"><rect x="60" y="16" width="240" height="40" rx="8" stroke-width="0.5"/><text class="th" x="180" y="36" text-anchor="middle" dominant-baseline="central">ระบบ Online</text></g>
+<g class="c-purple"><rect x="380" y="16" width="240" height="40" rx="8" stroke-width="0.5"/><text class="th" x="500" y="36" text-anchor="middle" dominant-baseline="central">Express (บัญชีโรงสี)</text></g>
+<line x1="180" y1="56" x2="180" y2="80" class="leader"/><line x1="500" y1="56" x2="500" y2="156" class="leader"/>
+<g class="c-teal"><rect x="60" y="80" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="180" y="98" text-anchor="middle" dominant-baseline="central">ปิดงวด</text><text class="ts" x="180" y="118" text-anchor="middle" dominant-baseline="central">ส่งปิด → อนุมัติ → ล็อกเดือน</text></g>
+<line x1="180" y1="136" x2="180" y2="152" class="arr" marker-end="url(#arrow2)"/>
+<g class="c-teal"><rect x="60" y="156" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="180" y="174" text-anchor="middle" dominant-baseline="central">ชุดปิดงวด + แผ่นคีย์</text><text class="ts" x="180" y="194" text-anchor="middle" dominant-baseline="central">ลูกหนี้ · รับชำระ · ตัดสต๊อก</text></g>
+<line x1="300" y1="184" x2="376" y2="184" class="arr" marker-end="url(#arrow2)"/>
+<g class="c-purple"><rect x="380" y="156" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="500" y="174" text-anchor="middle" dominant-baseline="central">คีย์ตั้งลูกหนี้ขาย</text><text class="ts" x="500" y="194" text-anchor="middle" dominant-baseline="central">3–5 รายการต่อเดือน</text></g>
+<line x1="500" y1="212" x2="500" y2="228" class="arr" marker-end="url(#arrow2)"/>
+<g class="c-purple"><rect x="380" y="232" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="500" y="250" text-anchor="middle" dominant-baseline="central">คีย์รับชำระ</text><text class="ts" x="500" y="270" text-anchor="middle" dominant-baseline="central">1 ใบต่อยอดเงินเข้า</text></g>
+<line x1="500" y1="288" x2="500" y2="304" class="arr" marker-end="url(#arrow2)"/>
+<g class="c-purple"><rect x="380" y="308" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="500" y="326" text-anchor="middle" dominant-baseline="central">ใบเบิกตัดสต๊อกโรงสี</text><text class="ts" x="500" y="346" text-anchor="middle" dominant-baseline="central">1 ใบ ราว 10 SKU</text></g>
+<line x1="180" y1="212" x2="180" y2="308" class="leader"/>
+<g class="c-teal"><rect x="60" y="308" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="180" y="326" text-anchor="middle" dominant-baseline="central">ปิดยอดกับ Express</text><text class="ts" x="180" y="346" text-anchor="middle" dominant-baseline="central">+N อ้างเลขใบ → สต๊อก = 0</text></g>
+<line x1="380" y1="336" x2="304" y2="336" class="arr" marker-end="url(#arrow2)"/>
+<line x1="180" y1="364" x2="180" y2="384" class="leader"/><line x1="500" y1="364" x2="500" y2="384" class="leader"/>
+<g class="c-teal"><rect x="60" y="384" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="180" y="402" text-anchor="middle" dominant-baseline="central">ยอดค้างรับฝั่งเรา</text><text class="ts" x="180" y="422" text-anchor="middle" dominant-baseline="central">ต่อแพลตฟอร์ม</text></g>
+<g class="c-purple"><rect x="380" y="384" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="500" y="402" text-anchor="middle" dominant-baseline="central">ยอดลูกหนี้ใน Express</text><text class="ts" x="500" y="422" text-anchor="middle" dominant-baseline="central">ต่อแพลตฟอร์ม</text></g>
+<text class="ts" x="340" y="398" text-anchor="middle" dominant-baseline="central">ต้องเท่ากัน</text>
+<line x1="304" y1="414" x2="376" y2="414" stroke="var(--line)" stroke-width="1" stroke-dasharray="4 3" marker-start="url(#arrow2)" marker-end="url(#arrow2)"/>
+<line x1="180" y1="440" x2="180" y2="460" class="leader"/>
+<g class="c-teal"><rect x="60" y="460" width="240" height="56" rx="8" stroke-width="0.5"/><text class="th" x="180" y="478" text-anchor="middle" dominant-baseline="central">รายงานภาษีขาย Online</text><text class="ts" x="180" y="498" text-anchor="middle" dominant-baseline="central">ใบกำกับ + สรุปรายวัน</text></g>
+<line x1="300" y1="488" x2="376" y2="488" class="arr" marker-end="url(#arrow2)"/>
+<rect x="380" y="460" width="240" height="56" rx="8" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="5 4"/>
+<text class="th" x="500" y="478" text-anchor="middle" dominant-baseline="central">ภ.พ.30 รวม 2 รายงาน</text>
+<text class="ts" x="500" y="498" text-anchor="middle" dominant-baseline="central">รอบัญชีโรงสียืนยัน</text>
+<text class="ts" x="340" y="534" text-anchor="middle" dominant-baseline="central">กรอบเส้นประ = ยังไม่ได้ยืนยัน</text>
+</svg>
+  </div>
+
+  <h2>สถานะตอนนี้</h2>
+  <ul class="status">
+    <li><b>ใช้ได้แล้ว (ยังอยู่ระหว่างทดสอบ):</b> ซิงก์ออเดอร์ ออกเอกสารอัตโนมัติ พิมพ์รวมแนบกล่อง นำเข้า statement และจับคู่เงินเข้า</li>
+    <li><b>ยังไม่ได้ทำ:</b> แผ่นคีย์ Express 3 แผ่น (ตั้งลูกหนี้ · รับชำระ · ตัดสต๊อก) เอกสาร "ปิดยอดกับ Express" และโหมดสต๊อกที่ติดลบได้</li>
+    <li><b>รอบัญชีโรงสียืนยัน:</b> ยื่น ภ.พ.30 รวมรายงานภาษีขายของ Express กับระบบ Online · Express ใช้โมดูลลูกหนี้และสินค้าคงคลังอยู่หรือไม่ · วิธีตีราคาต้นทุนสต๊อก</li>
+  </ul>
+  <footer>DBRK Online · ฉบับร่าง 27 ต.ค. 2569</footer>
+</main>
+</body>
+</html>
