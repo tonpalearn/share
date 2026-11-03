@@ -1,0 +1,1279 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ขั้นตอนงานขายออนไลน์ ดอกบัวรวงข้าว แบบเดิมเทียบระบบใหม่ พร้อมแผนทดลองคู่ขนาน 3 วัน และเริ่มใช้จริงจันทร์ 9 พ.ย. 2569">
+<title>ขั้นตอนงานออนไลน์ เดิมกับใหม่</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the order's journey runs as a 3-column ladder (step · เดิม · ใหม่) that stacks on phones; mock screens sit beside each Monday step. */
+:root {
+  --bg: #f6f7f2; --surface: #ffffff; --ink: #1b2420; --muted: #5d6862; --line: #dfe4dc;
+  --paddy: #2e6b45; --paddy-soft: #e3efe6; --straw: #b8851f; --straw-soft: #f6ecd6;
+  --old: #a24b3a; --old-soft: #f7e6e1; --tt: #e8274e; --sp: #e2522f;
+  --win: #e9ece6; --win-bar: #3c4a43; --win-ink: #ffffff; --pin: #b8851f; --pin-ink: #1b2420;
+  --display: "Bai Jamjuree", "IBM Plex Sans Thai", "Sarabun", sans-serif;
+  --body: "IBM Plex Sans Thai", "Sarabun", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --surface: #1a221e; --ink: #e8ede9; --muted: #9eaaa3; --line: #2c3731;
+  --paddy: #6fbf8a; --paddy-soft: #1f3327; --straw: #e0b04f; --straw-soft: #352b15;
+  --old: #e08a77; --old-soft: #3a221c; --tt: #ff5a7a; --sp: #ff7a55;
+  --win: #222c27; --win-bar: #33423a; --win-ink: #e8ede9; --pin: #e0b04f; --pin-ink: #121815; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121815; --surface: #1a221e; --ink: #e8ede9; --muted: #9eaaa3; --line: #2c3731;
+  --paddy: #6fbf8a; --paddy-soft: #1f3327; --straw: #e0b04f; --straw-soft: #352b15;
+  --old: #e08a77; --old-soft: #3a221c; --tt: #ff5a7a; --sp: #ff7a55;
+  --win: #222c27; --win-bar: #33423a; --win-ink: #e8ede9; --pin: #e0b04f; --pin-ink: #121815; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.65; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 64px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.25; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(1.9rem, 4.6vw, 2.9rem); font-weight: 700; }
+h2 { font-size: clamp(1.45rem, 3vw, 1.95rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--mono); font-size: .92em; }
+.num { font-variant-numeric: tabular-nums; }
+a { color: var(--paddy); }
+:focus-visible { outline: 3px solid var(--straw); outline-offset: 2px; }
+
+/* header */
+header.top { padding-block: 40px 28px; display: grid; gap: 18px; }
+.eyebrow { font-family: var(--display); font-size: .82rem; letter-spacing: .08em; color: var(--paddy); font-weight: 600; }
+.lede { font-size: 1.08rem; max-width: 64ch; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: .88rem; color: var(--muted); align-items: center; }
+
+/* chips */
+.who { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 600; padding: 2px 10px; border-radius: 999px; white-space: nowrap; font-family: var(--display); }
+.who.auto { background: var(--paddy-soft); color: var(--paddy); }
+.who.hand { background: var(--straw-soft); color: var(--straw); }
+.who.oldhand { background: var(--old-soft); color: var(--old); }
+.where { display: inline-block; font-size: .75rem; padding: 1px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); white-space: nowrap; }
+
+/* sticky nav */
+nav.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+nav.jump .row { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: thin; }
+nav.jump a { flex: none; text-decoration: none; color: var(--ink); font-size: .88rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); }
+nav.jump a:hover { border-color: var(--paddy); color: var(--paddy); }
+
+section { padding-block: 44px 8px; display: grid; gap: 20px; scroll-margin-top: 64px; }
+.sec-head { display: grid; gap: 8px; max-width: 72ch; }
+
+/* big numbers */
+.compare-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.bign { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 8px; }
+.bign.old { border-top: 4px solid var(--old); }
+.bign.new { border-top: 4px solid var(--paddy); }
+.bign .n { font-family: var(--display); font-size: 2.6rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.bign.old .n { color: var(--old); } .bign.new .n { color: var(--paddy); }
+.bign ul { margin: 0; padding-left: 1.1em; font-size: .93rem; color: var(--muted); }
+.src { font-size: .8rem; color: var(--muted); }
+
+/* the ladder */
+.ladder { display: grid; gap: 10px; }
+.ladder .colhead { display: grid; grid-template-columns: 190px 1fr 1fr; gap: 10px; font-family: var(--display); font-weight: 600; font-size: .9rem; }
+.ladder .colhead div:nth-child(2) { color: var(--old); }
+.ladder .colhead div:nth-child(3) { color: var(--paddy); }
+.rung { display: grid; grid-template-columns: 190px 1fr 1fr; gap: 10px; align-items: stretch; }
+.rung .when { padding: 14px 4px; display: grid; align-content: start; gap: 4px; }
+.rung .when .step { font-family: var(--display); font-weight: 700; font-size: 1.02rem; }
+.rung .when .t { font-size: .82rem; color: var(--muted); }
+.cell { border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.cell.o { background: var(--old-soft); }
+.cell.n { background: var(--paddy-soft); }
+.cell.same { background: var(--surface); border: 1px dashed var(--line); grid-column: 2 / 4; }
+.cell .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.cell p { font-size: .95rem; }
+.cell .fact { font-size: .82rem; color: var(--muted); }
+.cell.none { background: transparent; border: 1px dashed var(--line); color: var(--muted); font-size: .9rem; }
+.mob { display: none; font-family: var(--display); font-size: .78rem; font-weight: 600; }
+.cell.o .mob { color: var(--old); } .cell.n .mob { color: var(--paddy); }
+
+/* Monday walkthrough */
+.track { display: grid; gap: 16px; }
+.track-title { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; }
+.mstep { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+.mstep .txt { display: grid; gap: 10px; align-content: start; }
+.bubble { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--paddy); color: var(--bg); font-family: var(--display); font-weight: 700; font-size: 1.1rem; }
+.mstep ol, .mstep ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; font-size: .95rem; }
+.pin { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: var(--pin); color: var(--pin-ink); font-size: .72rem; font-weight: 700; font-family: var(--display); vertical-align: 1px; }
+.tip { font-size: .86rem; background: var(--straw-soft); border-radius: 8px; padding: 8px 12px; }
+
+/* mock windows */
+.win { border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--win); font-size: .82rem; min-width: 0; }
+.win .bar { background: var(--win-bar); color: var(--win-ink); padding: 6px 12px; display: flex; justify-content: space-between; gap: 8px; font-family: var(--display); font-size: .8rem; }
+.win .bar span:last-child { opacity: .75; }
+.win .body { padding: 12px; display: grid; gap: 10px; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 10px; }
+.fld { display: grid; gap: 2px; }
+.fld label { font-size: .72rem; color: var(--muted); }
+.fld .v { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; font-family: var(--mono); font-size: .8rem; display: flex; justify-content: space-between; gap: 6px; align-items: center; min-height: 26px; }
+.fld .v.hl { border-color: var(--pin); box-shadow: 0 0 0 2px var(--straw-soft); }
+.scroll { overflow-x: auto; }
+table.grid { border-collapse: collapse; width: 100%; font-size: .78rem; background: var(--surface); }
+table.grid th, table.grid td { border: 1px solid var(--line); padding: 4px 6px; text-align: left; white-space: nowrap; }
+table.grid th { background: var(--bg); font-weight: 500; color: var(--muted); }
+table.grid td.r, table.grid th.r { text-align: right; font-variant-numeric: tabular-nums; }
+table.grid td.code { font-family: var(--mono); }
+table.grid tr.foot td { font-weight: 600; }
+.mocknote { font-size: .72rem; color: var(--muted); }
+.dbrk-card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; gap: 6px; }
+.dbrk-row { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn { display: inline-block; font-size: .75rem; padding: 3px 10px; border-radius: 6px; background: var(--paddy); color: var(--bg); font-family: var(--display); font-weight: 600; }
+.btn.ghost { background: transparent; color: var(--paddy); border: 1px solid var(--paddy); }
+.tt { color: var(--tt); font-weight: 600; } .sp { color: var(--sp); font-weight: 600; }
+.stamp { font-size: .7rem; font-weight: 700; color: var(--old); border: 1.5px solid var(--old); border-radius: 4px; padding: 0 6px; }
+
+/* week strips */
+.strip { display: grid; gap: 8px; }
+.weeks { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.wk { border-radius: 10px; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 4px; }
+.wk .bn { font-family: var(--mono); font-size: .8rem; font-weight: 500; }
+.wk .d { font-size: .85rem; }
+.wk .c { font-size: .76rem; color: var(--muted); }
+.wk.a { border-top: 4px solid var(--straw); }
+.wk.b { border-top: 4px solid var(--paddy); }
+.monthline { display: flex; gap: 8px; font-family: var(--display); font-size: .85rem; font-weight: 600; flex-wrap: wrap; }
+.monthline span { padding: 2px 10px; border-radius: 6px; }
+.monthline .a { background: var(--straw-soft); color: var(--straw); }
+.monthline .b { background: var(--paddy-soft); color: var(--paddy); }
+
+/* sequence (money arrives late) */
+.seq { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; overflow-x: auto; }
+.seq svg { display: block; min-width: 720px; width: 100%; height: auto; }
+.seq text { font-family: var(--body); }
+
+/* two-up boxes */
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.box { border-radius: 14px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.box.o { background: var(--old-soft); }
+.box.n { background: var(--paddy-soft); }
+.box h3 { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.box ol { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; font-size: .95rem; }
+.box ol li::marker { font-family: var(--display); font-weight: 700; }
+.formula { font-family: var(--mono); font-size: .85rem; background: var(--surface); border-radius: 8px; padding: 10px 12px; display: grid; gap: 4px; overflow-x: auto; }
+.confirm { font-size: .84rem; border-left: 3px solid var(--straw); padding: 4px 0 4px 10px; color: var(--muted); }
+
+/* rollout */
+.stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.stage { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 6px; align-content: start; position: relative; }
+.stage.now { border: 2px solid var(--straw); }
+.stage .k { font-family: var(--display); font-weight: 700; }
+.stage p { font-size: .9rem; }
+.now-tag { font-size: .72rem; font-weight: 700; color: var(--straw); font-family: var(--display); }
+
+/* glossary + todo */
+dl.gl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0; font-size: .95rem; }
+dl.gl dt { font-family: var(--mono); font-weight: 500; }
+dl.gl dd { margin: 0; color: var(--muted); }
+table.todo { border-collapse: collapse; width: 100%; font-size: .93rem; background: var(--surface); }
+table.todo th, table.todo td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+table.todo th { font-family: var(--display); font-size: .85rem; color: var(--muted); font-weight: 600; }
+footer { padding-top: 40px; font-size: .82rem; color: var(--muted); }
+
+/* this week's plan */
+.goal { background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--straw); border-radius: 12px; padding: 14px 18px; display: grid; gap: 6px; max-width: 80ch; }
+.goal b { font-family: var(--display); }
+.cal { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(118px, 1fr); gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+.cal .d { border-radius: 10px; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 3px; align-content: start; }
+.cal .d .dd { font-family: var(--display); font-weight: 700; font-size: .95rem; }
+.cal .d .what { font-size: .82rem; color: var(--muted); line-height: 1.45; }
+.cal .d.trial { border-top: 4px solid var(--straw); }
+.cal .d.go { border-top: 4px solid var(--paddy); background: var(--paddy-soft); }
+.cal .d.peak { border-top: 4px solid var(--tt); }
+.cal .d.today { outline: 2px dashed var(--muted); outline-offset: -2px; }
+.daycard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 14px; }
+.dayhead { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.dayhead .tag { font-family: var(--display); font-weight: 700; font-size: .8rem; padding: 3px 12px; border-radius: 999px; background: var(--straw-soft); color: var(--straw); }
+.dayhead .tag.go { background: var(--paddy-soft); color: var(--paddy); }
+.lanes { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.lane { border-radius: 12px; padding: 14px; background: var(--bg); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.lane h4 { margin: 0; font-family: var(--display); font-size: .98rem; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.lane ol, .lane ul { margin: 0; padding-left: 1.2em; display: grid; gap: 5px; font-size: .93rem; }
+.path { font-family: var(--display); font-weight: 600; font-size: .86em; color: var(--paddy); white-space: nowrap; }
+.eve { border-top: 1px dashed var(--line); padding-top: 12px; display: grid; gap: 6px; }
+.eve b { font-family: var(--display); }
+.eve ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; font-size: .93rem; }
+.warn { font-size: .88rem; background: var(--old-soft); color: var(--ink); border-radius: 8px; padding: 9px 12px; }
+.warn b { color: var(--old); }
+table.check { border-collapse: collapse; width: 100%; font-size: .92rem; background: var(--surface); min-width: 640px; }
+table.check th, table.check td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+table.check th { font-family: var(--display); font-size: .84rem; color: var(--muted); font-weight: 600; background: var(--bg); }
+table.check td:first-child { font-family: var(--display); font-weight: 600; }
+.gate { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; counter-reset: g; }
+.gate div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px 12px 50px; position: relative; font-size: .93rem; }
+.gate div::before { counter-increment: g; content: counter(g); position: absolute; left: 14px; top: 12px; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--paddy); color: var(--bg); font-family: var(--display); font-weight: 700; font-size: .85rem; }
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+.split > div { padding: 16px 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.split .before { background: var(--old-soft); }
+.split .after { background: var(--paddy-soft); }
+.split h3 { font-size: 1.02rem; }
+.split ul { margin: 0; padding-left: 1.2em; display: grid; gap: 5px; font-size: .93rem; }
+@media (max-width: 720px) { .split { grid-template-columns: 1fr; } }
+
+@media (max-width: 860px) {
+  .mstep { grid-template-columns: 1fr; }
+  .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .ladder .colhead { display: none; }
+  .rung { grid-template-columns: 1fr; gap: 6px; }
+  .rung .when { padding: 10px 0 0; }
+  .cell.same { grid-column: auto; }
+  .mob { display: block; }
+  .two { grid-template-columns: 1fr; }
+  .fields { grid-template-columns: 1fr; }
+  dl.gl { grid-template-columns: 1fr; gap: 2px; }
+  dl.gl dd { margin-bottom: 8px; }
+}
+@media (max-width: 460px) { .stages { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">ดอกบัวรวงข้าว · ขายออนไลน์ · เฟส 2 · คู่มือทีม</div>
+  <h1>ออเดอร์ออนไลน์ 1 ใบ เดิมเราทำอะไร ระบบใหม่ทำอะไร</h1>
+  <p class="lede">เทียบทีละขั้น ตั้งแต่ลูกค้ากดสั่ง แพ็กของ ออกบิล เงินเข้า ปิดลูกหนี้ ส่งยอดให้บัญชี ไปจนถึงยกยอดข้ามเดือนและปิดปี ทุกขั้นบอกว่าใครทำ ทำที่โปรแกรมไหน และต้องกรอกช่องไหน พร้อมแผนทดลองคู่ขนาน 3 วันในสัปดาห์นี้ ก่อนเริ่มใช้จริงวันจันทร์ 9 พ.ย. 2569</p>
+  <div class="legend">
+    <span class="who auto">ระบบทำเอง</span> ไม่มีใครต้องทำ
+    <span class="who hand">คนทำ</span> แบบใหม่
+    <span class="who oldhand">คนทำ</span> แบบเดิม
+    <span class="where">Express</span> โปรแกรมบัญชี
+    <span class="where">Access</span> โปรแกรมหน้าโรงสี
+    <span class="where">ระบบ DBRK</span> dbrk-dashboard.vercel.app
+  </div>
+</header>
+
+<nav class="jump" aria-label="ไปยังหัวข้อ"><div class="row">
+  <a href="#overview">ภาพรวม</a>
+  <a href="#plan">แผนสัปดาห์นี้</a>
+  <a href="#check">เทียบทุกเย็น</a>
+  <a href="#gate">เกณฑ์ผ่าน</a>
+  <a href="#daily">งานประจำวัน</a>
+  <a href="#journey">เส้นทางออเดอร์</a>
+  <a href="#golive">เริ่มใช้จริง 9 พ.ย.</a>
+  <a href="#monday">ทุกวันจันทร์</a>
+  <a href="#late-money">เงินมาช้า</a>
+  <a href="#month-end">สิ้นเดือน</a>
+  <a href="#carry">ยกยอดข้ามเดือน</a>
+  <a href="#year-end">ปิดปี</a>
+  <a href="#words">คำศัพท์</a>
+</div></nav>
+
+<!-- ───────── overview ───────── -->
+<section id="overview">
+  <div class="sec-head">
+    <h2>งานคีย์ 1 เดือน เทียบกัน</h2>
+    <p class="muted">ตัวเลขเดือนตุลาคม 2569 นับจากไฟล์ Express และ Access จริงของโรงสี</p>
+  </div>
+  <div class="compare-nums">
+    <div class="bign old">
+      <span class="who oldhand" style="justify-self:start">แบบเดิม</span>
+      <div class="n">≈ 3,900</div>
+      <div>รายการที่คีย์มือในเดือนเดียว และเพิ่มตามจำนวนออเดอร์</div>
+      <ul>
+        <li>Express: ใบขายเชื่อ (IV) 1,427 ใบ (1 ออเดอร์ 1 ใบ)</li>
+        <li>Access: ขายหน้าโรงสี 2,480 บรรทัด (คีย์ออเดอร์เดิมซ้ำอีกรอบ)</li>
+        <li>ตอนเงินเข้า: ใบตัดหนี้ 1 ใบ ต้องติ๊ก 15–120 IV</li>
+        <li>ของคืน: ใบลดหนี้ทีละออเดอร์</li>
+      </ul>
+    </div>
+    <div class="bign new">
+      <span class="who auto" style="justify-self:start">แบบใหม่</span>
+      <div class="n">≈ 100</div>
+      <div>รายการต่อเดือน ขาย 1,000 หรือ 5,000 ออเดอร์ งานคีย์เท่าเดิม</div>
+      <ul>
+        <li>Express: สัปดาห์ละ 3–4 รายการต่อแพลตฟอร์ม</li>
+        <li>Access: สัปดาห์ละราว 8 บรรทัดต่อแพลตฟอร์ม (บรรทัดละ 1 ชนิดข้าว)</li>
+        <li>จับคู่เงินกับออเดอร์ และแยกค่าธรรมเนียม: ระบบทำให้</li>
+        <li>ชื่อลูกค้าไม่ต้องพิมพ์ลง Express และ Access อีก</li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted" style="max-width:72ch">สิ่งที่ไม่เปลี่ยน: Express ยังเป็นสมุดบัญชีของบริษัท Access ยังเป็นสต๊อกและงานหน้าโรงสี รหัสลูกค้าและรหัสสินค้าใช้รหัสเดิมทั้งหมด สิ่งที่เปลี่ยนคือเราคีย์ยอดรวมของทั้งสัปดาห์แทนการคีย์ทีละออเดอร์</p>
+</section>
+
+<!-- ───────── this week's plan ───────── -->
+<section id="plan">
+  <div class="sec-head">
+    <h2>สัปดาห์นี้: ทดลองคู่ขนาน 3 วัน แล้วเริ่มใช้จริงจันทร์ 9 พ.ย.</h2>
+    <p class="muted">ระหว่างทดลอง ทุกคนยังทำงานแบบเดิมครบทุกขั้นเหมือนทุกวัน และทำในระบบใหม่ไปพร้อมกัน แล้วเทียบตัวเลขกันทุกเย็น งานแบบเดิมยังเป็นของจริงจนถึงวันอาทิตย์ 8 พ.ย.</p>
+  </div>
+  <div class="goal">
+    <p><b>เป้าหมาย:</b> ใช้ระบบใหม่ได้ก่อน 11.11 (พุธ 11 พ.ย.) ซึ่งออเดอร์จะเข้ามามาก ถ้าเริ่มจันทร์ 9 พ.ย. ทีมแพ็กจะใช้หน้า "งานแพ็กวันนี้" มา 2 วันก่อนถึงวันพีก และบัญชีไม่ต้องคีย์ IV ของ 11.11 ทีละใบ</p>
+    <p class="muted">ระบบดึงออเดอร์จาก TikTok และ Shopee ทุก 10 นาทีอยู่แล้ว</p>
+  </div>
+
+  <div class="cal" role="list" aria-label="ปฏิทินสัปดาห์นี้">
+    <div class="d today" role="listitem"><span class="dd">อ. 3 พ.ย.</span><span class="what">ส่งคู่มือนี้ ทุกฝ่ายอ่านหัวข้อของตัวเอง</span></div>
+    <div class="d" role="listitem"><span class="dd">พ. 4 พ.ย.</span><span class="what">เตรียมพร้อม: บัญชีเข้าระบบทุกคน ตรวจรหัส</span></div>
+    <div class="d trial" role="listitem"><span class="dd">พฤ. 5 พ.ย.</span><span class="what">ทดลองวันที่ 1 · แพ็กและคลัง</span></div>
+    <div class="d trial" role="listitem"><span class="dd">ศ. 6 พ.ย.</span><span class="what">ทดลองวันที่ 2 · เงิน Express Access</span></div>
+    <div class="d trial" role="listitem"><span class="dd">ส. 7 พ.ย.</span><span class="what">ทดลองวันที่ 3 · ครบทุกฝ่าย เย็นตัดสินใจ</span></div>
+    <div class="d" role="listitem"><span class="dd">อา. 8 พ.ย.</span><span class="what">วันสุดท้ายแบบเดิม · อนุมัติวันเริ่มให้เสร็จ</span></div>
+    <div class="d go" role="listitem"><span class="dd">จ. 9 พ.ย.</span><span class="what">เริ่มใช้จริง</span></div>
+    <div class="d peak" role="listitem"><span class="dd">พ. 11 พ.ย.</span><span class="what">11.11 ออเดอร์เยอะ</span></div>
+    <div class="d go" role="listitem"><span class="dd">จ. 16 พ.ย.</span><span class="what">คีย์ Express แบบใหม่ครั้งแรก (ชุด W46)</span></div>
+  </div>
+
+  <div class="daycard">
+    <div class="dayhead"><span class="tag">พ. 4 พ.ย.</span><h3>วันเตรียม</h3></div>
+    <div class="lanes">
+      <div class="lane">
+        <h4>เจ้าของ / ผู้ดูแลระบบ</h4>
+        <ol>
+          <li>สร้างบัญชีเข้าระบบให้ทุกคนที่ <span class="path">ตั้งค่า › ผู้ใช้และสิทธิ์</span> เลือกบทบาทตามงาน (ทีมแพ็ก · หัวหน้าคลัง · บัญชี · ผู้อนุมัติ)</li>
+          <li>1 คน 1 บัญชี ห้ามใช้บัญชีร่วมกัน เพราะงานอนุมัติต้องเป็นคนละคนกับคนบันทึก ระบบดูจากชื่อบัญชี</li>
+          <li>ตกลงกันว่าใครเป็น "คนขอ" และใครเป็น "คนอนุมัติ" วันเริ่มใช้จริง (ต้องคนละคน)</li>
+        </ol>
+      </div>
+      <div class="lane">
+        <h4>ทุกคน</h4>
+        <ol>
+          <li>เข้า dbrk-dashboard.vercel.app ด้วยบัญชีของตัวเอง</li>
+          <li>ดูว่าเมนูซ้ายมีงานของตัวเองครบ ตามหัวข้อ <a href="#daily">งานประจำวัน</a></li>
+          <li>ประชุมสั้น ๆ 30 นาที เปิดหน้านี้ด้วยกัน อ่านหัวข้อ "เทียบทุกเย็น" และ "เกณฑ์ผ่าน"</li>
+        </ol>
+      </div>
+      <div class="lane">
+        <h4>บัญชี</h4>
+        <ol>
+          <li>เปิด <span class="path">ตั้งค่า › ตั้งค่า Online</span> ดูรหัสลูกค้า C777 / C666 รหัสสินค้า Express และรหัสข้าว Access ว่าตรงกับที่ใช้จริง</li>
+          <li>ยืนยันกับสำนักงานบัญชี 2 เรื่อง: ใบขายใช้ประเภทราคา "0 - ไม่มี VAT" และบัญชีที่ใช้พักเงินที่ค้างอยู่ในกระเป๋าแพลตฟอร์ม</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="daycard">
+    <div class="dayhead"><span class="tag">พฤ. 5 พ.ย. · วันที่ 1</span><h3>แพ็กของ คลัง และขายช่องทางอื่น</h3></div>
+    <p class="muted">ทำแบบเดิมทั้งวันตามปกติ แล้วทำในระบบควบคู่ทุกขั้นข้างล่าง</p>
+    <div class="lanes">
+      <div class="lane">
+        <h4>ทีมแพ็ก</h4>
+        <ol>
+          <li>เช้า เปิด <span class="path">คลังสินค้า › งานแพ็กวันนี้</span> จดจำนวนออเดอร์รอแพ็กของแต่ละแพลตฟอร์ม เทียบกับหลังร้าน (สถานะรอส่ง)</li>
+          <li>ดูการ์ด "ใบหยิบของ" ใช้หยิบของจริง แล้วเทียบจำนวนถุงที่หยิบได้</li>
+          <li>กด "ออกเอกสารที่ยังขาดตอนนี้" แล้วพิมพ์รวมเป็นไฟล์เดียว ดูหน้าตาเอกสาร</li>
+          <li>แพ็กเสร็จแต่ละออเดอร์ กด "แพ็กแล้ว"</li>
+          <li>ก่อนเลิกงาน ดูส่วน "ส่งแล้วแต่ยังไม่ได้ตัดสต๊อก" ถ้ามี กดแพ็กย้อนหลังให้</li>
+          <li>ของคืนที่มาถึง: <span class="path">คลังสินค้า › รับของคืน</span> แยกสภาพดีกับเสีย</li>
+        </ol>
+        <p class="warn"><b>ห้ามใส่กล่อง:</b> ช่วงทดลอง เอกสารทุกใบขึ้นต้น TEST- มีแถบแดง "เอกสารทดลอง" ดูแล้วทิ้ง ใส่กล่องด้วยเอกสารแบบเดิม</p>
+      </div>
+      <div class="lane">
+        <h4>หัวหน้าคลัง</h4>
+        <ol>
+          <li>ยกข้าวจากโรงสีมาเมื่อไร ออกใบที่ <span class="path">คลังสินค้า › รับเข้า / โอนจากโรงสี</span> › "ออกใบโอนเข้าคลัง"</li>
+          <li>ให้อีกคน (ไม่ใช่คนออกใบ) นับของที่มาถึงจริง แล้วกด "ยืนยันนับรับ · เข้าคลัง"</li>
+          <li>เปิด <span class="path">คลังสินค้า › สต๊อกบนแพลตฟอร์ม</span> ดูรายการที่หลังร้านตั้งสต๊อกเกินของจริง</li>
+        </ol>
+      </div>
+      <div class="lane">
+        <h4>คนรับออเดอร์ LINE / โทร / หน้าร้าน</h4>
+        <ol>
+          <li>ทุกการขายนอก TikTok และ Shopee บันทึกที่ <span class="path">งานขาย › ขายช่องทางอื่น</span> › "บันทึกการขาย · ตัดสต๊อก"</li>
+          <li>ได้เงินแล้วบันทึกรับเงิน กด "พิมพ์เอกสารแนบพัสดุ"</li>
+          <li>ยังจดในสมุดหรือไฟล์เดิมเหมือนเดิม เพื่อเอามาเทียบตอนเย็น</li>
+        </ol>
+      </div>
+    </div>
+    <div class="eve">
+      <b>เย็นวันที่ 1 เทียบ 5 เรื่อง</b>
+      <ul>
+        <li>ออเดอร์ทั้งวัน: ในระบบ เท่ากับ หลังร้าน ทั้ง 2 แพลตฟอร์ม</li>
+        <li>ถุงในใบหยิบของ เท่ากับ ถุงที่แพ็กออกไปจริง ต่อชนิดข้าว</li>
+        <li>"ส่งแล้วแต่ยังไม่ได้ตัดสต๊อก" ว่าง</li>
+        <li>ของคืนที่มาถึง และการขายช่องทางอื่น อยู่ในระบบครบทุกรายการ</li>
+        <li>ข้าวที่ยกมาจากโรงสี เท่ากับ ถุงที่นับรับในระบบ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="daycard">
+    <div class="dayhead"><span class="tag">ศ. 6 พ.ย. · วันที่ 2</span><h3>เงินเข้า และยอดที่จะส่งเข้า Express กับ Access</h3></div>
+    <p class="muted">ทีมแพ็ก หัวหน้าคลัง และคนรับออเดอร์ ทำเหมือนวันที่ 1 อีกวัน บัญชีและหน้าโรงสีใช้วันนี้เทียบยอดของเดือนตุลาคม ที่ระบบปิดชุดไว้แล้ว 10 ชุด</p>
+    <div class="lanes">
+      <div class="lane">
+        <h4>บัญชี · เทียบชุดกับที่คีย์ Express ไปแล้ว</h4>
+        <ol>
+          <li>เปิด <span class="path">การเงิน › ส่งยอด Express</span> จะเห็นชุดที่ปิดแล้ว W41 · W42 · W43 · W44-10 · W44-11 ของ TikTok และ Shopee รวม 10 ชุด</li>
+          <li>เปิดทีละชุด ดูช่วงวันที่ของชุด</li>
+          <li>เปิดรายงานใน Express ของลูกค้า C777 (TikTok) หรือ C666 (Shopee) ช่วงวันเดียวกัน รวม 3 ตัว: ยอด IV · จำนวนชิ้นใน IV · ยอดรับชำระที่เข้ากระเป๋า</li>
+          <li>กรอกทั้ง 3 ตัวในการ์ดเทียบของชุด แล้วกด "บันทึกยอดจาก Express"</li>
+          <li>ระบบขึ้น "ตรง" หรือ "Express มากกว่า / น้อยกว่า …" ทีละตัว</li>
+          <li>ถ้าต่าง เปิดแผ่น "ออเดอร์ในชุด" หาออเดอร์ที่ทำให้ต่าง จดสาเหตุไว้ในช่องหมายเหตุ</li>
+        </ol>
+        <p class="tip">ระบบนับออเดอร์เข้าชุดตามวันที่ตัดสต๊อก (วันแพ็ก หรือวันที่ขนส่งรับของ) ถ้าต่างนิดหน่อยตรงขอบสัปดาห์ ให้ดูว่าแบบเดิมคีย์ IV ตามวันสั่ง หรือตามวันส่ง</p>
+      </div>
+      <div class="lane">
+        <h4>หน้าโรงสี · เทียบถุงใน Access</h4>
+        <ol>
+          <li>ขอไฟล์ Excel ของชุดจากบัญชี (หรือดาวน์โหลดเองถ้ามีสิทธิ์) เปิดแผ่น "Access ขาย"</li>
+          <li>เทียบถุงรวมต่อชนิดข้าว กับ "ขายหน้าโรงสี" ใน Access ของลูกค้า 12000532 (TikTok) / 12000533 (Shopee) ช่วงวันเดียวกัน</li>
+          <li>แผ่น "Access รับคืน" เทียบกับ "ซื้อข้าวสาร" จาก 22000049 / 22000050</li>
+        </ol>
+        <p class="warn"><b>ห้ามคีย์ตามแผ่น:</b> ทุกแผ่นของชุดทดลองเขียน "ห้ามคีย์ Express" สัปดาห์เหล่านี้คีย์แบบเดิมไปแล้ว ใช้เทียบอย่างเดียว</p>
+      </div>
+      <div class="lane">
+        <h4>บัญชี · เงินเข้า</h4>
+        <ol>
+          <li><span class="path">การเงิน › ธนาคาร</span> นำเข้า statement ของเดือนตุลาคม กด "นำเข้าและจับคู่อัตโนมัติ"</li>
+          <li>ดูว่ายอดถอนจาก TikTok และ Shopee เจอคู่ในธนาคารครบ ที่เหลือดูใน "ยอดถอนที่ยังไม่เจอในธนาคาร"</li>
+          <li><span class="path">การเงิน › รับเงินรายวัน</span> ดูยอดของวันนี้เทียบหลังร้าน แล้วกด "ติ๊กตรวจแล้ว"</li>
+        </ol>
+      </div>
+    </div>
+    <div class="eve">
+      <b>เย็นวันที่ 2 เทียบ</b>
+      <ul>
+        <li>5 เรื่องของวันที่ 1 อีกครั้ง</li>
+        <li>10 ชุดของเดือนตุลาคม ขึ้น "ตรง" กี่ชุด ชุดที่ต่างรู้สาเหตุหรือยัง</li>
+        <li>ถุงในแผ่น Access ขาย เท่ากับ ขายหน้าโรงสีใน Access ต่อชนิดข้าว</li>
+        <li>ยอดถอนเงินเจอคู่ในธนาคารครบ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="daycard">
+    <div class="dayhead"><span class="tag">ส. 7 พ.ย. · วันที่ 3</span><h3>ครบทุกฝ่าย ซ้อมวันจันทร์ แล้วตัดสินใจ</h3></div>
+    <div class="lanes">
+      <div class="lane">
+        <h4>ทุกฝ่าย</h4>
+        <ol>
+          <li>ทำงานประจำวันแบบใหม่ครบทุกขั้นตามหัวข้อ <a href="#daily">งานประจำวัน</a> (ยังทำแบบเดิมคู่กัน)</li>
+          <li>บัญชีเทียบชุดที่ยังไม่ "ตรง" ต่อจากเมื่อวาน</li>
+        </ol>
+      </div>
+      <div class="lane">
+        <h4>บัญชี + หน้าโรงสี · ซ้อมวันจันทร์</h4>
+        <ol>
+          <li>ดาวน์โหลด Excel ของชุด EX-TT-2026-W44-10</li>
+          <li>เปิดหัวข้อ <a href="#monday">ทุกวันจันทร์</a> อ่านแผ่นทีละแผ่น ว่าแต่ละช่องจะคีย์ลงตรงไหนใน Express และ Access</li>
+          <li>ซ้อมอ่านเท่านั้น ห้ามคีย์จริง</li>
+        </ol>
+      </div>
+      <div class="lane">
+        <h4>เย็น · ประชุมตัดสินใจ</h4>
+        <ol>
+          <li>ดู <a href="#gate">เกณฑ์ผ่าน 6 ข้อ</a> ทีละข้อ</li>
+          <li><b>ผ่าน:</b> คนขอเปิด <span class="path">การเงิน › ส่งยอด Express</span> การ์ด "สถานะการใช้งาน" กดปุ่ม "ใช้งานจริง" เลือกวันจันทร์ 9 พ.ย. 2569 ติ๊ก "บัญชีโรงสียืนยันประเภทราคา / VAT ของ IV แล้ว" กด "ส่งคำขอเริ่มใช้จริง"</li>
+          <li>คนอนุมัติ (คนละคน) เข้าระบบด้วยบัญชีตัวเอง กดอนุมัติในกล่องคำขอ ภายในวันอาทิตย์ 8 พ.ย.</li>
+          <li><b>ไม่ผ่าน:</b> ไม่ต้องขอ 11.11 ทำแบบเดิม ทดลองต่อ แล้วตั้งเป้าใหม่เป็นจันทร์ 16 พ.ย.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="warn"><b>ห้ามกดปุ่ม "ปิด":</b> การหยุดทดสอบจะล้างข้อมูลทดลองทั้งหมด (สต๊อก งานแพ็ก ชุด Express ผลเทียบ) ถ้ายังไม่พร้อม ปล่อยไว้ที่ "ทดสอบ" เหมือนเดิม · ระบบไม่ให้อนุมัติในวันเริ่มเอง ต้องอนุมัติก่อนวันจันทร์ · ขอแล้วเปลี่ยนใจ ยกเลิกคำขอได้จนถึงวันอาทิตย์</p>
+  </div>
+</section>
+
+<!-- ───────── evening check ───────── -->
+<section id="check">
+  <div class="sec-head">
+    <h2>เทียบทุกเย็น</h2>
+    <p class="muted">ใช้ตารางนี้ทุกเย็นของวันทดลอง ฝ่ายไหนเจอไม่ตรง จดเลขออเดอร์หรือเลขชุดไว้ แล้วแจ้งในกลุ่ม พร้อมภาพหน้าจอ</p>
+  </div>
+  <div class="scroll">
+    <table class="check">
+      <thead><tr><th>เรื่อง</th><th>ดูในระบบใหม่</th><th>เทียบกับแบบเดิม</th><th>ผ่านเมื่อ</th><th>ใครเทียบ</th></tr></thead>
+      <tbody>
+        <tr><td>ออเดอร์วันนี้</td><td>งานแพ็กวันนี้ / ออเดอร์</td><td>หลังร้าน TikTok · Shopee</td><td>เท่ากัน ออเดอร์ใหม่ขึ้นในระบบภายใน 10 นาที</td><td>ทีมแพ็ก</td></tr>
+        <tr><td>ถุงที่แพ็ก</td><td>การ์ด "ใบหยิบของ"</td><td>ของที่หยิบและแพ็กจริง</td><td>เท่ากันทุกชนิดข้าว แพ็คคู่ 10 กก. นับเป็น 5 กก. 2 ถุง</td><td>ทีมแพ็ก</td></tr>
+        <tr><td>ค้างตัดสต๊อก</td><td>"ส่งแล้วแต่ยังไม่ได้ตัดสต๊อก"</td><td>—</td><td>ว่างก่อนเลิกงาน</td><td>ทีมแพ็ก</td></tr>
+        <tr><td>ของคืน</td><td>รับของคืน</td><td>ของที่มาถึงจริง</td><td>ทุกชิ้นบันทึก แยกดี/เสียถูก</td><td>ทีมแพ็ก</td></tr>
+        <tr><td>ข้าวเข้าคลัง</td><td>รับเข้า / โอนจากโรงสี</td><td>ใบยกข้าวจากโรงสี</td><td>ถุงที่นับรับ = ถุงที่ยกมา</td><td>หัวหน้าคลัง</td></tr>
+        <tr><td>ขายช่องทางอื่น</td><td>ขายช่องทางอื่น</td><td>สมุด / LINE ที่จดเดิม</td><td>ทุกรายการอยู่ในระบบ ยอดเงินตรง</td><td>คนรับออเดอร์</td></tr>
+        <tr><td>ยอดชุด Express</td><td>ส่งยอด Express › ชุด</td><td>รายงาน IV / RE ใน Express</td><td>ขึ้น "ตรง" ทั้ง 3 ตัว หรือรู้สาเหตุที่ต่าง</td><td>บัญชี</td></tr>
+        <tr><td>ถุงใน Access</td><td>แผ่น "Access ขาย"</td><td>ขายหน้าโรงสีใน Access</td><td>เท่ากันต่อชนิดข้าว</td><td>หน้าโรงสี</td></tr>
+        <tr><td>เงินถอน</td><td>ธนาคาร</td><td>statement ธนาคาร</td><td>ยอดถอนเจอคู่ครบ</td><td>บัญชี</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ───────── go / no-go ───────── -->
+<section id="gate">
+  <div class="sec-head">
+    <h2>เกณฑ์ผ่าน ก่อนขอเริ่มใช้จริง</h2>
+    <p class="muted">ตัดสินเย็นวันเสาร์ 7 พ.ย. ต้องผ่านครบ 6 ข้อ ข้อไหนไม่ผ่าน เลื่อนเป็นจันทร์ 16 พ.ย.</p>
+  </div>
+  <div class="gate">
+    <div>ออเดอร์ในระบบตรงกับหลังร้านทุกวันที่ทดลอง ทั้ง TikTok และ Shopee</div>
+    <div>ใบหยิบของตรงกับที่แพ็กจริงทุกวัน ไม่มีออเดอร์ค้างตัดสต๊อกตอนเลิกงาน</div>
+    <div>10 ชุดของเดือนตุลาคม ขึ้น "ตรง" หรือรู้สาเหตุที่ต่างครบทุกชุด</div>
+    <div>ทุกคนเข้าระบบด้วยบัญชีของตัวเองได้ และคนขอกับคนอนุมัติเป็นคนละคน</div>
+    <div>สำนักงานบัญชียืนยันประเภทราคา "0 - ไม่มี VAT" และบัญชีพักเงินในกระเป๋าแพลตฟอร์ม</div>
+    <div>รหัส Express และ Access ครบทุกสินค้าที่ขาย (ถ้าไม่ครบ ระบบไม่ให้ส่งคำขอ และบอกว่าขาดอะไร)</div>
+  </div>
+</section>
+
+<!-- ───────── daily work by role ───────── -->
+<section id="daily">
+  <div class="sec-head">
+    <h2>งานประจำวันแบบใหม่ ของแต่ละฝ่าย</h2>
+    <p class="muted">ใช้ในวันทดลอง และใช้ต่อไปหลังเริ่มใช้จริง เมนูทั้งหมดอยู่ที่แถบซ้ายของ dbrk-dashboard.vercel.app แต่ละคนเห็นเฉพาะเมนูของงานตัวเอง</p>
+  </div>
+  <div class="lanes">
+    <div class="lane">
+      <h4>ทีมแพ็ก <span class="where">ทุกวัน</span></h4>
+      <ol>
+        <li>เช้า: <span class="path">งานแพ็กวันนี้</span> ดูออเดอร์รอแพ็ก เรียงจากสั่งก่อน</li>
+        <li>หยิบของตาม "ใบหยิบของ"</li>
+        <li>"ออกเอกสารที่ยังขาดตอนนี้" แล้วพิมพ์รวมเป็น PDF ไฟล์เดียว แนบกล่อง</li>
+        <li>แพ็กเสร็จกด "แพ็กแล้ว" ทีละออเดอร์ สต๊อกตัดครั้งเดียว กดซ้ำไม่ตัดซ้ำ</li>
+        <li>ก่อนเลิกงาน: ดู "ส่งแล้วแต่ยังไม่ได้ตัดสต๊อก"</li>
+        <li>ของคืนมาถึง: <span class="path">รับของคืน</span> แยกดี / เสีย</li>
+      </ol>
+      <p class="tip">ออเดอร์ที่มี SKU ใหม่ที่ยังไม่ผูกสินค้า แพ็กไม่ได้ ให้แจ้งคนดูแลสินค้าผูกที่ <span class="path">สินค้าและ SKU</span> ก่อน</p>
+    </div>
+    <div class="lane">
+      <h4>หัวหน้าคลัง <span class="where">เมื่อมีของเข้า · สัปดาห์ละครั้ง</span></h4>
+      <ol>
+        <li>ยกข้าวจากโรงสี: <span class="path">รับเข้า / โอนจากโรงสี</span> ออกใบโอน แล้วให้อีกคนนับรับ</li>
+        <li>ดูยอดคงเหลือ: <span class="path">สต๊อกคงเหลือ</span></li>
+        <li>นับสต๊อก: <span class="path">นับและปรับยอด</span> › บันทึกผลนับ · ส่งอนุมัติ</li>
+        <li>ของเสีย: "ขอตัดของเสีย" ใส่เหตุผล</li>
+        <li>หลังร้านตั้งสต๊อกเกิน: <span class="path">สต๊อกบนแพลตฟอร์ม</span> ดาวน์โหลดไฟล์ ไปอัปโหลดใน Seller Center เอง</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>คนรับออเดอร์นอกแพลตฟอร์ม <span class="where">เมื่อมีขาย</span></h4>
+      <ol>
+        <li><span class="path">ขายช่องทางอื่น</span> › บันทึกการขาย · ตัดสต๊อก</li>
+        <li>ได้เงินแล้วบันทึกรับเงิน ระบบออกใบเสร็จให้ทันที</li>
+        <li>ลูกค้าขอยกเลิก: กดยกเลิกพร้อมเหตุผล ถุงกลับเข้าคลัง เอกสารถูกยกเลิกด้วย</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>บัญชี <span class="where">ทุกวัน · ทุกจันทร์ · สิ้นเดือน</span></h4>
+      <ol>
+        <li>ทุกวัน: <span class="path">รับเงินรายวัน</span> ดูยอดเข้ากระเป๋า ถอนเข้าธนาคาร ขายช่องทางอื่น แล้วติ๊กตรวจ</li>
+        <li>สัปดาห์ละครั้ง: <span class="path">ธนาคาร</span> นำเข้า statement ให้ระบบจับคู่</li>
+        <li>ทุกจันทร์: <span class="path">ส่งยอด Express</span> คีย์ตามแผ่น <a href="#monday">ดูขั้นตอน</a></li>
+        <li>สิ้นเดือน: <span class="path">ปิดงวด</span> <a href="#month-end">ดูขั้นตอน</a></li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>หน้าโรงสี (Access) <span class="where">ทุกจันทร์</span></h4>
+      <ol>
+        <li>รับไฟล์ชุดจากบัญชี คีย์แผ่น "Access ขาย" และ "Access รับคืน" <a href="#monday">ดูขั้นตอน</a></li>
+        <li>ระหว่างสัปดาห์ไม่ต้องคีย์ออเดอร์ออนไลน์</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>ผู้อนุมัติ <span class="where">เมื่อมีงานรอ</span></h4>
+      <ol>
+        <li><span class="path">สต๊อกคงเหลือ</span> › เอกสารรออนุมัติ: ยอดยกมา ใบปรับยอด ใบตัดเสีย</li>
+        <li><span class="path">ปิดงวด</span>: อนุมัติปิดเดือน</li>
+        <li>อนุมัติได้เฉพาะงานที่คนอื่นบันทึก</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>ผู้บริหาร <span class="where">ระหว่างวัน</span></h4>
+      <ol>
+        <li><span class="path">War Room</span> ออเดอร์วันนี้ไหลเข้า สถานะรายใบ และเงินถอน โหลดใหม่ทุก 60 วินาที</li>
+        <li><span class="path">ภาพรวม</span> และ <span class="path">แดชบอร์ดผู้บริหาร</span> ยอดขาย ถุง เทียบช่วงก่อน</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── journey ───────── -->
+<section id="journey">
+  <div class="sec-head">
+    <h2>เส้นทางออเดอร์ 1 ใบ ทีละขั้น</h2>
+    <p class="muted">อ่านจากบนลงล่างตามเวลา ซ้ายคือที่ทำกันอยู่ ขวาคือระบบใหม่</p>
+  </div>
+  <div class="ladder">
+    <div class="colhead"><div>ขั้น</div><div>แบบเดิม</div><div>แบบใหม่</div></div>
+
+    <div class="rung">
+      <div class="when"><span class="step">1 · ลูกค้าสั่ง จ่ายเงิน</span><span class="t">ทุกวัน</span></div>
+      <div class="cell same">
+        <div class="tags"><span class="where">TikTok Shop</span><span class="where">Shopee</span></div>
+        <p>เหมือนกันทั้งสองแบบ ลูกค้าจ่ายเงินให้แพลตฟอร์ม เงินยังไม่ถึงร้าน แพลตฟอร์มปล่อยเงินให้ร้านหลังลูกค้าได้ของแล้ว 1–2 สัปดาห์</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">2 · รู้ว่ามีออเดอร์</span><span class="t">ทุกวัน</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">คนทำ</span><span class="where">หลังร้าน</span></div>
+        <p>เปิด Seller Center ของ TikTok และ Shopee ทีละแพลตฟอร์ม</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who auto">ระบบทำเอง</span><span class="where">ระบบ DBRK</span></div>
+        <p>ระบบดึงออเดอร์จากทั้งสองแพลตฟอร์มเองตามรอบที่ตั้ง (ตั้งได้ถึงทุก 5 นาที) ทั้งสินค้า ราคา ส่วนลด ค่าส่ง เห็นรวมในหน้าเดียว</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">3 · ลงขายใน Express</span><span class="t">ทุกวัน → ทุกจันทร์</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">บัญชี</span><span class="where">Express</span></div>
+        <p>คีย์ใบขายเชื่อ (IV) 1 ใบต่อ 1 ออเดอร์ ลูกค้า C777 TikTok / C666 Shopee พิมพ์ชื่อผู้ซื้อในช่องอ้างอิง ใส่สินค้าทีละบรรทัด</p>
+        <p class="fact">ต.ค. 2569 = 1,427 ใบ (TikTok 920 · Shopee 507)</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who hand">บัญชี · จันทร์</span><span class="where">Express</span></div>
+        <p>ระหว่างสัปดาห์ไม่ต้องทำอะไร วันจันทร์คีย์ IV 1 ใบต่อแพลตฟอร์ม ตามแผ่นสรุปของระบบ <a href="#monday">ดูวิธีคีย์</a></p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">4 · ลงขายใน Access</span><span class="t">ทุกวัน → ทุกจันทร์</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">หน้าโรงสี</span><span class="where">Access</span></div>
+        <p>คีย์ "ขายหน้าโรงสี" ทุกออเดอร์ซ้ำอีกรอบ ลูกค้า 12000532 TikTok / 12000533 Shopee พิมพ์ชื่อผู้ซื้อในช่องทะเบียนรถ แพ็คคู่ 10 กก. แตกเป็น 5 กก. สองบรรทัดเอง</p>
+        <p class="fact">ต.ค. 2569 = 2,480 บรรทัด</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who hand">หน้าโรงสี · จันทร์</span><span class="where">Access</span></div>
+        <p>วันจันทร์คีย์ราว 8 บรรทัดต่อแพลตฟอร์ม บรรทัดละ 1 ชนิดข้าว ใส่จำนวนถุงรวม ใช้เลขชุดแทนชื่อผู้ซื้อ ระบบแตกแพ็คคู่ให้แล้ว</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">5 · แพ็กของ</span><span class="t">ทุกวัน</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">ทีมแพ็ก</span><span class="where">หลังร้าน</span></div>
+        <p>ดูรายการจากหลังร้านทีละแพลตฟอร์ม นับของเอง</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who hand">ทีมแพ็ก</span><span class="where">ระบบ DBRK › งานแพ็ก</span></div>
+        <p>เปิดหน้า "งานแพ็กวันนี้" ได้ใบหยิบของรวมทุกออเดอร์ แพ็กเสร็จกด "แพ็กแล้ว"</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">6 · ออกบิลให้ลูกค้า</span><span class="t">เมื่อลูกค้าจ่ายแล้ว</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">คนทำ</span></div>
+        <p>ออกเองทีละใบเมื่อลูกค้าขอ</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who auto">ระบบทำเอง</span><span class="where">ระบบ DBRK</span></div>
+        <p>ระบบออกใบเสร็จ / ใบกำกับตามที่ตั้งไว้ต่อช่องทาง ตั้งแต่ลูกค้าชำระแล้ว ทีมแพ็กพิมพ์รวมเป็น PDF ไฟล์เดียวแนบกล่องได้</p>
+        <p class="fact">ช่วงทดลอง เอกสารขึ้นต้น TEST- มีแถบแดง "ห้ามส่งลูกค้า"</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">7 · ส่งของ ตัดสต๊อก</span><span class="t">เมื่อขนส่งรับของ</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">คนทำ</span><span class="where">Express</span><span class="where">Access</span></div>
+        <p>สต๊อกลดตอนคีย์ IV (Express คลัง 01) และตอนคีย์ขายหน้าโรงสี (Access) ทั้งสองที่คีย์แยกกัน ไม่ได้ส่งตัวเลขหากัน</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who auto">ระบบทำเอง</span><span class="where">ระบบ DBRK</span></div>
+        <p>ขนส่งรับของแล้วระบบตัดถุงออกจากคลังออนไลน์ ลืมกดแพ็กก็ตัดให้ ปิดชุดวันจันทร์แล้วคืนถุงให้สต๊อกโรงสี สต๊อกจริงยังลดใน Express และ Access ตอนคีย์แผ่นสรุป</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">8 · เงินเข้า ปิดลูกหนี้</span><span class="t">1–2 สัปดาห์หลังส่ง</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">บัญชี</span><span class="where">Express</span><span class="where">Access</span></div>
+        <p>ถอนเงินเข้าธนาคารแล้ว บัญชีทำใบตัดหนี้ (RE) ไล่ติ๊ก IV ทีละใบ 15–120 ใบ คำนวณค่าธรรมเนียมเองจากยอดโอน บางเดือนพักยอดไว้ที่ 1111-00 หน้าโรงสีลงสมุดธนาคารใน Access ทีละรายการถอน</p>
+        <p class="fact">ต.ค. 2569 รายการถอน TikTok 44 · Shopee 23</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who auto">ระบบจับคู่</span><span class="who hand">บัญชี · จันทร์</span><span class="where">Express</span></div>
+        <p>ระบบรู้ว่าเงินแต่ละบาทมาจากออเดอร์ไหน อยู่ใน IV ชุดไหน หักค่าธรรมเนียมหมวดไหน วันจันทร์บัญชีคีย์ RE 1 ใบตามแผ่น "รับชำระ" และคีย์เงินเข้าธนาคารตามแผ่น "โอนเงิน"</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">9 · ลูกค้าคืนของ / ยกเลิก</span><span class="t">เมื่อเกิด</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">บัญชี + หน้าโรงสี</span></div>
+        <p>Express ทำใบลดหนี้/รับคืน (SR) ทีละออเดอร์ Access บันทึก "ซื้อข้าวสาร" จาก 22000049 / 22000050 ทีละรายการ</p>
+        <p class="fact">ต.ค. 2569 ของคืนใน Access 40 รายการ</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who auto">ระบบรวม</span><span class="who hand">จันทร์</span></div>
+        <p>ของคืนจากชุดที่ปิดไปแล้ว ระบบรวมไว้ในแผ่น "รับคืน" ของชุดถัดไป คีย์ SR 1 ใบ และ Access รับคืน ไม่กี่บรรทัด</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">10 · ปิดสัปดาห์</span><span class="t">จันทร์ 06:00</span></div>
+      <div class="cell none">ไม่มีขั้นนี้ ทุกอย่างคีย์ทีละออเดอร์ไปแล้ว</div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who auto">ระบบทำเอง</span><span class="where">ระบบ DBRK › ส่งยอด Express</span></div>
+        <p>ระบบปิดชุดของสัปดาห์ก่อน (จันทร์–อาทิตย์) แพลตฟอร์มละ 1 ชุด ได้เลขชุด เช่น <span class="mono">EX-TT-2026-W46</span> ปิดแล้วแก้ไม่ได้ 1 ออเดอร์อยู่ได้ชุดเดียว</p>
+      </div>
+    </div>
+
+    <div class="rung">
+      <div class="when"><span class="step">11 · ส่งยอดให้บัญชี สิ้นเดือน</span><span class="t">สิ้นเดือน</span></div>
+      <div class="cell o"><span class="mob">แบบเดิม</span>
+        <div class="tags"><span class="who oldhand">บัญชี</span></div>
+        <p>ไล่ดูลูกหนี้ C777 / C666 ทีละ IV ว่าใบไหนเงินยังไม่เข้า ไม่มีตัวเลขกลางไว้เทียบ</p>
+      </div>
+      <div class="cell n"><span class="mob">แบบใหม่</span>
+        <div class="tags"><span class="who hand">บัญชี</span><span class="where">ระบบ DBRK</span><span class="where">Express</span></div>
+        <p>ระบบบอกว่าสิ้นเดือน Express ควรมีลูกหนี้ เงินในกระเป๋าแพลตฟอร์ม และถุงที่ตัดไปเท่าไร บัญชีกรอกยอดจริงเทียบ แล้วส่งปิดงวด <a href="#month-end">ดูขั้นตอน</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── go live ───────── -->
+<section id="golive">
+  <div class="sec-head">
+    <h2>จันทร์ 9 พ.ย. เริ่มใช้จริง และ 3 สัปดาห์แรก</h2>
+    <p class="muted">ถ้าอนุมัติวันเริ่มทันวันอาทิตย์ หลังเที่ยงคืนเข้าวันจันทร์ 9 พ.ย. ระบบเปลี่ยนเป็น "ใช้งานจริง" เอง ไม่ต้องมีใครกด</p>
+  </div>
+  <div class="stages">
+    <div class="stage"><span class="k">ปิด</span><p>ระบบยังไม่ตัดสต๊อก ไม่ออกแผ่น ไม่ออกเอกสาร</p></div>
+    <div class="stage now"><span class="now-tag">ตอนนี้ ถึง อา. 8 พ.ย.</span><span class="k">ทดสอบ</span><p>ทำแบบเดิมครบ ระบบทำคู่ขนาน แผ่นทุกแผ่นเขียน "ห้ามคีย์ Express" เอกสารขึ้นต้น TEST-</p></div>
+    <div class="stage"><span class="k">ขอ + อนุมัติ</span><p>เสาร์ 7 – อาทิตย์ 8 พ.ย. คนหนึ่งขอวันเริ่ม 9 พ.ย. อีกคนอนุมัติ</p></div>
+    <div class="stage"><span class="k">ใช้งานจริง</span><p>ตั้งแต่ จ. 9 พ.ย. เลิกคีย์รายออเดอร์ คีย์ตามแผ่นทุกจันทร์ ย้อนกลับไม่ได้</p></div>
+  </div>
+
+  <div class="box n">
+    <h3><span class="who auto">ระบบทำเอง</span> ตอนเริ่มใช้จริง</h3>
+    <ol>
+      <li>เก็บรายงานผลทดลองไว้ (ผลเทียบทุกชุด)</li>
+      <li>ล้างข้อมูลทดลองทั้งหมด: สต๊อก งานแพ็ก ชุด Express ผลเทียบ และเอกสาร TEST- ทุกใบ</li>
+      <li>สต๊อกออนไลน์เริ่มนับใหม่ที่ 0 ชุด Express เริ่มชุดแรกที่ W46 (9–15 พ.ย.) เอกสารจริงเริ่มเลข …0001</li>
+    </ol>
+  </div>
+
+  <h3>เส้นแบ่งของออเดอร์</h3>
+  <div class="split">
+    <div class="before">
+      <h3>ขนส่งรับของถึง อาทิตย์ 8 พ.ย.</h3>
+      <ul>
+        <li>ทำแบบเดิมทั้งหมดจนจบ: IV รายใบใน Express · ขายหน้าโรงสีรายบรรทัดใน Access</li>
+        <li>เงินของออเดอร์กลุ่มนี้มาถึงใน 2–3 สัปดาห์ถัดไป ยังตัดหนี้แบบเดิม ติ๊ก IV รายใบ</li>
+        <li>ระบบไม่ใส่ออเดอร์กลุ่มนี้ในแผ่น "รับชำระ" เพราะไม่ได้อยู่ในชุด</li>
+      </ul>
+    </div>
+    <div class="after">
+      <h3>ขนส่งรับของตั้งแต่ จันทร์ 9 พ.ย.</h3>
+      <ul>
+        <li>อยู่ในชุด W46 เป็นต้นไปทั้งหมด แม้ลูกค้าสั่งก่อนวันที่ 9</li>
+        <li>ห้ามคีย์ IV รายใบ และห้ามคีย์ขายหน้าโรงสีรายออเดอร์ ไม่งั้นยอดซ้ำ</li>
+        <li>คีย์ครั้งเดียวตอนจันทร์ 16 พ.ย. ตามแผ่นของชุด W46</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>เช้าวันจันทร์ 9 พ.ย. ของแต่ละฝ่าย</h3>
+  <div class="lanes">
+    <div class="lane">
+      <h4>หัวหน้าคลัง · ก่อนเริ่มแพ็ก</h4>
+      <ol>
+        <li>นับข้าวที่อยู่ในพื้นที่แพ็กออนไลน์จริงทุกชนิด</li>
+        <li><span class="path">นับและปรับยอด</span> › ยอดยกมา ใส่วันที่ 9 พ.ย. กด "บันทึกยอดยกมา · ส่งอนุมัติ"</li>
+        <li>ให้ผู้อนุมัติ (คนละคน) อนุมัติที่ <span class="path">สต๊อกคงเหลือ</span> › เอกสารรออนุมัติ</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>ทีมแพ็ก</h4>
+      <ol>
+        <li>ออเดอร์ที่สั่งตั้งแต่ 9 พ.ย. ขึ้นใน <span class="path">งานแพ็กวันนี้</span> แพ็กตามปกติ</li>
+        <li>ออเดอร์ที่สั่งก่อน 9 พ.ย. แต่ยังไม่ได้ส่ง ไม่ขึ้นในหน้านี้ แพ็กจากหลังร้านแบบเดิม ระบบตัดสต๊อกให้เองเมื่อขนส่งรับของ</li>
+        <li>เอกสารแนบกล่องเป็นเอกสารจริงแล้ว ไม่มี TEST- ใส่กล่องได้ (ใบเสร็จไม่มี VAT)</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>บัญชี</h4>
+      <ol>
+        <li>คีย์ IV รายใบของออเดอร์ที่ขนส่งรับของถึง 8 พ.ย. ให้ครบ แล้วหยุดคีย์รายใบ</li>
+        <li>เงินที่เข้าในสัปดาห์ W46–W47 จะมีเงินของออเดอร์เก่าปนอยู่ ยอดถอนในแผ่น "โอนเงิน" จึงมากกว่ายอดในแผ่น "รับชำระ" ส่วนต่างคือเงินของออเดอร์เก่า ตัดหนี้แบบเดิม</li>
+      </ol>
+    </div>
+    <div class="lane">
+      <h4>หน้าโรงสี · ผู้บริหาร</h4>
+      <ol>
+        <li>หน้าโรงสี: หยุดคีย์ขายหน้าโรงสีรายออเดอร์ของออเดอร์ที่ส่งตั้งแต่ 9 พ.ย. รอแผ่นวันจันทร์ 16 พ.ย.</li>
+        <li>ผู้บริหาร: 10–11 พ.ย. ดู <span class="path">War Room</span> ว่าออเดอร์เข้า แพ็ก ส่ง ทันไหม</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="box n">
+      <h3>จันทร์ 16 พ.ย. คีย์ครั้งแรก</h3>
+      <ol>
+        <li>06:00 ระบบปิดชุด EX-TT-2026-W46 และ EX-SP-2026-W46 (9–15 พ.ย. รวม 11.11)</li>
+        <li>บัญชีและหน้าโรงสีคีย์ตามหัวข้อ <a href="#monday">ทุกวันจันทร์</a> ทีละขั้น</li>
+      </ol>
+    </div>
+    <div class="box o">
+      <h3>สิ้นเดือน พ.ย. เป็นเดือนต่อ</h3>
+      <ol>
+        <li>1–8 พ.ย. คีย์แบบเดิม 9–30 พ.ย. คีย์ตามแผ่น</li>
+        <li>ตัวเลขเทียบสิ้นเดือนของระบบนับเฉพาะชุดตั้งแต่ W46 ส่วนลูกหนี้ใน Express ยังมี IV รายใบของออเดอร์ก่อน 9 พ.ย. ที่เงินยังไม่เข้า ให้หักส่วนนี้ออกก่อนเทียบ</li>
+        <li>เริ่มเทียบตรงครบทั้ง 3 ตัวได้ตั้งแต่สิ้นเดือน ธ.ค.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Monday ───────── -->
+<section id="monday">
+  <div class="sec-head">
+    <h2>ทุกวันจันทร์ ทำตามนี้ทีละขั้น</h2>
+    <p class="muted">ระบบปิดชุดตอน 06:00 เข้างานแล้วเริ่มได้เลย ภาพหน้าจอข้างล่างเป็นภาพจำลอง ช่องในโปรแกรมจริงอาจเรียงต่างกันเล็กน้อย ตัวเลขในภาพเป็นตัวอย่าง ยกเว้นที่เขียนว่ามาจากข้อมูลจริง</p>
+  </div>
+
+  <div class="track">
+    <div class="track-title"><h3>ฝั่งบัญชี</h3><span class="where">ระบบ DBRK</span><span class="where">Express</span></div>
+
+    <div class="mstep">
+      <div class="txt">
+        <div class="bubble">1</div>
+        <h3>เปิดหน้า "ส่งยอด Express"</h3>
+        <ol>
+          <li>เข้า dbrk-dashboard.vercel.app เมนู การเงิน › ส่งยอด Express</li>
+          <li>จะเห็นชุดของสัปดาห์ก่อน 2 ชุด TikTok กับ Shopee <span class="pin">1</span></li>
+          <li>กด "ดาวน์โหลด Excel" ทีละชุด <span class="pin">2</span> หรือเปิดดูบนจอก็ได้</li>
+        </ol>
+        <p class="tip">ในไฟล์ 1 ชุดมีแผ่นเรียงตามลำดับที่ต้องคีย์: IV ขาย · รับคืน (ถ้ามี) · รับชำระ · โอนเงิน · Access ขาย · Access รับคืน · ออเดอร์ในชุด</p>
+      </div>
+      <div class="win">
+        <div class="bar"><span>ระบบ DBRK › ส่งยอด Express</span><span>หน้าตาจำลอง</span></div>
+        <div class="body">
+          <div class="dbrk-card">
+            <div class="dbrk-row"><span><span class="pin">1</span> <span class="mono">EX-TT-2026-W46</span> · <span class="tt">TikTok Shop</span></span><span class="who auto">ปิดแล้ว</span></div>
+            <div class="dbrk-row muted"><span>9–15 พ.ย. 2569 · ปิดเมื่อ จ. 16 พ.ย. 06:00</span><span class="btn"><span class="pin">2</span> ดาวน์โหลด Excel</span></div>
+          </div>
+          <div class="dbrk-card">
+            <div class="dbrk-row"><span><span class="mono">EX-SP-2026-W46</span> · <span class="sp">Shopee</span></span><span class="who auto">ปิดแล้ว</span></div>
+            <div class="dbrk-row muted"><span>9–15 พ.ย. 2569 · ปิดเมื่อ จ. 16 พ.ย. 06:00</span><span class="btn">ดาวน์โหลด Excel</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mstep">
+      <div class="txt">
+        <div class="bubble">2</div>
+        <h3>คีย์ใบขายเชื่อ (IV) 1 ใบต่อชุด</h3>
+        <p>ใช้แผ่น "IV ขาย" กรอกตามนี้</p>
+        <ol>
+          <li>รหัสลูกค้า: C777 สำหรับ TikTok · C666 สำหรับ Shopee <span class="pin">1</span></li>
+          <li>วันที่: วันสุดท้ายของชุด <span class="pin">2</span></li>
+          <li>อ้างอิง: เลขชุด + จำนวนออเดอร์ แทนชื่อผู้ซื้อ <span class="pin">3</span></li>
+          <li>ประเภทราคา: 0 - ไม่มี VAT <span class="pin">4</span></li>
+          <li>บรรทัดสินค้า: รหัสสินค้า × จำนวน × ราคา คลัง 01 <span class="pin">5</span></li>
+          <li>ของแถม: ติ๊กของแถม (F = Y) ราคา 0 <span class="pin">6</span></li>
+          <li>ส่วนลดของร้านหักท้ายใบครั้งเดียว ส่วนลดของแพลตฟอร์มไม่ต้องหัก <span class="pin">7</span></li>
+        </ol>
+        <p class="tip">ยอดสุทธิในใบต้องเท่ากับบรรทัด "ยอดสุทธิ" ในแผ่น ถ้าไม่เท่าให้ตรวจบรรทัดที่พิมพ์ผิดก่อนบันทึก</p>
+      </div>
+      <div class="win">
+        <div class="bar"><span>Express · ใบขายเชื่อ</span><span>หน้าตาจำลอง</span></div>
+        <div class="body">
+          <div class="fields">
+            <div class="fld"><label>รหัสลูกค้า</label><div class="v hl">C777 Tiktok shop <span class="pin">1</span></div></div>
+            <div class="fld"><label>วันที่</label><div class="v hl">15/11/69 <span class="pin">2</span></div></div>
+            <div class="fld"><label>อ้างอิง</label><div class="v hl">EX-TT-2026-W46 · 214 ออเดอร์ <span class="pin">3</span></div></div>
+            <div class="fld"><label>ประเภทราคา</label><div class="v hl">0 - ไม่มี VAT <span class="pin">4</span></div></div>
+          </div>
+          <div class="scroll">
+            <table class="grid">
+              <thead><tr><th>#</th><th>รหัสสินค้า <span class="pin">5</span></th><th>ชื่อสินค้า</th><th>F <span class="pin">6</span></th><th class="r">จำนวน</th><th>คลัง</th><th class="r">ราคา</th><th class="r">จำนวนเงิน</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td class="code">00-1005-0108 P</td><td>ดอกบัวม่วง 5 กก.</td><td></td><td class="r">180</td><td>01</td><td class="r">170.00</td><td class="r">30,600.00</td></tr>
+                <tr><td>2</td><td class="code">00-1005-0209 P</td><td>ดอกบัวเขียว 5 กก.</td><td></td><td class="r">64</td><td>01</td><td class="r">165.00</td><td class="r">10,560.00</td></tr>
+                <tr><td>3</td><td class="code">00-1014-0109 P</td><td>ดอกบัวม่วง 14 กก.</td><td></td><td class="r">12</td><td>01</td><td class="r">450.00</td><td class="r">5,400.00</td></tr>
+                <tr><td>4</td><td class="code">00-1002-08</td><td>ดอกบัวหอม 2 กก.</td><td>Y</td><td class="r">40</td><td>01</td><td class="r">0.00</td><td class="r">0.00</td></tr>
+                <tr class="foot"><td colspan="7" class="r">รวมเงิน</td><td class="r">46,560.00</td></tr>
+                <tr class="foot"><td colspan="7" class="r">หักส่วนลด (ท้ายใบ) <span class="pin">7</span></td><td class="r">1,860.00</td></tr>
+                <tr class="foot"><td colspan="7" class="r">ยอดสุทธิ</td><td class="r">44,700.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mocknote">ตัวเลขตัวอย่าง · รหัสสินค้าเป็นรหัสจริงใน Express · แพ็คคู่ 10 กก. ระบบแตกเป็น 5 กก. × 2 ให้แล้ว</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mstep">
+      <div class="txt">
+        <div class="bubble">3</div>
+        <h3>คีย์ใบตัดหนี้ (RE) 1 ใบต่อชุด</h3>
+        <p>ใช้แผ่น "รับชำระ" ใบนี้คือเงินที่แพลตฟอร์มปล่อยในสัปดาห์นั้น</p>
+        <ol>
+          <li>เลือกลูกค้า C777 / C666 อ้างอิงเลขชุด <span class="pin">1</span></li>
+          <li>ติ๊กตัด IV ตามรายการ "ตัดลูกหนี้แยกตาม IV" ในแผ่น ใส่ยอดของแต่ละ IV ตามแผ่น <span class="pin">2</span></li>
+          <li>ใส่ "ประเภทการรับ" ตามแผ่น ทุกบรรทัดรวมกันต้องเท่ายอดตัดลูกหนี้ <span class="pin">3</span></li>
+        </ol>
+        <p class="tip">เงินมาช้ากว่าวันส่ง 1–2 สัปดาห์ RE ใบเดียวจึงมักตัด IV 2 ชุด ระบบแบ่งยอดให้แล้ว <a href="#late-money">ดูภาพอธิบาย</a></p>
+      </div>
+      <div class="win">
+        <div class="bar"><span>Express · รับชำระหนี้</span><span>หน้าตาจำลอง</span></div>
+        <div class="body">
+          <div class="fields">
+            <div class="fld"><label>รหัสลูกค้า</label><div class="v hl">C666 Shopee <span class="pin">1</span></div></div>
+            <div class="fld"><label>อ้างอิง</label><div class="v hl">EX-SP-2026-W43 · รับชำระ 85 ออเดอร์</div></div>
+          </div>
+          <div class="scroll">
+            <table class="grid">
+              <thead><tr><th>ตัดใบขาย <span class="pin">2</span></th><th class="r">ยอดตัด</th></tr></thead>
+              <tbody>
+                <tr><td class="code">IV ชุด EX-SP-2026-W42</td><td class="r">ตามแผ่น</td></tr>
+                <tr><td class="code">IV ชุด EX-SP-2026-W43</td><td class="r">ตามแผ่น</td></tr>
+                <tr class="foot"><td>รวมตัดลูกหนี้</td><td class="r">35,814.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="scroll">
+            <table class="grid">
+              <thead><tr><th>ประเภทการรับ <span class="pin">3</span></th><th>บัญชี</th><th class="r">จำนวนเงิน</th></tr></thead>
+              <tbody>
+                <tr><td class="code">T1 ยอดสุทธิ</td><td class="code">1113-01 ธนาคาร</td><td class="r">22,806.00</td></tr>
+                <tr><td class="code">26 · 27 · 29</td><td>ค่าธรรมเนียม แยกหมวดตามแผ่น</td><td class="r">12,502.00</td></tr>
+                <tr><td class="code">28 ค่าส่ง</td><td class="code">5200-13</td><td class="r">506.00</td></tr>
+                <tr class="foot"><td colspan="2">รวม = ยอดตัดลูกหนี้</td><td class="r">35,814.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mocknote">ยอดรวมจากข้อมูลจริง Shopee สัปดาห์ 19–25 ต.ค. 2569 (85 ออเดอร์) · การแบ่งค่าธรรมเนียมรายรหัสดูในแผ่นจริง</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mstep">
+      <div class="txt">
+        <div class="bubble">4</div>
+        <h3>คีย์เงินเข้าธนาคาร</h3>
+        <p>ใช้แผ่น "โอนเงิน" คีย์ทุกรายการถอนเข้าธนาคารของสัปดาห์ ตามวันที่และยอด</p>
+        <ul>
+          <li>ปกติสัปดาห์ละ 1–2 รายการต่อแพลตฟอร์ม</li>
+          <li>Shopee มียอดในกระเป๋าต้นชุดกับปลายชุดให้เทียบ ถ้าไม่ลงตัว แผ่นขึ้นเตือน</li>
+          <li>รายการอื่นในกระเป๋า (เช่น ค่าส่งสินค้ารีวิว) แยกบรรทัดไว้ให้</li>
+        </ul>
+        <p class="confirm">บัญชีที่ใช้พักเงินในกระเป๋าแพลตฟอร์ม ให้สำนักงานบัญชียืนยันก่อนใช้จริง</p>
+      </div>
+      <div class="win">
+        <div class="bar"><span>แผ่น "โอนเงิน" ในไฟล์ของชุด</span><span>หน้าตาจำลอง</span></div>
+        <div class="body">
+          <div class="scroll">
+            <table class="grid">
+              <thead><tr><th>วันที่</th><th>รายการ</th><th class="r">จำนวนเงิน</th></tr></thead>
+              <tbody>
+                <tr><td>9 พ.ย. 69</td><td>ยอดในกระเป๋าต้นชุด (ตามแพลตฟอร์ม)</td><td class="r">8,120.00</td></tr>
+                <tr><td>11 พ.ย. 69</td><td>ถอนเข้าธนาคาร</td><td class="r">18,400.00</td></tr>
+                <tr><td>14 พ.ย. 69</td><td>ถอนเข้าธนาคาร</td><td class="r">12,950.00</td></tr>
+                <tr class="foot"><td></td><td>รวมถอนเข้าธนาคาร</td><td class="r">31,350.00</td></tr>
+                <tr><td>15 พ.ย. 69</td><td>ยอดในกระเป๋าปลายชุด (ตามแพลตฟอร์ม)</td><td class="r">5,276.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mocknote">ตัวเลขตัวอย่าง</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mstep">
+      <div class="txt">
+        <div class="bubble">5</div>
+        <h3>มีของคืน: คีย์ใบลดหนี้/รับคืน (SR) 1 ใบ</h3>
+        <p>ถ้าไฟล์มีแผ่น "รับคืน-ลดหนี้" ให้คีย์ SR 1 ใบ หน้าตาเหมือน IV ใช้ลูกค้าเดิม อ้างอิงเลขชุด ไม่มีแผ่นนี้ = สัปดาห์นั้นไม่มีของคืน ข้ามได้</p>
+        <ul>
+          <li>ยกเลิกทั้งออเดอร์ = ลดหนี้เต็ม</li>
+          <li>คืนบางส่วน = ลดตามสัดส่วน ระบบคิดให้</li>
+        </ul>
+      </div>
+      <div class="win">
+        <div class="bar"><span>Express · ใบลดหนี้/รับคืน</span><span>หน้าตาจำลอง</span></div>
+        <div class="body">
+          <div class="fields">
+            <div class="fld"><label>รหัสลูกค้า</label><div class="v">C777 Tiktok shop</div></div>
+            <div class="fld"><label>อ้างอิง</label><div class="v hl">EX-TT-2026-W46 · 3 ออเดอร์</div></div>
+          </div>
+          <div class="scroll">
+            <table class="grid">
+              <thead><tr><th>รหัสสินค้า</th><th>ชื่อสินค้า</th><th class="r">จำนวน</th><th class="r">ราคา</th><th class="r">จำนวนเงิน</th></tr></thead>
+              <tbody>
+                <tr><td class="code">00-1005-0108 P</td><td>ดอกบัวม่วง 5 กก.</td><td class="r">4</td><td class="r">170.00</td><td class="r">680.00</td></tr>
+                <tr class="foot"><td colspan="4" class="r">ยอดสุทธิ</td><td class="r">680.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mocknote">ตัวเลขตัวอย่าง</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="track">
+    <div class="track-title"><h3>ฝั่งหน้าโรงสี</h3><span class="where">Access</span></div>
+
+    <div class="mstep">
+      <div class="txt">
+        <div class="bubble">1</div>
+        <h3>บันทึก "ขายหน้าโรงสี" จากแผ่น "Access ขาย"</h3>
+        <p>ใช้ไฟล์ชุดเดียวกับที่บัญชีใช้ (ขอจากบัญชี หรือดาวน์โหลดเองถ้ามีสิทธิ์)</p>
+        <ol>
+          <li>ลูกค้า: 12000532 TikTok Shop · 12000533 Shopee <span class="pin">1</span></li>
+          <li>ทะเบียนรถ: ใส่เลขชุดแทนชื่อผู้ซื้อ <span class="pin">2</span></li>
+          <li>บรรทัดละ 1 ชนิดข้าว: รหัสข้าว (RiceID) × จำนวนถุงรวม × ราคา <span class="pin">3</span></li>
+          <li>ของแถมใส่ราคา 0 เหมือนเดิม</li>
+        </ol>
+        <p class="tip">ทั้งสัปดาห์ปกติไม่เกิน 8–10 บรรทัดต่อแพลตฟอร์ม จากเดิมวันละหลายสิบบรรทัด</p>
+      </div>
+      <div class="win">
+        <div class="bar"><span>Access · ขายหน้าโรงสี</span><span>หน้าตาจำลอง</span></div>
+        <div class="body">
+          <div class="fields">
+            <div class="fld"><label>ลูกค้า</label><div class="v hl">12000532 Tiktok Shop <span class="pin">1</span></div></div>
+            <div class="fld"><label>ทะเบียนรถ</label><div class="v hl">EX-TT-2026-W46 <span class="pin">2</span></div></div>
+          </div>
+          <div class="scroll">
+            <table class="grid">
+              <thead><tr><th>วันที่</th><th>RiceID <span class="pin">3</span></th><th>ชนิดข้าว</th><th class="r">ถุง</th><th class="r">ราคา</th><th class="r">จำนวนเงิน</th></tr></thead>
+              <tbody>
+                <tr><td>15/11/69</td><td class="code">863</td><td>บัวม่วง 5 กก.</td><td class="r">180</td><td class="r">170.00</td><td class="r">30,600.00</td></tr>
+                <tr><td>15/11/69</td><td class="code">861</td><td>บัวเขียว 5 กก.</td><td class="r">64</td><td class="r">165.00</td><td class="r">10,560.00</td></tr>
+                <tr><td>15/11/69</td><td class="code">864</td><td>บัวม่วง 14 กก.</td><td class="r">12</td><td class="r">450.00</td><td class="r">5,400.00</td></tr>
+                <tr><td>15/11/69</td><td class="code">316</td><td>ดอกบัวหอม 2 กก. (ของแถม)</td><td class="r">40</td><td class="r">0.00</td><td class="r">0.00</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mocknote">ตัวเลขตัวอย่าง (ชุดเดียวกับ IV ด้านบน) · RiceID เป็นรหัสจริงใน Access</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mstep">
+      <div class="txt">
+        <div class="bubble">2</div>
+        <h3>มีของคืน: บันทึก "ซื้อข้าวสาร"</h3>
+        <p>ถ้าไฟล์มีแผ่น "Access รับคืน" บันทึกซื้อข้าวสารจาก 22000049 TikTok Shop / 22000050 Shopee ใส่เลขชุดในช่องทะเบียนรถ บรรทัดละ 1 ชนิดข้าว เหมือนขั้น 1</p>
+        <p class="confirm">สมุดธนาคารใน Access: ถ้าหน้าโรงสียังลงรายการถอนอยู่ ใช้วันที่และยอดจากแผ่น "โอนเงิน" ได้ (ยืนยันกับหน้าโรงสีว่ายังลงหรือไม่)</p>
+      </div>
+      <div class="win">
+        <div class="bar"><span>Access · ซื้อข้าวสาร</span><span>หน้าตาจำลอง</span></div>
+        <div class="body">
+          <div class="fields">
+            <div class="fld"><label>ผู้ขาย</label><div class="v hl">22000049 Tiktok Shop</div></div>
+            <div class="fld"><label>ทะเบียนรถ</label><div class="v hl">EX-TT-2026-W46</div></div>
+          </div>
+          <div class="scroll">
+            <table class="grid">
+              <thead><tr><th>RiceID</th><th>ชนิดข้าว</th><th class="r">ถุง</th><th class="r">ราคา</th><th class="r">จำนวนเงิน</th></tr></thead>
+              <tbody><tr><td class="code">863</td><td>บัวม่วง 5 กก.</td><td class="r">4</td><td class="r">170.00</td><td class="r">680.00</td></tr></tbody>
+            </table>
+          </div>
+          <p class="mocknote">ตัวเลขตัวอย่าง</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── late money ───────── -->
+<section id="late-money">
+  <div class="sec-head">
+    <h2>ทำไมใบตัดหนี้ 1 ใบ ตัด IV 2 ชุด</h2>
+    <p class="muted">แพลตฟอร์มปล่อยเงินหลังลูกค้าได้ของ 1–2 สัปดาห์ เงินที่เข้าในสัปดาห์นี้จึงเป็นของออเดอร์หลายสัปดาห์ ระบบรู้ทุกออเดอร์ จึงแบ่งยอดตัดหนี้ตาม IV ให้</p>
+  </div>
+  <div class="seq" role="img" aria-label="ลำดับเหตุการณ์: สัปดาห์ W42 ส่งของและตั้งหนี้ IV W42, สัปดาห์ W43 ส่งของและตั้งหนี้ IV W43, ระหว่าง W43 Shopee ปล่อยเงิน 85 ออเดอร์ ระบบแบ่งเป็นตัด IV W42 และ IV W43, จันทร์ถัดไปบัญชีคีย์ RE 1 ใบ ส่วนที่ยังไม่ได้เงินค้างเป็นลูกหนี้ยกไป">
+    <svg viewBox="0 0 980 330" xmlns="http://www.w3.org/2000/svg">
+      <g font-size="14" fill="var(--ink)">
+        <!-- lanes -->
+        <text x="20" y="60" font-weight="600">ลูกค้า / ขนส่ง</text>
+        <text x="20" y="140" font-weight="600">Shopee</text>
+        <text x="20" y="220" font-weight="600">ระบบ DBRK</text>
+        <text x="20" y="300" font-weight="600">Express</text>
+      </g>
+      <g stroke="var(--line)" stroke-width="1">
+        <line x1="150" y1="55" x2="960" y2="55"/><line x1="150" y1="135" x2="960" y2="135"/>
+        <line x1="150" y1="215" x2="960" y2="215"/><line x1="150" y1="295" x2="960" y2="295"/>
+      </g>
+      <!-- week bands -->
+      <rect x="160" y="10" width="300" height="22" rx="6" fill="var(--straw-soft)"/>
+      <text x="310" y="26" text-anchor="middle" font-size="13" fill="var(--straw)" font-weight="600">W42 · 12–18 ต.ค.</text>
+      <rect x="470" y="10" width="300" height="22" rx="6" fill="var(--paddy-soft)"/>
+      <text x="620" y="26" text-anchor="middle" font-size="13" fill="var(--paddy)" font-weight="600">W43 · 19–25 ต.ค.</text>
+      <rect x="780" y="10" width="180" height="22" rx="6" fill="var(--surface)" stroke="var(--line)"/>
+      <text x="870" y="26" text-anchor="middle" font-size="13" fill="var(--muted)" font-weight="600">จ. 26 ต.ค.</text>
+      <!-- W42 shipping -->
+      <circle cx="230" cy="55" r="7" fill="var(--straw)"/>
+      <text x="230" y="82" text-anchor="middle" font-size="12.5" fill="var(--ink)">ส่งของ W42</text>
+      <line x1="230" y1="62" x2="230" y2="208" stroke="var(--straw)" stroke-width="2" stroke-dasharray="4 4"/>
+      <rect x="180" y="232" width="100" height="26" rx="6" fill="var(--straw-soft)"/>
+      <text x="230" y="250" text-anchor="middle" font-size="12.5" fill="var(--straw)" font-weight="600">IV ชุด W42</text>
+      <!-- W43 shipping -->
+      <circle cx="530" cy="55" r="7" fill="var(--paddy)"/>
+      <text x="530" y="82" text-anchor="middle" font-size="12.5" fill="var(--ink)">ส่งของ W43</text>
+      <line x1="530" y1="62" x2="530" y2="208" stroke="var(--paddy)" stroke-width="2" stroke-dasharray="4 4"/>
+      <rect x="480" y="232" width="100" height="26" rx="6" fill="var(--paddy-soft)"/>
+      <text x="530" y="250" text-anchor="middle" font-size="12.5" fill="var(--paddy)" font-weight="600">IV ชุด W43</text>
+      <!-- Shopee releases in W43 -->
+      <rect x="600" y="118" width="150" height="34" rx="8" fill="var(--surface)" stroke="var(--sp)"/>
+      <text x="675" y="133" text-anchor="middle" font-size="12" fill="var(--sp)" font-weight="600">ปล่อยเงิน 85 ออเดอร์</text>
+      <text x="675" y="147" text-anchor="middle" font-size="11.5" fill="var(--muted)">ของ W42 + W43</text>
+      <line x1="675" y1="152" x2="675" y2="200" stroke="var(--sp)" stroke-width="2"/>
+      <polygon points="669,198 681,198 675,208" fill="var(--sp)"/>
+      <rect x="610" y="208" width="130" height="34" rx="8" fill="var(--paddy-soft)"/>
+      <text x="675" y="223" text-anchor="middle" font-size="12" fill="var(--paddy)" font-weight="600">จับคู่ทีละออเดอร์</text>
+      <text x="675" y="237" text-anchor="middle" font-size="11.5" fill="var(--paddy)">แบ่งยอดตาม IV</text>
+      <!-- Monday RE -->
+      <line x1="740" y1="225" x2="860" y2="282" stroke="var(--ink)" stroke-width="1.5"/>
+      <polygon points="852,275 864,285 850,288" fill="var(--ink)"/>
+      <rect x="800" y="282" width="150" height="40" rx="8" fill="var(--surface)" stroke="var(--ink)"/>
+      <text x="875" y="298" text-anchor="middle" font-size="12" fill="var(--ink)" font-weight="600">RE 1 ใบ (จันทร์)</text>
+      <text x="875" y="313" text-anchor="middle" font-size="11.5" fill="var(--muted)">ตัด IV W42 + IV W43</text>
+      <!-- carry -->
+      <text x="160" y="322" font-size="12" fill="var(--muted)">ออเดอร์ที่เงินยังไม่มา ยังเป็นลูกหนี้ของ IV เดิม แล้วถูกตัดใน RE ของสัปดาห์ถัดไป</text>
+    </svg>
+  </div>
+  <p class="src">ตัวอย่างจริง: Shopee สัปดาห์ 19–25 ต.ค. 2569 ปล่อยเงิน 85 ออเดอร์ ตัดลูกหนี้ 35,814.00 − ค่าธรรมเนียม 12,502.00 − ค่าส่ง 506.00 = เข้ากระเป๋า 22,806.00 ตรงกับ Shopee ทุกออเดอร์</p>
+</section>
+
+<!-- ───────── month end ───────── -->
+<section id="month-end">
+  <div class="sec-head">
+    <h2>สิ้นเดือน ปิดยอด ส่งบัญชี</h2>
+    <p class="muted">สัปดาห์ที่คร่อมสิ้นเดือนถูกแยกเป็น 2 ชุด แต่ละเดือนจึงมี IV ของตัวเองครบ ไม่ต้องแบ่งเอง</p>
+  </div>
+  <div class="strip">
+    <div class="monthline"><span class="a">พฤศจิกายน 2569</span><span class="b">ธันวาคม 2569</span></div>
+    <div class="weeks">
+      <div class="wk a"><span class="bn">EX-TT-2026-W48</span><span class="d">23–29 พ.ย.</span><span class="c">ปิด จ. 30 พ.ย. 06:00</span></div>
+      <div class="wk a"><span class="bn">EX-TT-2026-W49-11</span><span class="d">30 พ.ย. (วันเดียว)</span><span class="c">ปิด อ. 1 ธ.ค. 06:00 · ส่วนของ พ.ย.</span></div>
+      <div class="wk b"><span class="bn">EX-TT-2026-W49-12</span><span class="d">1–6 ธ.ค.</span><span class="c">ปิด จ. 7 ธ.ค. 06:00 · ส่วนของ ธ.ค.</span></div>
+      <div class="wk b"><span class="bn">EX-TT-2026-W50</span><span class="d">7–13 ธ.ค.</span><span class="c">ปิด จ. 14 ธ.ค. 06:00</span></div>
+    </div>
+    <p class="src">เลขชุดคำนวณจากสูตรของระบบจริง · ตัวท้าย -11 / -12 คือเดือนของส่วนนั้น · ชุดต้องปิดตามลำดับ</p>
+  </div>
+  <div class="two">
+    <div class="box o">
+      <h3><span class="who oldhand">แบบเดิม</span> สิ้นเดือน</h3>
+      <ol>
+        <li>บัญชีไล่ดูลูกหนี้ C777 / C666 ทีละ IV ว่าใบไหนยังไม่ได้ติ๊กตัด</li>
+        <li>เงินที่เข้ามาแล้วแต่ยังจับคู่ไม่ได้ บางเดือนพักไว้ที่ 1111-00</li>
+        <li>สรุปยอดขาย ค่าธรรมเนียม ค่าส่ง จากใบที่คีย์เอง ไม่มีตัวเลขจากแพลตฟอร์มไว้เทียบ</li>
+        <li>หน้าโรงสีดูถุงที่ตัดใน Access เอง ไม่มีตัวเลขเทียบกับ Express</li>
+      </ol>
+      <p class="confirm">ขั้นตอนเดิมสรุปจากสิ่งที่เห็นในไฟล์ Express และ Access ให้บัญชีเติมขั้นที่ทำจริงแต่ไม่อยู่ในไฟล์</p>
+    </div>
+    <div class="box n">
+      <h3><span class="who hand">แบบใหม่</span> สิ้นเดือน</h3>
+      <ol>
+        <li>วันแรกของเดือนใหม่ 06:00 ระบบปิดชุดส่วนท้ายของเดือน คีย์ชุดนี้ตามขั้นวันจันทร์ตามปกติ</li>
+        <li>เปิดหน้า ส่งยอด Express › "เทียบยอดกับ Express · สิ้นเดือน" ระบบบอก 3 ตัวต่อแพลตฟอร์ม: ลูกหนี้ · เงินในกระเป๋า · ถุงที่ตัด</li>
+        <li>เปิดรายงานใน Express กรอกยอดจริง 3 ตัวลงช่องเทียบ ระบบขึ้น ✅ ตรง หรือ ⚠️ ต่าง ถ้าต่างตามหาด้วยเลขชุด</li>
+        <li>ขายช่องทางอื่น (LINE โทรสั่ง หน้าร้าน) คีย์จากแผ่น "คีย์ Express - ขาย" ในไฟล์ปิดงวด</li>
+        <li>เมนู การเงิน › ปิดงวด: ดาวน์โหลดใบปะหน้า (PDF) และไฟล์เอกสารทั้งเดือน (ZIP) ส่งสำนักงานบัญชี</li>
+        <li>กด "ส่งปิดงวด" แล้วให้อีกคนอนุมัติ (ผู้อนุมัติต้องไม่ใช่คนส่ง) เดือนที่ปิดแล้วแก้ไม่ได้</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── carry ───────── -->
+<section id="carry">
+  <div class="sec-head">
+    <h2>ยอดยกข้ามเดือน ไปอยู่ที่ไหน</h2>
+    <p class="muted">Express ยังเป็นสมุดบัญชีหลัก ยอดคงเหลือยกข้ามเดือนในงบทดลองของ Express เองเหมือนเดิม ระบบใหม่ไม่ได้ทำงบทดลอง แต่บอกตัวเลขที่ Express ควรมี เพื่อเทียบก่อนปิดเดือน</p>
+  </div>
+  <div class="two">
+    <div class="box o">
+      <h3><span class="who oldhand">แบบเดิม</span> สิ่งที่ยกไปเดือนหน้า</h3>
+      <ol>
+        <li>ลูกหนี้ C777 / C666 = IV รายออเดอร์ที่ยังไม่ได้ตัด อาจเป็นหลายร้อยใบ ต้องรู้ทีละใบว่าใบไหนยังค้าง</li>
+        <li>เงินที่พักไว้ที่ 1111-00 ยกไปจนกว่าจะจับคู่ได้</li>
+        <li>สต๊อกข้าวใน Access ยกเป็นยอดยกมาในไฟล์ปีเดียวกัน</li>
+      </ol>
+    </div>
+    <div class="box n">
+      <h3><span class="who auto">แบบใหม่</span> สิ่งที่ยกไปเดือนหน้า</h3>
+      <ol>
+        <li>ลูกหนี้ยกไปเหมือนเดิมใน Express แต่เป็น IV รายสัปดาห์ไม่กี่ใบ RE เดือนหน้าจะตัด IV ของเดือนก่อน ระบบบอกยอดต่อ IV ให้</li>
+        <li>เงินในกระเป๋าแพลตฟอร์มที่ยังไม่ถอน ระบบรู้ยอดทุกวัน ไม่ต้องพักแบบไม่รู้ที่มา</li>
+        <li>คลังออนไลน์ไม่ต้องยกยอด เริ่มที่ 0 ปิดชุดแล้วคืนถุงให้สต๊อกโรงสี จึงกลับมาใกล้ 0 ทุกสัปดาห์ สต๊อกจริงยังอยู่ที่ Access</li>
+      </ol>
+    </div>
+  </div>
+  <div class="formula" aria-label="สูตรตัวเลขเทียบสิ้นเดือน">
+    <div>ลูกหนี้ที่ Express ควรมี = IV ขายทุกชุด − ลดหนี้ (SR) − ตัดหนี้ (RE)</div>
+    <div>เงินในกระเป๋าแพลตฟอร์ม = ยอดที่แพลตฟอร์มปล่อยแล้ว − ยอดที่ถอนเข้าธนาคารแล้ว</div>
+    <div>ถุงที่ตัดจากสต๊อกโรงสี = ถุงที่ขาย − ถุงที่รับคืน</div>
+  </div>
+  <p class="src">ทั้ง 3 ตัวนับสะสมตั้งแต่ชุดแรก ถึงวันสุดท้ายของเดือนที่เลือก (สูตรเดียวกับหน้า "เทียบยอดกับ Express")</p>
+</section>
+
+<!-- ───────── year end ───────── -->
+<section id="year-end">
+  <div class="sec-head">
+    <h2>ปิดปี ยกงบทดลองไปปีใหม่</h2>
+    <p class="muted">การปิดปีเกิดใน Express และ Access เหมือนเดิม ระบบใหม่ช่วยให้ยอดออนไลน์ ณ 31 ธันวาคม แยกขาดและมีตัวเลขเทียบก่อนปิด</p>
+  </div>
+  <div class="strip">
+    <div class="monthline"><span class="a">ปีบัญชี 2569</span><span class="b">ปีบัญชี 2570</span></div>
+    <div class="weeks">
+      <div class="wk a"><span class="bn">EX-TT-2026-W52</span><span class="d">21–27 ธ.ค. 69</span><span class="c">ปิด จ. 28 ธ.ค. 06:00</span></div>
+      <div class="wk a"><span class="bn">EX-TT-2026-W53-12</span><span class="d">28–31 ธ.ค. 69</span><span class="c">ปิด ศ. 1 ม.ค. 06:00 · คีย์ลงปี 2569 / ไฟล์ Access ปี 69</span></div>
+      <div class="wk b"><span class="bn">EX-TT-2026-W53-01</span><span class="d">1–3 ม.ค. 70</span><span class="c">ปิด จ. 4 ม.ค. 06:00 · คีย์ลงปี 2570 / ไฟล์ Access ปีใหม่</span></div>
+    </div>
+    <p class="src">สัปดาห์นี้คร่อมปี เลขชุดของวันที่ 1–3 ม.ค. 2570 ยังขึ้นต้น 2026-W53 เพราะเป็นเลขสัปดาห์สากลของสัปดาห์นั้น ให้ดูตัวท้าย -01 และวันที่ในใบ ว่าเป็นของปีใหม่</p>
+  </div>
+  <div class="two">
+    <div class="box o">
+      <h3><span class="who oldhand">แบบเดิม</span> ปิดปี</h3>
+      <ol>
+        <li>Express: บัญชีพิมพ์งบทดลอง ณ 31 ธ.ค. ตรวจยอด แล้วปิดบัญชีสิ้นปีตามขั้นตอนของ Express ยอดบัญชีงบดุล (ธนาคาร ลูกหนี้ 1130-01 สต๊อก) ยกเป็นยอดยกมาปีใหม่</li>
+        <li>ลูกหนี้ออนไลน์ ณ 31 ธ.ค. = IV รายออเดอร์ที่ยังค้างทั้งหมด ต้องตรวจทีละใบก่อนปิด</li>
+        <li>Access: ใช้ไฟล์ข้อมูลแยกต่อปี (ปีนี้ rud69) ขึ้นปีใหม่เปิดไฟล์ใหม่ และโพสต์สต๊อกเพื่อยกยอดคงเหลือเป็นยอดยกมาใหม่</li>
+      </ol>
+      <p class="confirm">ขั้นตอนในโปรแกรม (เมนูปิดบัญชีสิ้นปีของ Express · วิธีขึ้นไฟล์ปีใหม่และโพสต์สต๊อกของ Access) ให้บัญชีและคนดูแล Access ยืนยันลำดับจริง</p>
+    </div>
+    <div class="box n">
+      <h3><span class="who hand">แบบใหม่</span> ปิดปี</h3>
+      <ol>
+        <li>1 ม.ค. 06:00 ระบบปิดชุดส่วนท้ายของปี (W53-12) คีย์ลง Express ปี 2569 และไฟล์ Access ปี 69 ให้เสร็จก่อนปิดปี</li>
+        <li>เทียบยอดสิ้นเดือนธันวาคมให้ ✅ ทั้ง 3 ตัว (ลูกหนี้ · กระเป๋า · ถุง) ก่อนบัญชีพิมพ์งบทดลองและปิดปี</li>
+        <li>ปิดงวดธันวาคมในระบบ DBRK (ส่งปิด → อีกคนอนุมัติ) เหมือนทุกเดือน</li>
+        <li>Express ปิดบัญชีสิ้นปีตามขั้นตอนเดิม ลูกหนี้ออนไลน์ที่ยกไปเหลือ IV รายสัปดาห์ไม่กี่ใบ RE เดือนมกราคมจะตัด IV ของเดือนธันวาคมตามแผ่น</li>
+        <li>Access ขึ้นไฟล์ปีใหม่ตามเดิม ชุด W53-01 เป็นต้นไปคีย์ลงไฟล์ปีใหม่</li>
+        <li>ระบบ DBRK ไม่มีไฟล์ต่อปี ไม่ต้องยกยอดอะไร เลขเอกสารเริ่มนับใหม่ทุกเดือนอยู่แล้ว</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── glossary ───────── -->
+<section id="words">
+  <div class="sec-head"><h2>คำที่ใช้ในหน้านี้</h2></div>
+  <dl class="gl">
+    <dt>ชุด / เลขชุด</dt><dd>ออเดอร์ทั้งสัปดาห์ (จันทร์–อาทิตย์) ของแพลตฟอร์มหนึ่ง เช่น EX-TT-2026-W46 = TikTok สัปดาห์ที่ 46 · EX-SP = Shopee · ตัวท้าย -11 คือส่วนของเดือนพฤศจิกายน</dd>
+    <dt>IV</dt><dd>ใบขายเชื่อใน Express (ตั้งลูกหนี้)</dd>
+    <dt>RE</dt><dd>ใบรับชำระ / ตัดหนี้ใน Express</dd>
+    <dt>SR</dt><dd>ใบลดหนี้ / รับคืนใน Express</dd>
+    <dt>C777 · C666</dt><dd>รหัสลูกค้า TikTok Shop · Shopee ใน Express</dd>
+    <dt>12000532 · 12000533</dt><dd>รหัสลูกค้าขายหน้าโรงสี TikTok Shop · Shopee ใน Access</dd>
+    <dt>22000049 · 22000050</dt><dd>รหัสผู้ขาย (ใช้ตอนรับของคืน) TikTok Shop · Shopee ใน Access</dd>
+    <dt>RiceID</dt><dd>รหัสชนิดข้าวใน Access เช่น 863 บัวม่วง 5 กก.</dd>
+    <dt>กระเป๋าแพลตฟอร์ม</dt><dd>เงินที่แพลตฟอร์มปล่อยให้ร้านแล้ว แต่ยังไม่ได้ถอนเข้าธนาคาร</dd>
+    <dt>ประเภทการรับ</dt><dd>รหัสบรรทัดในใบตัดหนี้ของ Express: T1 ยอดสุทธิ · 26 ค่าธรรมเนียมรับชำระ · 27 คอมมิชชั่น/Affiliate · 28 ค่าส่ง · 29 โปรแกรม/ดำเนินการ/แอด · TX ภาษีถูกหัก</dd>
+    <dt>งบทดลอง</dt><dd>รายงานยอดคงเหลือทุกบัญชีใน Express ใช้ตรวจก่อนปิดเดือน/ปิดปี ยังอยู่ที่ Express เหมือนเดิม</dd>
+  </dl>
+</section>
+
+<footer>ดอกบัวรวงข้าว · ระบบ DBRK Online เฟส 2 · อัปเดต 3 พ.ย. 2569 · ตัวเลขเดือนตุลาคม 2569 มาจากไฟล์ Express (สำรอง 30 ต.ค. 2569) และ Access rud69 จริง · ไม่มีข้อมูลรายบุคคลในหน้านี้</footer>
+</div>
+
+</body>
+</html>
